@@ -3,4 +3,5 @@
 Projeto desenvolvido na disciplina MC426, Engenharia de Software, realizada no segundo semestre de 2021 na UNICAMP.
 
 ## Team
-`Jhonatan Cléto, 256444`
+`George Gigilas Junior - 216741`
+`Jhonatan Cléto - 256444`
