@@ -1,0 +1,17 @@
+# lock files
+*/*.lock
+
+#Cache
+__pycache__
+cache
+.cache
+temp
+.temp
+.pytest_cache
+
+# Venv e Editors
+.venv
+.vscode
+venv
+.env
+.python-version
