@@ -1,28 +1,38 @@
-from kivy.uix.screenmanager import Screen
-from kivymd.app import MDApp
-from kivymd.uix.label import MDLabel
-
-from kaki.app import App
-from kivy.factory import Factory
 import os
+from pathlib import Path
 
-class MainApp(App, MDApp):
+from kivymd.app import MDApp
+from kivy.lang import Builder
+from kivy.resources import resource_add_path
+from kivy.uix.relativelayout import RelativeLayout
 
-    DEBUG = 1
+os.environ["MIAUDOTE_ROOT"] = str(Path(__file__).parent)
 
-    KV_FILES = {
-        #os.path.join(os.getcwd(),'libs/kvfiles/MyScreen.kv')
-        './libs/kvfiles/MyScreen.kv'
-    }
-    CLASSES = {
-        'MyScreen': 'libs.baseclass.MyScreen'
-    }
-    AUTORELOADER_PATHS = [
-        ('.',{'recursive':True})
-    ]
+KV_DIR = f"{os.environ['MIAUDOTE_ROOT']}/libs/kvfiles"
+FONT_DIR = f"{os.environ['MIAUDOTE_ROOT']}/assets/fonts"
+IMG_DIR = f"{os.environ['MIAUDOTE_ROOT']}/assets/images"
 
-    def build_app(self,*args):
-        return Factory.MyScreen()
+resource_add_path(FONT_DIR)
+resource_add_path(IMG_DIR)
 
+for kv_file in os.listdir(KV_DIR):
+    kv = str(os.path.join(KV_DIR, kv_file))
+    Builder.load_file(kv)
+
+KV = """
+MainScreenManager:
+"""
+
+class MainApp(MDApp):
+    def build(self):
+        return Builder.load_string(KV)
+
+    def change_screen(self, screen):
+        if isinstance(self.root, RelativeLayout):
+            self.root.children[0].current = screen
+            print(self.root.children[0].current)
+        else:
+            self.root.current = screen
+            print(self.root.current)
 
 MainApp().run()
