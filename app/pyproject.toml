@@ -1,0 +1,28 @@
+[tool.poetry]
+name = "miaudote"
+version = "0.1.0"
+description = "Plataforma para adoção de pets entre adotantes e protetores de animais."
+authors = [
+            "Cristiano Sampaio <cristiano.sampaio@conpec.com.br>",
+            "George Gigilas Junior <g216741@dac.unicamp.br>",
+            "Jhonatan Cléto <j256444@dac.unicamp.br>",
+            "Mylena Roberta dos Santos <my.roberta.9@gmail.com>"
+          ]
+license = "MIT"
+readme = "README.md"
+repository = "https://gitlab.com/mc426-2s2021/mc426-engenharia-de-software"
+keywords = ["Python", "Kivy", "Material Design", "Pets", "Adoção"]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+Kivy = "^2.0.0"
+kivymd = "^0.104.2"
+watchdog = "^2.1.5"
+kaki = "^0.1.4"
+python-firebase = "^1.2"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
