@@ -19,6 +19,7 @@ Kivy = "^2.0.0"
 kivymd = "^0.104.2"
 watchdog = "^2.1.5"
 kaki = "^0.1.4"
+python-firebase = "^1.2"
 
 [tool.poetry.dev-dependencies]
 
