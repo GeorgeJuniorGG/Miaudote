@@ -4,6 +4,6 @@ from kivymd.uix.screen import MDScreen
 
 
 
-class MyScreen(MDScreen):
+class CadScreen(MDScreen):
     pass
 
