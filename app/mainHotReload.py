@@ -8,19 +8,19 @@ from kivy.core.window import Window
 import os
 from pathlib import Path
 
-from libs.baseclass.ScreenManager import MainScreenManager
-
 os.environ["MIAUDOTE_ROOT"] = str(Path(__file__).parent)
 FONT_DIR = f"{os.environ['MIAUDOTE_ROOT']}/assets/fonts"
 IMG_DIR = f"{os.environ['MIAUDOTE_ROOT']}/assets/images"
 KV_DIR = f"{os.environ['MIAUDOTE_ROOT']}/libs/kvfiles"
 
-# Permitir que o Kivy procure arquivos nesses diretórios
+# Permitir que o Kivy procure arquivos nestes diretórios
 resource_add_path(FONT_DIR)
 resource_add_path(IMG_DIR)
 
+Window.size = (375,667)
+
 class MainApp(App, MDApp):
-    
+
     # Modo de Debug
     DEBUG = 1
 
@@ -46,9 +46,6 @@ class MainApp(App, MDApp):
     ]
 
     def build_app(self,*args):
-        #Window.bind(on_reyboard=self._rebuild)
-        #self.manager_screens = MainScreenManager()
-        #return self.manager_screens
         return Factory.MainScreenManager()
 
     def _rebuild(self, *args):

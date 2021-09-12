@@ -1,10 +1,7 @@
 from services.firebase import loginUser, registerUser
-from kivy.core.window import Window
-from kivymd.uix.floatlayout import MDFloatLayout
+from kivymd.uix.screen import MDScreen
 
-Window.size = (375,667)
-
-class LoginScreen(MDFloatLayout):
+class LoginScreen(MDScreen):
    def login(self, email, password):
       if(loginUser(self, email, password)):
          print("Entrando...")
