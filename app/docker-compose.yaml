@@ -1,0 +1,9 @@
+version: "3.9"
+services: 
+  buildozer:
+    build: .
+    volumes: 
+      - .:/home/miaudote/app
+      - ~/.buildozer:/home/miaudote/.buildozer
+      - /dev/bus/usb:/dev/bus/usb
+    privileged: true

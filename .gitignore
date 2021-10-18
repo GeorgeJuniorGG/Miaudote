@@ -15,3 +15,6 @@ temp
 venv
 .env
 .python-version
+app/.buildozer/*
+app/.buildozer/adroid/*
+app/.buildozer/adroid/platform
