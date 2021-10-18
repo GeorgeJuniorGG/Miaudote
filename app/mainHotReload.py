@@ -30,7 +30,12 @@ class MainApp(App, MDApp):
         f'{KV_DIR}/WelcomeScreen.kv',
         f'{KV_DIR}/LoginScreen.kv',
         f'{KV_DIR}/MyScreen.kv',
-        f'{KV_DIR}/CadScreen.kv', 
+        f'{KV_DIR}/CadScreen.kv',
+        f'{KV_DIR}/SignUpScreen.kv',
+        f'{KV_DIR}/SignUpScreen2a.kv',
+        f'{KV_DIR}/SignUpScreen2b.kv',
+        f'{KV_DIR}/SignUpScreen3.kv',
+        f'{KV_DIR}/SignUpScreen4.kv',
     }
 
     CLASSES = {
@@ -39,6 +44,11 @@ class MainApp(App, MDApp):
         'WelcomeScreen': 'libs.baseclass.WelcomeScreen',
         'MyScreen' : 'libs.baseclass.MyScreen',
         'CadScreen' : 'libs.baseclass.CadScreen',
+        'SignUpScreen' : 'libs.baseclass.SignUpScreen',
+        'SignUpScreen2a' : 'libs.baseclass.SignUpScreen2a',
+        'SignUpScreen2b' : 'libs.baseclass.SignUpScreen2b',
+        'SignUpScreen3' : 'libs.baseclass.SignUpScreen3',
+        'SignUpScreen4' : 'libs.baseclass.SignUpScreen4',
     }
 
     AUTORELOADER_PATHS = [
