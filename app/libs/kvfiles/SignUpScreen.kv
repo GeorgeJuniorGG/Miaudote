@@ -82,7 +82,8 @@
         pos_hint: {'center_x': 0.5, 'center_y': 0.35}
     MDBoxLayout:
         width: self.minimum_width
-        padding: [self.right/20, 0, self.right/10, 0]
+        padding: [self.right/10, 0, 0, 0]
+        spacing: '4dp'
 
         MDCheckbox:
             pos_hint: {'center_y': 0.28}
@@ -90,6 +91,7 @@
             size: "48dp", "48dp"
             color: [0.21,0.4,0.45,1]
             selected_color: [0.21,0.4,0.45,1]
+            adaptive_size: False
 
         MDLabel:
             text: "Sou um Protetor"
@@ -98,13 +100,15 @@
             pos_hint: {'center_y': 0.28}
             theme_text_color: 'Custom'
             text_color: '#366873'
+            adaptive_size: True
 
         MDIconButton:
             icon: "i.png"
             user_font_size: '0.01sp'
             pos_hint:{'center_y': 0.28}
+            adaptive_size: True
             on_release:
-                SignUpScreen.show_alert_dialog()
+                SignUpScreen.show_protectors_dialog(SignUpScreen)
 
     MDFillRoundFlatButton:
         text: "Continuar"

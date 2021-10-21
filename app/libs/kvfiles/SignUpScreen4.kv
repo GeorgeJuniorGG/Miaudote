@@ -41,57 +41,87 @@
         text_color: '#366873'
         font_size: "20sp"
         size_hint: (0.8, 0.06)
-        pos_hint: {'center_x': 0.5, 'center_y': 0.57}
+        pos_hint: {'center_x': 0.5, 'center_y': 0.55}
         on_release:
 
     MDBoxLayout:
         width: self.minimum_width
-        padding: [self.right/20, 0, self.right/10, 0]
+        padding: [self.right/10, 0, 0, 0]
+        spacing: '4dp'
 
         MDCheckbox:
-            pos_hint: {'center_y': 0.47}
+            pos_hint: {'center_y': 0.45}
             size_hint: None, None
             size: "48dp", "48dp"
             color: [0.21,0.4,0.45,1]
             selected_color: [0.21,0.4,0.45,1]
+            adaptive_size: False
 
         MDLabel:
             text: "Possui Ambiente Aberto (Quintal)"
             width: '20px'
             font_size: '17sp'
-            pos_hint: {'center_y': 0.47}
+            pos_hint: {'center_y': 0.45}
             theme_text_color: 'Custom'
             text_color: '#366873'
+            adaptive_size: True
 
     MDBoxLayout:
         width: self.minimum_width
-        padding: [self.right/20, 0, self.right/10, 0]
+        padding: [self.right/10, 0, 0, 0]
+        spacing: '4dp'
 
         MDCheckbox:
-            pos_hint: {'center_y': 0.37}
+            pos_hint: {'center_y': 0.39}
             size_hint: None, None
             size: "48dp", "48dp"
             color: [0.21,0.4,0.45,1]
             selected_color: [0.21,0.4,0.45,1]
+            adaptive_size: False
 
         MDLabel:
             text: "Possui Rotas de Fuga para o Animal"
             width: '20px'
             font_size: '17sp'
-            pos_hint: {'center_y': 0.37}
+            pos_hint: {'center_y': 0.39}
             theme_text_color: 'Custom'
             text_color: '#366873'
+            adaptive_size: True
 
         MDIconButton:
             icon: "i.png"
             user_font_size: '0.01sp'
-            pos_hint:{'center_y': 0.37}
+            pos_hint:{'center_y': 0.39}
+            adaptive_size: True
             on_release:
-                SignUpScreen.show_alert_dialog()
+                SignUpScreen4.show_escape_routes_dialog(SignUpScreen4)
 
     MDBoxLayout:
         width: self.minimum_width
-        padding: [self.right/20, 0, self.right/10, 0]
+        padding: [self.right/10, 0, 0, 0]
+        spacing: '4dp'
+
+        MDCheckbox:
+            pos_hint: {'center_y': 0.33}
+            size_hint: None, None
+            size: "48dp", "48dp"
+            color: [0.21,0.4,0.45,1]
+            selected_color: [0.21,0.4,0.45,1]
+            adaptive_size: False
+
+        MDLabel:
+            text: "Crianças frequentam o ambiente"
+            width: '20px'
+            font_size: '17sp'
+            pos_hint: {'center_y': 0.33}
+            theme_text_color: 'Custom'
+            text_color: '#366873'
+            adaptive_size: True
+
+    MDBoxLayout:
+        width: self.minimum_width
+        padding: [self.right/10, 0, 0, 0]
+        spacing: '4dp'
 
         MDCheckbox:
             pos_hint: {'center_y': 0.27}
@@ -99,14 +129,24 @@
             size: "48dp", "48dp"
             color: [0.21,0.4,0.45,1]
             selected_color: [0.21,0.4,0.45,1]
+            adaptive_size: False
 
         MDLabel:
-            text: "Crianças frequentam o ambiente"
+            text: "Li e aceito os Termos de Uso"
             width: '20px'
             font_size: '17sp'
             pos_hint: {'center_y': 0.27}
             theme_text_color: 'Custom'
             text_color: '#366873'
+            adaptive_size: True
+
+        MDIconButton:
+            icon: "i.png"
+            user_font_size: '0.01sp'
+            pos_hint:{'center_y': 0.27}
+            adaptive_size: True
+            on_release:
+                SignUpScreen4.show_terms_of_service_dialog(SignUpScreen4)
 
     MDFillRoundFlatButton:
         text: "Continuar"
