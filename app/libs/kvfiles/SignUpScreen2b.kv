@@ -80,6 +80,36 @@
         border_color: '#366873'
         color_active: '#ffffff'
         pos_hint: {'center_x': 0.5, 'center_y': 0.26}
+    
+    MDBoxLayout:
+        width: self.minimum_width
+        padding: [self.right/10, 0, 0, 0]
+        spacing: '4dp'
+
+        MDCheckbox:
+            pos_hint: {'center_y': 0.20}
+            size_hint: None, None
+            size: "48dp", "48dp"
+            color: [0.21,0.4,0.45,1]
+            selected_color: [0.21,0.4,0.45,1]
+            adaptive_size: False
+
+        MDLabel:
+            text: "Li e aceito os Termos de Uso"
+            width: '20px'
+            font_size: '17sp'
+            pos_hint: {'center_y': 0.20}
+            theme_text_color: 'Custom'
+            text_color: '#366873'
+            adaptive_size: True
+
+        MDIconButton:
+            icon: "i.png"
+            user_font_size: '0.01sp'
+            pos_hint:{'center_y': 0.20}
+            adaptive_size: True
+            on_release:
+                SignUpScreen2b.show_terms_of_service_dialog(SignUpScreen2b)
 
     MDFillRoundFlatButton:
         text: "Continuar"
