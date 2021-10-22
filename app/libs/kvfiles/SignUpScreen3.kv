@@ -1,0 +1,92 @@
+#:kivy 2.0
+<SignUpScreen3>
+    MDProgressBar:
+        value: 50
+        color: '#366873'
+        pos_hint:{'center_x':0.5, 'center_y': 0.92}
+
+    MDIconButton:
+        icon: "arrow.png"
+        user_font_size: '5sp'
+        pos_hint:{'center_x':0.08, 'center_y': 0.96}
+        on_release:
+            root.manager.transition.direction = 'right'
+            app.change_screen('SignUpScreen2a')
+
+    MDLabel:
+        text: "Preferências"
+        theme_text_color: "Custom"
+        text_color: '#8C5042'
+        pos_hint: {'center_y': 0.96}
+        halign: "center"
+        font_size: "20sp"
+
+    MDRoundFlatButton:
+        text: "Você já possui algum animal?"
+        line_color: '#366873'
+        md_bg_color: 1, 1, 1, 1
+        theme_text_color: 'Custom'
+        text_color: '#366873'
+        font_size: "20sp"
+        size_hint: (0.8, 0.06)
+        pos_hint: {'center_x': 0.5, 'center_y': 0.71}
+        on_release:
+            
+
+    MDRoundFlatButton:
+        text: "Quais seus animais preferidos?"
+        line_color: '#366873'
+        md_bg_color: 1, 1, 1, 1
+        theme_text_color: 'Custom'
+        text_color: '#366873'
+        font_size: "20sp"
+        size_hint: (0.8, 0.06)
+        pos_hint: {'center_x': 0.5, 'center_y': 0.62}
+        on_release:
+            
+
+    MDRoundFlatButton:
+        text: "Qual seu porte de preferência?"
+        line_color: '#366873'
+        md_bg_color: 1, 1, 1, 1
+        theme_text_color: 'Custom'
+        text_color: '#366873'
+        font_size: "20sp"
+        size_hint: (0.8, 0.06)
+        pos_hint: {'center_x': 0.5, 'center_y': 0.53}
+        on_release:
+            
+
+    MDRoundFlatButton:
+        text: "Características do animal"
+        line_color: '#366873'
+        md_bg_color: 1, 1, 1, 1
+        theme_text_color: 'Custom'
+        text_color: '#366873'
+        font_size: "20sp"
+        size_hint: (0.8, 0.06)
+        pos_hint: {'center_x': 0.5, 'center_y': 0.44}
+        on_release:
+            
+
+    MDRoundFlatButton:
+        text: "Tempo disponível para o animal"
+        line_color: '#366873'
+        md_bg_color: 1, 1, 1, 1
+        theme_text_color: 'Custom'
+        text_color: '#366873'
+        font_size: "20sp"
+        size_hint: (0.8, 0.06)
+        pos_hint: {'center_x': 0.5, 'center_y': 0.35}
+        on_release:
+            
+
+    MDFillRoundFlatButton:
+        text: "Continuar"
+        md_bg_color: 0.592, 0.725, 0.752, 1
+        font_size: "20sp"
+        size_hint: (0.4, 0.05)
+        pos_hint: {'center_x': 0.5, 'center_y': 0.15}
+        on_release:
+            root.manager.transition.direction = 'left'
+            app.change_screen('SignUpScreen4')
