@@ -60,15 +60,6 @@ class MainApp(App, MDApp):
 
     def _rebuild(self, *args):
         if args[1] == 32:
-            self.rebuild()
-
-    def change_screen(self, screen):
-        if isinstance(self.root, RelativeLayout):
-            self.root.children[0].current = screen
-            print(self.root.children[0].current)
-        else:
-            self.root.current = screen
-            print(self.root.current)
-            
+            self.rebuild()            
 
 MainApp().run()

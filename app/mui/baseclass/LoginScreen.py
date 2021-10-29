@@ -17,3 +17,9 @@ class LoginScreen(MDScreen):
          print("Entrando...")
       else:
          print("E-mail ou senha incorreto")
+   
+   def go_forward(self):
+        self.manager.go_forward_login("LoginScreen")
+
+   def go_backward(self):
+        self.manager.go_backward_login("LoginScreen")

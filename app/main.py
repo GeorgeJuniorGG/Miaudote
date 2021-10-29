@@ -31,12 +31,4 @@ class MainApp(MDApp):
     def build(self):
         return Builder.load_string(KV)
 
-    def change_screen(self, screen):
-        if isinstance(self.root, RelativeLayout):
-            self.root.children[0].current = screen
-            print(self.root.children[0].current)
-        else:
-            self.root.current = screen
-            print(self.root.current)
-
 MainApp().run()
