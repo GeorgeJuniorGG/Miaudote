@@ -10,7 +10,7 @@ from kivy.core.window import Window
 os.environ["MIAUDOTE_ROOT"] = str(Path(__file__).parent)
 
 # Permitir que o Kivy procure arquivos nestes diretórios
-KV_DIR = f"{os.environ['MIAUDOTE_ROOT']}/libs/kvfiles"
+KV_DIR = f"{os.environ['MIAUDOTE_ROOT']}/mui/kvfiles"
 FONT_DIR = f"{os.environ['MIAUDOTE_ROOT']}/assets/fonts"
 IMG_DIR = f"{os.environ['MIAUDOTE_ROOT']}/assets/images"
 
