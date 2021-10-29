@@ -1,18 +1,13 @@
 from kivy.uix.screenmanager import ScreenManager
-from kivy.uix.relativelayout import RelativeLayout
 
 class MainScreenManager(ScreenManager):
-    usualLoginFlow = ["RootScreen", "LoginScreen"]
-    usualProtectorSignUpFlow = ["RootScreen", "SignUpScreen", "SignUpScreen2b", "LoginScreen"]
-    usualSignUpFlow = ["RootScreen", "SignUpScreen", "SignUpScreen2a", "SignUpScreen3", "SignUpScreen4", "LoginScreen"]
+    usualLoginFlow = ["WelcomeScreen", "LoginScreen"]
+    usualProtectorSignUpFlow = ["WelcomeScreen", "SignUpScreen", "SignUpScreen2b", "LoginScreen"]
+    usualSignUpFlow = ["WelcomeScreen", "SignUpScreen", "SignUpScreen2a", "SignUpScreen3", "SignUpScreen4", "LoginScreen"]
 
     def change_screen(self, screen):
-        if isinstance(self, RelativeLayout):
-            self.children[0].current = screen
-            print(self.children[0].current)
-        else:
-            self.current = screen
-            print(self.current)
+        self.current = screen
+        print(self.current)
 
     def welcome_to_signup(self):
         self.transition.direction = 'left'
