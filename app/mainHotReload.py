@@ -26,7 +26,6 @@ class MainApp(App, MDApp):
 
     KV_FILES = {
         f'{KV_DIR}/ScreenManager.kv',
-        f'{KV_DIR}/RootScreen.kv',
         f'{KV_DIR}/WelcomeScreen.kv',
         f'{KV_DIR}/LoginScreen.kv',
         f'{KV_DIR}/MyScreen.kv',
@@ -39,7 +38,6 @@ class MainApp(App, MDApp):
     }
 
     CLASSES = {
-        'RootScreen': 'mui.baseclass.RootScreen',
         'MainScreenManager' : 'mui.baseclass.ScreenManager',
         'WelcomeScreen': 'mui.baseclass.WelcomeScreen',
         'MyScreen' : 'mui.baseclass.MyScreen',
