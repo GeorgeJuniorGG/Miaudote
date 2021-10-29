@@ -6,12 +6,12 @@
         pos_hint:{'center_x':0.5, 'center_y': 0.92}
 
     MDIconButton:
+        id: _SignupArrowButton
         icon: "arrow.png"
         user_font_size: '5sp'
         pos_hint:{'center_x':0.08, 'center_y': 0.96}
         on_release:
-            root.manager.transition.direction = 'right'
-            app.change_screen('RootScreen')
+            root.go_backward()
 
     MDLabel:
         text: "Informações Pessoais"
@@ -108,14 +108,14 @@
             pos_hint:{'center_y': 0.28}
             adaptive_size: True
             on_release:
-                SignUpScreen.show_protectors_dialog(SignUpScreen)
+                root.show_protectors_dialog()
 
     MDFillRoundFlatButton:
+        id: _SignupForwardButton
         text: "Continuar"
         md_bg_color: 0.592, 0.725, 0.752, 1
         font_size: "20sp"
         size_hint: (0.4, 0.05)
         pos_hint: {'center_x': 0.5, 'center_y': 0.15}
         on_release:
-            root.manager.transition.direction = 'left'
-            app.change_screen('SignUpScreen2a')
+            root.go_forward()

@@ -2,13 +2,13 @@
 <LoginScreen>:
     MDFloatLayout:
         MDIconButton:
+            id: _LoginArrowButton
             icon: "arrow-left"
             pos_hint: {"center_y": 0.95}
             theme_text_color: "Custom"
             text_color: '97B9C0'
             on_release:
-                root.manager.transition.direction = 'right'
-                app.change_screen('RootScreen')            
+                root.go_backward()        
 
         MDLabel:
             text: "Login"
@@ -52,6 +52,7 @@
             size_hint: 0.3, 0.04
 
         MDFillRoundFlatButton:
+            id: _LoginLoginButton
             text: "Logar"
             font_size: 15
             elevation: 8
