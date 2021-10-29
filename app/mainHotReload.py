@@ -11,7 +11,7 @@ from pathlib import Path
 os.environ["MIAUDOTE_ROOT"] = str(Path(__file__).parent)
 FONT_DIR = f"{os.environ['MIAUDOTE_ROOT']}/assets/fonts"
 IMG_DIR = f"{os.environ['MIAUDOTE_ROOT']}/assets/images"
-KV_DIR = f"{os.environ['MIAUDOTE_ROOT']}/libs/kvfiles"
+KV_DIR = f"{os.environ['MIAUDOTE_ROOT']}/mui/kvfiles"
 
 # Permitir que o Kivy procure arquivos nestes diretórios
 resource_add_path(FONT_DIR)
@@ -39,16 +39,16 @@ class MainApp(App, MDApp):
     }
 
     CLASSES = {
-        'RootScreen': 'libs.baseclass.RootScreen',
-        'MainScreenManager' : 'libs.baseclass.ScreenManager',
-        'WelcomeScreen': 'libs.baseclass.WelcomeScreen',
-        'MyScreen' : 'libs.baseclass.MyScreen',
-        'CadScreen' : 'libs.baseclass.CadScreen',
-        'SignUpScreen' : 'libs.baseclass.SignUpScreen',
-        'SignUpScreen2a' : 'libs.baseclass.SignUpScreen2a',
-        'SignUpScreen2b' : 'libs.baseclass.SignUpScreen2b',
-        'SignUpScreen3' : 'libs.baseclass.SignUpScreen3',
-        'SignUpScreen4' : 'libs.baseclass.SignUpScreen4',
+        'RootScreen': 'mui.baseclass.RootScreen',
+        'MainScreenManager' : 'mui.baseclass.ScreenManager',
+        'WelcomeScreen': 'mui.baseclass.WelcomeScreen',
+        'MyScreen' : 'mui.baseclass.MyScreen',
+        'CadScreen' : 'mui.baseclass.CadScreen',
+        'SignUpScreen' : 'mui.baseclass.SignUpScreen',
+        'SignUpScreen2a' : 'mui.baseclass.SignUpScreen2a',
+        'SignUpScreen2b' : 'mui.baseclass.SignUpScreen2b',
+        'SignUpScreen3' : 'mui.baseclass.SignUpScreen3',
+        'SignUpScreen4' : 'mui.baseclass.SignUpScreen4',
     }
 
     AUTORELOADER_PATHS = [
