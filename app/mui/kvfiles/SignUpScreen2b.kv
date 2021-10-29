@@ -6,6 +6,7 @@
         pos_hint:{'center_x':0.5, 'center_y': 0.92}
 
     MDIconButton:
+        id: _SignupTwoBArrowButton
         icon: "arrow.png"
         user_font_size: '5sp'
         pos_hint:{'center_x':0.08, 'center_y': 0.96}
@@ -109,9 +110,10 @@
             pos_hint:{'center_y': 0.20}
             adaptive_size: True
             on_release:
-                SignUpScreen2b.show_terms_of_service_dialog(SignUpScreen2b)
+                root.show_terms_of_service_dialog()
 
     MDFillRoundFlatButton:
+        id: _SignupTwoBForwardButton
         text: "Continuar"
         md_bg_color: 0.592, 0.725, 0.752, 1
         font_size: "20sp"

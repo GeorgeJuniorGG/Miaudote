@@ -6,6 +6,7 @@
         pos_hint:{'center_x':0.5, 'center_y': 0.92}
 
     MDIconButton:
+        id: _SignupArrowButton
         icon: "arrow.png"
         user_font_size: '5sp'
         pos_hint:{'center_x':0.08, 'center_y': 0.96}
@@ -108,9 +109,10 @@
             pos_hint:{'center_y': 0.28}
             adaptive_size: True
             on_release:
-                SignUpScreen.show_protectors_dialog(SignUpScreen)
+                root.show_protectors_dialog()
 
     MDFillRoundFlatButton:
+        id: _SignupForwardButton
         text: "Continuar"
         md_bg_color: 0.592, 0.725, 0.752, 1
         font_size: "20sp"
