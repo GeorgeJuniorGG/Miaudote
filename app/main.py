@@ -4,7 +4,6 @@ from pathlib import Path
 from kivymd.app import MDApp
 from kivy.lang import Builder
 from kivy.resources import resource_add_path
-from kivy.uix.relativelayout import RelativeLayout
 from kivy.core.window import Window
 
 os.environ["MIAUDOTE_ROOT"] = str(Path(__file__).parent)
