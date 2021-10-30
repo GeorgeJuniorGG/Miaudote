@@ -35,6 +35,7 @@ class MainApp(App, MDApp):
         f'{KV_DIR}/SignUpScreen2b.kv',
         f'{KV_DIR}/SignUpScreen3.kv',
         f'{KV_DIR}/SignUpScreen4.kv',
+        f'{KV_DIR}/ProfileScreen.kv',
     }
 
     CLASSES = {
@@ -47,6 +48,7 @@ class MainApp(App, MDApp):
         'SignUpScreen2b' : 'mui.baseclass.SignUpScreen2b',
         'SignUpScreen3' : 'mui.baseclass.SignUpScreen3',
         'SignUpScreen4' : 'mui.baseclass.SignUpScreen4',
+        'ProfileScreen' : 'mui.baseclass.ProfileScreen',
     }
 
     AUTORELOADER_PATHS = [

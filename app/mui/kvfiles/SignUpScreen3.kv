@@ -21,64 +21,58 @@
         halign: "center"
         font_size: "20sp"
 
-    MDRoundFlatButton:
-        text: "Você já possui algum animal?"
-        line_color: '#366873'
-        md_bg_color: 1, 1, 1, 1
-        theme_text_color: 'Custom'
-        text_color: '#366873'
-        font_size: "20sp"
-        size_hint: (0.8, 0.06)
+    MDTextField:
+        id: _firstField
+        hint_text: "Você já possui algum animal?"
+        color_mode: "custom"
+        size_hint: 0.8, 0.1
+        line_color_normal: '#366873'
+        line_color_focus: '#366873'
         pos_hint: {'center_x': 0.5, 'center_y': 0.71}
-        on_release:
+        on_focus: if self.focus: root.menu1.open()
             
 
-    MDRoundFlatButton:
-        text: "Quais seus animais preferidos?"
-        line_color: '#366873'
-        md_bg_color: 1, 1, 1, 1
-        theme_text_color: 'Custom'
-        text_color: '#366873'
-        font_size: "20sp"
-        size_hint: (0.8, 0.06)
+    MDTextField:
+        id: _secondField
+        hint_text: "Quais seus animais preferidos?"
+        size_hint: 0.8, 0.1
+        color_mode: "custom"
+        line_color_normal: '#366873'
+        line_color_focus: '#366873'
         pos_hint: {'center_x': 0.5, 'center_y': 0.62}
-        on_release:
+        on_focus: if self.focus: root.menu2.open()
             
 
-    MDRoundFlatButton:
-        text: "Qual seu porte de preferência?"
-        line_color: '#366873'
-        md_bg_color: 1, 1, 1, 1
-        theme_text_color: 'Custom'
-        text_color: '#366873'
-        font_size: "20sp"
-        size_hint: (0.8, 0.06)
+    MDTextField:
+        id: _thirdField
+        hint_text: "Qual seu porte de preferência?"
+        size_hint: 0.8, 0.1
+        color_mode: "custom"
+        line_color_normal: '#366873'
+        line_color_focus: '#366873'
         pos_hint: {'center_x': 0.5, 'center_y': 0.53}
-        on_release:
+        on_focus: if self.focus: root.menu3.open()
             
 
-    MDRoundFlatButton:
-        text: "Características do animal"
-        line_color: '#366873'
-        md_bg_color: 1, 1, 1, 1
-        theme_text_color: 'Custom'
-        text_color: '#366873'
-        font_size: "20sp"
-        size_hint: (0.8, 0.06)
+    MDTextField:
+        id: _fourthField
+        hint_text: "Características do animal"
+        size_hint: 0.8, 0.1
+        color_mode: "custom"
+        line_color_normal: '#366873'
+        line_color_focus: '#366873'
         pos_hint: {'center_x': 0.5, 'center_y': 0.44}
-        on_release:
-            
+        on_focus: if self.focus: root.menu4.open()
 
-    MDRoundFlatButton:
-        text: "Tempo disponível para o animal"
-        line_color: '#366873'
-        md_bg_color: 1, 1, 1, 1
-        theme_text_color: 'Custom'
-        text_color: '#366873'
-        font_size: "20sp"
-        size_hint: (0.8, 0.06)
+    MDTextField:
+        id: _fifthField
+        hint_text: "Tempo disponível para o animal"
+        size_hint: 0.8, 0.1
+        color_mode: "custom"
+        line_color_normal: '#366873'
+        line_color_focus: '#366873'
         pos_hint: {'center_x': 0.5, 'center_y': 0.35}
-        on_release:
+        on_focus: if self.focus: root.menu5.open()
             
 
     MDFillRoundFlatButton:

@@ -21,64 +21,52 @@
         halign: "center"
         font_size: "20sp"
 
-    MDTextFieldRound:
+    MDTextField:
         hint_text: "Estado"
-        size_hint: (0.8, 0.055)
-        normal_color: '#ffffff'
-        hint_text_color: 54/255, 104/255, 115/255, 1
-        font_size: '19sp'
-        border_color: '#366873'
-        color_active: '#ffffff'
+        size_hint: 0.8, 0.1
+        color_mode: "custom"
+        line_color_normal: '#366873'
+        line_color_focus: '#366873'
         pos_hint: {'center_x': 0.5, 'center_y': 0.71}
 
-    MDTextFieldRound:
+    MDTextField:
         hint_text: "Cidade"
-        size_hint: (0.8, 0.055)
-        normal_color: '#ffffff'
-        hint_text_color: 54/255, 104/255, 115/255, 1
-        font_size: '19sp'
-        border_color: '#366873'
-        color_active: '#ffffff'
+        size_hint: 0.8, 0.1
+        color_mode: "custom"
+        line_color_normal: '#366873'
+        line_color_focus: '#366873'
         pos_hint: {'center_x': 0.5, 'center_y': 0.62}
 
-    MDTextFieldRound:
+    MDTextField:
         hint_text: "CEP"
-        size_hint: (0.8, 0.055)
-        normal_color: '#ffffff'
-        hint_text_color: 54/255, 104/255, 115/255, 1
-        font_size: '19sp'
-        border_color: '#366873'
-        color_active: '#ffffff'
+        size_hint: 0.8, 0.1
+        color_mode: "custom"
+        line_color_normal: '#366873'
+        line_color_focus: '#366873'
         pos_hint: {'center_x': 0.5, 'center_y': 0.53}
 
-    MDTextFieldRound:
+    MDTextField:
         hint_text: "Bairro"
-        size_hint: (0.8, 0.055)
-        normal_color: '#ffffff'
-        hint_text_color: 54/255, 104/255, 115/255, 1
-        font_size: '19sp'
-        border_color: '#366873'
-        color_active: '#ffffff'
+        size_hint: 0.8, 0.1
+        color_mode: "custom"
+        line_color_normal: '#366873'
+        line_color_focus: '#366873'
         pos_hint: {'center_x': 0.5, 'center_y': 0.44}
 
-    MDTextFieldRound:
+    MDTextField:
         hint_text: "Endereço"
-        size_hint: (0.8, 0.055)
-        normal_color: '#ffffff'
-        hint_text_color: 54/255, 104/255, 115/255, 1
-        font_size: '19sp'
-        border_color: '#366873'
-        color_active: '#ffffff'
+        size_hint: 0.8, 0.1
+        color_mode: "custom"
+        line_color_normal: '#366873'
+        line_color_focus: '#366873'
         pos_hint: {'center_x': 0.5, 'center_y': 0.35}
 
-    MDTextFieldRound:
+    MDTextField:
         hint_text: "Número"
-        size_hint: (0.8, 0.055)
-        normal_color: '#ffffff'
-        hint_text_color: 54/255, 104/255, 115/255, 1
-        font_size: '19sp'
-        border_color: '#366873'
-        color_active: '#ffffff'
+        size_hint: 0.8, 0.1
+        color_mode: "custom"
+        line_color_normal: '#366873'
+        line_color_focus: '#366873'
         pos_hint: {'center_x': 0.5, 'center_y': 0.26}
     
     MDBoxLayout:
@@ -87,6 +75,7 @@
         spacing: '4dp'
 
         MDCheckbox:
+            id: _ToSCheck
             pos_hint: {'center_y': 0.20}
             size_hint: None, None
             size: "48dp", "48dp"
@@ -119,4 +108,5 @@
         size_hint: (0.4, 0.05)
         pos_hint: {'center_x': 0.5, 'center_y': 0.15}
         on_release:
-            root.go_forward()
+            root.go_forward() if _ToSCheck.active else root.show_terms_of_service_dialog()
+

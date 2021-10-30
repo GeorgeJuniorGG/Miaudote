@@ -13,8 +13,11 @@ class SignUpScreen(MDFloatLayout, MDScreen):
             )
         self.dialog.open()
     
-    def go_forward(self):
+    def go_forwardA(self):
         self.manager.go_forward_signup("SignUpScreen")
+    
+    def go_forwardB(self):
+        self.manager.go_forward_protector_signup("SignUpScreen")
 
     def go_backward(self):
         self.manager.go_backward_signup("SignUpScreen")

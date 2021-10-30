@@ -21,64 +21,52 @@
         halign: "center"
         font_size: "20sp"
 
-    MDTextFieldRound:
+    MDTextField:
         hint_text: "Nome e Sobrenome"
-        size_hint: (0.8, 0.055)
-        normal_color: '#ffffff'
-        hint_text_color: 54/255, 104/255, 115/255, 1
-        font_size: '19sp'
-        border_color: '#366873'
-        color_active: '#ffffff'
+        size_hint: 0.8, 0.1
+        color_mode: "custom"
+        line_color_normal: '#366873'
+        line_color_focus: '#366873'
         pos_hint: {'center_x': 0.5, 'center_y': 0.80}
 
-    MDTextFieldRound:
+    MDTextField:
         hint_text: "Data de Nascimento"
-        size_hint: (0.8, 0.055)
-        normal_color: '#ffffff'
-        hint_text_color: 54/255, 104/255, 115/255, 1
-        font_size: '19sp'
-        border_color: '#366873'
-        color_active: '#ffffff'
+        size_hint: 0.8, 0.1
+        color_mode: "custom"
+        line_color_normal: '#366873'
+        line_color_focus: '#366873'
         pos_hint: {'center_x': 0.5, 'center_y': 0.71}
 
-    MDTextFieldRound:
+    MDTextField:
         hint_text: "CPF"
-        size_hint: (0.8, 0.055)
-        normal_color: '#ffffff'
-        hint_text_color: 54/255, 104/255, 115/255, 1
-        font_size: '19sp'
-        border_color: '#366873'
-        color_active: '#ffffff'
+        size_hint: 0.8, 0.1
+        color_mode: "custom"
+        line_color_normal: '#366873'
+        line_color_focus: '#366873'
         pos_hint: {'center_x': 0.5, 'center_y': 0.62}
 
-    MDTextFieldRound:
+    MDTextField:
         hint_text: "Email"
-        size_hint: (0.8, 0.055)
-        normal_color: '#ffffff'
-        hint_text_color: 54/255, 104/255, 115/255, 1
-        font_size: '19sp'
-        border_color: '#366873'
-        color_active: '#ffffff'
+        size_hint: 0.8, 0.1
+        color_mode: "custom"
+        line_color_normal: '#366873'
+        line_color_focus: '#366873'
         pos_hint: {'center_x': 0.5, 'center_y': 0.53}
 
-    MDTextFieldRound:
+    MDTextField:
         hint_text: "Senha"
-        size_hint: (0.8, 0.055)
-        normal_color: '#ffffff'
-        hint_text_color: 54/255, 104/255, 115/255, 1
-        font_size: '19sp'
-        border_color: '#366873'
-        color_active: '#ffffff'
+        size_hint: 0.8, 0.1
+        color_mode: "custom"
+        line_color_normal: '#366873'
+        line_color_focus: '#366873'
         pos_hint: {'center_x': 0.5, 'center_y': 0.44}
 
-    MDTextFieldRound:
+    MDTextField:
         hint_text: "Confirme sua Senha"
-        size_hint: (0.8, 0.055)
-        normal_color: '#ffffff'
-        hint_text_color: 54/255, 104/255, 115/255, 1
-        font_size: '19sp'
-        border_color: '#366873'
-        color_active: '#ffffff'
+        size_hint: 0.8, 0.1
+        color_mode: "custom"
+        line_color_normal: '#366873'
+        line_color_focus: '#366873'
         pos_hint: {'center_x': 0.5, 'center_y': 0.35}
     MDBoxLayout:
         width: self.minimum_width
@@ -86,6 +74,7 @@
         spacing: '4dp'
 
         MDCheckbox:
+            id: _check
             pos_hint: {'center_y': 0.28}
             size_hint: None, None
             size: "48dp", "48dp"
@@ -118,4 +107,4 @@
         size_hint: (0.4, 0.05)
         pos_hint: {'center_x': 0.5, 'center_y': 0.15}
         on_release:
-            root.go_forward()
+            root.go_forwardB() if _check.active else root.go_forwardA()
