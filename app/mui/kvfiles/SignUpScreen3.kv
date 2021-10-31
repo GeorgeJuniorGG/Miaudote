@@ -1,8 +1,11 @@
 #:kivy 2.0
-<SignUpScreen3>
+#:import Color mui.ColorTheme.Color
+#:set cor Color()
+
+<SignUpScreen3>:
     MDProgressBar:
         value: 50
-        color: '#366873'
+        color: cor.detalheEscuro()
         pos_hint:{'center_x':0.5, 'center_y': 0.92}
 
     MDIconButton:
@@ -16,17 +19,17 @@
     MDLabel:
         text: "Preferências"
         theme_text_color: "Custom"
-        text_color: '#8C5042'
+        text_color: cor.rgbVermelho()
         pos_hint: {'center_y': 0.96}
         halign: "center"
         font_size: "20sp"
 
     MDRoundFlatButton:
         text: "Você já possui algum animal?"
-        line_color: '#366873'
-        md_bg_color: 1, 1, 1, 1
+        line_color: cor.textoTF()
+        md_bg_color: cor.fundoTF()
         theme_text_color: 'Custom'
-        text_color: '#366873'
+        text_color: cor.textoTF()
         font_size: "20sp"
         size_hint: (0.8, 0.06)
         pos_hint: {'center_x': 0.5, 'center_y': 0.71}
@@ -35,10 +38,10 @@
 
     MDRoundFlatButton:
         text: "Quais seus animais preferidos?"
-        line_color: '#366873'
-        md_bg_color: 1, 1, 1, 1
+        line_color: cor.textoTF()
+        md_bg_color: cor.fundoTF()
         theme_text_color: 'Custom'
-        text_color: '#366873'
+        text_color: cor.textoTF()
         font_size: "20sp"
         size_hint: (0.8, 0.06)
         pos_hint: {'center_x': 0.5, 'center_y': 0.62}
@@ -47,10 +50,10 @@
 
     MDRoundFlatButton:
         text: "Qual seu porte de preferência?"
-        line_color: '#366873'
-        md_bg_color: 1, 1, 1, 1
+        line_color: cor.textoTF()
+        md_bg_color: cor.fundoTF()
         theme_text_color: 'Custom'
-        text_color: '#366873'
+        text_color: cor.textoTF()
         font_size: "20sp"
         size_hint: (0.8, 0.06)
         pos_hint: {'center_x': 0.5, 'center_y': 0.53}
@@ -59,10 +62,10 @@
 
     MDRoundFlatButton:
         text: "Características do animal"
-        line_color: '#366873'
-        md_bg_color: 1, 1, 1, 1
+        line_color: cor.textoTF()
+        md_bg_color: cor.fundoTF()
         theme_text_color: 'Custom'
-        text_color: '#366873'
+        text_color: cor.textoTF()
         font_size: "20sp"
         size_hint: (0.8, 0.06)
         pos_hint: {'center_x': 0.5, 'center_y': 0.44}
@@ -71,10 +74,10 @@
 
     MDRoundFlatButton:
         text: "Tempo disponível para o animal"
-        line_color: '#366873'
-        md_bg_color: 1, 1, 1, 1
+        line_color: cor.textoTF()
+        md_bg_color: cor.fundoTF()
         theme_text_color: 'Custom'
-        text_color: '#366873'
+        text_color: cor.textoTF()
         font_size: "20sp"
         size_hint: (0.8, 0.06)
         pos_hint: {'center_x': 0.5, 'center_y': 0.35}
@@ -84,7 +87,7 @@
     MDFillRoundFlatButton:
         id: _SignupThreeForwardButton
         text: "Continuar"
-        md_bg_color: 0.592, 0.725, 0.752, 1
+        md_bg_color: cor.fundoB()
         font_size: "20sp"
         size_hint: (0.4, 0.05)
         pos_hint: {'center_x': 0.5, 'center_y': 0.15}
