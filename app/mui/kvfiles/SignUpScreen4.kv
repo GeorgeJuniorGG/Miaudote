@@ -24,28 +24,26 @@
         halign: "center"
         font_size: "20sp"
 
-    MDRoundFlatButton:
-        text: "Tipo de Residência"
-        line_color: cor.textoTF()
-        md_bg_color: cor.fundoTF()
-        theme_text_color: 'Custom'
-        text_color: cor.textoTF()
-        font_size: "20sp"
-        size_hint: (0.8, 0.06)
+    MDTextField:
+        id: _firstField
+        hint_text: "Tipo de Residência"
+        size_hint: 0.8, 0.1
+        color_mode: "custom"
+        line_color_normal: '#366873'
+        line_color_focus: '#366873'
         pos_hint: {'center_x': 0.5, 'center_y': 0.67}
-        on_release:
+        on_focus: if self.focus: root.menu1.open()
 
 
-    MDRoundFlatButton:
-        text: "Espaço Disponível"
-        line_color: cor.textoTF()
-        md_bg_color: cor.fundoTF()
-        theme_text_color: 'Custom'
-        text_color: cor.textoTF()
-        font_size: "20sp"
-        size_hint: (0.8, 0.06)
+    MDTextField:
+        id: _secondField
+        hint_text: "Espaço Disponível"
+        size_hint: 0.8, 0.1
+        color_mode: "custom"
+        line_color_normal: '#366873'
+        line_color_focus: '#366873'
         pos_hint: {'center_x': 0.5, 'center_y': 0.55}
-        on_release:
+        on_focus: if self.focus: root.menu2.open()
 
     MDBoxLayout:
         width: self.minimum_width
@@ -127,6 +125,7 @@
         spacing: '0.5dp'
 
         MDCheckbox:
+            id: _ToSCheck
             pos_hint: {'center_y': 0.27}
             size_hint: None, None
             size: "48dp", "48dp"
@@ -159,4 +158,4 @@
         size_hint: (0.4, 0.05)
         pos_hint: {'center_x': 0.5, 'center_y': 0.15}
         on_release:
-            root.go_forward()
+            root.go_forward() if _ToSCheck.active else root.show_terms_of_service_dialog()
