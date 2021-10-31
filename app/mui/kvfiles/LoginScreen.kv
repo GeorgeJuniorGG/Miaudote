@@ -1,19 +1,22 @@
 #:kivy 2.0
+#:import Color mui.ColorTheme.Color
+#:set cor Color()
+
 <LoginScreen>:
     MDFloatLayout:
         MDIconButton:
+            id: _LoginArrowButton
             icon: "arrow-left"
             pos_hint: {"center_y": 0.95}
             theme_text_color: "Custom"
-            text_color: '97B9C0'
+            text_color: cor.detalheClaro()
             on_release:
-                root.manager.transition.direction = 'right'
-                app.change_screen('RootScreen')            
+                root.go_backward()        
 
         MDLabel:
             text: "Login"
             theme_text_color: "Custom"
-            text_color: 0.549, 0.313, 0.258, 1
+            text_color: cor.rgbVermelho()
             pos_hint: {'center_y': 0.8}
             halign: "center"
             font_size: "25sp"
@@ -22,11 +25,10 @@
             id: email
             hint_text: "E-mail"
             multiline: False
-            line_color: '#366873'
-            hint_text_color: '#366873'
-            normal_color: '#ffffff'
-            color_active: '#ffffff'
-            text_color: 0.592, 0.725, 0.752, 1
+            line_color: cor.textoTF()
+            hint_text_color: cor.textoTF()
+            normal_color: cor.fundoTF()
+            color_active: cor.fundoTF()
             pos_hint: {"center_x": 0.5, "center_y": 0.6}
             size_hint: 0.65, 0.045
 
@@ -35,10 +37,10 @@
             hint_text: "Senha"
             password: True
             multiline: False
-            line_color: '#366873'
-            hint_text_color: '#366873'
-            normal_color: '#ffffff'
-            color_active: '#ffffff'
+            line_color: cor.textoTF()
+            hint_text_color: cor.textoTF()
+            normal_color: cor.fundoTF()
+            color_active: cor.fundoTF()
             pos_hint: {"center_x": 0.5, "center_y": 0.53}
             size_hint: 0.65, 0.045
 
@@ -46,18 +48,19 @@
             text: "Esqueceu a senha?"
             font_size: 10
             theme_text_color: "Custom"
-            text_color: '#366873'
-            md_bg_color: '#ffffff'
+            text_color: cor.textoTF()
+            md_bg_color: cor.textoB()
             pos_hint: {"center_x": 0.3, "center_y": 0.48}
             size_hint: 0.3, 0.04
 
         MDFillRoundFlatButton:
+            id: _LoginLoginButton
             text: "Logar"
             font_size: 15
             elevation: 8
             theme_text_color: "Custom"
-            text_color: '#ffffff'
-            md_bg_color: '#97B9C0'
+            text_color: cor.textoB()
+            md_bg_color: cor.fundoB()
             pos_hint: {"center_x": 0.5, "center_y": 0.35}
             size_hint: 0.35, 0.04
             on_press: root.login(email.text, password.text)

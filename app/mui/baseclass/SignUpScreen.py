@@ -12,3 +12,9 @@ class SignUpScreen(MDFloatLayout, MDScreen):
                 text="Protetores são pessoas com bom coração que cuidam de animais até eles encotrarem uma lar.\n\nMarque essa opção se você tem interesse em divulgar animais para serem adotados.",
             )
         self.dialog.open()
+    
+    def go_forward(self):
+        self.manager.go_forward_signup("SignUpScreen")
+
+    def go_backward(self):
+        self.manager.go_backward_signup("SignUpScreen")

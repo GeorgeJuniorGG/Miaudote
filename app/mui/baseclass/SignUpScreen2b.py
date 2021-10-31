@@ -18,3 +18,9 @@ class SignUpScreen2b(MDFloatLayout, MDScreen):
                 ],
             )
         self.ToS_dialog.open()
+    
+    def go_forward(self):
+        self.manager.go_forward_protector_signup("SignUpScreen2b")
+
+    def go_backward(self):
+        self.manager.go_backward_protector_signup("SignUpScreen2b")
