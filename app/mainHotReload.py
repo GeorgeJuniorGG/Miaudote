@@ -1,4 +1,3 @@
-from kivy.uix.relativelayout import RelativeLayout
 from kivymd.app import MDApp
 from kaki.app import App
 from kivy.factory import Factory
@@ -28,8 +27,6 @@ class MainApp(App, MDApp):
         f'{KV_DIR}/ScreenManager.kv',
         f'{KV_DIR}/WelcomeScreen.kv',
         f'{KV_DIR}/LoginScreen.kv',
-        f'{KV_DIR}/MyScreen.kv',
-        f'{KV_DIR}/CadScreen.kv',
         f'{KV_DIR}/SignUpScreen.kv',
         f'{KV_DIR}/SignUpScreen2a.kv',
         f'{KV_DIR}/SignUpScreen2b.kv',
@@ -41,8 +38,6 @@ class MainApp(App, MDApp):
     CLASSES = {
         'MainScreenManager' : 'mui.baseclass.ScreenManager',
         'WelcomeScreen': 'mui.baseclass.WelcomeScreen',
-        'MyScreen' : 'mui.baseclass.MyScreen',
-        'CadScreen' : 'mui.baseclass.CadScreen',
         'SignUpScreen' : 'mui.baseclass.SignUpScreen',
         'SignUpScreen2a' : 'mui.baseclass.SignUpScreen2a',
         'SignUpScreen2b' : 'mui.baseclass.SignUpScreen2b',

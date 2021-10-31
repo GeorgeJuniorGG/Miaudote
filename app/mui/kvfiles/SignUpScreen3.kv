@@ -1,8 +1,11 @@
 #:kivy 2.0
-<SignUpScreen3>
+#:import Color mui.ColorTheme.Color
+#:set cor Color()
+
+<SignUpScreen3>:
     MDProgressBar:
         value: 50
-        color: '#366873'
+        color: cor.detalheEscuro()
         pos_hint:{'center_x':0.5, 'center_y': 0.92}
 
     MDIconButton:
@@ -16,7 +19,7 @@
     MDLabel:
         text: "Preferências"
         theme_text_color: "Custom"
-        text_color: '#8C5042'
+        text_color: cor.rgbVermelho()
         pos_hint: {'center_y': 0.96}
         halign: "center"
         font_size: "20sp"
@@ -78,7 +81,7 @@
     MDFillRoundFlatButton:
         id: _SignupThreeForwardButton
         text: "Continuar"
-        md_bg_color: 0.592, 0.725, 0.752, 1
+        md_bg_color: cor.fundoB()
         font_size: "20sp"
         size_hint: (0.4, 0.05)
         pos_hint: {'center_x': 0.5, 'center_y': 0.15}

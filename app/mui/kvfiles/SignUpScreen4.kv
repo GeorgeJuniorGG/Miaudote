@@ -1,8 +1,11 @@
 #:kivy 2.0
-<SignUpScreen4>
+#:import Color mui.ColorTheme.Color
+#:set cor Color()
+
+<SignUpScreen4>:
     MDProgressBar:
         value: 75
-        color: '#366873'
+        color: cor.detalheEscuro()
         pos_hint:{'center_x':0.5, 'center_y': 0.92}
 
     MDIconButton:
@@ -16,7 +19,7 @@
     MDLabel:
         text: "Preferências"
         theme_text_color: "Custom"
-        text_color: '#8C5042'
+        text_color: cor.rgbVermelho()
         pos_hint: {'center_y': 0.96}
         halign: "center"
         font_size: "20sp"
@@ -51,8 +54,8 @@
             pos_hint: {'center_y': 0.45}
             size_hint: None, None
             size: "48dp", "48dp"
-            color: [0.21,0.4,0.45,1]
-            selected_color: [0.21,0.4,0.45,1]
+            color: cor.detalheEscuro()
+            selected_color: cor.detalheEscuro()
             adaptive_size: False
 
         MDLabel:
@@ -61,7 +64,7 @@
             font_size: '17sp'
             pos_hint: {'center_y': 0.45}
             theme_text_color: 'Custom'
-            text_color: '#366873'
+            text_color: cor.textoL()
             adaptive_size: True
 
     MDBoxLayout:
@@ -73,8 +76,8 @@
             pos_hint: {'center_y': 0.39}
             size_hint: None, None
             size: "48dp", "48dp"
-            color: [0.21,0.4,0.45,1]
-            selected_color: [0.21,0.4,0.45,1]
+            color: cor.detalheEscuro()
+            selected_color: cor.detalheEscuro()
             adaptive_size: False
 
         MDLabel:
@@ -83,7 +86,7 @@
             font_size: '17sp'
             pos_hint: {'center_y': 0.39}
             theme_text_color: 'Custom'
-            text_color: '#366873'
+            text_color: cor.textoL()
             adaptive_size: True
 
         MDIconButton:
@@ -103,8 +106,8 @@
             pos_hint: {'center_y': 0.33}
             size_hint: None, None
             size: "48dp", "48dp"
-            color: [0.21,0.4,0.45,1]
-            selected_color: [0.21,0.4,0.45,1]
+            color: cor.detalheEscuro()
+            selected_color: cor.detalheEscuro()
             adaptive_size: False
 
         MDLabel:
@@ -113,7 +116,7 @@
             font_size: '17sp'
             pos_hint: {'center_y': 0.33}
             theme_text_color: 'Custom'
-            text_color: '#366873'
+            text_color: cor.textoL()
             adaptive_size: True
 
     MDBoxLayout:
@@ -126,8 +129,8 @@
             pos_hint: {'center_y': 0.27}
             size_hint: None, None
             size: "48dp", "48dp"
-            color: [0.21,0.4,0.45,1]
-            selected_color: [0.21,0.4,0.45,1]
+            color: cor.detalheEscuro()
+            selected_color: cor.detalheEscuro()
             adaptive_size: False
 
         MDLabel:
@@ -136,7 +139,7 @@
             font_size: '17sp'
             pos_hint: {'center_y': 0.27}
             theme_text_color: 'Custom'
-            text_color: '#366873'
+            text_color: cor.textoL()
             adaptive_size: True
 
         MDIconButton:
@@ -150,7 +153,7 @@
     MDFillRoundFlatButton:
         id: _SignupFourForwardButton
         text: "Continuar"
-        md_bg_color: 0.592, 0.725, 0.752, 1
+        md_bg_color: cor.fundoB()
         font_size: "20sp"
         size_hint: (0.4, 0.05)
         pos_hint: {'center_x': 0.5, 'center_y': 0.15}
