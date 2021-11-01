@@ -1,0 +1,125 @@
+#:kivy 2.0
+
+<MenssageSent>:
+    size_hint_y: None
+    pos_hint: {'right': 0.98}
+    height: self.texture_size[1]
+    padding: 12, 10
+    theme_text_color: "Custom"
+    text_color: "#ffffff"
+    canvas.before:
+        Color:
+            rgb: (151/255, 185/255, 192/255, 1)
+        RoundedRectangle:
+            size: self.width, self.height
+            pos: self.pos
+            radius: [23, 23, 0, 23]
+
+<MenssageReceived>:
+    size_hint_y: None
+    pos_hint: {'x': 0.02}
+    height: self.texture_size[1]
+    padding: 12, 10
+    theme_text_color: "Custom"
+    text_color: "#ffffff"
+    canvas.before:
+        Color:
+            rgb: (148/255, 175/255, 192/255, 1)
+        RoundedRectangle:
+            size: self.width, self.height
+            pos: self.pos
+            radius: [23, 23, 23, 0]
+
+
+<ChatScreen>:
+    name: "chat"
+    chat_list: chat_list
+    text_input: text_input
+    MDIconButton:
+        icon: "arrow-left"
+        user_font_size: "35sp"
+        pos_hint: {"center_y": 0.95}
+        theme_text_color: "Custom"
+        text_color: "#808DAD"
+
+    FloatLayout:
+        MDIconButton:
+            icon: "account-circle"
+            user_font_size: "65sp"
+            pos_hint: {'center_x':0.50, 'center_y': 0.92}
+            canvas.before:
+                Color:
+                    rgba: (140/255 , 80/255, 65/255, 0.5)
+                Ellipse:
+                    size: 62, 62
+                    pos: self.x+12.5, self.y+12.5
+
+        MDLabel:
+            text: "John Wick"
+            font_size: "23sp"
+            halign: "center"
+            theme_text_color: "Custom"
+            text_color: "#8C5042"
+            pos_hint: {'center_y': 0.84}
+
+    ScrollView:
+        size_hint_y: 0.7
+        pos_hint: {'x': 0,'y': 0.1}
+        do_scroll_x: False
+        do_scroll_y: True
+        BoxLayout:
+            id: chat_list
+            orientation: 'vertical'
+            size: (root.width, root.height)
+            height: self.minimum_height
+            size_hint: None, None
+            pso_hint: {'top': 10}
+            cols: 1
+            spacing: 5
+
+    MDFloatLayout:
+        md_bg_color: 245/255, 245/255, 245/255, 1
+        size_hint_y: 0.09
+        MDFloatLayout:
+            size_hint: .8, .75
+            pos_hint: {'center_x':.43, 'center_y':.5}
+            canvas:
+                Color:
+                    rgb: (238/255, 238/255, 238/255, 1)
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [23, 23, 23, 23]
+
+            MDIconButton:
+                icon: "emoticon-outline"
+                pos_hint: {'center_x':.08, 'center_y':.5}
+                user_font_size: "25sp"
+                theme_text_color: "Custom"
+                text_color: "#97B9C0"
+
+            TextInput:
+                id: text_input
+                hint_text: "Mensagem"
+                size_hint: 0.82, 0.85
+                pos_hint: {'center_x':.55, 'center_y':.5}
+                font_size: "18sp"
+                height: self.minimum_height
+                multiline: True
+                cursor_color: 151/255, 185/255, 192/255, 1
+                cursor_width: "2sp"
+                foregruond_color: 1, 170/255, 23/255, 1
+                background_color: 0,0,0,0
+                padding: 5,12,20,5
+
+        MDIconButton:
+            icon: "send"
+            pos_hint: {'center_x':.91, 'center_y':.5}
+            user_font_size: "25sp"
+            theme_text_color: "Custom"
+            text_color: "#97B9C0"
+            on_release:
+                controller.send()
+
+
+
