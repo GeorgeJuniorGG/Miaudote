@@ -10,9 +10,11 @@
 
     MDIconButton:
         id: _SignupThreeArrowButton
-        icon: "arrow.png"
-        user_font_size: '5sp'
+        icon: "arrow-left"
+        user_font_size: '35sp'
         pos_hint:{'center_x':0.08, 'center_y': 0.96}
+        theme_text_color: "Custom"
+        text_color: cor.detalheClaro()
         on_release:
             root.go_backward()
 
@@ -29,8 +31,8 @@
         hint_text: "Você já possui algum animal?"
         color_mode: "custom"
         size_hint: 0.8, 0.1
-        line_color_normal: '#366873'
-        line_color_focus: '#366873'
+        line_color_normal: cor.linhaTFN()
+        line_color_focus: cor.linhaTFF()
         pos_hint: {'center_x': 0.5, 'center_y': 0.71}
         on_focus: if self.focus: root.menu1.open()
             
@@ -40,8 +42,8 @@
         hint_text: "Quais seus animais preferidos?"
         size_hint: 0.8, 0.1
         color_mode: "custom"
-        line_color_normal: '#366873'
-        line_color_focus: '#366873'
+        line_color_normal: cor.linhaTFN()
+        line_color_focus: cor.linhaTFF()
         pos_hint: {'center_x': 0.5, 'center_y': 0.62}
         on_focus: if self.focus: root.menu2.open()
             
@@ -51,8 +53,8 @@
         hint_text: "Qual seu porte de preferência?"
         size_hint: 0.8, 0.1
         color_mode: "custom"
-        line_color_normal: '#366873'
-        line_color_focus: '#366873'
+        line_color_normal: cor.linhaTFN()
+        line_color_focus: cor.linhaTFF()
         pos_hint: {'center_x': 0.5, 'center_y': 0.53}
         on_focus: if self.focus: root.menu3.open()
             
@@ -62,8 +64,8 @@
         hint_text: "Características do animal"
         size_hint: 0.8, 0.1
         color_mode: "custom"
-        line_color_normal: '#366873'
-        line_color_focus: '#366873'
+        line_color_normal: cor.linhaTFN()
+        line_color_focus: cor.linhaTFF()
         pos_hint: {'center_x': 0.5, 'center_y': 0.44}
         on_focus: if self.focus: root.menu4.open()
 
@@ -72,8 +74,8 @@
         hint_text: "Tempo disponível para o animal"
         size_hint: 0.8, 0.1
         color_mode: "custom"
-        line_color_normal: '#366873'
-        line_color_focus: '#366873'
+        line_color_normal: cor.linhaTFN()
+        line_color_focus: cor.linhaTFF()
         pos_hint: {'center_x': 0.5, 'center_y': 0.35}
         on_focus: if self.focus: root.menu5.open()
             

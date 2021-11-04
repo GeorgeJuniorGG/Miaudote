@@ -10,9 +10,11 @@
 
     MDIconButton:
         id: _SignupFourArrowButton
-        icon: "arrow.png"
-        user_font_size: '5sp'
+        icon: "arrow-left"
+        user_font_size: '35sp'
         pos_hint:{'center_x':0.08, 'center_y': 0.96}
+        theme_text_color: "Custom"
+        text_color: cor.detalheClaro()
         on_release:
             root.go_backward()
 
@@ -29,8 +31,8 @@
         hint_text: "Tipo de Residência"
         size_hint: 0.8, 0.1
         color_mode: "custom"
-        line_color_normal: '#366873'
-        line_color_focus: '#366873'
+        line_color_normal: cor.linhaTFN()
+        line_color_focus: cor.linhaTFF()
         pos_hint: {'center_x': 0.5, 'center_y': 0.67}
         on_focus: if self.focus: root.menu1.open()
 
@@ -40,8 +42,8 @@
         hint_text: "Espaço Disponível"
         size_hint: 0.8, 0.1
         color_mode: "custom"
-        line_color_normal: '#366873'
-        line_color_focus: '#366873'
+        line_color_normal: cor.linhaTFN()
+        line_color_focus: cor.linhaTFF()
         pos_hint: {'center_x': 0.5, 'center_y': 0.55}
         on_focus: if self.focus: root.menu2.open()
 
@@ -161,5 +163,4 @@
         size_hint: (0.4, 0.05)
         pos_hint: {'center_x': 0.5, 'center_y': 0.15}
         on_release:
-            # root.go_forward() if _ToSCheck.active else root.show_terms_of_service_dialog()
             root.controller.singUpScreen4Manager()

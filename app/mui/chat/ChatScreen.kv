@@ -1,4 +1,6 @@
 #:kivy 2.0
+#:import Color mui.ColorTheme.Color
+#:set cor Color()
 
 <MenssageSent>:
     size_hint_y: None
@@ -6,10 +8,10 @@
     height: self.texture_size[1]
     padding: 12, 10
     theme_text_color: "Custom"
-    text_color: "#ffffff"
+    text_color: cor.textMessageSent()
     canvas.before:
         Color:
-            rgb: (151/255, 185/255, 192/255, 1)
+            rgb: cor.rectangleMessageSent()
         RoundedRectangle:
             size: self.width, self.height
             pos: self.pos
@@ -21,10 +23,10 @@
     height: self.texture_size[1]
     padding: 12, 10
     theme_text_color: "Custom"
-    text_color: "#ffffff"
+    text_color: cor.textMessageReceived()
     canvas.before:
         Color:
-            rgb: (148/255, 175/255, 192/255, 1)
+            rgb: cor.rectangleMessageReceived()
         RoundedRectangle:
             size: self.width, self.height
             pos: self.pos
@@ -40,7 +42,7 @@
         user_font_size: "35sp"
         pos_hint: {"center_y": 0.95}
         theme_text_color: "Custom"
-        text_color: "#808DAD"
+        text_color: cor.arrowIconChatScreen()
 
     FloatLayout:
         MDIconButton:
@@ -49,7 +51,7 @@
             pos_hint: {'center_x':0.50, 'center_y': 0.92}
             canvas.before:
                 Color:
-                    rgba: (140/255 , 80/255, 65/255, 0.5)
+                    rgba: cor.ellipseColor()
                 Ellipse:
                     size: 62, 62
                     pos: self.x+12.5, self.y+12.5
@@ -59,7 +61,7 @@
             font_size: "23sp"
             halign: "center"
             theme_text_color: "Custom"
-            text_color: "#8C5042"
+            text_color: cor.userNameChatScreen()
             pos_hint: {'center_y': 0.84}
 
     ScrollView:
@@ -78,14 +80,14 @@
             spacing: 5
 
     MDFloatLayout:
-        md_bg_color: 245/255, 245/255, 245/255, 1
+        md_bg_color: cor.chatTextBackground()
         size_hint_y: 0.09
         MDFloatLayout:
             size_hint: .8, .75
             pos_hint: {'center_x':.43, 'center_y':.5}
             canvas:
                 Color:
-                    rgb: (238/255, 238/255, 238/255, 1)
+                    rgb: cor.chatText()
                 RoundedRectangle:
                     size: self.size
                     pos: self.pos
@@ -96,7 +98,7 @@
                 pos_hint: {'center_x':.08, 'center_y':.5}
                 user_font_size: "25sp"
                 theme_text_color: "Custom"
-                text_color: "#97B9C0"
+                text_color: cor.chatIconButton()
 
             TextInput:
                 id: text_input
@@ -106,10 +108,10 @@
                 font_size: "18sp"
                 height: self.minimum_height
                 multiline: True
-                cursor_color: 151/255, 185/255, 192/255, 1
+                cursor_color: cor.chatTextInputCursor()
                 cursor_width: "2sp"
-                foregruond_color: 1, 170/255, 23/255, 1
-                background_color: 0,0,0,0
+                foreground_color: cor.chatTextInputForeground()
+                background_color: cor.chatTextInputBackground()
                 padding: 5,12,20,5
 
         MDIconButton:
@@ -117,7 +119,7 @@
             pos_hint: {'center_x':.91, 'center_y':.5}
             user_font_size: "25sp"
             theme_text_color: "Custom"
-            text_color: "#97B9C0"
+            text_color: cor.chatIconButton()
             on_release:
                 controller.send()
 
