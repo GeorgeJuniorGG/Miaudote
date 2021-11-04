@@ -1,11 +1,13 @@
 #:kivy 2.0
 #:import get_color_from_hex kivy.utils.get_color_from_hex
+#:import Color mui.ColorTheme.Color
+#:set cor Color()
 
 <AdoptionRScreen>:
     MDFloatLayout:
         canvas:
             Color:
-                rgba: 0.592, 0.725, 0.752, 1
+                rgba: cor.linhaBanner()
             Line:
                 points: self.x, 0.9*self.top, self.right, 0.9*self.top 
                 width: 10
@@ -18,7 +20,7 @@
             user_font_size: '35sp'
             pos_hint:{'center_x':0.08, 'center_y': 0.94}
             theme_text_color: "Custom"
-            text_color: "#97B9C0"
+            text_color: cor.detalheClaro()
             on_release:
                 
         
@@ -26,7 +28,7 @@
             text: "Miaudote"
             font_name: "Spirax-Regular.ttf"
             theme_text_color: "Custom"
-            text_color: 0.549, 0.313, 0.258, 1
+            text_color: cor.rgaVermelho()
             pos_hint: {'center_y': 0.94}
             halign: "center"
             font_size: "25sp"
@@ -40,7 +42,7 @@
             #size_hint: None, None
             pos_hint: {'x': 0.45, 'center_y': 0.6}
             theme_text_color: "Custom"
-            text_color: "#97B9C0"
+            text_color: cor.detalheClaro()
 
         MDLabel:
             text: "Sua solicitação foi enviada ao Protetor!"
@@ -48,15 +50,15 @@
             font_size: "18sp"
             halign: "center"
             theme_text_color: "Custom"
-            text_color: "#366873"
+            text_color: cor.textoL()
 
         MDRoundFlatButton:
             text: "[b]Acompanhar Solicitação[/b]"
             font_size: "18sp"
             elevation: 12
             theme_text_color: "Custom"
-            text_color: "#366873"
-            line_color: "#97B9C0"
+            text_color: cor.textoRFB()
+            line_color: cor.fundoB()
             pos_hint: {"center_x": 0.5, "center_y": 0.35}
             size_hint: 0.7, 0.07
             on_press:         
@@ -68,13 +70,13 @@
         orientation: 'vertical'
 
         MDBottomNavigation:
-            panel_color: 151/255, 185/255, 192/255, 1
-            text_color_active: get_color_from_hex("#fcfcfc")
-            text_color_normal: get_color_from_hex("#1E606F")
+            panel_color: cor.bottomNavPanel()
+            text_color_active: get_color_from_hex(cor.bottomNavTextActive())
+            text_color_normal: get_color_from_hex(cor.bottomNavTextNormal())
 
             canvas.after:
                 Color:
-                    rgba: (1, 1, 1, 1)
+                    rgba: cor.rgaBranco()
                 Line:
                     points: self.x+dp(123), 65, self.x+dp(123), 0
                     width: 0.3
