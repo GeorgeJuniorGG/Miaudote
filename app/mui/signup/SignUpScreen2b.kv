@@ -25,6 +25,7 @@
         font_size: "20sp"
 
     MDTextField:
+        id: state
         hint_text: "Estado"
         size_hint: 0.8, 0.1
         color_mode: "custom"
@@ -33,6 +34,7 @@
         pos_hint: {'center_x': 0.5, 'center_y': 0.71}
 
     MDTextField:
+        id: city
         hint_text: "Cidade"
         size_hint: 0.8, 0.1
         color_mode: "custom"
@@ -41,6 +43,7 @@
         pos_hint: {'center_x': 0.5, 'center_y': 0.62}
 
     MDTextField:
+        id: CEP
         hint_text: "CEP"
         size_hint: 0.8, 0.1
         color_mode: "custom"
@@ -49,6 +52,7 @@
         pos_hint: {'center_x': 0.5, 'center_y': 0.53}
 
     MDTextField:
+        id: neighborhood
         hint_text: "Bairro"
         size_hint: 0.8, 0.1
         color_mode: "custom"
@@ -57,6 +61,7 @@
         pos_hint: {'center_x': 0.5, 'center_y': 0.44}
 
     MDTextField:
+        id: address
         hint_text: "Endereço"
         size_hint: 0.8, 0.1
         color_mode: "custom"
@@ -65,6 +70,7 @@
         pos_hint: {'center_x': 0.5, 'center_y': 0.35}
 
     MDTextField:
+        id: number
         hint_text: "Número"
         size_hint: 0.8, 0.1
         color_mode: "custom"
@@ -111,5 +117,5 @@
         size_hint: (0.4, 0.05)
         pos_hint: {'center_x': 0.5, 'center_y': 0.15}
         on_release:
-            root.go_forward() if _ToSCheck.active else root.show_terms_of_service_dialog()
+            root.controller.singUpScreen2bManager()
 

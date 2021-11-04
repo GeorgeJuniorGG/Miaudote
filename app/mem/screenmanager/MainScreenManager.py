@@ -1,9 +1,20 @@
 from kivy.uix.screenmanager import ScreenManager
+from mem.signUp.singUpManager import SignUpManager
 
 class MainScreenManager(ScreenManager):
     usualLoginFlow = ["WelcomeScreen", "LoginScreen"]
     usualProtectorSignUpFlow = ["WelcomeScreen", "SignUpScreen", "SignUpScreen2b", "LoginScreen"]
     usualSignUpFlow = ["WelcomeScreen", "SignUpScreen", "SignUpScreen2a", "SignUpScreen3", "SignUpScreen4", "LoginScreen"]
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        signUpScreen = self.get_screen('SignUpScreen')
+        signUpScreen2a = self.get_screen('SignUpScreen2a')
+        signUpScreen2b = self.get_screen('SignUpScreen2b')
+        signUpScreen3 = self.get_screen('SignUpScreen3')
+        signUpScreen4 = self.get_screen('SignUpScreen4')
+
+        signUpManager = SignUpManager(signUpScreen, signUpScreen2a, signUpScreen2b, signUpScreen3, signUpScreen4, ScreenManager)
 
     def change_screen(self, screen):
         self.current = screen

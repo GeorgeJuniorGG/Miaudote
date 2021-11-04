@@ -1,8 +1,10 @@
+from kivy.properties import ObjectProperty
 from kivymd.uix.floatlayout import MDFloatLayout
 from kivymd.uix.screen import MDScreen
 from kivymd.uix.dialog import MDDialog
 
 class SignUpScreen(MDFloatLayout, MDScreen):
+    controller = ObjectProperty()
     dialog = None
 
     def show_protectors_dialog(self):
@@ -13,6 +15,11 @@ class SignUpScreen(MDFloatLayout, MDScreen):
             )
         self.dialog.open()
     
+    # def createProtectorUser(self,name,birthDate,CPF,email,password1,password2):
+    #     currentUser = self.authService.signUp(email,password1,password2)
+    #     if(currentUser):
+    #         createProtector(currentUser,name, birthDate, CPF)
+
     def go_forwardA(self):
         self.manager.go_forward_signup("SignUpScreen")
     

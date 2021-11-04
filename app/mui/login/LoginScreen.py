@@ -1,4 +1,4 @@
-from services.firebaseAuth import FireBaseAuthService
+from mlo.services.firebaseAuth import FireBaseAuthService
 from kivymd.uix.screen import MDScreen
 from kivy.properties import ObjectProperty
 

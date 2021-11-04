@@ -4,7 +4,10 @@ from kivymd.uix.dialog import MDDialog
 from kivy.metrics import dp
 from kivy.clock import Clock
 from kivymd.uix.menu import MDDropdownMenu
+from kivy.properties import ObjectProperty
+
 class SignUpScreen4(MDFloatLayout, MDScreen):
+    controller = ObjectProperty()
     escape_route_dialog = None
     ToS_dialog = None
 

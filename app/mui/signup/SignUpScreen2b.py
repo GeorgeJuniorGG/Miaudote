@@ -2,8 +2,11 @@ from kivymd.uix.floatlayout import MDFloatLayout
 from kivymd.uix.screen import MDScreen
 from kivymd.uix.dialog import MDDialog
 from kivymd.uix.button import MDFillRoundFlatButton
+from kivy.properties import ObjectProperty
+
 class SignUpScreen2b(MDFloatLayout, MDScreen):
     ToS_dialog = None
+    controller = ObjectProperty()
 
     def show_terms_of_service_dialog(self):
         if not self.ToS_dialog:

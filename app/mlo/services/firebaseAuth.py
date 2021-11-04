@@ -1,20 +1,19 @@
 from config.firebase import getFirebase
 from .authService import AuthService
+
 auth = getFirebase().auth()
 
 class FireBaseAuthService(AuthService):
 
     #Cadastra novo usuario
-    def signUp(self, email:str, password:str) -> bool:
-        if(not email or not password):
-            print('Preencha os campos corretamente')
-        else:
-            try:
-                auth.create_user_with_email_and_password(email, password)
-                print("Cadastro realizado com sucesso!")
-            except: 
-                print("E-mail já cadastrado")
-        return
+    def signUp(self, email:str, password:str, passwordConfirmation:str) -> bool:
+        try:
+            currenteUser = auth.create_user_with_email_and_password(email, password)['localId']
+            print("Cadastro realizado com sucesso!")
+        except:
+            print("E-mail já cadastrado")
+            return False
+        return currenteUser
 
     #Verifica cadastro do usuario
     def login(self, email:str, password:str) -> bool:
