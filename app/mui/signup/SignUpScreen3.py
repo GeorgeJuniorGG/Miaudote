@@ -3,7 +3,10 @@ from kivymd.uix.screen import MDScreen
 from kivy.metrics import dp
 from kivy.clock import Clock
 from kivymd.uix.menu import MDDropdownMenu
+from kivy.properties import ObjectProperty
+
 class SignUpScreen3(MDScreen, MDFloatLayout):
+    controller = ObjectProperty()
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
