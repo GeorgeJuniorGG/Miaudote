@@ -39,6 +39,7 @@ class MainApp(MDApp):
         f'{KV_DIR}/protectorrequests/RequestsReceivedScreen.kv',
         f'{KV_DIR}/userprofile/FavoritesScreen.kv',
         f'{KV_DIR}/petprofile/PetSignUpScreen.kv',
+        f'{KV_DIR}/petprofile/PetSignUpScreen2.kv',
         f'{KV_DIR}/home/HomeScreen.kv'
     ]
 
@@ -59,6 +60,7 @@ class MainApp(MDApp):
         'RequestsReceivedScreen' : 'mui.protectorrequests.RequestsReceivedScreen',
         'FavoritesScreen' : 'mui.userprofile.FavoritesScreen',
         'PetSignUpScreen' : 'mui.petprofile.PetSignUpScreen',
+        'PetSignUpScreen2' : 'mui.petprofile.PetSignUpScreen2',
         'HomeScreen' : 'mui.home.HomeScreen',
     }
 

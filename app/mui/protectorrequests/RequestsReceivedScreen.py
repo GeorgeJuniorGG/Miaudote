@@ -1,7 +1,7 @@
 from logging import root
 from kivymd.uix.screen import MDScreen
 from kivymd.uix.floatlayout import MDFloatLayout
-from kivymd.uix.list.list import IconLeftWidget, OneLineAvatarListItem
+from kivymd.uix.list.list import ImageLeftWidget, OneLineAvatarListItem
 from kivy.clock import Clock
 
 from mui.ColorTheme import Color
@@ -18,8 +18,8 @@ class RequestsReceivedScreen(MDScreen, MDFloatLayout):
             item = OneLineAvatarListItem(text=f"Usuário {i}", 
                    theme_text_color="Custom", text_color=cor.rgbVermelho(),
                    divider_color=cor.rgbVermelho())
-            icon = IconLeftWidget(icon = "account-circle")
+            image = ImageLeftWidget(source = "mrbubbles.png")
             
-            item.add_widget(icon)
+            item.add_widget(image)
             self.ids.container.add_widget(item)
 

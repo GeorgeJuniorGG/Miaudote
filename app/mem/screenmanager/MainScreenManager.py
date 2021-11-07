@@ -5,6 +5,7 @@ class MainScreenManager(ScreenManager):
     usualLoginFlow = ["WelcomeScreen", "LoginScreen"]
     usualProtectorSignUpFlow = ["WelcomeScreen", "SignUpScreen", "SignUpScreen2b", "LoginScreen"]
     usualSignUpFlow = ["WelcomeScreen", "SignUpScreen", "SignUpScreen2a", "SignUpScreen3", "SignUpScreen4", "LoginScreen"]
+    usualPetSignUpFlow = ["PetSignUpScreen", "PetSignUpScreen2"]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -57,3 +58,13 @@ class MainScreenManager(ScreenManager):
         self.transition.direction = 'right'
         position = self.usualSignUpFlow.index(screenId)
         self.change_screen(self.usualSignUpFlow[position - 1])
+    
+    def go_forward_pet_signup(self, screenId):
+        self.transition.direction = 'left'
+        position = self.usualPetSignUpFlow.index(screenId)
+        self.change_screen(self.usualPetSignUpFlow[position + 1])
+
+    def go_backward_pet_signup(self, screenId):
+        self.transition.direction = 'right'
+        position = self.usualPetSignUpFlow.index(screenId)
+        self.change_screen(self.usualPetSignUpFlow[position - 1])
