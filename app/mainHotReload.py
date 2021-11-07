@@ -33,7 +33,13 @@ class MainApp(MDApp):
         f'{KV_DIR}/signup/SignUpScreen4.kv',
         f'{KV_DIR}/userprofile/ProfileScreen.kv',
         f'{KV_DIR}/chat/ChatScreen.kv',
-        f'{KV_DIR}/requests/AdoptionRScreen.kv'
+        f'{KV_DIR}/adopterrequests/AdoptionRScreen.kv',
+        f'{KV_DIR}/adopterrequests/RequestsScreen.kv',
+        f'{KV_DIR}/protectorrequests/RequesterProfileScreen.kv',
+        f'{KV_DIR}/protectorrequests/RequestsReceivedScreen.kv',
+        f'{KV_DIR}/userprofile/FavoritesScreen.kv',
+        f'{KV_DIR}/petprofile/PetSignUpScreen.kv',
+        f'{KV_DIR}/home/HomeScreen.kv'
     ]
 
     CLASSES = {
@@ -46,8 +52,14 @@ class MainApp(MDApp):
         'SignUpScreen3' : 'mui.signup.SignUpScreen3',
         'SignUpScreen4' : 'mui.signup.SignUpScreen4',
         'ProfileScreen' : 'mui.userprofile.ProfileScreen',
-        'AdoptionRScreen' : 'mui.requests.AdoptionRScreen',
+        'AdoptionRScreen' : 'mui.adopterrequests.AdoptionRScreen',
         'ChatScreen' : 'mui.chat.ChatScreen',
+        'RequestsScreen' : 'mui.adopterrequests.RequestsScreen',
+        'RequesterProfileScreen' : 'mui.protectorrequests.RequesterProfileScreen',
+        'RequestsReceivedScreen' : 'mui.protectorrequests.RequestsReceivedScreen',
+        'FavoritesScreen' : 'mui.userprofile.FavoritesScreen',
+        'PetSignUpScreen' : 'mui.petprofile.PetSignUpScreen',
+        'HomeScreen' : 'mui.home.HomeScreen',
     }
 
     def build_app(self,*args):

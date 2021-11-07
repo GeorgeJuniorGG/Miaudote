@@ -2,15 +2,16 @@ from logging import root
 from kivymd.uix.screen import MDScreen
 from kivymd.uix.floatlayout import MDFloatLayout
 from kivymd.uix.list.list import IRightBody, ThreeLineAvatarListItem, ImageLeftWidget
+from kivy.clock import Clock
 
 from mui.ColorTheme import Color
 
 class HomeScreen(MDScreen, MDFloatLayout):
     def __init__(self, **kw):
         super().__init__(**kw)
-        self.on_start()
+        Clock.schedule_once(self.on_start)
     
-    def on_start(self):
+    def on_start(self, interval):
         cor = Color()
 
         for i in range(9):
