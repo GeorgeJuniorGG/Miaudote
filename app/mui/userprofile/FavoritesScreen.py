@@ -21,7 +21,7 @@ class FavoritesScreen(MDScreen, MDFloatLayout):
                    tertiary_theme_text_color="Custom", tertiary_text_color=cor.textoL(), 
                    divider_color=cor.rgbVermelho())
             image = ImageLeftWidget(source = "mrbubbles.png")
-            icon = IconRightWidget(icon = 'bookmark-remove', theme_text_color = "Custom", text_color= cor.detalheClaro())
+            icon = IconRightWidget(icon = 'close-circle-outline', theme_text_color = "Custom", text_color= cor.detalheClaro())
 
             item.add_widget(image)
             item.add_widget(icon)
