@@ -1,0 +1,127 @@
+#:kivy 2.0
+#:import Color mui.ColorTheme.Color
+#:set cor Color()
+
+<PetSignUpScreen>:
+    MDProgressBar:
+        value: 0
+        color: cor.detalheEscuro()
+        pos_hint:{'center_x':0.5, 'center_y': 0.92}
+
+    MDIconButton:
+        id: _SignupArrowButton
+        icon: "arrow-left"
+        user_font_size: '35sp'
+        pos_hint:{'center_x':0.08, 'center_y': 0.96}
+        theme_text_color: "Custom"
+        text_color: cor.detalheClaro()
+        on_release:
+            root.go_backward()
+
+    MDLabel:
+        text: "Informações do Animal"
+        theme_text_color: "Custom"
+        text_color: cor.rgbVermelho()
+        pos_hint: {'center_y': 0.96}
+        halign: "center"
+        font_size: "20sp"
+
+    MDTextField:
+        id: name
+        hint_text: "Nome do Animal"
+        size_hint: 0.8, 0.1
+        color_mode: "custom"
+        line_color_normal: cor.linhaTFN()
+        line_color_focus: cor.linhaTFF()
+        pos_hint: {'center_x': 0.5, 'center_y': 0.87}
+    
+    MDTextField:
+        id: type
+        hint_text: "Espécie do Animal"
+        size_hint: 0.8, 0.1
+        color_mode: "custom"
+        line_color_normal: cor.linhaTFN()
+        line_color_focus: cor.linhaTFF()
+        pos_hint: {'center_x': 0.5, 'center_y': 0.79}
+
+    MDTextField:
+        id: age
+        hint_text: "Idade"
+        size_hint: 0.8, 0.1
+        color_mode: "custom"
+        line_color_normal: cor.linhaTFN()
+        line_color_focus: cor.linhaTFF()
+        pos_hint: {'center_x': 0.5, 'center_y': 0.71}
+
+    MDTextField:
+        id: color
+        hint_text: "Cor"
+        size_hint: 0.8, 0.1
+        color_mode: "custom"
+        line_color_normal: cor.linhaTFN()
+        line_color_focus: cor.linhaTFF()
+        pos_hint: {'center_x': 0.5, 'center_y': 0.63}
+
+    MDTextField:
+        id: ambient
+        hint_text: "Ambiente Adequado para o Animal"
+        size_hint: 0.8, 0.1
+        color_mode: "custom"
+        line_color_normal: cor.linhaTFN()
+        line_color_focus: cor.linhaTFF()
+        pos_hint: {'center_x': 0.5, 'center_y': 0.55}
+
+    MDTextField:
+        id: sex
+        hint_text: "Sexo"
+        size_hint: 0.8, 0.1
+        color_mode: "custom"
+        line_color_normal: cor.linhaTFN()
+        line_color_focus: cor.linhaTFF()
+        pos_hint: {'center_x': 0.5, 'center_y': 0.48}
+
+    MDTextField:
+        id: origin
+        hint_text: "Origem do Animal"
+        size_hint: 0.8, 0.1
+        color_mode: "custom"
+        line_color_normal: cor.linhaTFN()
+        line_color_focus: cor.linhaTFF()
+        pos_hint: {'center_x': 0.5, 'center_y': 0.40}
+    
+    MDTextField:
+        id: health
+        hint_text: "Condição de Saúde do Animal"
+        size_hint: 0.8, 0.1
+        color_mode: "custom"
+        line_color_normal: cor.linhaTFN()
+        line_color_focus: cor.linhaTFF()
+        pos_hint: {'center_x': 0.5, 'center_y': 0.32}
+    
+    MDTextField:
+        id: size
+        hint_text: "Porte do Animal"
+        size_hint: 0.8, 0.1
+        color_mode: "custom"
+        line_color_normal: cor.linhaTFN()
+        line_color_focus: cor.linhaTFF()
+        pos_hint: {'center_x': 0.5, 'center_y': 0.24}
+    
+    MDTextField:
+        id: localization
+        hint_text: "Localização"
+        size_hint: 0.8, 0.1
+        color_mode: "custom"
+        line_color_normal: cor.linhaTFN()
+        line_color_focus: cor.linhaTFF()
+        pos_hint: {'center_x': 0.5, 'center_y': 0.16}
+
+    MDFillRoundFlatButton:
+        text: "Continuar"
+        md_bg_color: cor.fundoB()
+        font_size: "20sp"
+        size_hint: (0.4, 0.05)
+        pos_hint: {'center_x': 0.5, 'center_y': 0.07}
+        on_release:
+            root.go_forward()
+

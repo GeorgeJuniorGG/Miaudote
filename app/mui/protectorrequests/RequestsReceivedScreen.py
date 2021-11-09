@@ -1,12 +1,12 @@
 from logging import root
 from kivymd.uix.screen import MDScreen
 from kivymd.uix.floatlayout import MDFloatLayout
-from kivymd.uix.list.list import IRightBody, ThreeLineAvatarListItem, ImageLeftWidget
+from kivymd.uix.list.list import ImageLeftWidget, OneLineAvatarListItem
 from kivy.clock import Clock
 
 from mui.ColorTheme import Color
 
-class HomeScreen(MDScreen, MDFloatLayout):
+class RequestsReceivedScreen(MDScreen, MDFloatLayout):
     def __init__(self, **kw):
         super().__init__(**kw)
         Clock.schedule_once(self.on_start)
@@ -15,18 +15,11 @@ class HomeScreen(MDScreen, MDFloatLayout):
         cor = Color()
 
         for i in range(9):
-            item = ThreeLineAvatarListItem(text=f"Mr. Bubbles {i}", 
+            item = OneLineAvatarListItem(text=f"Usuário {i}", 
                    theme_text_color="Custom", text_color=cor.rgbVermelho(),
-                   secondary_text="Características", tertiary_text = "Bubbles...",
-                   tertiary_theme_text_color="Custom", tertiary_text_color=cor.textoL(), 
                    divider_color=cor.rgbVermelho())
             image = ImageLeftWidget(source = "mrbubbles.png")
-
+            
             item.add_widget(image)
             self.ids.container.add_widget(item)
-    
-    def search(self, search_text):
-        print("BUSCAR --> " + search_text)
 
-    def on_touch(self, id):
-        print("ID " + id)
