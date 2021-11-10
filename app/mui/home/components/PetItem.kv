@@ -1,0 +1,77 @@
+#:kivy 2.0
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+#:import Color mui.ColorTheme.Color
+#:set cor Color()
+
+<PetLabel>:
+    canvas.before:
+        Color:
+            rgba: get_color_from_hex(cor.fundoB())
+    
+        RoundedRectangle:
+            size: self.size[0], self.size[1]
+            pos: self.pos
+            radius: 5,5
+    
+    size_hint: 0.3, 1
+    pos_hint: {'center_y': 0.5}
+    bold: True
+    adaptive_height: True
+    theme_text_color: "Custom"
+    text_color: get_color_from_hex(cor.textoB())
+
+<PetItem>:
+
+    size_hint: 1, None
+    height: 120
+    petCharsBox: pet_chars
+    petImage: pet_image
+    petNLabel: pet_name
+    petDLabel: pet_descr
+    petContent: pet_content
+
+    MDFloatLayout:
+        id: pet_image
+        pos_hint: {'x': 0,'center_y': 0.5}
+        size_hint: None, None
+        size: self.parent.width*0.3, self.parent.height*0.8
+
+        FitImage:
+            source: root.petImageSource
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            radius: 15, 15, 15, 15
+
+    MDFloatLayout:
+        id: pet_content
+        pos_hint: {'x': 0.32,'top': 1}
+        size_hint: None, None
+        size: self.parent.width - pet_image.width, self.parent.height
+
+        MDLabel:
+            id: pet_name
+            text: root.petName
+            pos_hint: {'x': 0, 'center_y': 0.82}
+            size_hint: None, None
+            size: 100, 50
+            theme_text_color: "Custom"
+            text_color: get_color_from_hex(cor.rgbVermelho())
+            bold: True
+    
+        MDBoxLayout:
+            id: pet_chars
+            spacing: 3
+            orientation: 'horizontal'
+            size_hint: None, None
+            size: self.parent.width-dp(10), "18dp"
+            pos_hint: {'x': 0, 'center_y': 0.63}
+
+        MDLabel:
+            id: pet_descr
+            text: root.petDescription
+            font_size: '11sp'
+            pos_hint: {'x': 0.01, 'center_y': 0.32}
+            theme_text_color: "Custom"
+            text_color: get_color_from_hex(cor.textoL())
+            bold: True
+            size_hint: None, None
+            size: self.parent.width, 300
