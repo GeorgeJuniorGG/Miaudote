@@ -5,12 +5,37 @@ from kivymd.uix.list.list import IRightBody, ThreeLineAvatarListItem, ImageLeftW
 from kivy.clock import Clock
 
 from mui.ColorTheme import Color
+from .components.PetItem import PetItem
+from .components.Separator import Separator
 
 class HomeScreen(MDScreen, MDFloatLayout):
     def __init__(self, **kw):
         super().__init__(**kw)
-        Clock.schedule_once(self.on_start)
+        # Apenas para ilustrar
+        # os itens verdadeiros seram pegos do firebase
+        item = {
+                 'imageSource': 'dog.jpg',
+                 'petName': 'Willian',
+                 'petDecription': "Willian vivia em um lar em Jardins, São Paulo, até que seus donos tiveram que sair do país e resoveram não levá-lo...",
+                 'petChars': ['Pintado', 'Macho', 'Campinas']
+               }
+
+        items = []
+        for i in range(9):
+            items.append(item)
+
+        #Clock.schedule_once(self.on_start)
+        Clock.schedule_once(lambda x: self.insert_items(items))
     
+    def insert_items(self, items:list):
+        cor = Color()
+
+        for i in range(len(items)):
+            petItem = PetItem(items[i])
+            self.ids.container.add_widget(petItem)
+            self.ids.container.add_widget(Separator())
+            self.ids.container.ids[f'item{i}'] = petItem
+
     def on_start(self, interval):
         cor = Color()
 

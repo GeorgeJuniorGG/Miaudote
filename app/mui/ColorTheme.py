@@ -1,5 +1,5 @@
 class Color:
-    azulClaroRgb = '97b9c0'
+    azulClaroRgb = '97B9C0'
     azulEscuroRgb = '366873'
     azulCinzaRgb = '1E606F'
     azulRgba = [0.592, 0.725, 0.752, 1]
@@ -13,7 +13,7 @@ class Color:
     cinzaClaroRgb = "fcfcfc"
     laranjaRgba = [1, 170/255, 23/255, 1]
     transparenteRgba = [0,0,0,0]
-    vermelhoRgb = '8c5042'
+    vermelhoRgb = '8C5042'
     vermelhoRga = [0.549, 0.313, 0.258, 1]
 
     def fundoB(self):
