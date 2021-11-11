@@ -12,7 +12,7 @@ from kivy.properties import (
 from kivy.clock import Clock
 
 
-class PetLabel(MDLabel):
+class PetLabel2(MDLabel):
     def __init__(self, charName, **kwargs):
         super().__init__(**kwargs)
         self.text = charName
@@ -21,7 +21,7 @@ class PetLabel(MDLabel):
         self.pos_hint = {'center_y': 0.5}
 
 
-class PetItem(RectangularRippleBehavior, ButtonBehavior, MDFloatLayout):
+class PetItem2(RectangularRippleBehavior, ButtonBehavior, MDFloatLayout):
     # indicar o local da imagem
     petImageSource = StringProperty()
     # adicionar o nome do Pet
@@ -42,18 +42,19 @@ class PetItem(RectangularRippleBehavior, ButtonBehavior, MDFloatLayout):
     # MDIconButton para exclusão do item
     removeButton = ObjectProperty()
 
-    def __init__(self, **kwargs):
+    def __init__(self, data:dict, **kwargs):
         super().__init__(**kwargs)
-        self.petImageSource = 'dog.jpg'
-        self.petName = 'Willian'
-        self.petDescription = "Willian vivia em um lar em Jardins, São Paulo, até que seus donos tiveram..."
-        labels = ['Pintado', 'Macho', 'Campinas']
+
+        self.petImageSource = data['imageSource']
+        self.petName = data['petName']
+        self.petDescription = data['petDecription']
+        labels = data['petChars']
         Clock.schedule_once(lambda x: self.insertLabels(labels))
 
     # inserir os chips com as caracteristicas dos animais
     def insertLabels(self, labels):
         
         for i in range(3):
-            petChar = PetLabel(labels[i])
+            petChar = PetLabel2(labels[i])
             self.petCharsBox.ids[f'label{i}'] = petChar
             self.petCharsBox.add_widget(petChar)
