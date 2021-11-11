@@ -1,7 +1,7 @@
 #:kivy 2.0
 #:import get_color_from_hex kivy.utils.get_color_from_hex
 
-<PetLabel>:
+<PetLabel2>:
     canvas.before:
         Color:
             rgba: get_color_from_hex("#97B9C0")
@@ -18,7 +18,7 @@
     theme_text_color: "Custom"
     text_color: get_color_from_hex("#ffffff")
 
-<PetItem>:
+<PetItem2>:
 
     size_hint: 1, None
     height: 120
@@ -63,8 +63,10 @@
             icon: 'close-circle-outline'
             theme_text_color: "Custom"
             text_color: get_color_from_hex("#366873")
-            #on_press: print('cliquei no botão')
-
+            on_press:
+                pos = root.parent.children.index(root)                  # Posicao do PetItem2 na lista de filhos da list
+                root.parent.remove_widget(root.parent.children[pos-1])  # Remove o separator associado ao PetItem2
+                root.parent.remove_widget(root.parent.children[pos-1])  # Remove o PetItem2, que agora esta uma posicao a menos
 
         MDBoxLayout:
             id: pet_chars
