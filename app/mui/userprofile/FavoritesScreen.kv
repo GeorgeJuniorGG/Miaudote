@@ -45,37 +45,3 @@
             MDList:
                 id: container
                 padding: 5
-
-    MDBoxLayout:
-        size_hint: 1, None
-        height: self.minimum_height
-        y: - self.height
-        orientation: 'vertical'
-
-        MDBottomNavigation:
-            panel_color: cor.bottomNavPanel()
-            text_color_active: get_color_from_hex(cor.bottomNavTextActive())
-            text_color_normal: get_color_from_hex(cor.bottomNavTextNormal())
-
-            canvas.after:
-                Color:
-                    rgba: cor.rgaBranco()
-                Line:
-                    points: self.x + dp(123), 65, self.x + dp(123), 0
-                    width: 0.3
-
-                Line:
-                    points: self.x + dp(2*123 + 7), 65, self.x + dp(2*123 + 7), 0
-                    width: 0.3
-
-            MDBottomNavigationItem:
-                text: 'Menu'
-                icon: 'menu'
-
-            MDBottomNavigationItem:
-                text: 'Início'
-                icon: 'home'
-
-            MDBottomNavigationItem:
-                text: 'Perfil'
-                icon: 'account-circle'

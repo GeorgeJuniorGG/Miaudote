@@ -1,0 +1,32 @@
+#:kivy 2.0
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+
+<UserInfo>:
+    #md_bg_color: get_color_from_hex(cor.detalheEscuro())
+    size_hint: 1, 0.15
+
+    MDBoxLayout:
+        orientation: 'vertical'
+        #md_bg_color: get_color_from_hex(cor.detalheEscuro())
+        size_hint: None, None
+        pos: self.parent.pos
+        size: self.parent.size
+
+        MDLabel:
+            text: root.fieldName
+            theme_text_color: 'Custom'
+            text_color: get_color_from_hex('#8C5042')
+            pos_hint: {'x': 0.01}
+            bold: True
+            halign: 'left'
+
+        MDLabel:
+            text: root.fieldValue
+
+            pos_hint: {'x': 0.01}
+            theme_text_color: 'Custom'
+            text_color: get_color_from_hex('#366873')
+
+        MDSeparator:
+            color: get_color_from_hex('#97B9C0')
+            height: 2

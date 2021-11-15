@@ -15,7 +15,7 @@ class FavoritesScreen(MDScreen, MDFloatLayout):
         item = {
                  'imageSource': 'mrbubbles.png',
                  'petName': 'Mr. Bubbles',
-                 'petDecription': "Bubbles vivia em um lar em Jardins, São Paulo, até que seus donos tiveram que sair do país e resoveram não levá-lo...",
+                 'petDecription': "Bubbles vivia em um lar em Jardins, São Paulo, até que seus donos...",
                  'petChars': ['Branco', 'Macho', 'Campinas']
                }
 
