@@ -23,7 +23,10 @@ class MiaudoteNavBar(FakeRectangularElevationBehavior, MDFloatLayout):
 
     def changeTab(self, tabName:str, transition):
         self.tabManager.transition = SlideTransition()
-        self.tabManager.transition.direction = transition
+        if self.tabManager.current == 'Menu':
+            self.tabManager.transition.direction = 'down'
+        else:
+            self.tabManager.transition.direction = transition
         self.tabManager.current = tabName
 
     def changeButtonColor(self, selItem):
