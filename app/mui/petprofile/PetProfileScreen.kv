@@ -1,0 +1,204 @@
+#:kivy 2.0
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+#:import Color mui.ColorTheme.Color
+#:set cor Color()
+
+<PetProfileScreen>:
+    petFav: pet_fav
+    petName: pet_name
+    petSex: pet_sex
+    petAge: pet_age
+    petAddr: pet_addr
+    petDscp: pet_dscp
+
+    canvas:
+        Color:
+            rgba: cor.linhaBanner()
+        Line:
+            points: self.x, 0.9 * self.top, self.right, 0.9 * self.top
+            width: 10
+        Line:
+            points: self.x, self.top - 10, self.right, self.top - 10
+            width: 10
+
+    MDIconButton:
+        icon: "arrow-left"
+        user_font_size: "35sp"
+        pos_hint:{"center_x": 0.08, "center_y": 0.94}
+        theme_text_color: "Custom"
+        text_color: cor.detalheClaro()
+        on_release:
+            root.go_backward()
+
+    MDLabel:
+        text: "Miaudote"
+        font_name: "Spirax-Regular"
+        theme_text_color: "Custom"
+        text_color: cor.rgaVermelho()
+        pos_hint: {"center_y": 0.94}
+        halign: "center"
+        font_size: "25sp"
+
+    MDFloatLayout:
+        id: pet_bar
+        orientation: "vertical"
+            
+        MDLabel:
+            id: pet_name
+            text: str(root.petName)
+            theme_text_color: "Custom"
+            text_color: cor.rgaVermelho()
+            halign: "center"
+            pos_hint: {"center_y": 0.85}
+            
+        MDIconButton:
+            id: pet_fav
+            icon: str(root.petFav)
+            pos_hint: {"center_x": 0.9, "center_y": 0.85}
+            theme_text_color: "Custom"
+            text_color: cor.rgaVermelho()
+            on_press:
+                root.favourite()
+
+        MDIconButton:
+            icon: "alert-outline"
+            pos_hint: {"center_x": 0.1, "center_y": 0.85}
+            theme_text_color: "Custom"
+            text_color: cor.rgaVermelho()
+            on_press:
+                root.alert()
+    MDCarousel:
+        size_hint: 1, 0.25
+        direction: "right"
+        pos_hint: {"center_x": 0.5, "center_y": 0.68}
+            
+        FitImage:
+            source: "sorriso.png"
+            
+        FitImage:
+            source: "mrbubbles.png"
+        
+    MDFloatLayout:
+        size_hint: 1, 0.52
+
+        MDLabel:
+            text: "Nome: "
+            theme_text_color: "Custom"
+            text_color: cor.rgaVermelho()
+            halign: "left"
+            pos_hint: {"center_x": 0.6, "center_y": 1}
+
+        MDLabel:
+            id: pet_name
+            text: str(root.petName)
+            theme_text_color: "Custom"
+            text_color: cor.textoL()
+            pos_hint: {"center_x": 0.85, "center_y": 1}
+
+        MDLabel:
+            text: "Sexo: "
+            theme_text_color: "Custom"
+            text_color: cor.rgaVermelho()
+            halign: "left"
+            pos_hint: {"center_x": 0.6, "center_y": 0.95}
+        
+        MDLabel:
+            id: pet_sex
+            text: str(root.petSex)
+            theme_text_color: "Custom"
+            text_color: cor.textoL()
+            halign: "left"
+            pos_hint: {"center_x": 0.85, "center_y": 0.95}
+
+        MDLabel:
+            text: "Idade: "
+            theme_text_color: "Custom"
+            text_color: cor.rgaVermelho()
+            halign: "left"
+            pos_hint: {"center_x": 0.6, "center_y": 0.9}
+        
+        MDLabel:
+            id: pet_age
+            text: str(root.petAge)
+            theme_text_color: "Custom"
+            text_color: cor.textoL()
+            halign: "left"
+            pos_hint: {"center_x": 0.85, "center_y": 0.9}
+
+        MDLabel:
+            text: "Localização: "
+            theme_text_color: "Custom"
+            text_color: cor.rgaVermelho()
+            halign: "left"
+            pos_hint: {"center_x": 0.6, "center_y": 0.85}
+
+        MDLabel:
+            id: pet_addr
+            text: str(root.petAddr)
+            theme_text_color: "Custom"
+            text_color: cor.textoL()
+            halign: "left"
+            pos_hint: {"center_x": 0.85, "center_y": 0.85}
+        
+        MDFillRoundFlatButton:
+            id: pet_adopt
+            text: "Adotar"
+            md_bg_color: cor.fundoB()
+            pos_hint: {"center_x": 0.5, "center_y": 0.75}
+            on_press:
+                root.adopt_popup()
+    
+    ScrollView:
+        size_hint: 1, 0.35
+
+        MDFloatLayout:
+            size_hint: 1, 0.5
+
+            MDLabel:
+                text: "Descrição:"
+                theme_text_color: "Custom"
+                text_color: cor.rgaVermelho()
+                halign: "left"
+                padding_x: 10
+                pos_hint: {"center_y": 1}
+
+            MDLabel:
+                id: pet_dscp
+                text: str(root.petDscp)
+                text_color: cor.textoL()
+                halign: "justify"
+                padding_x: 10
+
+    MDBoxLayout:
+        size_hint: 1, None
+        height: self.minimum_height
+        y: - self.height
+        orientation: "vertical"
+
+        MDBottomNavigation:
+            panel_color: cor.bottomNavPanel()
+            text_color_active: get_color_from_hex(cor.bottomNavTextActive())
+            text_color_normal: get_color_from_hex(cor.bottomNavTextNormal())
+
+            canvas.after:
+                Color:
+                    rgba: cor.rgaBranco()
+                Line:
+                    points: self.x + dp(123), 65, self.x + dp(123), 0
+                    width: 0.3
+
+                Line:
+                    points: self.x + dp(2*123 + 7), 65, self.x + dp(2*123 + 7), 0
+                    width: 0.3
+
+            MDBottomNavigationItem:
+                text: "Menu"
+                icon: "menu"
+
+            MDBottomNavigationItem:
+                text: "Início"
+                icon: "home"
+
+            MDBottomNavigationItem:
+                text: "Perfil"
+                icon: "account-circle"
