@@ -4,7 +4,7 @@ from .components.MenuItem import MenuItem
 from kivy.properties import ObjectProperty
 from mui.userprofile.FavoritesScreen import FavoritesScreen
 
-class MiaudoteMenu(MDScreen):
+class MiaudoteMenuScreen(MDScreen):
     # Menu
     menu = ObjectProperty(MDGridLayout)
     # Item das solicitações de adoção (Adotante)

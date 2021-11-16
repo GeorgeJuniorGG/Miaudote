@@ -21,19 +21,19 @@ Window.size = (375,667)
 
 class MainApp(MDApp):
 
-    # [hotfix] problema na atualização do kivymd
-    def load_all_kv_files(self, path_to_directory):
-        for path_to_dir, dirs, files in os.walk(path_to_directory):
-            if "venv" in path_to_dir or "__pycache__" in path_to_dir:
-                continue
-            for name_file in files:
-                if (
-                    os.path.splitext(name_file)[1] == ".kv"
-                    and name_file != "style.kv"  # if use PyInstaller
-                    and "__MACOS" not in path_to_dir  # if use Mac OS
-                ):
-                    path_to_kv_file = os.path.join(path_to_dir, name_file)
-                    Builder.load_file(path_to_kv_file)
+    # # [hotfix] problema na atualização do kivymd
+    # def load_all_kv_files(self, path_to_directory):
+    #     for path_to_dir, dirs, files in os.walk(path_to_directory):
+    #         if "venv" in path_to_dir or "__pycache__" in path_to_dir:
+    #             continue
+    #         for name_file in files:
+    #             if (
+    #                 os.path.splitext(name_file)[1] == ".kv"
+    #                 and name_file != "style.kv"  # if use PyInstaller
+    #                 and "__MACOS" not in path_to_dir  # if use Mac OS
+    #             ):
+    #                 path_to_kv_file = os.path.join(path_to_dir, name_file)
+    #                 Builder.load_file(path_to_kv_file)
 
     def register_views(self):
         separator = '/'
@@ -55,6 +55,17 @@ class MainApp(MDApp):
                         pkg += f'{module[i]}.'
                     pkg += f'{className}'
 
+                    Factory.register(className, module=pkg)
+
+                elif(os.path.splitext(name_file)[1] == ".py"
+                     and 'components' in path_to_dir 
+                     and name_file.find('__init__') == -1):
+                    className = os.path.splitext(name_file)[0]
+                    module = path_to_dir.split(separator)
+                    pkg = ''
+                    for i in range(len(module)-3, len(module)):
+                        pkg += f'{module[i]}.'
+                    pkg += f'{className}'
                     Factory.register(className, module=pkg)
                     
     def build(self):
