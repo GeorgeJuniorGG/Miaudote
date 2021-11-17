@@ -1,21 +1,18 @@
-from pydantic.dataclasses import dataclass
+from pydantic import BaseModel, validator
 
-@dataclass
-class homeCharacteristics():
-    tipoResidencia: str
-    espacoDisponivel: str
-    ambienteAberto:bool = False 
-    rotasFuga: bool = False
-    possuiCriancas: bool = False
+class HomeCharacteristics(BaseModel):
+    houseType: str
+    availableSpace: str
+    openArea:bool = False 
+    escapeRoutes: bool = False
+    haveChildren: bool = False
 
-    def getJSONHomeCharacteristics(self):
-        dataHomeCharacteristics = {
-            u'homeCharacteristics':{
-                u'tipoResidencia': self.tipoResidencia,
-                u'espacoDisponivel': self.espacoDisponivel,
-                u'ambienteAberto': self.ambienteAberto,
-                u'rotasFuga':self.rotasFuga,
-                u'possuiCriancas':self.possuiCriancas,
-            }
-        }
+    @validator('*')
+    def no_empty_fields(cls, v):
+        if v == '':
+            raise ValueError('Existem campos vazios')
+        return v
+
+    def getHomeCharacteristicsForFireStore(self):
+        dataHomeCharacteristics = {u'homeCharacteristics':self.dict()}
         return dataHomeCharacteristics

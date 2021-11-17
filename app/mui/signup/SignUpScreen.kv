@@ -36,22 +36,13 @@
         pos_hint: {'center_x': 0.5, 'center_y': 0.80}
 
     MDTextField:
-        id: birthDate
-        hint_text: "Data de Nascimento"
+        id: cpf
+        hint_text: "CPF (Somente números)"
         size_hint: 0.8, 0.1
         color_mode: "custom"
         line_color_normal: cor.linhaTFN()
         line_color_focus: cor.linhaTFF()
         pos_hint: {'center_x': 0.5, 'center_y': 0.71}
-
-    MDTextField:
-        id: CPF
-        hint_text: "CPF"
-        size_hint: 0.8, 0.1
-        color_mode: "custom"
-        line_color_normal: cor.linhaTFN()
-        line_color_focus: cor.linhaTFF()
-        pos_hint: {'center_x': 0.5, 'center_y': 0.62}
 
     MDTextField:
         id: email
@@ -60,25 +51,50 @@
         color_mode: "custom"
         line_color_normal: cor.linhaTFN()
         line_color_focus: cor.linhaTFF()
-        pos_hint: {'center_x': 0.5, 'center_y': 0.53}
+        pos_hint: {'center_x': 0.5, 'center_y': 0.62}
 
     MDTextField:
         id: password1
         hint_text: "Senha"
+        password: True
+        size_hint: 0.8, 0.1
+        color_mode: "custom"
+        line_color_normal: cor.linhaTFN()
+        line_color_focus: cor.linhaTFF()
+        pos_hint: {'center_x': 0.5, 'center_y': 0.53}
+
+    MDTextField:
+        id: password2
+        hint_text: "Confirme sua Senha"
+        password: True
         size_hint: 0.8, 0.1
         color_mode: "custom"
         line_color_normal: cor.linhaTFN()
         line_color_focus: cor.linhaTFF()
         pos_hint: {'center_x': 0.5, 'center_y': 0.44}
 
-    MDTextField:
-        id: password2
-        hint_text: "Confirme sua Senha"
-        size_hint: 0.8, 0.1
-        color_mode: "custom"
-        line_color_normal: cor.linhaTFN()
-        line_color_focus: cor.linhaTFF()
-        pos_hint: {'center_x': 0.5, 'center_y': 0.35}
+    MDBoxLayout:
+        width: self.minimum_width
+        padding: [self.right/10, 0, 0, 0]
+        spacing: '0.5dp'
+
+        MDCheckbox:
+            id: minimumAge
+            pos_hint: {'center_y': 0.35}
+            size_hint: None, None
+            size: "48dp", "48dp"
+            color: cor.detalheEscuro()
+            selected_color: cor.detalheEscuro()
+            adaptive_size: False
+
+        MDLabel:
+            text: "Tenho mais de 18 anos"
+            width: '20px'
+            font_size: '17sp'
+            pos_hint: {'center_y': 0.35}
+            theme_text_color: 'Custom'
+            text_color: cor.textoL()
+            adaptive_size: True
 
     MDBoxLayout:
         width: self.minimum_width

@@ -1,7 +1,7 @@
-from pydantic.dataclasses import dataclass
+from pydantic import BaseModel, validator
 
-@dataclass
-class Address:
+
+class Address(BaseModel):
     state: str
     city: str
     CEP: int
@@ -9,15 +9,18 @@ class Address:
     address: str
     number: int
 
-    def getJSONAdress(self):
-        dataAddress = {
-            u'address':{
-                u'state': self.state,
-                u'birthDate': self.city,
-                u'CEP': self.CEP,
-                u'neighborhood':self.neighborhood,
-                u'address':self.address,
-                u'number':self.number
-            }
-        }
-        return dataAddress
+    @validator('*')
+    def no_empty_fields(cls, v):
+        if v == '':
+            raise ValueError('Existem campos vazios')
+        return v
+
+    @validator('CEP')
+    def valid_CEP(cls, v):
+        if len(str(v))!=8:
+            raise ValueError('CEP inválido')
+        return v
+
+    def getAdressForFireStore(self):
+        dataAddress = {u'address':self.dict()}
+        return dataAddress  
