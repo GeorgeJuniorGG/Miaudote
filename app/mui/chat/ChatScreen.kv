@@ -32,7 +32,6 @@
             pos: self.pos
             radius: [23, 23, 23, 0]
 
-
 <ChatScreen>:
     name: "chat"
     chat_list: chat_list
@@ -121,7 +120,4 @@
             theme_text_color: "Custom"
             text_color: cor.chatIconButton()
             on_release:
-                controller.send()
-
-
-
+                root.send()
