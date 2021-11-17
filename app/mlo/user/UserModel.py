@@ -1,18 +1,7 @@
 from pydantic import BaseModel, Field
 from typing import List
 from mlo.auth import Address, HomeCharacteristics, Preferences
-
-class PetModel(BaseModel):
-    uid: str
-    name: str
-    type: str
-    origin: str
-    health: str
-    localization: str
-    ambient: str
-    details: str
-    characteristics: List[str]
-    requestStatus: bool
+from mlo.pets.PetModel import PetModel
 
 class UserModel(BaseModel):
     uid: str
