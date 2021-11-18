@@ -1,0 +1,9 @@
+build-job:
+  stage: build
+  script:
+    - echo "Etapa de build"
+
+test-job:
+  stage: test
+  script:
+    - echo "Etapa de teste"
