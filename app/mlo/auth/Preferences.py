@@ -16,5 +16,5 @@ class UserPreferences(BaseModel):
         return v
 
     def getPreferencesForFireStore(self):
-        dataPreferences = {u'preferences':self.dict()}
+        dataPreferences = {'preferences':self.dict()}
         return dataPreferences

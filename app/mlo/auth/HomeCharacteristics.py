@@ -14,5 +14,5 @@ class HomeCharacteristics(BaseModel):
         return v
 
     def getHomeCharacteristicsForFireStore(self):
-        dataHomeCharacteristics = {u'homeCharacteristics':self.dict()}
+        dataHomeCharacteristics = {'homeCharacteristics':self.dict()}
         return dataHomeCharacteristics

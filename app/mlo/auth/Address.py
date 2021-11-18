@@ -22,5 +22,5 @@ class Address(BaseModel):
         return v
 
     def getAdressForFireStore(self):
-        dataAddress = {u'address':self.dict()}
+        dataAddress = {'address':self.dict()}
         return dataAddress  
