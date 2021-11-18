@@ -1,8 +1,9 @@
 #:kivy 2.0
+#:import get_color_from_hex kivy.utils.get_color_from_hex
 #:import Color mui.ColorTheme.Color
 #:set cor Color()
 
-<MenssageSent>:
+<MessageSent>:
     size_hint_y: None
     pos_hint: {'right': 0.98}
     height: self.texture_size[1]
@@ -11,13 +12,13 @@
     text_color: cor.textMessageSent()
     canvas.before:
         Color:
-            rgb: cor.rectangleMessageSent()
+            rgb: get_color_from_hex('#8B3A27')
         RoundedRectangle:
             size: self.width, self.height
             pos: self.pos
             radius: [23, 23, 0, 23]
 
-<MenssageReceived>:
+<MessageReceived>:
     size_hint_y: None
     pos_hint: {'x': 0.02}
     height: self.texture_size[1]
@@ -26,12 +27,11 @@
     text_color: cor.textMessageReceived()
     canvas.before:
         Color:
-            rgb: cor.rectangleMessageReceived()
+            rgb: get_color_from_hex('#287484')
         RoundedRectangle:
             size: self.width, self.height
             pos: self.pos
             radius: [23, 23, 23, 0]
-
 
 <ChatScreen>:
     name: "chat"
@@ -98,7 +98,7 @@
                 pos_hint: {'center_x':.08, 'center_y':.5}
                 user_font_size: "25sp"
                 theme_text_color: "Custom"
-                text_color: cor.chatIconButton()
+                text_color: get_color_from_hex('#8B3A27')
 
             TextInput:
                 id: text_input
@@ -108,9 +108,9 @@
                 font_size: "18sp"
                 height: self.minimum_height
                 multiline: True
-                cursor_color: cor.chatTextInputCursor()
+                cursor_color: get_color_from_hex('#8B3A27')
                 cursor_width: "2sp"
-                foreground_color: cor.chatTextInputForeground()
+                foreground_color: get_color_from_hex('#8B3A27')
                 background_color: cor.chatTextInputBackground()
                 padding: 5,12,20,5
 
@@ -119,9 +119,6 @@
             pos_hint: {'center_x':.91, 'center_y':.5}
             user_font_size: "25sp"
             theme_text_color: "Custom"
-            text_color: cor.chatIconButton()
+            text_color: get_color_from_hex('#8B3A27')
             on_release:
-                controller.send()
-
-
-
+                root.send()

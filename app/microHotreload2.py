@@ -5,8 +5,10 @@ from kivymd.tools.hotreload.app import MDApp
 from kivy.core.window import Window
 from kivy.uix.screenmanager import ScreenManager
 
-from mui.userprofile.ProfileScreen import ProfileScreen
-
+from mui.chat.ChatScreen import ChatScreen
+from mem.chat.ChatManager import ChatManager
+from mlo.chat.ChatService import ChatService
+from mlo.database.firebaseChatDB import FChatDB
 
 os.environ["MIAUDOTE_ROOT"] = str(Path(__file__).parent)
 
@@ -21,20 +23,24 @@ Window.size = (375,667)
 
 class CustomApp( MDApp):
     KV_FILES = [ 
-                 'mui/userprofile/ProfileScreen.kv',
-                 'mui/userprofile/components/UserInfo.kv'
+                 'mui/chat/ChatScreen.kv',
                ]
-    DEBUG = True
+    #DEBUG = True
 
     CLASSES = {
-        'ProfileScreen': 'mui.userprofile.ProfileScreen',
-        'UserInfo': 'mui.userprofile.components.UserInfo'
+        'ChatScreen': 'mui.chat.ChatScreen'
     }
 
     def build_app(self):
         global manager
         manager = ScreenManager()
-        manager.add_widget(ProfileScreen())
+        userID = '1KNReiiLyeguu1FZVtM926FPAHa2'
+        db = FChatDB()
+        service = ChatService(db, 'testChat', userID)
+        screen = ChatScreen()
+        manager.add_widget(screen)
+        controller = ChatManager(screen, service, userID) 
+        
         return manager
 
 
