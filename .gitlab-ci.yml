@@ -12,5 +12,6 @@ test-job:
   before_script:
     - pip3 install pytest
   script:
+    - cd app
     - echo "Etapa de teste"
-    - pytest app/
+    - pytest
