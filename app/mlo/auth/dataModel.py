@@ -23,10 +23,10 @@ class DataModel(DataModelService):
                 print(e)
         return userAddress
 
-    def createUserPreferencesData(self, haveAnimal:str, favoriteAnimal:str, favoriteSize:str, characteristics:str, availableTime:str)->UserPreferences:
+    def createUserPreferencesData(self, haveAnimal:str, favoriteAnimal:str, favoriteSize:str, personalityCharacteristics: str, activitiesCharacteristics: str, ageCharacteristics: str, availableTime:str)->UserPreferences:
         userPreferences = False
         try:
-            userPreferences = UserPreferences(haveAnimal=haveAnimal, favoriteAnimal=favoriteAnimal, favoriteSize=favoriteSize, characteristics=characteristics, availableTime=availableTime)
+            userPreferences = UserPreferences(haveAnimal=haveAnimal, favoriteAnimal=favoriteAnimal, favoriteSize=favoriteSize, personalityCharacteristics=personalityCharacteristics, activitiesCharacteristics=activitiesCharacteristics, ageCharacteristics=ageCharacteristics, availableTime=availableTime)
         except ValidationError as e:
                 print(e)
         return userPreferences

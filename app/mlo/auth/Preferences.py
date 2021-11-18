@@ -4,7 +4,9 @@ class UserPreferences(BaseModel):
     haveAnimal: str
     favoriteAnimal: str
     favoriteSize: str
-    characteristics: str
+    personalityCharacteristics: str
+    activitiesCharacteristics: str
+    ageCharacteristics: str
     availableTime: str
 
     @validator('*')

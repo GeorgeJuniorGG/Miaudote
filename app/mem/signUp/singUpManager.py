@@ -70,7 +70,7 @@ class SignUpManager:
             print("Preencha os campos corretamente")
 
     def singUpScreen3Manager(self):
-        userPreferences =  self.dataModelService.createUserPreferencesData(self.signUpScreen3.ids._firstField.text, self.signUpScreen3.ids._secondField.text, self.signUpScreen3.ids._thirdField.text, self.signUpScreen3.ids._fourthField.text, self.signUpScreen3.ids._fifthField.text)
+        userPreferences =  self.dataModelService.createUserPreferencesData(self.signUpScreen3.ids._firstField.text, self.signUpScreen3.ids._secondField.text, self.signUpScreen3.ids._thirdField.text, self.signUpScreen3.ids._fourthField.text, self.signUpScreen3.ids._fifthField.text, self.signUpScreen3.ids._sixthField.text, self.signUpScreen3.ids._seventhField.text)
         if(userPreferences and self.storegeService.storePreferences(self.currentUser, userPreferences)):
             self.signUpScreen3.go_forward()
         else:

@@ -20,52 +20,53 @@ class SignUpScreen4(MDFloatLayout, MDScreen):
             {
                 "viewclass": "OneLineListItem",
                 "height": dp(56),
-                "text": f"Opção 1",
-                "on_release": lambda x=f"Opção 1": self.set_item1(x),
+                "text": f"Apartamento",
+                "on_release": lambda x=f"Apartamento": self.set_item1(x),
             }, 
             {
                 "viewclass": "OneLineListItem",
                 "height": dp(56),
-                "text": f"Opção 2",
-                "on_release": lambda x=f"Opção 2": self.set_item1(x),
+                "text": f"Casa",
+                "on_release": lambda x=f"Casa": self.set_item1(x),
             },
             {
                 "viewclass": "OneLineListItem",
                 "height": dp(56),
-                "text": f"Opção 3",
-                "on_release": lambda x=f"Opção 3": self.set_item1(x),
+                "text": f"Chácara",
+                "on_release": lambda x=f"Chácara": self.set_item1(x),
             },
-            {
-                "viewclass": "OneLineListItem",
-                "height": dp(56),
-                "text": f"Opção 4",
-                "on_release": lambda x=f"Opção 4": self.set_item1(x),
-            }]
+            # {
+            #     "viewclass": "OneLineListItem",
+            #     "height": dp(56),
+            #     "text": f"Opção 4",
+            #     "on_release": lambda x=f"Opção 4": self.set_item1(x),
+            # }
+            ]
         
         menu_items2 = [
             {
                 "viewclass": "OneLineListItem",
                 "height": dp(56),
-                "text": f"Opção 1",
-                "on_release": lambda x=f"Opção 1": self.set_item2(x),
+                "text": f"Até 25 m²",
+                "on_release": lambda x=f"Até 25 m²": self.set_item2(x),
             }, 
             {
                 "viewclass": "OneLineListItem",
                 "height": dp(56),
-                "text": f"Opção 2",
-                "on_release": lambda x=f"Opção 2": self.set_item2(x),
+                "text": f"De 25m² a 50 m²",
+                "on_release": lambda x=f"De 25m² a 50 m²": self.set_item2(x),
             },
             {
                 "viewclass": "OneLineListItem",
                 "height": dp(56),
-                "text": f"Opção 3",
-                "on_release": lambda x=f"Opção 3": self.set_item2(x),
+                "text": f"De 50m² a 100 m²",
+                "on_release": lambda x=f"De 50m² a 100 m²": self.set_item2(x),
             },
             {
                 "viewclass": "OneLineListItem",
                 "height": dp(56),
-                "text": f"Opção 4",
-                "on_release": lambda x=f"Opção 4": self.set_item2(x),
+                "text": f"Mais de 100 m²",
+                "on_release": lambda x=f"Mais de 100 m²": self.set_item2(x),
             }]
         
         self.menu1 = MDDropdownMenu(
