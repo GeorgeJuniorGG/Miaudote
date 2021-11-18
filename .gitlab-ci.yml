@@ -13,6 +13,5 @@ test-job:
     - pip3 install pytest
   script:
     - cd app
-    - pwd
     - echo "Etapa de teste"
     - pytest
