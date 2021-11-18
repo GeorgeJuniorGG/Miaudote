@@ -1,9 +1,16 @@
+default:
+  image: python:latest
+
 build-job:
   stage: build
+
   script:
     - echo "Etapa de build"
 
 test-job:
   stage: test
+  before_script:
+    - pip3 install pytest
   script:
     - echo "Etapa de teste"
+    - pytest app/
