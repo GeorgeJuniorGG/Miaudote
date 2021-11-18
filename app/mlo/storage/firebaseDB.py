@@ -17,19 +17,19 @@ class FirebaseDB(StoregeService):
         docRef = db.collection(u'adopters').document(currentUser)
         docRef.set(userData.dict())
 
-    def storeAddress(collection:str,currentUser:str, userAddress: Address)->bool:
+    def storeAddress(self, collection:str,currentUser:str, userAddress: Address)->bool:
         docRef = db.collection(collection).document(currentUser)
         if(docRef.update(userAddress.getAdressForFireStore())):
             return True
         return False
 
-    def storePreferences(currentUser:str, userPreferences:UserPreferences)->bool:
+    def storePreferences(self, currentUser:str, userPreferences:UserPreferences)->bool:
         docRef = db.collection(u'adopters').document(currentUser)
         if(docRef.update(userPreferences.getPreferencesForFireStore())):
             return True
         return False
 
-    def storeHomeCharacteristics(currentUser:str, userHomeCharacteristics: HomeCharacteristics)->bool:
+    def storeHomeCharacteristics(self, currentUser:str, userHomeCharacteristics: HomeCharacteristics)->bool:
         docRef = db.collection(u'adopters').document(currentUser)
         if(docRef.update(userHomeCharacteristics.getHomeCharacteristicsForFireStore())):
             return True

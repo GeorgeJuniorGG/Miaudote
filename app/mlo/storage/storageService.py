@@ -17,13 +17,13 @@ class StoregeService(ABC):
         pass
 
     @abstractmethod
-    def storeAddress(collection:str,currentUser:str, userAddress: Address)->bool:
+    def storeAddress(self, collection:str, currentUser:str, userAddress: Address)->bool:
         pass
 
     @abstractmethod
-    def storePreferences(currentUser:str, userPreferences:UserPreferences)->bool:
+    def storePreferences(self, currentUser:str, userPreferences:UserPreferences)->bool:
         pass
 
     @abstractmethod
-    def storeHomeCharacteristics(currentUser:str, userHomeCharacteristics: HomeCharacteristics)->bool:
+    def storeHomeCharacteristics(self, currentUser:str, userHomeCharacteristics: HomeCharacteristics)->bool:
         pass

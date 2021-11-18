@@ -7,7 +7,7 @@ auth = getFirebase().auth()
 
 class FireBaseAuthService(AuthService):
     #Cadastra novo usuario
-    def signUp(self, password1:str, password2:str, minimumAge:str, isProtector:bool, userData:BasicUSerData):
+    def signUp(self, password1:str, password2:str, minimumAge:bool, isProtector:bool, userData:BasicUSerData):
         if(not password1 or not password2):
             print("Preencha os campos corretamente")
             return False
