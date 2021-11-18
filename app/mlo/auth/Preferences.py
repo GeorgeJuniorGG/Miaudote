@@ -1,21 +1,20 @@
-from pydantic.dataclasses import dataclass
+from pydantic import BaseModel, validator
 
-@dataclass
-class userPreferences:
-    possuiAnimal: str
-    animalPreferido: str
-    portePreferido: str
-    caracteristicas: str
-    tempoDisponivel: str
+class UserPreferences(BaseModel):
+    haveAnimal: str
+    favoriteAnimal: str
+    favoriteSize: str
+    personalityCharacteristics: str
+    activitiesCharacteristics: str
+    ageCharacteristics: str
+    availableTime: str
 
-    def getJSONPreferences(self):
-        dataPreferences = {
-            u'preferences':{
-                u'possuiAnimal': self.possuiAnimal,
-                u'animalPreferido': self.animalPreferido,
-                u'portePreferido': self.portePreferido,
-                u'caracteristicas':self.caracteristicas,
-                u'tempoDisponivel':self.tempoDisponivel,
-            }
-        }
+    @validator('*')
+    def no_empty_fields(cls, v):
+        if v == '':
+            raise ValueError('Existem campos vazios')
+        return v
+
+    def getPreferencesForFireStore(self):
+        dataPreferences = {'preferences':self.dict()}
         return dataPreferences

@@ -33,7 +33,7 @@
         size_hint: 0.8, 0.1
         line_color_normal: cor.linhaTFN()
         line_color_focus: cor.linhaTFF()
-        pos_hint: {'center_x': 0.5, 'center_y': 0.71}
+        pos_hint: {'center_x': 0.5, 'center_y': 0.79}
         on_focus: if self.focus: root.menu1.open()
             
 
@@ -44,7 +44,7 @@
         color_mode: "custom"
         line_color_normal: cor.linhaTFN()
         line_color_focus: cor.linhaTFF()
-        pos_hint: {'center_x': 0.5, 'center_y': 0.62}
+        pos_hint: {'center_x': 0.5, 'center_y': 0.70}
         on_focus: if self.focus: root.menu2.open()
             
 
@@ -55,30 +55,49 @@
         color_mode: "custom"
         line_color_normal: cor.linhaTFN()
         line_color_focus: cor.linhaTFF()
-        pos_hint: {'center_x': 0.5, 'center_y': 0.53}
+        pos_hint: {'center_x': 0.5, 'center_y': 0.61}
         on_focus: if self.focus: root.menu3.open()
             
 
     MDTextField:
         id: _fourthField
-        hint_text: "Características do animal"
+        hint_text: "Características 1: (Personalidade)"
         size_hint: 0.8, 0.1
         color_mode: "custom"
         line_color_normal: cor.linhaTFN()
         line_color_focus: cor.linhaTFF()
-        pos_hint: {'center_x': 0.5, 'center_y': 0.44}
+        pos_hint: {'center_x': 0.5, 'center_y': 0.52}
         on_focus: if self.focus: root.menu4.open()
 
     MDTextField:
         id: _fifthField
+        hint_text: "Características 2: (Atividades)"
+        size_hint: 0.8, 0.1
+        color_mode: "custom"
+        line_color_normal: cor.linhaTFN()
+        line_color_focus: cor.linhaTFF()
+        pos_hint: {'center_x': 0.5, 'center_y': 0.43}
+        on_focus: if self.focus: root.menu5.open()
+
+    MDTextField:
+        id: _sixthField
+        hint_text: "Características 3: (Idade)"
+        size_hint: 0.8, 0.1
+        color_mode: "custom"
+        line_color_normal: cor.linhaTFN()
+        line_color_focus: cor.linhaTFF()
+        pos_hint: {'center_x': 0.5, 'center_y': 0.34}
+        on_focus: if self.focus: root.menu6.open()
+
+    MDTextField:
+        id: _seventhField
         hint_text: "Tempo disponível para o animal"
         size_hint: 0.8, 0.1
         color_mode: "custom"
         line_color_normal: cor.linhaTFN()
         line_color_focus: cor.linhaTFF()
-        pos_hint: {'center_x': 0.5, 'center_y': 0.35}
-        on_focus: if self.focus: root.menu5.open()
-            
+        pos_hint: {'center_x': 0.5, 'center_y': 0.25}
+        on_focus: if self.focus: root.menu7.open()
 
     MDFillRoundFlatButton:
         id: _SignupThreeForwardButton
@@ -86,6 +105,6 @@
         md_bg_color: cor.fundoB()
         font_size: "20sp"
         size_hint: (0.4, 0.05)
-        pos_hint: {'center_x': 0.5, 'center_y': 0.15}
+        pos_hint: {'center_x': 0.5, 'center_y': 0.12}
         on_release:
             root.controller.singUpScreen3Manager()

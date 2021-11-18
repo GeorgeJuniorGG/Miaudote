@@ -17,166 +17,226 @@ class SignUpScreen3(MDScreen, MDFloatLayout):
             {
                 "viewclass": "OneLineListItem",
                 "height": dp(56),
-                "text": f"Opção 1",
-                "on_release": lambda x=f"Opção 1": self.set_item1(x),
+                "text": f"Cachorro(s)",
+                "on_release": lambda x=f"Cachorro(s)": self.set_item1(x),
             }, 
             {
                 "viewclass": "OneLineListItem",
                 "height": dp(56),
-                "text": f"Opção 2",
-                "on_release": lambda x=f"Opção 2": self.set_item1(x),
+                "text": f"Gato(s)",
+                "on_release": lambda x=f"Gato(s)": self.set_item1(x),
             },
             {
                 "viewclass": "OneLineListItem",
                 "height": dp(56),
-                "text": f"Opção 3",
-                "on_release": lambda x=f"Opção 3": self.set_item1(x),
+                "text": f"Cachorros(s) e Gato(s)",
+                "on_release": lambda x=f"Cachorros(s) e Gato(s)": self.set_item1(x),
             },
             {
                 "viewclass": "OneLineListItem",
                 "height": dp(56),
-                "text": f"Opção 4",
-                "on_release": lambda x=f"Opção 4": self.set_item1(x),
+                "text": f"Outros",
+                "on_release": lambda x=f"Outros": self.set_item1(x),
             }]
         
         menu_items2 = [
             {
                 "viewclass": "OneLineListItem",
                 "height": dp(56),
-                "text": f"Opção 1",
-                "on_release": lambda x=f"Opção 1": self.set_item2(x),
+                "text": f"Cachorro(s)",
+                "on_release": lambda x=f"Cachorro(s)": self.set_item2(x),
             }, 
             {
                 "viewclass": "OneLineListItem",
                 "height": dp(56),
-                "text": f"Opção 2",
-                "on_release": lambda x=f"Opção 2": self.set_item2(x),
+                "text": f"Gato(s)",
+                "on_release": lambda x=f"Gato(s)": self.set_item2(x),
             },
             {
                 "viewclass": "OneLineListItem",
                 "height": dp(56),
-                "text": f"Opção 3",
-                "on_release": lambda x=f"Opção 3": self.set_item2(x),
+                "text": f"Cachorros(s) e Gato(s)",
+                "on_release": lambda x=f"Cachorros(s) e Gato(s)": self.set_item2(x),
             },
             {
                 "viewclass": "OneLineListItem",
                 "height": dp(56),
-                "text": f"Opção 4",
-                "on_release": lambda x=f"Opção 4": self.set_item2(x),
+                "text": f"Outros",
+                "on_release": lambda x=f"Outros": self.set_item2(x),
             }]
         
         menu_items3 = [
             {
                 "viewclass": "OneLineListItem",
                 "height": dp(56),
-                "text": f"Opção 1",
-                "on_release": lambda x=f"Opção 1": self.set_item3(x),
+                "text": f"Pequeno",
+                "on_release": lambda x=f"Pequeno": self.set_item3(x),
             }, 
             {
                 "viewclass": "OneLineListItem",
                 "height": dp(56),
-                "text": f"Opção 2",
-                "on_release": lambda x=f"Opção 2": self.set_item3(x),
+                "text": f"Médio",
+                "on_release": lambda x=f"Médio": self.set_item3(x),
             },
             {
                 "viewclass": "OneLineListItem",
                 "height": dp(56),
-                "text": f"Opção 3",
-                "on_release": lambda x=f"Opção 3": self.set_item3(x),
+                "text": f"Grande",
+                "on_release": lambda x=f"Grande": self.set_item3(x),
             },
             {
                 "viewclass": "OneLineListItem",
                 "height": dp(56),
-                "text": f"Opção 4",
-                "on_release": lambda x=f"Opção 4": self.set_item3(x),
+                "text": f"Não tenho uma preferência",
+                "on_release": lambda x=f"Não tenho uma preferencia": self.set_item3(x),
             }]
         
         menu_items4 = [
             {
                 "viewclass": "OneLineListItem",
                 "height": dp(56),
-                "text": f"Opção 1",
-                "on_release": lambda x=f"Opção 1": self.set_item4(x),
+                "text": f"Dócil",
+                "on_release": lambda x=f"Dócil": self.set_item4(x),
             }, 
             {
                 "viewclass": "OneLineListItem",
                 "height": dp(56),
-                "text": f"Opção 2",
-                "on_release": lambda x=f"Opção 2": self.set_item4(x),
+                "text": f"Tímido",
+                "on_release": lambda x=f"Tímido": self.set_item4(x),
             },
             {
                 "viewclass": "OneLineListItem",
                 "height": dp(56),
-                "text": f"Opção 3",
-                "on_release": lambda x=f"Opção 3": self.set_item4(x),
+                "text": f"Bravo",
+                "on_release": lambda x=f"Bravo": self.set_item4(x),
             },
             {
                 "viewclass": "OneLineListItem",
                 "height": dp(56),
-                "text": f"Opção 4",
-                "on_release": lambda x=f"Opção 4": self.set_item4(x),
+                "text": f"Agitado",
+                "on_release": lambda x=f"Agitado": self.set_item4(x),
             }]
         
         menu_items5 = [
             {
                 "viewclass": "OneLineListItem",
                 "height": dp(56),
-                "text": f"Opção 1",
-                "on_release": lambda x=f"Opção 1": self.set_item5(x),
+                "text": f"Brincalhão",
+                "on_release": lambda x=f"Brincalhão": self.set_item5(x),
             }, 
             {
                 "viewclass": "OneLineListItem",
                 "height": dp(56),
-                "text": f"Opção 2",
-                "on_release": lambda x=f"Opção 2": self.set_item5(x),
+                "text": f"Quieto",
+                "on_release": lambda x=f"Quieto": self.set_item5(x),
             },
             {
                 "viewclass": "OneLineListItem",
                 "height": dp(56),
-                "text": f"Opção 3",
-                "on_release": lambda x=f"Opção 3": self.set_item5(x),
+                "text": f"Dorminhoco",
+                "on_release": lambda x=f"Dorminhoco": self.set_item5(x),
+            }]
+
+        menu_items6 = [
+            {
+                "viewclass": "OneLineListItem",
+                "height": dp(56),
+                "text": f"Filhote",
+                "on_release": lambda x=f"Filhote": self.set_item6(x),
+            }, 
+            {
+                "viewclass": "OneLineListItem",
+                "height": dp(56),
+                "text": f"Jovem",
+                "on_release": lambda x=f"Jovem": self.set_item6(x),
             },
             {
                 "viewclass": "OneLineListItem",
                 "height": dp(56),
-                "text": f"Opção 4",
-                "on_release": lambda x=f"Opção 4": self.set_item5(x),
+                "text": f"Adulto",
+                "on_release": lambda x=f"Adulto": self.set_item6(x),
+            },
+            {
+                "viewclass": "OneLineListItem",
+                "height": dp(56),
+                "text": f"Mais velho",
+                "on_release": lambda x=f"Mais velho": self.set_item6(x),
+            }]
+        
+        menu_items7 = [
+            {
+                "viewclass": "OneLineListItem",
+                "height": dp(56),
+                "text": f"Menos de 30 min por dia",
+                "on_release": lambda x=f"Menos de 30 min/dia": self.set_item7(x),
+            }, 
+            {
+                "viewclass": "OneLineListItem",
+                "height": dp(56),
+                "text": f"De 30 min a 1 hora por dia",
+                "on_release": lambda x=f"De 30 min a 1 hora por dia": self.set_item7(x),
+            },
+            {
+                "viewclass": "OneLineListItem",
+                "height": dp(56),
+                "text": f"De 1 a 2 horas por dia",
+                "on_release": lambda x=f"De 1 a 2 horas por dia": self.set_item7(x),
+            },
+            {
+                "viewclass": "OneLineListItem",
+                "height": dp(56),
+                "text": f"Mais de 2 horas por dia",
+                "on_release": lambda x=f"Mais de 2 horas por dia": self.set_item7(x),
             }]
 
         self.menu1 = MDDropdownMenu(
             caller=self.ids._firstField,
             items=menu_items1,
-            position="bottom",
+            position="center",
             width_mult=4,
         )
 
         self.menu2 = MDDropdownMenu(
             caller=self.ids._secondField,
             items=menu_items2,
-            position="bottom",
+            position="center",
             width_mult=4,
         )
 
         self.menu3 = MDDropdownMenu(
             caller=self.ids._thirdField,
             items=menu_items3,
-            position="bottom",
+            position="center",
             width_mult=4,
         )
 
         self.menu4 = MDDropdownMenu(
             caller=self.ids._fourthField,
             items=menu_items4,
-            position="bottom",
+            position="center",
             width_mult=4,
         )
 
         self.menu5 = MDDropdownMenu(
             caller=self.ids._fifthField,
             items=menu_items5,
-            position="bottom",
+            position="center",
             width_mult=4,
         )
+
+        self.menu6 = MDDropdownMenu(
+            caller=self.ids._sixthField,
+            items=menu_items6,
+            position="center",
+            width_mult=4,
+        )
+        self.menu7 = MDDropdownMenu(
+            caller=self.ids._seventhField,
+            items=menu_items7,
+            position="center",
+            width_mult=4,
+        )
+        
 
     def set_item1(self, text__item):
         self.ids._firstField.text = text__item
@@ -197,6 +257,14 @@ class SignUpScreen3(MDScreen, MDFloatLayout):
     def set_item5(self, text__item):
         self.ids._fifthField.text = text__item
         self.menu5.dismiss()
+
+    def set_item6(self, text__item):
+        self.ids._sixthField.text = text__item
+        self.menu6.dismiss()
+
+    def set_item7(self, text__item):
+        self.ids._seventhField.text = text__item
+        self.menu7.dismiss()
     
     def go_forward(self):
         self.manager.go_forward_signup("SignUpScreen3")

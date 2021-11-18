@@ -1,5 +1,6 @@
 from __future__ import annotations
 from abc import ABC, abstractmethod
+from .basicUserdata import BasicUSerData
 
 class AuthService(ABC):
 
@@ -8,5 +9,5 @@ class AuthService(ABC):
         pass
 
     @abstractmethod
-    def signUp(self, email:str, password:str) -> bool:
+    def signUp(self, password1:str, password2:str, minimumAge:str, isProtector:bool, userData:BasicUSerData) -> bool:
         pass
