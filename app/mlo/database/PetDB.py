@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 from mlo.pets.PetModel import PetModel
+from typing import List
 
 class PetDB(ABC):
 
@@ -16,5 +17,5 @@ class PetDB(ABC):
         pass
 
     @abstractmethod
-    def getAllPets(self) -> list[PetModel]:
+    def getAllPets(self) -> List[PetModel]:
         pass

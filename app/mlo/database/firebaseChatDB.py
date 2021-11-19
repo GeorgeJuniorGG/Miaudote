@@ -1,6 +1,6 @@
 import threading
 from datetime import datetime, timezone
-
+from typing import List
 from mlo.chat.ChatMenssage import ChatMessage
 from .ChatDB import ChatDB
 from config.firebase import getFirebaseFirestore
@@ -27,7 +27,7 @@ class FChatDB(ChatDB):
         )
 
     # obter todas as mensagens no chat
-    def getChatMessages(self, chatID: str) -> list[ChatMessage]:
+    def getChatMessages(self, chatID: str) -> List[ChatMessage]:
         chat = self.__db.collection(self.__CHAT_COLLECTION).document(chatID)
         chat_messages = chat.collection(self.__MESSAGE_COLLECTION)
         messages = chat_messages.order_by('sentAt').get()

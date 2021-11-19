@@ -1,4 +1,6 @@
 from pydantic import BaseModel, Field
+from datetime import datetime, timezone
+from typing import List
 
 class PetModel(BaseModel):
     pid: str
@@ -13,4 +15,5 @@ class PetModel(BaseModel):
     size: str
     color: str
     requestStatus: bool = Field(default=False)
-    requestQueue: list[str] = Field(default_factory=list)
+    requestQueue: List[str] = Field(default_factory=list)
+    createAt: datetime = Field(default_factory=lambda x: datetime.now(timezone.utc))

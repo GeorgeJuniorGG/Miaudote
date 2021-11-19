@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 from mlo.chat.ChatMenssage import ChatMessage
+from typing import List
 
 class ChatDB(ABC):
 
@@ -12,7 +13,7 @@ class ChatDB(ABC):
         pass
         
     @abstractmethod
-    def getChatMessages(self, chatID: str) -> list[ChatMessage]:
+    def getChatMessages(self, chatID: str) -> List[ChatMessage]:
         pass
     
     @abstractmethod

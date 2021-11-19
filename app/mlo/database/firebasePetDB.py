@@ -1,6 +1,7 @@
 from .PetDB import PetDB
 from config.firebase import getFirebaseFirestore
 from mlo.pets.PetModel import PetModel
+from typing import List
 
 class FPetDB(PetDB):
 
@@ -33,10 +34,10 @@ class FPetDB(PetDB):
         pass
 
     # Obter todos os pets do banco
-    def getAllPets(self) -> list[PetModel]:
+    def getAllPets(self) -> List[PetModel]:
         db_pets = self.__c_ref.stream()
         
-        pets: list[PetModel] = list()
+        pets: List[PetModel] = list()
 
         for pet in db_pets:
             pet_dict = pet.to_dict()
