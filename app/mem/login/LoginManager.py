@@ -11,8 +11,12 @@ class LoginManager:
     def login(self, email:str, password:str):
         result = self.service.login(email, password)
         if result:
-            print(self.service.getUserID())
             print("Entrando...")
+            print(self.service.getUserID())
+            orchestrator = self.screen.manager.orchestrator
+            userID = self.service.getUserID()
+            orchestrator.userLogin(userID)
+            
         else:
             print("E-mail ou senha incorreto")
 

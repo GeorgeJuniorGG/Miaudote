@@ -1,15 +1,22 @@
 import json
+from datetime import datetime, time, timedelta
 
 from mem.screenmanager.MainScreenManager import MainScreenManager
 from mem.login.LoginManager import LoginManager
 from mem.signUp.signUpManager import SignUpManager
 from mem.welcome.WelcomeManager import WelcomeManager
+from mem.root.RootManager import RootManager
 
 from mlo.storage.firebaseDB import FirebaseDB
 from mlo.auth.dataModel import DataModel
 from mlo.auth.firebaseAuth import FireBaseAuthService
+from mlo.user.UserService import UserService
+from mlo.database.firebaseUserDB import FUserDB
+from mlo.database.firebasePetDB import FPetDB
+from mlo.pets.PetService import PetService
 
 from mem.screenmanager.screens import screens
+
 
 screenRecipes = {
 
@@ -60,12 +67,29 @@ screenRecipes = {
     },
 
     screens['root']: {
-        'controller': None,
-        'service': None,
-        'appFlow': 'rootFlow'
+        'db': {
+            'class': FUserDB,
+            'args': ('userID',)
+        },
+        'service': {
+            'class': UserService,
+            'args': None            
+        },
+        'controller': {
+            'class': RootManager,
+            'args': ('orchestrator',)
+        },
+    },
+    screens['home']: {
+        'db': {
+            'class': FPetDB,
+            'args': None
+        },
+        'service': {
+            'class': PetService,
+            'args': None            
+        }        
     }
-
-
 }
 
 
@@ -84,6 +108,13 @@ class Orchestrator:
             if suData == "":
                 return ""
             uData = json.loads(suData)
+
+            lastLogin = datetime.strptime(uData['lastLogin'], '%Y-%m-%d %H:%M:%S.%f')
+            now = datetime.now()
+            interv = lastLogin + timedelta(days=8)
+            if interv < now:
+                return ""
+
             return uData['userID']
 
     def appFlow(self):
@@ -96,6 +127,7 @@ class Orchestrator:
     def dict(self):
         return {
             'userID': self.userID,
+            'orchestrator': self
         }
 
     def __makeComponent(self, comp:dict, fArg=None, outArgs={}):
@@ -108,8 +140,10 @@ class Orchestrator:
         # TODO
         # carregar os argumentos do Componente usando dados do Orquestrador
         inArgs = self.dict()
+        #print(inArgs)
         args = list()
         for arg in comp['args']:
+            #print(arg)
             if arg in inArgs.keys():
                 args.append(inArgs[arg])
             elif arg in outArgs.keys():
@@ -118,32 +152,22 @@ class Orchestrator:
         if fArg != None:
             return comp['class'](fArg, *args)
 
+        #print(args)
         return comp['class'](*args)
 
 
     def __mixComponents(self, comp1:dict, comp2:dict, oA1:dict, oA2:dict):
         fArg = None
         if comp1['class'] == None:
-            if comp2['class'] == None:
-                return None
-            
-            fArg = self.__makeComponent(comp2, oA2)
+            return None
+
+        if comp2['class'] != None:    
+            fArg = self.__makeComponent(comp2, outArgs=oA2)
+        #print(fArg)
         
-        return self.__makeComponent(comp1, fArg, oA1)
+        return self.__makeComponent(comp1, fArg, outArgs=oA1)
 
-    # Instancia uma Screen do App, inializando todas as suas dependencias
-    def startScreen(self, screenName, outArgs:dict={}):
-        if screenName == screens['signUp']:
-            return self.__startSignUp()
-
-        return self.__startScreen(screenName, outArgs)
-
-    def __startScreen(self, screenName, outArgs:dict={}):
-        screenRecipe = screenRecipes[screenName]
-        dbComponent = screenRecipe['db']
-        serviceComponent = screenRecipe['service']
-        controllerComponent = screenRecipe['controller']
-
+    def __splitArgs(self, outArgs:dict):
         argList = []
         for key in ['db', 'service', 'controller']:
             if key in outArgs.keys():
@@ -151,7 +175,15 @@ class Orchestrator:
             else:
                 argList.append({})
         
-        dbArgs, sArgs, cArgs = argList
+        return argList
+
+    def __startScreen(self, screenName, outArgs:dict={}):
+        screenRecipe = screenRecipes[screenName]
+        dbComponent = screenRecipe['db']
+        serviceComponent = screenRecipe['service']
+        controllerComponent = screenRecipe['controller']
+
+        dbArgs, sArgs, cArgs = self.__splitArgs(outArgs)
 
         service = self.__mixComponents(serviceComponent, dbComponent, sArgs, dbArgs)
         controller = self.__makeComponent(controllerComponent, service, cArgs)
@@ -167,6 +199,22 @@ class Orchestrator:
         controller.addScreens()
         return None
 
+    # Instancia uma Screen do App, inializando todas as suas dependencias
+    def startScreen(self, screenName, outArgs:dict={}):
+        if screenName == screens['signUp']:
+            return self.__startSignUp()
+
+        return self.__startScreen(screenName, outArgs)
+
+    def makeComponent(self, screenName, outArgs:dict={}):
+        compRecipe = screenRecipes[screenName]
+        dbComponent = compRecipe['db']
+        serviceComponent = compRecipe['service']        
+
+        dbArgs, sArgs, dummy = self.__splitArgs(outArgs)
+        service = self.__mixComponents(serviceComponent, dbComponent, sArgs, dbArgs)
+        return service
+
     def __welcomeFlow(self):
         welcomeScreen = self.startScreen(screens['welcome'])
         self.manager.add_widget(welcomeScreen)
@@ -176,3 +224,19 @@ class Orchestrator:
     def __rootFlow(self):
         rootScreen = self.startScreen(screens['root'])
         self.manager.add_widget(rootScreen)
+
+    def __registerLogin(self, userID:str):
+        self.userID = userID
+        userData = {
+            'userID': self.userID,
+            'lastLogin': datetime.now().isoformat(sep=' ', timespec='milliseconds')
+        }
+        with open(self.__USER_DATA, 'w', encoding='utf-8') as uFile:
+            json.dump(userData, uFile, indent=2)
+
+    def userLogin(self, userID:str):
+        self.__registerLogin(userID)
+        self.manager.clear_widgets()
+        self.__rootFlow()
+        self.manager.changeScreen('left', screens['root'])
+    
