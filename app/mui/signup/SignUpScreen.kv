@@ -3,10 +3,13 @@
 #:set cor Color()
 
 <SignUpScreen>:
-    MDProgressBar:
-        value: 0
-        color: cor.detalheEscuro()
+    MDFloatLayout:
         pos_hint:{'center_x':0.5, 'center_y': 0.92}
+        size_hint: 1, 0.005
+        MDProgressBar:
+            value: 0
+            color: cor.detalheEscuro()
+            pos_hint:{'center_x':0.5, 'center_y': 0.5}
 
     MDIconButton:
         id: _SignupArrowButton

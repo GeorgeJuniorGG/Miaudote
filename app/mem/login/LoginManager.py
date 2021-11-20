@@ -15,3 +15,6 @@ class LoginManager:
             print("Entrando...")
         else:
             print("E-mail ou senha incorreto")
+
+    def goBackward(self):
+        self.screen.manager.goBackward('right')
