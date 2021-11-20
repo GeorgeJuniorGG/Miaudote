@@ -1,5 +1,6 @@
 from .ChatMenssage import ChatMessage
 from mlo.database.ChatDB import ChatDB
+from typing import List
 
 class ChatService:
 
@@ -26,7 +27,7 @@ class ChatService:
         except Exception as e:
             print(e)
 
-    def getMessages(self) -> list[dict]:
+    def getMessages(self) -> List[dict]:
         msg_obj_list = self.__chatdb.getChatMessages(self.__chatID)
         msg_list = list(map(lambda x:x.dict(), msg_obj_list))
         return msg_list

@@ -23,7 +23,7 @@
         size_hint: (0.8, 0.07)
         pos_hint: {'center_x': 0.5, 'center_y': 0.55}
         on_release:
-            root.welcome_to_login()
+            root.controller.welcomeToLogin()
             
 
     MDFillRoundFlatButton:
@@ -34,7 +34,7 @@
         size_hint: (0.8, 0.07)
         pos_hint: {'center_x': 0.5, 'center_y': 0.45}
         on_press:
-            root.welcome_to_signup()
+            root.controller.welcomeToSignUp()
 
     MDLabel:
         text: "Miaudote"

@@ -20,6 +20,8 @@ class SignUpManager:
     controller = ObjectProperty()
     currentUser: str
 
+    __screens = [SignUpScreen, SignUpScreen2a, SignUpScreen2b, SignUpScreen3, SignUpScreen4]
+
     def __init__(self, signUpScreen:SignUpScreen, signUpScreen2a:SignUpScreen2a, signUpScreen2b:SignUpScreen2b, signUpScreen3:SignUpScreen3, signUpScreen4:SignUpScreen4, manage:ScreenManager):
         self.signUpScreen=signUpScreen
         self.signUpScreen.controller = self
@@ -37,6 +39,8 @@ class SignUpManager:
         self.authService = FireBaseAuthService()
         self.storegeService =FirebaseDB()
 
+    def getScreen(self):
+        return self.signUpScreen
         
     def singUpScreenManager(self):
         userData = self.dataModelService.createUserData(self.signUpScreen.ids.name.text,self.signUpScreen.ids.cpf.text,self.signUpScreen.ids.email.text)

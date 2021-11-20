@@ -112,4 +112,5 @@ class SignUpScreen4(MDFloatLayout, MDScreen):
         self.manager.go_forward_signup("SignUpScreen4")
 
     def go_backward(self):
-        self.manager.go_backward_signup("SignUpScreen4")
+        #self.manager.go_backward_signup("SignUpScreen4")
+        self.controller.backward(self.name)

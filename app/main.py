@@ -8,6 +8,8 @@ from kivy.resources import resource_add_path
 from kivy.core.window import Window
 from kivy.factory import Factory
 
+from orchestrator import Orchestrator
+
 os.environ["MIAUDOTE_ROOT"] = str(Path(__file__).parent)
 
 # Permitir que o Kivy procure arquivos nestes diretórios
@@ -21,19 +23,19 @@ Window.size = (375,667)
 
 class MainApp(MDApp):
 
-    # # [hotfix] problema na atualização do kivymd
-    # def load_all_kv_files(self, path_to_directory):
-    #     for path_to_dir, dirs, files in os.walk(path_to_directory):
-    #         if "venv" in path_to_dir or "__pycache__" in path_to_dir:
-    #             continue
-    #         for name_file in files:
-    #             if (
-    #                 os.path.splitext(name_file)[1] == ".kv"
-    #                 and name_file != "style.kv"  # if use PyInstaller
-    #                 and "__MACOS" not in path_to_dir  # if use Mac OS
-    #             ):
-    #                 path_to_kv_file = os.path.join(path_to_dir, name_file)
-    #                 Builder.load_file(path_to_kv_file)
+    # [hotfix] problema na atualização do kivymd
+    def load_all_kv_files(self, path_to_directory):
+        for path_to_dir, dirs, files in os.walk(path_to_directory):
+            if "venv" in path_to_dir or "__pycache__" in path_to_dir:
+                continue
+            for name_file in files:
+                if (
+                    os.path.splitext(name_file)[1] == ".kv"
+                    and name_file != "style.kv"  # if use PyInstaller
+                    and "__MACOS" not in path_to_dir  # if use Mac OS
+                ):
+                    path_to_kv_file = os.path.join(path_to_dir, name_file)
+                    Builder.load_file(path_to_kv_file)
 
     def register_views(self):
         separator = '/'
@@ -71,6 +73,9 @@ class MainApp(MDApp):
     def build(self):
         self.register_views()
         self.load_all_kv_files(self.directory)
-        return Factory.MainScreenManager()
+        manager =  Factory.MainScreenManager()
+        orquestrator =  Orchestrator(manager)
+        orquestrator.appFlow()
+        return manager
 
 MainApp().run()

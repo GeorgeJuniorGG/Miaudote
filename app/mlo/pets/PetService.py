@@ -1,5 +1,6 @@
 from mlo.database.PetDB import PetDB
 from mlo.pets.PetModel import PetModel
+from typing import List
 
 class PetService:
 
@@ -7,8 +8,8 @@ class PetService:
         self.__db = db
 
     # Obtem todos os pets no banco
-    def getAllPets(self) -> list[dict]:
-        pets: list[PetModel]
+    def getAllPets(self) -> List[dict]:
+        pets: List[PetModel]
         pets = self.__db.getAllPets()
         petsD = list(map(lambda p: p.dict(), pets))
 

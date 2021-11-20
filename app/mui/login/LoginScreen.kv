@@ -12,7 +12,7 @@
             theme_text_color: "Custom"
             text_color: cor.detalheClaro()
             on_release:
-                root.go_backward()        
+                root.controller.goBackward()        
 
         MDLabel:
             text: "Login"
@@ -64,4 +64,4 @@
             md_bg_color: cor.fundoB()
             pos_hint: {"center_x": 0.5, "center_y": 0.35}
             size_hint: 0.35, 0.04
-            on_press: root.login(email.text, password.text)
+            on_press: root.controller.login(email.text, password.text)
