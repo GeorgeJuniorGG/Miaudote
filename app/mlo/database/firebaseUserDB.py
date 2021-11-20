@@ -12,6 +12,7 @@ class FUserDB(UserDB):
     def __init__(self, userID) -> None:
         self.__db = getFirebaseFirestore()
         self.__userID = userID
+        #print(self.__userID)
         self.__user = self.__getUser(self.__userID)
 
     # obtem do firebase os dados sobre um usuário pelo seu id

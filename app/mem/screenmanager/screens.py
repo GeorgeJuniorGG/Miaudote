@@ -2,7 +2,8 @@ screens = {
     'welcome': 'WelcomeScreen',
     'login': 'LoginScreen',
     'signUp': 'SignUpScreen',
-    'root': 'RootScreen'
+    'root': 'RootScreen',
+    'home': 'HomeScreen'
 }
 
 usualProtectorSignUpFlow = [ 'WelcomeScreen',

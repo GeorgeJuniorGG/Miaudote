@@ -16,5 +16,7 @@ class MiaudoteMenuScreen(MDScreen):
     # Item para os Pets favoritados (Adotante)
     favorites = ObjectProperty(MenuItem)
 
+    controller = None
+    
     def open_favorites(self, app):
         app.change_screen(FavoritesScreen(name='Favorites'))

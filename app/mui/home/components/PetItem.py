@@ -43,8 +43,8 @@ class PetItem(RectangularRippleBehavior, ButtonBehavior, MDFloatLayout):
         super().__init__(**kwargs)
 
         self.petImageSource = data['imageSource']
-        self.petName = data['petName']
-        self.petDescription = data['petDecription']
+        self.petName = data['name']
+        self.petDescription = data['details']
         labels = data['petChars']
         Clock.schedule_once(lambda x: self.insertLabels(labels))
 
