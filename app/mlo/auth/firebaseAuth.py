@@ -1,3 +1,4 @@
+from .UserLoginData import UserLoginData
 from .basicUserdata import BasicUSerData
 from .authService import AuthService
 from config.firebase import getFirebase
@@ -38,9 +39,10 @@ class FireBaseAuthService(AuthService):
             return currentUser
 
     #Verifica cadastro do usuario
-    def login(self, email:str, password:str) -> bool:
+    # def login(self, email:str, password:str) -> bool:
+    def login(self, userLogin: UserLoginData) -> bool:
         try:
-            result = self.__auth.sign_in_with_email_and_password(email, password)
+            result = self.__auth.sign_in_with_email_and_password(userLogin.email, userLogin.password)
             self.__userID = result['localId']
             return True
         except:
