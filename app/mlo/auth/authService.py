@@ -11,3 +11,7 @@ class AuthService(ABC):
     @abstractmethod
     def signUp(self, password1:str, password2:str, minimumAge:str, isProtector:bool, userData:BasicUSerData) -> bool:
         pass
+
+    @abstractmethod
+    def getUserID(self) -> str:
+        pass

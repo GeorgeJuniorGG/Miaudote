@@ -7,8 +7,10 @@ import pyrebase
 cred = credentials.Certificate("config/miaudote-b4e55-firebase-adminsdk-eucjs-145c67a2b8.json")
 firebase_admin.initialize_app(cred)
 
+client = firestore.client()
+
 def getFirebaseFirestore():
-    return firestore.client()
+    return client
 
 #Configuração de comunicação com o firebase usando pyrebase 4
 firebaseConfig = {
