@@ -12,30 +12,25 @@ class FireBaseAuthService(AuthService):
     #Cadastra novo usuario
     def signUp(self, password1:str, password2:str, minimumAge:bool, isProtector:bool, userData:BasicUSerData):
         if(not password1 or not password2):
-            print("Preencha os campos corretamente")
-            return False
-        elif(password1 != password2):
-            print("As senhas inseridas são diferentes")
-            return False
+            return "Preencha os campos corretamente"
         elif(len(password1)<6):
-            print("A senha deve ter no mínimo 6 digitos")
-            return False
+            return "A senha deve ter no mínimo 6 digitos"
+        elif(password1 != password2):
+            return "As senhas inseridas são diferentes"
         elif(not minimumAge):
-            print("Você deve ter mais de 18 anos para usar o aplicativo")
-            return False
+            return "Você deve ter mais de 18 anos para usar o aplicativo"
         else:
             try:
                 currentUser = self.__auth.create_user_with_email_and_password(userData.email, password1)['localId']
                 print("Cadastro realizado com sucesso!")
             except:
-                print("E-mail já cadastrado")
-                return False
+                return "E-mail já cadastrado"
             if(isProtector):
                 FirebaseDB.createProtector(currentUser,userData)
             else:
                 FirebaseDB.createAdopter(currentUser,userData)
             self.__userID = currentUser
-            return currentUser
+            return True
 
     #Verifica cadastro do usuario
     def login(self, email:str, password:str) -> bool:

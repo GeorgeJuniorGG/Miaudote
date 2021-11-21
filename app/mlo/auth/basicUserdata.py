@@ -6,6 +6,12 @@ class BasicUSerData(BaseModel):
     cpf: int
     email: EmailStr
 
+    @validator('*')
+    def no_empty_fields(cls, v):
+        if v == '':
+            raise ValueError('Existem campos vazios')
+        return v
+    
     @validator('name')
     def name_not_empty(cls, v):
         if len(v)<1:
