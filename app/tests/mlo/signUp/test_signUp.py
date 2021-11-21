@@ -91,7 +91,7 @@ def testInvalidState():
     loginScreenData = {
         'name':'Carlos de Souza',
         'cpf':10916877784,
-        'email':'carlos5@gmail.com',
+        'email':'carlos6@gmail.com',
         'password1':'asd123',
         'password2':'asd123',
         'minimumAge': True,
@@ -113,7 +113,7 @@ def testInvalidCity():
     loginScreenData = {
         'name':'Carlos de Souza',
         'cpf':10916877784,
-        'email':'carlos6@gmail.com',
+        'email':'carlos7@gmail.com',
         'password1':'asd123',
         'password2':'asd123',
         'minimumAge': True,
@@ -135,7 +135,7 @@ def testCEPWith7digits():
     loginScreenData = {
         'name':'Carlos de Souza',
         'cpf':10916877784,
-        'email':'carlos7@gmail.com',
+        'email':'carlos8@gmail.com',
         'password1':'asd123',
         'password2':'asd123',
         'minimumAge': True,
@@ -157,7 +157,7 @@ def testInvalidNeighborhood():
     loginScreenData = {
         'name':'Carlos de Souza',
         'cpf':10916877784,
-        'email':'carlos8@gmail.com',
+        'email':'carlos9@gmail.com',
         'password1':'asd123',
         'password2':'asd123',
         'minimumAge': True,
@@ -179,7 +179,7 @@ def testInvalidAddress():
     loginScreenData = {
         'name':'Carlos de Souza',
         'cpf':10916877784,
-        'email':'carlos9@gmail.com',
+        'email':'carlos10@gmail.com',
         'password1':'asd123',
         'password2':'asd123',
         'minimumAge': True,
@@ -201,7 +201,7 @@ def testInvalidNumber():
     loginScreenData = {
         'name':'Carlos de Souza',
         'cpf':10916877784,
-        'email':'carlos10@gmail.com',
+        'email':'carlos11@gmail.com',
         'password1':'asd123',
         'password2':'asd123',
         'minimumAge': True,
@@ -223,7 +223,7 @@ def testAllCorrect():
     loginScreenData = {
         'name':'Carlos de Souza',
         'cpf':10916877784,
-        'email':'carlos11@gmail.com',
+        'email':'carlos12@gmail.com',
         'password1':'asd123',
         'password2':'asd123',
         'minimumAge': True,
@@ -240,3 +240,38 @@ def testAllCorrect():
     }
     action = signUpManager.singUpScreen2bManager(**singUpScreen2bData)
     assert action == "Cadastro realizado com sucesso"
+
+def testCPFWith11Digits():
+    loginScreenData = {
+        'name':'Carlos de Souza',
+        'cpf':109168777831,
+        'email':'carlos13@gmail.com',
+        'password1':'asd123',
+        'password2':'asd123',
+        'minimumAge': True,
+        'check':True
+    }
+    action = signUpManager.singUpScreenManager(**loginScreenData)
+    assert action == "CPF inválido"
+
+def testCEPWith9digits():
+    loginScreenData = {
+        'name':'Carlos de Souza',
+        'cpf':10916877784,
+        'email':'carlos14@gmail.com',
+        'password1':'asd123',
+        'password2':'asd123',
+        'minimumAge': True,
+        'check':True
+    }
+    signUpManager.singUpScreenManager(**loginScreenData)
+    singUpScreen2bData = {
+        'state':'São Paulo',
+        'city':'Campinas',
+        'CEP':1308387,
+        'neighborhood':'Cidade Universitária',
+        'address':'R. da Reitoria',
+        'number':121
+    }
+    action = signUpManager.singUpScreen2bManager(**singUpScreen2bData)
+    assert action == "CEP inválido"
