@@ -10,7 +10,7 @@ class LoginManager:
         self.service = service
         self.screen.controller = self
     
-    def login(self, email:str, password:str):
+    def login(self, email:str, password:str) -> bool:
         userLogin = False
         try: 
             userLogin = UserLoginData(email=email, password=password) 
@@ -22,8 +22,12 @@ class LoginManager:
             if result:
                 print(self.service.getUserID())
                 print("Entrando...")
+                return True
+            else:
+                print("Usuário não cadastrado")
+                return False
         else:
-            print("E-mail ou senha incorreto")
+            return False
 
     def goBackward(self):
         self.screen.manager.goBackward('right')
