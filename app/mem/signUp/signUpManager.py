@@ -1,3 +1,7 @@
+from mlo.auth.Address import Address
+from mlo.auth.HomeCharacteristics import HomeCharacteristics
+from mlo.auth.Preferences import UserPreferences
+from mlo.auth.basicUserdata import BasicUSerData
 from mui.signup.SignUpScreen import SignUpScreen
 from mui.signup.SignUpScreen2a import SignUpScreen2a
 from mui.signup.SignUpScreen2b import SignUpScreen2b
@@ -73,24 +77,26 @@ class SignUpManager:
 
         userData = self.dataModelService.createUserData(**sUData)
         
-        if(userData):
+        if(type(userData)==BasicUSerData):
             authData = {
                 'password1': self.signUpScreen.ids.password1.text,
                 'password2': self.signUpScreen.ids.password2.text,
                 'minimumAge': self.signUpScreen.ids.minimumAge.active,
                 'isProtector': self.signUpScreen.ids._check.active,
             }
-            self.currentUser = self.authService.signUp(**authData, userData=userData)
-            if(self.signUpScreen.ids._check.active and  self.currentUser):
-                #self.signUpScreen.go_forwardB()
-                self.changeScreen(upf, self.signUpScreen.name)
-            elif(not self.signUpScreen.ids._check.active and self.currentUser):
-                #self.signUpScreen.go_forwardA()
-                self.changeScreen(usf, self.signUpScreen.name)
+            signUp = self.authService.signUp(**authData, userData=userData)
+            if(signUp==True):
+                self.currentUser = self.authService.getUserID()
+                if(self.signUpScreen.ids._check.active):
+                    #self.signUpScreen.go_forwardB()
+                    self.changeScreen(upf, self.signUpScreen.name)
+                elif(not self.signUpScreen.ids._check.active):
+                    #self.signUpScreen.go_forwardA()
+                    self.changeScreen(usf, self.signUpScreen.name)
             else:
-                print("Algo deu errado durante o cadastro")
+                print(signUp)
         else:
-            print("Preencha os campos corretamente")
+            print(userData)
 
         
     def singUpScreen2aManager(self):
@@ -103,11 +109,14 @@ class SignUpManager:
             self.signUpScreen2a.ids.number.text
         )
         userAddress = self.dataModelService.createAddressData(*addressData)
-        if(userAddress and self.storegeService.storeAddress('adopters',self.currentUser, userAddress)):
-            #self.signUpScreen2a.go_forward()
-            self.changeScreen(usf, self.signUpScreen2a.name)
+        if(type(userAddress)==Address):
+            if(self.storegeService.storeAddress('adopters',self.currentUser, userAddress)):
+                #self.signUpScreen2a.go_forward()
+                self.changeScreen(usf, self.signUpScreen2a.name)
+            else:
+                print('Erro ao armazenar dados')
         else:
-            print("Preencha os campos corretamente")
+            print(userAddress)
 
     def singUpScreen2bManager(self):
         addressData = (
@@ -119,14 +128,17 @@ class SignUpManager:
             self.signUpScreen2b.ids.number.text
         )
         userAddress = self.dataModelService.createAddressData(*addressData)
-        if(userAddress and self.storegeService.storeAddress('protectors', self.currentUser, userAddress)):
-            if(self.signUpScreen2b.ids._ToSCheck.active):
-                #self.signUpScreen2b.go_forward()
-                self.changeScreen(upf, self.signUpScreen2b.name)
+        if(type(userAddress)==Address):
+            if(self.storegeService.storeAddress('protectors', self.currentUser, userAddress)):
+                if(self.signUpScreen2b.ids._ToSCheck.active):
+                    #self.signUpScreen2b.go_forward()
+                    self.changeScreen(upf, self.signUpScreen2b.name)
+                else:
+                    self.signUpScreen2b.show_terms_of_service_dialog()
             else:
-                self.signUpScreen2b.show_terms_of_service_dialog()
+                print('Erro ao armazenar dados')
         else:
-            print("Preencha os campos corretamente")
+            print(userAddress)
 
     def singUpScreen3Manager(self):
         prefData = (
@@ -139,11 +151,14 @@ class SignUpManager:
             self.signUpScreen3.ids._seventhField.text
         )
         userPreferences =  self.dataModelService.createUserPreferencesData(*prefData)
-        if(userPreferences and self.storegeService.storePreferences(self.currentUser, userPreferences)):
-            #self.signUpScreen3.go_forward()
-            self.changeScreen(usf, self.signUpScreen3.name)
+        if(type(userPreferences)==UserPreferences):
+            if(self.storegeService.storePreferences(self.currentUser, userPreferences)):
+                #self.signUpScreen3.go_forward()
+                self.changeScreen(usf, self.signUpScreen3.name)
+            else:
+                print('Erro ao armazenar dados')
         else:
-            print("Preencha os campos corretamente")
+            print(userPreferences)
 
     def singUpScreen4Manager(self):
         homeData = (
@@ -154,12 +169,14 @@ class SignUpManager:
             self.signUpScreen4.ids.criancas.active
         )
         userHomeCharacteristics = self.dataModelService.createHomeCharacteristicsData(*homeData)
-        if(userHomeCharacteristics and 
-           self.storegeService.storeHomeCharacteristics(self.currentUser, userHomeCharacteristics)):
-            if(self.signUpScreen4.ids._ToSCheck.active):
-                #self.signUpScreen4.go_forward()
-                self.changeScreen(usf, self.signUpScreen4.name)
+        if(type(userHomeCharacteristics)==HomeCharacteristics): 
+            if(self.storegeService.storeHomeCharacteristics(self.currentUser, userHomeCharacteristics)):
+                if(self.signUpScreen4.ids._ToSCheck.active):
+                    #self.signUpScreen4.go_forward()
+                    self.changeScreen(usf, self.signUpScreen4.name)
+                else:
+                    self.signUpScreen4.show_terms_of_service_dialog()
             else:
-                self.signUpScreen4.show_terms_of_service_dialog()
+                print('Erro ao armazenar dados')
         else:
-            print("Preencha os campos corretamente")    
+            print(userHomeCharacteristics)    
