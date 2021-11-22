@@ -1,5 +1,5 @@
 from pydantic import BaseModel, validator, EmailStr
-
+from unidecode import unidecode
 
 class BasicUSerData(BaseModel):
     name: str
@@ -18,6 +18,12 @@ class BasicUSerData(BaseModel):
             raise ValueError('Preencha seu nome')
         return v
 
+    @validator('name')
+    def name_without_numbers(cls, v):
+        if not str(v).replace(" ", "").isalpha():
+            raise ValueError('Nome não pode conter números')
+        return v
+        
     @validator('cpf')
     def cpf_with_eleven_numbers(cls, v):
         if len(str(v))!=11:

@@ -20,7 +20,7 @@ def testInvalidName():
         'check':True
     }
     action = signUpManager.singUpScreenManager(**loginScreenData)
-    assert action == "Preencha os campos corretamente"
+    assert action == "Nome não pode conter números"
     
 def testCPFWith10Digits():
     loginScreenData = {
@@ -103,11 +103,11 @@ def testInvalidState():
         'city':'Campinas',
         'CEP':13083872,
         'neighborhood':'Cidade Universitária',
-        'address':'R. da Reitoria',
+        'address':'Rua da Reitoria',
         'number':121
     }
     action = signUpManager.singUpScreen2bManager(**singUpScreen2bData)
-    assert action == "Preencha os campos corretamente"
+    assert action == "Estado não pode conter números"
 
 def testInvalidCity():
     loginScreenData = {
@@ -125,11 +125,11 @@ def testInvalidCity():
         'city':'@123',
         'CEP':13083872,
         'neighborhood':'Cidade Universitária',
-        'address':'R. da Reitoria',
+        'address':'Rua da Reitoria',
         'number':121
     }
     action = signUpManager.singUpScreen2bManager(**singUpScreen2bData)
-    assert action == "Preencha os campos corretamente"
+    assert action == "Cidade não pode conter números"
 
 def testCEPWith7digits():
     loginScreenData = {
@@ -147,7 +147,7 @@ def testCEPWith7digits():
         'city':'Campinas',
         'CEP':1308387,
         'neighborhood':'Cidade Universitária',
-        'address':'R. da Reitoria',
+        'address':'Rua da Reitoria',
         'number':121
     }
     action = signUpManager.singUpScreen2bManager(**singUpScreen2bData)
@@ -169,11 +169,11 @@ def testInvalidNeighborhood():
         'city':'Campinas',
         'CEP':13083872,
         'neighborhood':'@123',
-        'address':'R. da Reitoria',
+        'address':'Rua da Reitoria',
         'number':121
     }
     action = signUpManager.singUpScreen2bManager(**singUpScreen2bData)
-    assert action == "Preencha os campos corretamente"
+    assert action == "Bairro não pode conter caracteres especiais"
 
 def testInvalidAddress():
     loginScreenData = {
@@ -195,7 +195,7 @@ def testInvalidAddress():
         'number':121
     }
     action = signUpManager.singUpScreen2bManager(**singUpScreen2bData)
-    assert action == "Preencha os campos corretamente"
+    assert action == "Endereço não pode conter caracteres especiais"
 
 def testInvalidNumber():
     loginScreenData = {
@@ -213,7 +213,7 @@ def testInvalidNumber():
         'city':'Campinas',
         'CEP':13083872,
         'neighborhood':'Cidade Universitária',
-        'address':'R. da Reitoria',
+        'address':'Rua da Reitoria',
         'number':'@123'
     }
     action = signUpManager.singUpScreen2bManager(**singUpScreen2bData)
@@ -235,7 +235,7 @@ def testAllCorrect():
         'city':'Campinas',
         'CEP':13083872,
         'neighborhood':'Cidade Universitária',
-        'address':'R. da Reitoria',
+        'address':'Rua da Reitoria',
         'number':121
     }
     action = signUpManager.singUpScreen2bManager(**singUpScreen2bData)
@@ -270,7 +270,7 @@ def testCEPWith9digits():
         'city':'Campinas',
         'CEP':1308387,
         'neighborhood':'Cidade Universitária',
-        'address':'R. da Reitoria',
+        'address':'Rua da Reitoria',
         'number':121
     }
     action = signUpManager.singUpScreen2bManager(**singUpScreen2bData)
