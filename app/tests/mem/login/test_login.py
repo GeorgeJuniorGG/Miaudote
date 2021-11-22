@@ -1,5 +1,14 @@
+from logging import Manager
 from mlo.auth.firebaseAuth import FireBaseAuthService
 from mem.login.LoginManager import LoginManager
+
+class FakeOrchestrator:
+    def userLogin(self, userID):
+        pass
+
+class FakeScreenManager:
+    def __init__(self, orchestrator) -> None:
+        self.orchestrator = orchestrator
 
 service = FireBaseAuthService()
 loginManager = LoginManager(service)
@@ -91,5 +100,8 @@ def testNotRegistredValidUser():
 def testRegistredValidUser():
     email = "usuario@teste.com"
     password = "Teste123"
+    orchestrator = FakeOrchestrator()
+    manager = FakeScreenManager(orchestrator)
+    loginManager.screen.manager = manager
     validation = loginManager.login(email, password)
     assert validation == True

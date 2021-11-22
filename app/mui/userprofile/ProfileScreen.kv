@@ -4,8 +4,8 @@
 #:set cor Color()
 
 <ProfileScreen>:
-    on_kv_post:
-        self.getUserData()
+    # on_kv_post:
+    #     self.getUserData()
 
     MDFloatLayout:
         #md_bg_color: get_color_from_hex('ffffff')
@@ -64,7 +64,7 @@
             
             UserInfo:
                 id: cpf
-                fieldName: 'cpf'
+                fieldName: 'CPF'
                 fieldValue: ''
 
             UserInfo:
@@ -72,11 +72,7 @@
                 fieldName: 'Email'
                 fieldValue: ''
 
-            UserInfo:
-                id: phone
-                fieldName: 'Telefone'
-                fieldValue: ''
 
             Widget:
-                size_hint: 1, 0.5
+                size_hint: 1, 0.7
             

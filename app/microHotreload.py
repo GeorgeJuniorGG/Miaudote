@@ -23,7 +23,7 @@ class CustomApp( MDApp):
     manager: ScreenManager
     KV_FILES = [ 
                  'mui/root/RootScreen.kv',
-                 'mui/menu/MiaudoteMenu.kv',
+                 'mui/menu/MiaudoteMenuScreen.kv',
                  'mui/menu/components/menuItem.kv',
                  'mui/home/HomeScreen.kv',
                  'mui/home/components/PetItem.kv',
@@ -38,7 +38,7 @@ class CustomApp( MDApp):
     CLASSES = {
         'HomeScreen': 'mui.home.HomeScreen',
         'PetItem': 'mui.home.components.PetItem',
-        'MiaudoteMenu': 'mui.menu.MiaudoteMenu',
+        'MiaudoteMenuScreen': 'mui.menu.MiaudoteMenuScreen',
         'MenuItem': 'mui.menu.components.MenuItem',
         'ProfileScreen': 'mui.userprofile.ProfileScreen',
         'UserInfo': 'mui.userprofile.components.UserInfo',

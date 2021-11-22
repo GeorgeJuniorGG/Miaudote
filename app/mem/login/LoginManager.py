@@ -22,6 +22,9 @@ class LoginManager:
             if result:
                 print(self.service.getUserID())
                 print("Entrando...")
+                orchestrator = self.screen.manager.orchestrator
+                userID = self.service.getUserID()
+                orchestrator.userLogin(userID)
                 return True
             else:
                 print("Usuário não cadastrado")

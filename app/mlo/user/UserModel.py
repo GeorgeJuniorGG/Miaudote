@@ -12,8 +12,8 @@ class UserModel(BaseModel):
     
 class AdopterModel(UserModel):
     favorites: List[PetModel] = Field(default_factory=list)
-    homeCharacteristics: HomeCharacteristics.homeCharacteristics
-    preferences: Preferences.userPreferences
+    homeCharacteristics: HomeCharacteristics.HomeCharacteristics
+    preferences: Preferences.UserPreferences
 
 class ProtectorModel(UserModel):
     pets: List[PetModel] = Field(default_factory=list)

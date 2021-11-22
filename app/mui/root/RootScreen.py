@@ -9,6 +9,8 @@ from kivy.properties import (
     ObjectProperty
 )
 
+from mui.userprofile.ProfileScreen import ProfileScreen
+
 class MiaudoteLogo(MDFloatLayout):
     ...
 
@@ -48,4 +50,8 @@ class ManagerRootTabs(ScreenManager):
     tabPanel = ObjectProperty(MiaudoteNavBar)
 
 class RootScreen(MDScreen):
-    ...
+    tabManager = ObjectProperty(ManagerRootTabs)
+    homeScreen = ObjectProperty()
+    menuScreen = ObjectProperty()
+    profileScreen = ObjectProperty()
+    controller = None
