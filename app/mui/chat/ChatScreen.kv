@@ -1,0 +1,124 @@
+#:kivy 2.0
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+#:import Color mui.ColorTheme.Color
+#:set cor Color()
+
+<MessageSent>:
+    size_hint_y: None
+    pos_hint: {'right': 0.98}
+    height: self.texture_size[1]
+    padding: 12, 10
+    theme_text_color: "Custom"
+    text_color: cor.textMessageSent()
+    canvas.before:
+        Color:
+            rgb: get_color_from_hex('#8B3A27')
+        RoundedRectangle:
+            size: self.width, self.height
+            pos: self.pos
+            radius: [23, 23, 0, 23]
+
+<MessageReceived>:
+    size_hint_y: None
+    pos_hint: {'x': 0.02}
+    height: self.texture_size[1]
+    padding: 12, 10
+    theme_text_color: "Custom"
+    text_color: cor.textMessageReceived()
+    canvas.before:
+        Color:
+            rgb: get_color_from_hex('#287484')
+        RoundedRectangle:
+            size: self.width, self.height
+            pos: self.pos
+            radius: [23, 23, 23, 0]
+
+<ChatScreen>:
+    name: "chat"
+    chat_list: chat_list
+    text_input: text_input
+    MDIconButton:
+        icon: "arrow-left"
+        user_font_size: "35sp"
+        pos_hint: {"center_y": 0.95}
+        theme_text_color: "Custom"
+        text_color: cor.arrowIconChatScreen()
+
+    FloatLayout:
+        MDIconButton:
+            icon: "account-circle"
+            user_font_size: "65sp"
+            pos_hint: {'center_x':0.50, 'center_y': 0.92}
+            canvas.before:
+                Color:
+                    rgba: cor.ellipseColor()
+                Ellipse:
+                    size: 62, 62
+                    pos: self.x+12.5, self.y+12.5
+
+        MDLabel:
+            text: "John Wick"
+            font_size: "23sp"
+            halign: "center"
+            theme_text_color: "Custom"
+            text_color: cor.userNameChatScreen()
+            pos_hint: {'center_y': 0.84}
+
+    ScrollView:
+        size_hint_y: 0.7
+        pos_hint: {'x': 0,'y': 0.1}
+        do_scroll_x: False
+        do_scroll_y: True
+        BoxLayout:
+            id: chat_list
+            orientation: 'vertical'
+            size: (root.width, root.height)
+            height: self.minimum_height
+            size_hint: None, None
+            pso_hint: {'top': 10}
+            cols: 1
+            spacing: 5
+
+    MDFloatLayout:
+        md_bg_color: cor.chatTextBackground()
+        size_hint_y: 0.09
+        MDFloatLayout:
+            size_hint: .8, .75
+            pos_hint: {'center_x':.43, 'center_y':.5}
+            canvas:
+                Color:
+                    rgb: cor.chatText()
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [23, 23, 23, 23]
+
+            MDIconButton:
+                icon: "emoticon-outline"
+                pos_hint: {'center_x':.08, 'center_y':.5}
+                user_font_size: "25sp"
+                theme_text_color: "Custom"
+                text_color: get_color_from_hex('#8B3A27')
+
+            TextInput:
+                id: text_input
+                hint_text: "Mensagem"
+                size_hint: 0.82, 0.85
+                pos_hint: {'center_x':.55, 'center_y':.5}
+                font_size: "18sp"
+                height: self.minimum_height
+                multiline: True
+                cursor_color: get_color_from_hex('#8B3A27')
+                cursor_width: "2sp"
+                foreground_color: get_color_from_hex('#8B3A27')
+                background_color: cor.chatTextInputBackground()
+                padding: 5,12,20,5
+
+        MDIconButton:
+            icon: "send"
+            pos_hint: {'center_x':.91, 'center_y':.5}
+            user_font_size: "25sp"
+            theme_text_color: "Custom"
+            text_color: get_color_from_hex('#8B3A27')
+            on_release:
+                root.send()

@@ -1,0 +1,78 @@
+#:kivy 2.0
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+#:import Color mui.ColorTheme.Color
+#:set cor Color()
+
+<ProfileScreen>:
+    # on_kv_post:
+    #     self.getUserData()
+
+    MDFloatLayout:
+        #md_bg_color: get_color_from_hex('ffffff')
+        MDFloatLayout:
+            #md_bg_color: get_color_from_hex(cor.detalheEscuro())
+            size_hint: 1, None
+            height: 70
+            pos_hint: {'top': 0.96}
+            
+            MDFloatLayout:
+                #md_bg_color: get_color_from_hex('#ececec')
+                size_hint: None, None
+                height: 80
+                width: 80
+                pos_hint: {'top': 1, 'center_x':0.2}
+                canvas.before:
+                    Color: 
+                        rgba: get_color_from_hex('#8C5042')  
+                    RoundedRectangle:
+                        size: dp(90), dp(90)
+                        pos: self.x - dp(5), self.y - dp(5)
+                        radius: 50,50
+
+                FitImage:
+                    id: user_image
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                    radius: 50, 50
+
+                MDIconButton:
+                    icon: 'pencil-outline'
+                    user_font_size: "20sp"
+                    theme_text_color: 'Custom'
+                    text_color: get_color_from_hex('#8C5042')
+                    pos_hint: {'right': 1.12, 'top': 0.45}
+                    md_bg_color: get_color_from_hex('#97B9C0EA')
+                    on_press: print('Trocar Imagem de Perfil')
+
+            MDIconButton:
+                icon: "exit-to-app"
+                user_font_size: "55sp"
+                theme_text_color: 'Custom'
+                text_color: get_color_from_hex('#8C5042')
+                pos_hint: {'center_x': 0.88, 'center_y': 0.5}
+                on_press: print('Deslogar')
+
+        MDGridLayout:
+            pos_hint: {'top': 0.83}
+            cols: 1
+            spacing: '30dp'
+            padding: '30dp','20dp'
+
+            UserInfo:
+                id: name
+                fieldName: 'Nome'
+                fieldValue: ''
+            
+            UserInfo:
+                id: cpf
+                fieldName: 'CPF'
+                fieldValue: ''
+
+            UserInfo:
+                id: email
+                fieldName: 'Email'
+                fieldValue: ''
+
+
+            Widget:
+                size_hint: 1, 0.7
+            

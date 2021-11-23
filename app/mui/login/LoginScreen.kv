@@ -1,0 +1,67 @@
+#:kivy 2.0
+#:import Color mui.ColorTheme.Color
+#:set cor Color()
+
+<LoginScreen>:
+    MDFloatLayout:
+        MDIconButton:
+            id: _LoginArrowButton
+            icon: "arrow-left"
+            user_font_size: '35sp'
+            pos_hint: {"center_y": 0.95}
+            theme_text_color: "Custom"
+            text_color: cor.detalheClaro()
+            on_release:
+                root.controller.goBackward()        
+
+        MDLabel:
+            text: "Login"
+            theme_text_color: "Custom"
+            text_color: cor.rgbVermelho()
+            pos_hint: {'center_y': 0.8}
+            halign: "center"
+            font_size: "25sp"
+
+        MDTextFieldRound:
+            id: email
+            hint_text: "E-mail"
+            multiline: False
+            line_color: cor.textoTF()
+            hint_text_color: cor.textoTF()
+            normal_color: cor.fundoTF()
+            color_active: cor.fundoTF()
+            pos_hint: {"center_x": 0.5, "center_y": 0.6}
+            size_hint: 0.65, 0.045
+
+        MDTextFieldRound:
+            id: password
+            hint_text: "Senha"
+            password: True
+            multiline: False
+            line_color: cor.textoTF()
+            hint_text_color: cor.textoTF()
+            normal_color: cor.fundoTF()
+            color_active: cor.fundoTF()
+            pos_hint: {"center_x": 0.5, "center_y": 0.53}
+            size_hint: 0.65, 0.045
+
+        MDFillRoundFlatButton:
+            text: "Esqueceu a senha?"
+            font_size: 10
+            theme_text_color: "Custom"
+            text_color: cor.textoTF()
+            md_bg_color: cor.textoB()
+            pos_hint: {"center_x": 0.3, "center_y": 0.48}
+            size_hint: 0.3, 0.04
+
+        MDFillRoundFlatButton:
+            id: _LoginLoginButton
+            text: "Logar"
+            font_size: 15
+            elevation: 8
+            theme_text_color: "Custom"
+            text_color: cor.textoB()
+            md_bg_color: cor.fundoB()
+            pos_hint: {"center_x": 0.5, "center_y": 0.35}
+            size_hint: 0.35, 0.04
+            on_press: root.controller.login(email.text, password.text)

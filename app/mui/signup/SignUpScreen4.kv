@@ -1,0 +1,166 @@
+#:kivy 2.0
+#:import Color mui.ColorTheme.Color
+#:set cor Color()
+
+<SignUpScreen4>:
+    MDProgressBar:
+        value: 75
+        color: cor.detalheEscuro()
+        pos_hint:{'center_x':0.5, 'center_y': 0.92}
+
+    MDIconButton:
+        id: _SignupFourArrowButton
+        icon: "arrow-left"
+        user_font_size: '35sp'
+        pos_hint:{'center_x':0.08, 'center_y': 0.96}
+        theme_text_color: "Custom"
+        text_color: cor.detalheClaro()
+        on_release:
+            root.go_backward()
+
+    MDLabel:
+        text: "Preferências"
+        theme_text_color: "Custom"
+        text_color: cor.rgbVermelho()
+        pos_hint: {'center_y': 0.96}
+        halign: "center"
+        font_size: "20sp"
+
+    MDTextField:
+        id: _firstField
+        hint_text: "Tipo de Residência"
+        size_hint: 0.8, 0.1
+        color_mode: "custom"
+        line_color_normal: cor.linhaTFN()
+        line_color_focus: cor.linhaTFF()
+        pos_hint: {'center_x': 0.5, 'center_y': 0.67}
+        on_focus: if self.focus: root.menu1.open()
+
+
+    MDTextField:
+        id: _secondField
+        hint_text: "Espaço Disponível"
+        size_hint: 0.8, 0.1
+        color_mode: "custom"
+        line_color_normal: cor.linhaTFN()
+        line_color_focus: cor.linhaTFF()
+        pos_hint: {'center_x': 0.5, 'center_y': 0.55}
+        on_focus: if self.focus: root.menu2.open()
+
+    MDBoxLayout:
+        width: self.minimum_width
+        padding: [self.right/10, 0, 0, 0]
+        spacing: '0.5dp'
+
+        MDCheckbox:
+            id: ambiente
+            pos_hint: {'center_y': 0.45}
+            size_hint: None, None
+            size: "48dp", "48dp"
+            color: cor.detalheEscuro()
+            selected_color: cor.detalheEscuro()
+            adaptive_size: False
+
+        MDLabel:
+            text: "Possui Ambiente Aberto (Quintal)"
+            width: '20px'
+            font_size: '17sp'
+            pos_hint: {'center_y': 0.45}
+            theme_text_color: 'Custom'
+            text_color: cor.textoL()
+            adaptive_size: True
+
+    MDBoxLayout:
+        width: self.minimum_width
+        padding: [self.right/10, 0, 0, 0]
+        spacing: '0.5dp'
+
+        MDCheckbox:
+            id:rotas
+            pos_hint: {'center_y': 0.39}
+            size_hint: None, None
+            size: "48dp", "48dp"
+            color: cor.detalheEscuro()
+            selected_color: cor.detalheEscuro()
+            adaptive_size: False
+
+        MDLabel:
+            text: "Possui Rotas de Fuga para o Animal"
+            width: '20px'
+            font_size: '17sp'
+            pos_hint: {'center_y': 0.39}
+            theme_text_color: 'Custom'
+            text_color: cor.textoL()
+            adaptive_size: True
+
+        MDIconButton:
+            icon: "information-outline"
+            user_font_size: '18sp'
+            pos_hint:{'center_y': 0.39}
+            adaptive_size: True
+            on_release:
+                root.show_escape_routes_dialog()
+
+    MDBoxLayout:
+        width: self.minimum_width
+        padding: [self.right/10, 0, 0, 0]
+        spacing: '0.5dp'
+
+        MDCheckbox:
+            id:criancas
+            pos_hint: {'center_y': 0.33}
+            size_hint: None, None
+            size: "48dp", "48dp"
+            color: cor.detalheEscuro()
+            selected_color: cor.detalheEscuro()
+            adaptive_size: False
+
+        MDLabel:
+            text: "Crianças frequentam o ambiente"
+            width: '20px'
+            font_size: '17sp'
+            pos_hint: {'center_y': 0.33}
+            theme_text_color: 'Custom'
+            text_color: cor.textoL()
+            adaptive_size: True
+
+    MDBoxLayout:
+        width: self.minimum_width
+        padding: [self.right/10, 0, 0, 0]
+        spacing: '0.5dp'
+
+        MDCheckbox:
+            id: _ToSCheck
+            pos_hint: {'center_y': 0.27}
+            size_hint: None, None
+            size: "48dp", "48dp"
+            color: cor.detalheEscuro()
+            selected_color: cor.detalheEscuro()
+            adaptive_size: False
+
+        MDLabel:
+            text: "Li e aceito os Termos de Uso"
+            width: '20px'
+            font_size: '17sp'
+            pos_hint: {'center_y': 0.27}
+            theme_text_color: 'Custom'
+            text_color: cor.textoL()
+            adaptive_size: True
+
+        MDIconButton:
+            icon: "information-outline"
+            user_font_size: '18sp'
+            pos_hint:{'center_y': 0.27}
+            adaptive_size: True
+            on_release:
+                root.show_terms_of_service_dialog()
+
+    MDFillRoundFlatButton:
+        id: _SignupFourForwardButton
+        text: "Continuar"
+        md_bg_color: cor.fundoB()
+        font_size: "20sp"
+        size_hint: (0.4, 0.05)
+        pos_hint: {'center_x': 0.5, 'center_y': 0.15}
+        on_release:
+            root.controller.singUpScreen4Manager()

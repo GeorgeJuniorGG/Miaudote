@@ -16,12 +16,18 @@ keywords = ["Python", "Kivy", "Material Design", "Pets", "Adoção"]
 [tool.poetry.dependencies]
 python = "^3.7"
 Kivy = "^2.0.0"
-kivymd = "^0.104.2"
+kivymd = {url = "https://github.com/kivymd/KivyMD/archive/master.zip"}
 watchdog = "^2.1.5"
 kaki = "^0.1.4"
 Pyrebase4 = "^4.5.0"
+firebase-admin = "^5.0.3"
+pydantic = "^1.8.2"
+email-validator = "^1.1.3"
+pytest = "^6.2.5"
+Unidecode = "^1.3.2"
 
 [tool.poetry.dev-dependencies]
+watchdog = "^2.1.6"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

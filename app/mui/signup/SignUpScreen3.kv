@@ -1,0 +1,110 @@
+#:kivy 2.0
+#:import Color mui.ColorTheme.Color
+#:set cor Color()
+
+<SignUpScreen3>:
+    MDProgressBar:
+        value: 50
+        color: cor.detalheEscuro()
+        pos_hint:{'center_x':0.5, 'center_y': 0.92}
+
+    MDIconButton:
+        id: _SignupThreeArrowButton
+        icon: "arrow-left"
+        user_font_size: '35sp'
+        pos_hint:{'center_x':0.08, 'center_y': 0.96}
+        theme_text_color: "Custom"
+        text_color: cor.detalheClaro()
+        on_release:
+            root.go_backward()
+
+    MDLabel:
+        text: "Preferências"
+        theme_text_color: "Custom"
+        text_color: cor.rgbVermelho()
+        pos_hint: {'center_y': 0.96}
+        halign: "center"
+        font_size: "20sp"
+
+    MDTextField:
+        id: _firstField
+        hint_text: "Você já possui algum animal?"
+        color_mode: "custom"
+        size_hint: 0.8, 0.1
+        line_color_normal: cor.linhaTFN()
+        line_color_focus: cor.linhaTFF()
+        pos_hint: {'center_x': 0.5, 'center_y': 0.79}
+        on_focus: if self.focus: root.menu1.open()
+            
+
+    MDTextField:
+        id: _secondField
+        hint_text: "Quais seus animais preferidos?"
+        size_hint: 0.8, 0.1
+        color_mode: "custom"
+        line_color_normal: cor.linhaTFN()
+        line_color_focus: cor.linhaTFF()
+        pos_hint: {'center_x': 0.5, 'center_y': 0.70}
+        on_focus: if self.focus: root.menu2.open()
+            
+
+    MDTextField:
+        id: _thirdField
+        hint_text: "Qual seu porte de preferência?"
+        size_hint: 0.8, 0.1
+        color_mode: "custom"
+        line_color_normal: cor.linhaTFN()
+        line_color_focus: cor.linhaTFF()
+        pos_hint: {'center_x': 0.5, 'center_y': 0.61}
+        on_focus: if self.focus: root.menu3.open()
+            
+
+    MDTextField:
+        id: _fourthField
+        hint_text: "Características 1: (Personalidade)"
+        size_hint: 0.8, 0.1
+        color_mode: "custom"
+        line_color_normal: cor.linhaTFN()
+        line_color_focus: cor.linhaTFF()
+        pos_hint: {'center_x': 0.5, 'center_y': 0.52}
+        on_focus: if self.focus: root.menu4.open()
+
+    MDTextField:
+        id: _fifthField
+        hint_text: "Características 2: (Atividades)"
+        size_hint: 0.8, 0.1
+        color_mode: "custom"
+        line_color_normal: cor.linhaTFN()
+        line_color_focus: cor.linhaTFF()
+        pos_hint: {'center_x': 0.5, 'center_y': 0.43}
+        on_focus: if self.focus: root.menu5.open()
+
+    MDTextField:
+        id: _sixthField
+        hint_text: "Características 3: (Idade)"
+        size_hint: 0.8, 0.1
+        color_mode: "custom"
+        line_color_normal: cor.linhaTFN()
+        line_color_focus: cor.linhaTFF()
+        pos_hint: {'center_x': 0.5, 'center_y': 0.34}
+        on_focus: if self.focus: root.menu6.open()
+
+    MDTextField:
+        id: _seventhField
+        hint_text: "Tempo disponível para o animal"
+        size_hint: 0.8, 0.1
+        color_mode: "custom"
+        line_color_normal: cor.linhaTFN()
+        line_color_focus: cor.linhaTFF()
+        pos_hint: {'center_x': 0.5, 'center_y': 0.25}
+        on_focus: if self.focus: root.menu7.open()
+
+    MDFillRoundFlatButton:
+        id: _SignupThreeForwardButton
+        text: "Continuar"
+        md_bg_color: cor.fundoB()
+        font_size: "20sp"
+        size_hint: (0.4, 0.05)
+        pos_hint: {'center_x': 0.5, 'center_y': 0.12}
+        on_release:
+            root.controller.singUpScreen3Manager()

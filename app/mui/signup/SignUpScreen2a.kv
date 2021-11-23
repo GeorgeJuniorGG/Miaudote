@@ -1,0 +1,91 @@
+#:kivy 2.0
+#:import Color mui.ColorTheme.Color
+#:set cor Color()
+
+<SignUpScreen2a>:
+    MDProgressBar:
+        value: 25
+        color: cor.detalheEscuro()
+        pos_hint:{'center_x':0.5, 'center_y': 0.92}
+
+    MDIconButton:
+        id: _SignupTwoAArrowButton
+        icon: "arrow-left"
+        user_font_size: '35sp'
+        pos_hint:{'center_x':0.08, 'center_y': 0.96}
+        theme_text_color: "Custom"
+        text_color: cor.detalheClaro()
+        on_release:
+            root.go_backward()
+
+    MDLabel:
+        text: "Localização"
+        theme_text_color: "Custom"
+        text_color: cor.rgbVermelho()
+        pos_hint: {'center_y': 0.96}
+        halign: "center"
+        font_size: "20sp"
+
+    MDTextField:
+        id: state
+        hint_text: "Estado"
+        size_hint: 0.8, 0.1
+        color_mode: "custom"
+        line_color_normal: cor.linhaTFN()
+        line_color_focus: cor.linhaTFF()
+        pos_hint: {'center_x': 0.5, 'center_y': 0.71}
+
+    MDTextField:
+        id: city
+        hint_text: "Cidade"
+        size_hint: 0.8, 0.1
+        color_mode: "custom"
+        line_color_normal: cor.linhaTFN()
+        line_color_focus: cor.linhaTFF()
+        pos_hint: {'center_x': 0.5, 'center_y': 0.62}
+
+    MDTextField:
+        id: CEP
+        hint_text: "CEP (Somente números)"
+        size_hint: 0.8, 0.1
+        color_mode: "custom"
+        line_color_normal: cor.linhaTFN()
+        line_color_focus: cor.linhaTFF()
+        pos_hint: {'center_x': 0.5, 'center_y': 0.53}
+
+    MDTextField:
+        id: neighborhood
+        hint_text: "Bairro"
+        size_hint: 0.8, 0.1
+        color_mode: "custom"
+        line_color_normal: cor.linhaTFN()
+        line_color_focus: cor.linhaTFF()
+        pos_hint: {'center_x': 0.5, 'center_y': 0.44}
+
+    MDTextField:
+        id: address
+        hint_text: "Endereço"
+        size_hint: 0.8, 0.1
+        color_mode: "custom"
+        line_color_normal: cor.linhaTFN()
+        line_color_focus: cor.linhaTFF()
+        pos_hint: {'center_x': 0.5, 'center_y': 0.35}
+
+    MDTextField:
+        id: number
+        hint_text: "Número"
+        size_hint: 0.8, 0.1
+        color_mode: "custom"
+        line_color_normal: cor.linhaTFN()
+        line_color_focus: cor.linhaTFF()
+        pos_hint: {'center_x': 0.5, 'center_y': 0.26}
+
+    MDFillRoundFlatButton:
+        id: _SignupTwoAForwardButton
+        text: "Continuar"
+        md_bg_color: cor.fundoB()
+        font_size: "20sp"
+        size_hint: (0.4, 0.05)
+        pos_hint: {'center_x': 0.5, 'center_y': 0.15}
+        on_release:
+            root.controller.singUpScreen2aManager()

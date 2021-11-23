@@ -1,0 +1,142 @@
+#:kivy 2.0
+#:import Color mui.ColorTheme.Color
+#:set cor Color()
+
+<SignUpScreen>:
+    MDFloatLayout:
+        pos_hint:{'center_x':0.5, 'center_y': 0.92}
+        size_hint: 1, 0.005
+        MDProgressBar:
+            value: 0
+            color: cor.detalheEscuro()
+            pos_hint:{'center_x':0.5, 'center_y': 0.5}
+
+    MDIconButton:
+        id: _SignupArrowButton
+        icon: "arrow-left"
+        user_font_size: '35sp'
+        pos_hint:{'center_x':0.08, 'center_y': 0.96}
+        theme_text_color: "Custom"
+        text_color: cor.detalheClaro()
+        on_release:
+            root.go_backward()
+
+    MDLabel:
+        text: "Informações Pessoais"
+        theme_text_color: "Custom"
+        text_color: cor.rgbVermelho()
+        pos_hint: {'center_y': 0.96}
+        halign: "center"
+        font_size: "20sp"
+
+    MDTextField:
+        id: name
+        hint_text: "Nome e Sobrenome"
+        size_hint: 0.8, 0.1
+        color_mode: "custom"
+        line_color_normal: cor.linhaTFN()
+        line_color_focus: cor.linhaTFF()
+        pos_hint: {'center_x': 0.5, 'center_y': 0.80}
+
+    MDTextField:
+        id: cpf
+        hint_text: "CPF (Somente números)"
+        size_hint: 0.8, 0.1
+        color_mode: "custom"
+        line_color_normal: cor.linhaTFN()
+        line_color_focus: cor.linhaTFF()
+        pos_hint: {'center_x': 0.5, 'center_y': 0.71}
+
+    MDTextField:
+        id: email
+        hint_text: "Email"
+        size_hint: 0.8, 0.1
+        color_mode: "custom"
+        line_color_normal: cor.linhaTFN()
+        line_color_focus: cor.linhaTFF()
+        pos_hint: {'center_x': 0.5, 'center_y': 0.62}
+
+    MDTextField:
+        id: password1
+        hint_text: "Senha"
+        password: True
+        size_hint: 0.8, 0.1
+        color_mode: "custom"
+        line_color_normal: cor.linhaTFN()
+        line_color_focus: cor.linhaTFF()
+        pos_hint: {'center_x': 0.5, 'center_y': 0.53}
+
+    MDTextField:
+        id: password2
+        hint_text: "Confirme sua Senha"
+        password: True
+        size_hint: 0.8, 0.1
+        color_mode: "custom"
+        line_color_normal: cor.linhaTFN()
+        line_color_focus: cor.linhaTFF()
+        pos_hint: {'center_x': 0.5, 'center_y': 0.44}
+
+    MDBoxLayout:
+        width: self.minimum_width
+        padding: [self.right/10, 0, 0, 0]
+        spacing: '0.5dp'
+
+        MDCheckbox:
+            id: minimumAge
+            pos_hint: {'center_y': 0.35}
+            size_hint: None, None
+            size: "48dp", "48dp"
+            color: cor.detalheEscuro()
+            selected_color: cor.detalheEscuro()
+            adaptive_size: False
+
+        MDLabel:
+            text: "Tenho mais de 18 anos"
+            width: '20px'
+            font_size: '17sp'
+            pos_hint: {'center_y': 0.35}
+            theme_text_color: 'Custom'
+            text_color: cor.textoL()
+            adaptive_size: True
+
+    MDBoxLayout:
+        width: self.minimum_width
+        padding: [self.right/10, 0, 0, 0]
+        spacing: '4dp'
+
+        MDCheckbox:
+            id: _check
+            pos_hint: {'center_y': 0.28}
+            size_hint: None, None
+            size: "48dp", "48dp"
+            color: cor.detalheEscuro()
+            selected_color: cor.detalheEscuro()
+            adaptive_size: False
+
+        MDLabel:
+            text: "Sou um Protetor"
+            width: '20px'
+            font_size: '17sp'
+            pos_hint: {'center_y': 0.28}
+            theme_text_color: 'Custom'
+            text_color: cor.textoL()
+            adaptive_size: True
+
+        MDIconButton:
+            icon: "information-outline"
+            user_font_size: '20sp'
+            pos_hint:{'center_y': 0.28}
+            adaptive_size: True
+            on_release:
+                root.show_protectors_dialog()
+
+    MDFillRoundFlatButton:
+        id: _SignupForwardButton
+        text: "Continuar"
+        md_bg_color: cor.fundoB()
+        font_size: "20sp"
+        size_hint: (0.4, 0.05)
+        pos_hint: {'center_x': 0.5, 'center_y': 0.15}
+        on_release:
+            root.controller.singUpScreenManager()
+

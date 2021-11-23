@@ -1,0 +1,46 @@
+#:kivy 2.0
+#:import Color mui.ColorTheme.Color
+#:set cor Color()
+
+<WelcomeScreen>:
+    canvas:
+        Color:
+            rgba: cor.rgaVermelho()
+        Line:
+            points: self.x + 20, 70, self.right - 20, 70
+            width: 1
+
+    MDIconButton:
+        icon: "paw.png"
+        user_font_size: '100sp'
+        pos_hint:{'center_x':0.5, 'center_y': 0.8}
+
+    MDFillRoundFlatButton:
+        id: _welcomeLoginButton
+        text: "Login"
+        md_bg_color: cor.fundoB()
+        font_size: "20sp"
+        size_hint: (0.8, 0.07)
+        pos_hint: {'center_x': 0.5, 'center_y': 0.55}
+        on_release:
+            root.controller.welcomeToLogin()
+            
+
+    MDFillRoundFlatButton:
+        id: _welcomeSignupButton
+        text: "Cadastrar-se"
+        font_size: "20sp"
+        md_bg_color: cor.fundoB()
+        size_hint: (0.8, 0.07)
+        pos_hint: {'center_x': 0.5, 'center_y': 0.45}
+        on_press:
+            root.controller.welcomeToSignUp()
+
+    MDLabel:
+        text: "Miaudote"
+        font_name: "Spirax-Regular"
+        theme_text_color: "Custom"
+        text_color: cor.rgbVermelho()
+        pos_hint: {'center_y': 0.15}
+        halign: "center"
+        font_size: "25sp"

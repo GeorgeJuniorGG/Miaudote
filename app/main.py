@@ -1,33 +1,81 @@
 import os
 from pathlib import Path
+from sys import platform
+from kivy.lang.builder import Builder
 
 from kivymd.app import MDApp
-from kivy.lang import Builder
 from kivy.resources import resource_add_path
 from kivy.core.window import Window
+from kivy.factory import Factory
+
+from orchestrator import Orchestrator
 
 os.environ["MIAUDOTE_ROOT"] = str(Path(__file__).parent)
 
 # Permitir que o Kivy procure arquivos nestes diretórios
-KV_DIR = f"{os.environ['MIAUDOTE_ROOT']}/mui/kvfiles"
 FONT_DIR = f"{os.environ['MIAUDOTE_ROOT']}/assets/fonts"
 IMG_DIR = f"{os.environ['MIAUDOTE_ROOT']}/assets/images"
 
 resource_add_path(FONT_DIR)
 resource_add_path(IMG_DIR)
 
-for kv_file in os.listdir(KV_DIR):
-    kv = str(os.path.join(KV_DIR, kv_file))
-    Builder.load_file(kv)
-
-KV = """
-MainScreenManager:
-"""
-
 Window.size = (375,667)
 
 class MainApp(MDApp):
+
+    # [hotfix] problema na atualização do kivymd
+    def load_all_kv_files(self, path_to_directory):
+        for path_to_dir, dirs, files in os.walk(path_to_directory):
+            if "venv" in path_to_dir or "__pycache__" in path_to_dir:
+                continue
+            for name_file in files:
+                if (
+                    os.path.splitext(name_file)[1] == ".kv"
+                    and name_file != "style.kv"  # if use PyInstaller
+                    and "__MACOS" not in path_to_dir  # if use Mac OS
+                ):
+                    path_to_kv_file = os.path.join(path_to_dir, name_file)
+                    Builder.load_file(path_to_kv_file)
+
+    def register_views(self):
+        separator = '/'
+        # [hotfix] problema dos separadores windows
+        if platform == 'win32':
+            separator = '\\'
+
+        for path_to_dir, dirs, files in os.walk(self.directory):
+            if "venv" in path_to_dir or "__pycache__" in path_to_dir:
+                continue
+            for name_file in files:
+                if (os.path.splitext(name_file)[1] == ".py"
+                    and name_file.find("Screen") != -1):
+                    className = os.path.splitext(name_file)[0]
+                    module = path_to_dir.split(separator)
+
+                    pkg = ''
+                    for i in range(len(module)-2, len(module)):
+                        pkg += f'{module[i]}.'
+                    pkg += f'{className}'
+
+                    Factory.register(className, module=pkg)
+
+                elif(os.path.splitext(name_file)[1] == ".py"
+                     and 'components' in path_to_dir 
+                     and name_file.find('__init__') == -1):
+                    className = os.path.splitext(name_file)[0]
+                    module = path_to_dir.split(separator)
+                    pkg = ''
+                    for i in range(len(module)-3, len(module)):
+                        pkg += f'{module[i]}.'
+                    pkg += f'{className}'
+                    Factory.register(className, module=pkg)
+                    
     def build(self):
-        return Builder.load_string(KV)
+        self.register_views()
+        self.load_all_kv_files(self.directory)
+        manager =  Factory.MainScreenManager()
+        orquestrator =  Orchestrator(manager)
+        orquestrator.appFlow()
+        return manager
 
 MainApp().run()

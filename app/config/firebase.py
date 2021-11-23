@@ -1,6 +1,18 @@
+import firebase_admin
+from firebase_admin import credentials
+from firebase_admin import firestore
 import pyrebase
 
-#Configuração de comunicação com o firebase
+#Configuração de comunicação com o firebase para firestore
+cred = credentials.Certificate("config/miaudote-b4e55-firebase-adminsdk-eucjs-145c67a2b8.json")
+firebase_admin.initialize_app(cred)
+
+client = firestore.client()
+
+def getFirebaseFirestore():
+    return client
+
+#Configuração de comunicação com o firebase usando pyrebase 4
 firebaseConfig = {
     'apiKey': "AIzaSyD4vtY7ROr9i81IYoHU2-G8IxW43fRHi5M",
     'authDomain': "miaudote-b4e55.firebaseapp.com",
