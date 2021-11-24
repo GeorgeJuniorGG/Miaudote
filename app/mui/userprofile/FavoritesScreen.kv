@@ -6,7 +6,7 @@
 <FavoritesScreen>:
     canvas:
         Color:
-            rgba: cor.linhaBanner()
+            rgba: get_color_from_hex(cor.azulClaro())
         Line:
             points: self.x, 0.9 * self.top, self.right, 0.9 * self.top 
             width: 10
@@ -14,7 +14,7 @@
             points: self.x, self.top - 10, self.right, self.top - 10
             width: 10
         Color:
-            rgba: cor.rgaVermelho()
+            rgba: get_color_from_hex(cor.vermelho())
         Line:
             points: self.x, 0.8*self.top, self.right, 0.8*self.top
             width: 1
@@ -23,7 +23,7 @@
         text: "Miaudote"
         font_name: "Spirax-Regular"
         theme_text_color: "Custom"
-        text_color: cor.rgaVermelho()
+        text_color: get_color_from_hex(cor.vermelho())
         pos_hint: {'center_y': 0.94}
         halign: "center"
         font_size: "25sp"
@@ -31,7 +31,7 @@
     MDLabel:
         text: "Favoritos"
         theme_text_color: "Custom"
-        text_color: cor.rgaVermelho()
+        text_color: get_color_from_hex(cor.vermelho())
         halign: "center"
         font_size: "25sp"
         pos_hint: {"center_x": 0.5, "center_y": 0.84}
