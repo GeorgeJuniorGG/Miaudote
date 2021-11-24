@@ -1,107 +1,45 @@
 class Color:
-    azulClaroRgb = '97B9C0'
-    azulEscuroRgb = '366873'
-    azulCinzaRgb = '1E606F'
-    azulRgba = [0.592, 0.725, 0.752, 1]
-    azulMaisEscuroRgba = [148/255, 175/255, 192/255, 1]
-    begeRgba = [140/255 , 80/255, 65/255, 0.5]
-    cinzaRgb = '808DAD'
-    brancoCinzaRgba = [245/255, 245/255, 245/255, 1]
-    brancoCinzaEscuroRgba = [238/255, 238/255, 238/255, 1]
-    brancoRgb = 'ffffff'
-    brancoRga = [1,1,1,1]
-    cinzaClaroRgb = "fcfcfc"
-    laranjaRgba = [1, 170/255, 23/255, 1]
-    transparenteRgba = [0,0,0,0]
-    vermelhoRgb = '8C5042'
-    vermelhoRga = [0.549, 0.313, 0.258, 1]
+    def azulCinza(self):
+        return '#1E606F'
 
-    def fundoB(self):
-        return self.azulClaroRgb
+    def azulCinzaEscuro(self):
+        return '#287484'
 
-    def fundoTF(self):
-        return self.brancoRgb
+    def azulClaro(self):
+        return '#97B9C0'
 
-    def bottomNavPanel(self):
-        return self.azulRgba
+    def azulEscuro(self):
+        return '#366873'
 
-    def bottomNavTextActive(self):
-        return self.cinzaClaroRgb
-    
-    def bottomNavTextNormal(self):
-        return self.azulCinzaRgb
-    
-    def detalheClaro(self):
-        return self.azulClaroRgb
+    def azulMaisEscuro(self):
+        return '#94AFC0'
 
-    def detalheEscuro(self):
-        return self.azulEscuroRgb
-    
-    def linhaBanner(self):
-        return self.azulRgba
+    def bege(self):
+        return '#8C5041'
 
-    def linhaTFF(self):
-        return self.azulEscuroRgb
+    def branco(self):
+        return '#FFFFFF'
 
-    def linhaTFN(self):
-        return self.azulEscuroRgb
+    def brancoCinza(self):
+        return '#F5F5F5'
 
-    def textoB(self):
-        return self.brancoRgb
+    def brancoCinzaEscuro(self):
+        return '#EEEEEE'
 
-    def textoL(self):
-        return self.azulEscuroRgb
+    def cinza(self):
+        return '#808DAD'
     
-    def textoRFB(self):
-        return self.azulEscuroRgb
+    def cinzaClaro(self):
+        return '#FCFCFC'
 
-    def textoTF(self):
-        return self.azulEscuroRgb
+    def laranja(self):
+        return '#FFAA17'
 
-    def rgbVermelho(self):
-        return self.vermelhoRgb
+    def transparente(self):
+        return '#000000'
 
-    def rgaVermelho(self):
-        return self.vermelhoRga
+    def vermelho(self):
+        return '#8C5042'
 
-    def rgaBranco(self):
-        return self.brancoRga
-    
-    def textMessageSent(self):
-        return self.brancoRgb
-    
-    def rectangleMessageSent(self):
-        return self.azulRgba
-    
-    def textMessageReceived(self):
-        return self.brancoRgb
-    
-    def rectangleMessageSent(self):
-        return self.azulMaisEscuroRgba
-    
-    def arrowIconChatScreen(self):
-        return self.cinzaRgb
-    
-    def ellipseColor(self):
-        return self.begeRgba
-    
-    def userNameChatScreen(self):
-        return self.vermelhoRgb
-    
-    def chatTextBackground(self):
-        return self.brancoCinzaRgba
-    
-    def chatText(self):
-        return self.brancoCinzaEscuroRgba
-    
-    def chatIconButton(self):
-        return self.azulClaroRgb
-    
-    def chatTextInputCursor(self):
-        return self.azulRgba
-        
-    def chatTextInputForeground(self):
-        return self.laranjaRgba
-
-    def chatTextInputBackground(self):
-        return self.transparenteRgba
+    def vermelhoEscuro(self):
+        return '#8B3A27'

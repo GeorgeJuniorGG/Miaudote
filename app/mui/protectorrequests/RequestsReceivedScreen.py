@@ -16,10 +16,9 @@ class RequestsReceivedScreen(MDScreen, MDFloatLayout):
 
         for i in range(9):
             item = OneLineAvatarListItem(text=f"Usuário {i}", 
-                   theme_text_color="Custom", text_color=cor.rgbVermelho(),
-                   divider_color=cor.rgbVermelho())
+                   theme_text_color="Custom", text_color=self.get_color_from_hex(cor.vermelho()),
+                   divider_color=self.get_color_from_hex(cor.vermelho()))
             image = ImageLeftWidget(source = "mrbubbles.png")
             
             item.add_widget(image)
             self.ids.container.add_widget(item)
-

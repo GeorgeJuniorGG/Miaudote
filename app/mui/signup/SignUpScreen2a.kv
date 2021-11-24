@@ -1,11 +1,12 @@
 #:kivy 2.0
+#:import get_color_from_hex kivy.utils.get_color_from_hex
 #:import Color mui.ColorTheme.Color
 #:set cor Color()
 
 <SignUpScreen2a>:
     MDProgressBar:
         value: 25
-        color: cor.detalheEscuro()
+        color: get_color_from_hex(cor.azulEscuro())
         pos_hint:{'center_x':0.5, 'center_y': 0.92}
 
     MDIconButton:
@@ -14,14 +15,14 @@
         user_font_size: '35sp'
         pos_hint:{'center_x':0.08, 'center_y': 0.96}
         theme_text_color: "Custom"
-        text_color: cor.detalheClaro()
+        text_color: get_color_from_hex(cor.azulClaro())
         on_release:
             root.go_backward()
 
     MDLabel:
         text: "Localização"
         theme_text_color: "Custom"
-        text_color: cor.rgbVermelho()
+        text_color: get_color_from_hex(cor.vermelho())
         pos_hint: {'center_y': 0.96}
         halign: "center"
         font_size: "20sp"
@@ -31,8 +32,8 @@
         hint_text: "Estado"
         size_hint: 0.8, 0.1
         color_mode: "custom"
-        line_color_normal: cor.linhaTFN()
-        line_color_focus: cor.linhaTFF()
+        line_color_normal: get_color_from_hex(cor.azulEscuro())
+        line_color_focus: get_color_from_hex(cor.azulEscuro())
         pos_hint: {'center_x': 0.5, 'center_y': 0.71}
 
     MDTextField:
@@ -40,8 +41,8 @@
         hint_text: "Cidade"
         size_hint: 0.8, 0.1
         color_mode: "custom"
-        line_color_normal: cor.linhaTFN()
-        line_color_focus: cor.linhaTFF()
+        line_color_normal: get_color_from_hex(cor.azulEscuro())
+        line_color_focus: get_color_from_hex(cor.azulEscuro())
         pos_hint: {'center_x': 0.5, 'center_y': 0.62}
 
     MDTextField:
@@ -49,8 +50,8 @@
         hint_text: "CEP (Somente números)"
         size_hint: 0.8, 0.1
         color_mode: "custom"
-        line_color_normal: cor.linhaTFN()
-        line_color_focus: cor.linhaTFF()
+        line_color_normal: get_color_from_hex(cor.azulEscuro())
+        line_color_focus: get_color_from_hex(cor.azulEscuro())
         pos_hint: {'center_x': 0.5, 'center_y': 0.53}
 
     MDTextField:
@@ -58,8 +59,8 @@
         hint_text: "Bairro"
         size_hint: 0.8, 0.1
         color_mode: "custom"
-        line_color_normal: cor.linhaTFN()
-        line_color_focus: cor.linhaTFF()
+        line_color_normal: get_color_from_hex(cor.azulEscuro())
+        line_color_focus: get_color_from_hex(cor.azulEscuro())
         pos_hint: {'center_x': 0.5, 'center_y': 0.44}
 
     MDTextField:
@@ -67,8 +68,8 @@
         hint_text: "Endereço"
         size_hint: 0.8, 0.1
         color_mode: "custom"
-        line_color_normal: cor.linhaTFN()
-        line_color_focus: cor.linhaTFF()
+        line_color_normal: get_color_from_hex(cor.azulEscuro())
+        line_color_focus: get_color_from_hex(cor.azulEscuro())
         pos_hint: {'center_x': 0.5, 'center_y': 0.35}
 
     MDTextField:
@@ -76,14 +77,14 @@
         hint_text: "Número"
         size_hint: 0.8, 0.1
         color_mode: "custom"
-        line_color_normal: cor.linhaTFN()
-        line_color_focus: cor.linhaTFF()
+        line_color_normal: get_color_from_hex(cor.azulEscuro())
+        line_color_focus: get_color_from_hex(cor.azulEscuro())
         pos_hint: {'center_x': 0.5, 'center_y': 0.26}
 
     MDFillRoundFlatButton:
         id: _SignupTwoAForwardButton
         text: "Continuar"
-        md_bg_color: cor.fundoB()
+        md_bg_color: get_color_from_hex(cor.azulClaro())
         font_size: "20sp"
         size_hint: (0.4, 0.05)
         pos_hint: {'center_x': 0.5, 'center_y': 0.15}

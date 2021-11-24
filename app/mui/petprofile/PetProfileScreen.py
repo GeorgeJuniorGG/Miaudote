@@ -8,8 +8,6 @@ class PetProfileScreen(MDScreen):
     def __init__(self, **kw):
         super().__init__(**kw)
 
-        self.cor = Color()
-
         self.petName = "nome"
         self.petSex = "sexo"
         self.petAge = "0"
@@ -30,20 +28,22 @@ class PetProfileScreen(MDScreen):
         print("DENÚNCIA!")
 
     def adopt_popup(self):
+        cor = Color()
+
         sim_btn = MDFillRoundFlatButton(text="SIM", theme_text_color="Custom",
-                                        text_color=self.cor.textoL(),
-                                        md_bg_color="#ffffff",
+                                        text_color=self.get_color_from_hex(cor.azulEscuro()),
+                                        md_bg_color=self.get_color_from_hex(cor.branco()),
                                         on_release=self.go_foward)
 
         nao_btn = MDFillRoundFlatButton(text="NÃO", theme_text_color="Custom",
-                                        text_color=self.cor.rgaVermelho(),
-                                        md_bg_color="#ffffff",
+                                        text_color=self.get_color_from_hex(cor.vermelho()),
+                                        md_bg_color=self.get_color_from_hex(cor.branco()),
                                         on_release=self.close_dialog)
 
         msg = "Você tem certeza que deseja enviar a solicitação?"
 
-        self.dialog = MDDialog(text="[color=#ffffff]" + str(msg) + "[/color]",
-                               md_bg_color=self.cor.fundoB(),
+        self.dialog = MDDialog(text="[color=self.get_color_from_hex(cor.branco())]" + str(msg) + "[/color]",
+                               md_bg_color=self.get_color_from_hex(cor.azulClaro()),
                                size_hint=(0.7, 1), radius=[20,20,20,20],
                                buttons=[sim_btn, nao_btn])
         self.dialog.open()
