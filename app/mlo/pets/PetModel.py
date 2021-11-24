@@ -14,6 +14,7 @@ class PetModel(BaseModel):
     sex: str
     size: str
     color: str
+    images: List[str]
     requestStatus: bool = Field(default=False)
     requestQueue: List[str] = Field(default_factory=list)
     createAt: datetime = Field(default_factory = lambda: datetime.now(timezone.utc))
