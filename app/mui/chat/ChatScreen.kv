@@ -9,10 +9,10 @@
     height: self.texture_size[1]
     padding: 12, 10
     theme_text_color: "Custom"
-    text_color: cor.textMessageSent()
+    text_color: get_color_from_hex(cor.branco())
     canvas.before:
         Color:
-            rgb: get_color_from_hex('#8B3A27')
+            rgb: get_color_from_hex(cor.vermelhoEscuro())
         RoundedRectangle:
             size: self.width, self.height
             pos: self.pos
@@ -24,10 +24,10 @@
     height: self.texture_size[1]
     padding: 12, 10
     theme_text_color: "Custom"
-    text_color: cor.textMessageReceived()
+    text_color: cor.branco()
     canvas.before:
         Color:
-            rgb: get_color_from_hex('#287484')
+            rgb: get_color_from_hex(cor.azulCinzaEscuro())
         RoundedRectangle:
             size: self.width, self.height
             pos: self.pos
@@ -42,7 +42,7 @@
         user_font_size: "35sp"
         pos_hint: {"center_y": 0.95}
         theme_text_color: "Custom"
-        text_color: cor.arrowIconChatScreen()
+        text_color: get_color_from_hex(cor.cinza())
 
     FloatLayout:
         MDIconButton:
@@ -51,7 +51,7 @@
             pos_hint: {'center_x':0.50, 'center_y': 0.92}
             canvas.before:
                 Color:
-                    rgba: cor.ellipseColor()
+                    rgba: get_color_from_hex(cor.bege()+'80')
                 Ellipse:
                     size: 62, 62
                     pos: self.x+12.5, self.y+12.5
@@ -61,7 +61,7 @@
             font_size: "23sp"
             halign: "center"
             theme_text_color: "Custom"
-            text_color: cor.userNameChatScreen()
+            text_color: get_color_from_hex(cor.vermelho())
             pos_hint: {'center_y': 0.84}
 
     ScrollView:
@@ -80,14 +80,14 @@
             spacing: 5
 
     MDFloatLayout:
-        md_bg_color: cor.chatTextBackground()
+        md_bg_color: get_color_from_hex(cor.brancoCinza())
         size_hint_y: 0.09
         MDFloatLayout:
             size_hint: .8, .75
             pos_hint: {'center_x':.43, 'center_y':.5}
             canvas:
                 Color:
-                    rgb: cor.chatText()
+                    rgb: get_color_from_hex(cor.brancoCinzaEscuro())
                 RoundedRectangle:
                     size: self.size
                     pos: self.pos
@@ -98,7 +98,7 @@
                 pos_hint: {'center_x':.08, 'center_y':.5}
                 user_font_size: "25sp"
                 theme_text_color: "Custom"
-                text_color: get_color_from_hex('#8B3A27')
+                text_color: get_color_from_hex(cor.vermelhoEscuro())
 
             TextInput:
                 id: text_input
@@ -108,10 +108,10 @@
                 font_size: "18sp"
                 height: self.minimum_height
                 multiline: True
-                cursor_color: get_color_from_hex('#8B3A27')
+                cursor_color: get_color_from_hex(cor.vermelhoEscuro())
                 cursor_width: "2sp"
-                foreground_color: get_color_from_hex('#8B3A27')
-                background_color: cor.chatTextInputBackground()
+                foreground_color: get_color_from_hex(cor.vermelhoEscuro())
+                background_color: get_color_from_hex(cor.transparente()+'00')
                 padding: 5,12,20,5
 
         MDIconButton:
@@ -119,6 +119,6 @@
             pos_hint: {'center_x':.91, 'center_y':.5}
             user_font_size: "25sp"
             theme_text_color: "Custom"
-            text_color: get_color_from_hex('#8B3A27')
+            text_color: get_color_from_hex(cor.vermelhoEscuro())
             on_release:
                 root.send()

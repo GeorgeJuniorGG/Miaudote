@@ -6,7 +6,7 @@
 <PetLabel>:
     canvas.before:
         Color:
-            rgba: get_color_from_hex(cor.fundoB())
+            rgba: get_color_from_hex(cor.azulClaro())
     
         RoundedRectangle:
             size: self.size[0], self.size[1]
@@ -18,7 +18,7 @@
     bold: True
     adaptive_height: True
     theme_text_color: "Custom"
-    text_color: get_color_from_hex(cor.textoB())
+    text_color: get_color_from_hex(cor.branco())
 
 <PetItem>:
 
@@ -54,7 +54,7 @@
             size_hint: None, None
             size: 100, 50
             theme_text_color: "Custom"
-            text_color: get_color_from_hex(cor.rgbVermelho())
+            text_color: get_color_from_hex(cor.vermelho())
             bold: True
     
         MDBoxLayout:
@@ -71,7 +71,7 @@
             font_size: '11sp'
             pos_hint: {'x': 0.01, 'center_y': 0.32}
             theme_text_color: "Custom"
-            text_color: get_color_from_hex(cor.textoL())
+            text_color: get_color_from_hex(cor.azulEscuro())
             bold: True
             size_hint: None, None
             size: self.parent.width, 300

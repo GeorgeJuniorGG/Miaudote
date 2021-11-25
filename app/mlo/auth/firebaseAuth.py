@@ -10,12 +10,37 @@ class FireBaseAuthService(AuthService):
         self.__auth = getFirebase().auth()
         self.__userID = ""
 
+    def correctFormat(self, password1):
+        cbaixa = False
+        calta = False
+        digito = False
+
+        for i in range(len(str(password1))):
+            c = str(password1)[i]  # Caractere
+
+            if (c.isdigit()) and (digito == False):
+                digito = True
+            else:
+                if (c.islower()) and (cbaixa == False):
+                    cbaixa = True
+                elif (c.isupper()) and (calta == False):
+                    calta = True
+        if (cbaixa == False) or (calta == False) or (digito == False):
+            return False
+        return True
+
     #Cadastra novo usuario
     def signUp(self, password1:str, password2:str, minimumAge:bool, isProtector:bool, userData:BasicUSerData):
         if(not password1 or not password2):
             return "Preencha os campos corretamente"
         elif(len(password1)<6):
             return "A senha deve ter no mínimo 6 digitos"
+        elif(len(password1)>20):
+            return "A senha não pode ter mais do que 20 caracteres"
+        elif(str(password1).isalnum() == False):
+            return "A senha não pode ter caracteres especiais"
+        elif(not self.correctFormat(password1)):
+            return "A senha deve ter ao menos uma letra minúscula, uma letra maiúscula e um dígito"
         elif(password1 != password2):
             return "As senhas inseridas são diferentes"
         elif(not minimumAge):

@@ -1,11 +1,12 @@
 #:kivy 2.0
+#:import get_color_from_hex kivy.utils.get_color_from_hex
 #:import Color mui.ColorTheme.Color
 #:set cor Color()
 
 <PetSignUpScreen>:
     MDProgressBar:
         value: 0
-        color: cor.detalheEscuro()
+        color: get_color_from_hex(cor.azulEscuro())
         pos_hint:{'center_x':0.5, 'center_y': 0.92}
 
     MDIconButton:
@@ -14,14 +15,14 @@
         user_font_size: '35sp'
         pos_hint:{'center_x':0.08, 'center_y': 0.96}
         theme_text_color: "Custom"
-        text_color: cor.detalheClaro()
+        text_color: get_color_from_hex(cor.azulClaro())
         on_release:
             root.go_backward()
 
     MDLabel:
         text: "Informações do Animal"
         theme_text_color: "Custom"
-        text_color: cor.rgbVermelho()
+        text_color: get_color_from_hex(cor.vermelho())
         pos_hint: {'center_y': 0.96}
         halign: "center"
         font_size: "20sp"
@@ -31,8 +32,8 @@
         hint_text: "Nome do Animal"
         size_hint: 0.8, 0.1
         color_mode: "custom"
-        line_color_normal: cor.linhaTFN()
-        line_color_focus: cor.linhaTFF()
+        line_color_normal: get_color_from_hex(cor.azulEscuro())
+        line_color_focus: get_color_from_hex(cor.azulEscuro())
         pos_hint: {'center_x': 0.5, 'center_y': 0.87}
     
     MDTextField:
@@ -40,8 +41,8 @@
         hint_text: "Espécie do Animal"
         size_hint: 0.8, 0.1
         color_mode: "custom"
-        line_color_normal: cor.linhaTFN()
-        line_color_focus: cor.linhaTFF()
+        line_color_normal: get_color_from_hex(cor.azulEscuro())
+        line_color_focus: get_color_from_hex(cor.azulEscuro())
         pos_hint: {'center_x': 0.5, 'center_y': 0.79}
 
     MDTextField:
@@ -49,8 +50,8 @@
         hint_text: "Idade"
         size_hint: 0.8, 0.1
         color_mode: "custom"
-        line_color_normal: cor.linhaTFN()
-        line_color_focus: cor.linhaTFF()
+        line_color_normal: get_color_from_hex(cor.azulEscuro())
+        line_color_focus: get_color_from_hex(cor.azulEscuro())
         pos_hint: {'center_x': 0.5, 'center_y': 0.71}
 
     MDTextField:
@@ -58,8 +59,8 @@
         hint_text: "Cor"
         size_hint: 0.8, 0.1
         color_mode: "custom"
-        line_color_normal: cor.linhaTFN()
-        line_color_focus: cor.linhaTFF()
+        line_color_normal: get_color_from_hex(cor.azulEscuro())
+        line_color_focus: get_color_from_hex(cor.azulEscuro())
         pos_hint: {'center_x': 0.5, 'center_y': 0.63}
 
     MDTextField:
@@ -67,8 +68,8 @@
         hint_text: "Ambiente Adequado para o Animal"
         size_hint: 0.8, 0.1
         color_mode: "custom"
-        line_color_normal: cor.linhaTFN()
-        line_color_focus: cor.linhaTFF()
+        line_color_normal: get_color_from_hex(cor.azulEscuro())
+        line_color_focus: get_color_from_hex(cor.azulEscuro())
         pos_hint: {'center_x': 0.5, 'center_y': 0.55}
 
     MDTextField:
@@ -76,8 +77,8 @@
         hint_text: "Sexo"
         size_hint: 0.8, 0.1
         color_mode: "custom"
-        line_color_normal: cor.linhaTFN()
-        line_color_focus: cor.linhaTFF()
+        line_color_normal: get_color_from_hex(cor.azulEscuro())
+        line_color_focus: get_color_from_hex(cor.azulEscuro())
         pos_hint: {'center_x': 0.5, 'center_y': 0.48}
 
     MDTextField:
@@ -85,8 +86,8 @@
         hint_text: "Origem do Animal"
         size_hint: 0.8, 0.1
         color_mode: "custom"
-        line_color_normal: cor.linhaTFN()
-        line_color_focus: cor.linhaTFF()
+        line_color_normal: get_color_from_hex(cor.azulEscuro())
+        line_color_focus: get_color_from_hex(cor.azulEscuro())
         pos_hint: {'center_x': 0.5, 'center_y': 0.40}
     
     MDTextField:
@@ -94,8 +95,8 @@
         hint_text: "Condição de Saúde do Animal"
         size_hint: 0.8, 0.1
         color_mode: "custom"
-        line_color_normal: cor.linhaTFN()
-        line_color_focus: cor.linhaTFF()
+        line_color_normal: get_color_from_hex(cor.azulEscuro())
+        line_color_focus: get_color_from_hex(cor.azulEscuro())
         pos_hint: {'center_x': 0.5, 'center_y': 0.32}
     
     MDTextField:
@@ -103,8 +104,8 @@
         hint_text: "Porte do Animal"
         size_hint: 0.8, 0.1
         color_mode: "custom"
-        line_color_normal: cor.linhaTFN()
-        line_color_focus: cor.linhaTFF()
+        line_color_normal: get_color_from_hex(cor.azulEscuro())
+        line_color_focus: get_color_from_hex(cor.azulEscuro())
         pos_hint: {'center_x': 0.5, 'center_y': 0.24}
     
     MDTextField:
@@ -112,16 +113,15 @@
         hint_text: "Localização"
         size_hint: 0.8, 0.1
         color_mode: "custom"
-        line_color_normal: cor.linhaTFN()
-        line_color_focus: cor.linhaTFF()
+        line_color_normal: get_color_from_hex(cor.azulEscuro())
+        line_color_focus: get_color_from_hex(cor.azulEscuro())
         pos_hint: {'center_x': 0.5, 'center_y': 0.16}
 
     MDFillRoundFlatButton:
         text: "Continuar"
-        md_bg_color: cor.fundoB()
+        md_bg_color: get_color_from_hex(cor.azulClaro())
         font_size: "20sp"
         size_hint: (0.4, 0.05)
         pos_hint: {'center_x': 0.5, 'center_y': 0.07}
         on_release:
             root.go_forward()
-

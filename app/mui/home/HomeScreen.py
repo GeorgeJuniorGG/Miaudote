@@ -44,7 +44,7 @@ class HomeScreen(MDScreen):
         petItemData = list()
         for pet in pets:
             pData = {
-                'imageSource': 'sem_imagem.png',
+                'imageSource': pet['images'][0],
                 'name': pet['name'],
                 'details': pet['details'][:65] + '...',
                 'petChars': [pet['sex'],

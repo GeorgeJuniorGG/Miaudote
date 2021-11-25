@@ -10,7 +10,7 @@
     MDFloatLayout:
         #md_bg_color: get_color_from_hex('ffffff')
         MDFloatLayout:
-            #md_bg_color: get_color_from_hex(cor.detalheEscuro())
+            #md_bg_color: get_color_from_hex(cor.azulEscuro())
             size_hint: 1, None
             height: 70
             pos_hint: {'top': 0.96}
@@ -23,7 +23,7 @@
                 pos_hint: {'top': 1, 'center_x':0.2}
                 canvas.before:
                     Color: 
-                        rgba: get_color_from_hex('#8C5042')  
+                        rgba: get_color_from_hex(cor.vermelho())  
                     RoundedRectangle:
                         size: dp(90), dp(90)
                         pos: self.x - dp(5), self.y - dp(5)
@@ -38,18 +38,18 @@
                     icon: 'pencil-outline'
                     user_font_size: "20sp"
                     theme_text_color: 'Custom'
-                    text_color: get_color_from_hex('#8C5042')
+                    text_color: get_color_from_hex(cor.vermelho())
                     pos_hint: {'right': 1.12, 'top': 0.45}
-                    md_bg_color: get_color_from_hex('#97B9C0EA')
+                    md_bg_color: get_color_from_hex(cor.azulClaro()+'EA')
                     on_press: print('Trocar Imagem de Perfil')
 
             MDIconButton:
                 icon: "exit-to-app"
                 user_font_size: "55sp"
                 theme_text_color: 'Custom'
-                text_color: get_color_from_hex('#8C5042')
+                text_color: get_color_from_hex(cor.vermelho())
                 pos_hint: {'center_x': 0.88, 'center_y': 0.5}
-                on_press: print('Deslogar')
+                on_press: root.controller.logout()
 
         MDGridLayout:
             pos_hint: {'top': 0.83}
