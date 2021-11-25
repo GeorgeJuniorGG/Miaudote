@@ -37,6 +37,12 @@ class SignUpScreen3(MDScreen, MDFloatLayout):
                 "height": dp(56),
                 "text": f"Outros",
                 "on_release": lambda x=f"Outros": self.set_item1(x),
+            },
+            {
+                "viewclass": "OneLineListItem",
+                "height": dp(56),
+                "text": f"Ainda não possuo",
+                "on_release": lambda x=f"Ainda não possuo": self.set_item1(x),
             }]
         
         menu_items2 = [
@@ -63,6 +69,12 @@ class SignUpScreen3(MDScreen, MDFloatLayout):
                 "height": dp(56),
                 "text": f"Outros",
                 "on_release": lambda x=f"Outros": self.set_item2(x),
+            },
+            {
+                "viewclass": "OneLineListItem",
+                "height": dp(56),
+                "text": f"Não possuo preferência",
+                "on_release": lambda x=f"Não possuo preferência": self.set_item2(x),
             }]
         
         menu_items3 = [
@@ -87,8 +99,8 @@ class SignUpScreen3(MDScreen, MDFloatLayout):
             {
                 "viewclass": "OneLineListItem",
                 "height": dp(56),
-                "text": f"Não tenho uma preferência",
-                "on_release": lambda x=f"Não tenho uma preferencia": self.set_item3(x),
+                "text": f"Não possuo preferência",
+                "on_release": lambda x=f"Não possuo preferência": self.set_item3(x),
             }]
         
         menu_items4 = [
@@ -115,6 +127,12 @@ class SignUpScreen3(MDScreen, MDFloatLayout):
                 "height": dp(56),
                 "text": f"Agitado",
                 "on_release": lambda x=f"Agitado": self.set_item4(x),
+            },
+            {
+                "viewclass": "OneLineListItem",
+                "height": dp(56),
+                "text": f"Não possuo preferência",
+                "on_release": lambda x=f"Não possuo preferência": self.set_item4(x),
             }]
         
         menu_items5 = [
@@ -135,6 +153,12 @@ class SignUpScreen3(MDScreen, MDFloatLayout):
                 "height": dp(56),
                 "text": f"Dorminhoco",
                 "on_release": lambda x=f"Dorminhoco": self.set_item5(x),
+            },
+            {
+                "viewclass": "OneLineListItem",
+                "height": dp(56),
+                "text": f"Não possuo preferência",
+                "on_release": lambda x=f"Não possuo preferência": self.set_item5(x),
             }]
 
         menu_items6 = [
@@ -161,6 +185,12 @@ class SignUpScreen3(MDScreen, MDFloatLayout):
                 "height": dp(56),
                 "text": f"Mais velho",
                 "on_release": lambda x=f"Mais velho": self.set_item6(x),
+            },
+            {
+                "viewclass": "OneLineListItem",
+                "height": dp(56),
+                "text": f"Não possuo preferência",
+                "on_release": lambda x=f"Não possuo preferência": self.set_item6(x),
             }]
         
         menu_items7 = [
@@ -193,14 +223,14 @@ class SignUpScreen3(MDScreen, MDFloatLayout):
             caller=self.ids._firstField,
             items=menu_items1,
             position="center",
-            width_mult=4,
+            width_mult=5,
         )
 
         self.menu2 = MDDropdownMenu(
             caller=self.ids._secondField,
             items=menu_items2,
             position="center",
-            width_mult=4,
+            width_mult=5,
         )
 
         self.menu3 = MDDropdownMenu(
@@ -214,7 +244,7 @@ class SignUpScreen3(MDScreen, MDFloatLayout):
             caller=self.ids._fourthField,
             items=menu_items4,
             position="center",
-            width_mult=4,
+            width_mult=5,
         )
 
         self.menu5 = MDDropdownMenu(
@@ -228,7 +258,7 @@ class SignUpScreen3(MDScreen, MDFloatLayout):
             caller=self.ids._sixthField,
             items=menu_items6,
             position="center",
-            width_mult=4,
+            width_mult=5,
         )
         self.menu7 = MDDropdownMenu(
             caller=self.ids._seventhField,
