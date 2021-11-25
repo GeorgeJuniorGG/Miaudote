@@ -12,18 +12,15 @@ class RootManager:
     menuScreen = None
     homeScreen = None
 
-    def __init__(self, uService: UserService, orchestrator) -> None:
+    def __init__(self, uService: UserService, petService:PetService, orchestrator) -> None:
         self.userService = uService
+        self.petService = petService
         self.orchetrator = orchestrator
         self.screen = RootScreen(name=screens['root'])
         self.screen.controller = self
         self.setController()
         self.profileScreen.getUserData()
-        self.__initServices()
         self.homeScreen.addViewPets()
-
-    def __initServices(self):
-        self.petService = self.orchetrator.makeComponent(screens['home'])
     
     def setController(self):
         self.profileScreen = self.screen.profileScreen
@@ -38,5 +35,8 @@ class RootManager:
 
     def getAllPets(self):
         return self.petService.getAllPets()
+
+    def logout(self):
+        self.orchetrator.userLogout()
 
     

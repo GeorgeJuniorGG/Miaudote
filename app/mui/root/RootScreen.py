@@ -9,8 +9,6 @@ from kivy.properties import (
     ObjectProperty
 )
 
-from mui.userprofile.ProfileScreen import ProfileScreen
-
 class MiaudoteLogo(MDFloatLayout):
     ...
 
