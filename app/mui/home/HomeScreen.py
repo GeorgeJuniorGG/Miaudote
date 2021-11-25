@@ -1,4 +1,5 @@
 from logging import root
+from typing import List
 from kivymd.uix.screen import MDScreen
 from kivymd.uix.floatlayout import MDFloatLayout
 from kivy.clock import Clock
@@ -38,8 +39,8 @@ class HomeScreen(MDScreen):
             self.ids.container.ids[f'item{i}'] = petItem
 
     def addViewPets(self):
-        # Pega todos os Pets no Firebase
-        pets = self.controller.getAllPets()
+        # Pega todos os Pets dos recomendados
+        pets = self.controller.getRecommended()
 
         petItemData = list()
         for pet in pets:
@@ -57,7 +58,28 @@ class HomeScreen(MDScreen):
         self.insert_items(petItemData)
 
     def search(self, search_text):
-        print("BUSCAR --> " + search_text)
+        results = self.controller.getSearchResults(search_text)
+        self.updateItems(results)
+
+    def updateItems(self, newItems: List):
+        self.ids.container.clear_widgets()
+
+        petItemData = list()
+
+        for pet in newItems:
+            pData = {
+                'imageSource': pet['images'][0],
+                'name': pet['name'],
+                'details': pet['details'][:65] + '...',
+                'petChars': [pet['sex'],
+                             pet['size'],
+                             pet['color']]                
+            }
+
+            petItemData.append(pData)
+
+        self.insert_items(petItemData)
+
 
     def on_touch(self, id):
         print("ID " + id)

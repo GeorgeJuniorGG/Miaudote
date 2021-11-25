@@ -13,7 +13,7 @@ class SearchService:
         results = self.recommendationServ.getRecommended()
 
         results = self.prioritizationServ.getResults(results)
-
+    
         return results
 
     def getSearchResults(self, words: List):

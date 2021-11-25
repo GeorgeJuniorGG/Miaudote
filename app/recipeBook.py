@@ -9,6 +9,10 @@ from mlo.auth.dataModel import DataModel
 from mlo.auth.firebaseAuth import FireBaseAuthService
 from mlo.user.UserService import UserService
 from mlo.pets.PetService import PetService
+from mlo.petrecommendation.RecommendedPets import RecommendedPets
+from mlo.petsearch.resultsPrioritization import ResultsPrioritization
+from mlo.petsearch.searchLogic import SearchLogic
+from mlo.petsearch.searchService import SearchService
 
 # Database
 from mlo.storage.firebaseDB import FirebaseDB
@@ -23,6 +27,10 @@ services = {
     'auth': 'FirebaseAuth',
     'user': 'UserService',
     'pet': 'PetService',
+    'recom': 'RecommendedPets',
+    'prior': 'ResultsPrioritization',
+    'sLogic': 'SearchLogic',
+    'search': 'SearchService'   
 }
 
 databases = {
@@ -54,6 +62,30 @@ recipes = {
     services['user'] : {
         'class': UserService,
         'deps': (databases['user'],),
+        'pArgs': None
+    },
+
+    services['recom'] : {
+        'class': RecommendedPets,
+        'deps': (services['user'], services['pet']),
+        'pArgs': None
+    },
+
+    services['prior'] : {
+        'class': ResultsPrioritization,
+        'deps': (services['pet'], services['user'],),
+        'pArgs': None
+    },
+
+    services['sLogic'] : {
+        'class': SearchLogic,
+        'deps': (services['pet'], services['recom']),
+        'pArgs': None
+    },
+
+    services['search'] : {
+        'class': SearchService,
+        'deps': (services['prior'], services['sLogic'], services['recom']),
         'pArgs': None
     },
 
@@ -95,7 +127,7 @@ recipes = {
     
     screens['root'] : {
         'class': RootManager,
-        'deps': (services['user'], services['pet']),
+        'deps': (services['user'], services['pet'], services['search']),
         'pArgs': ('orchestrator',)  
     }
 }

@@ -18,22 +18,26 @@ class ResultsPrioritization:
         self.getLocationPriority(results)
         self.getOldestPriority(results)
         self.getNonRequestedPriority(results)
+        
         return results[0]
 
     def getLocationPriority(self, results: List):
+        locations = {}
+
         for result in self.searchResults:
             for pet in self.pets:
                 if pet["pid"] == result:
                     results[1].append(int(pet["localization"]))
-        
-        locations = [abs(x - self.user["address"]["CEP"]) for x in results[1]]
-        locations = sorted(locations)
+                    
+        for i in range(len(results[1])):
+            locations[str(results[1][i]) + str(i)] = abs(results[1][i] - self.user["address"]["CEP"])
+
+        locations = {k: v for k, v in sorted(locations.items(), key=lambda item: item[1])}
+
+        results[1] = [*locations]
 
         for i in range(len(results[1])):
-            if results[1][i] - self.user["address"]["CEP"] < 0:
-                results[1][i] = -locations[i] + self.user["address"]["CEP"]
-            else:
-                results[1][i] = locations[i] + self.user["address"]["CEP"]
+            results[1][i] = int(str(results[1][i])[:-1])
 
         for location in results[1]:
             for pet in self.pets:
@@ -77,7 +81,7 @@ class ResultsPrioritization:
 
                 first = results[0][i]["requestStatus"]
                 second = results[0][i + 1]["requestStatus"]
-                
+
                 if (first == False and second == True):
                     aux1 = results[0][i]
                     aux2 = results[1][i]

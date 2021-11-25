@@ -1,3 +1,4 @@
+from mlo.petsearch.searchService import SearchService
 from mui.root.RootScreen import RootScreen
 
 from mem.screenmanager.screens import screens
@@ -12,9 +13,10 @@ class RootManager:
     menuScreen = None
     homeScreen = None
 
-    def __init__(self, uService: UserService, petService:PetService, orchestrator) -> None:
+    def __init__(self, uService: UserService, petService:PetService, searchService: SearchService, orchestrator) -> None:
         self.userService = uService
         self.petService = petService
+        self.searchService = searchService
         self.orchetrator = orchestrator
         self.screen = RootScreen(name=screens['root'])
         self.screen.controller = self
@@ -38,5 +40,10 @@ class RootManager:
 
     def logout(self):
         self.orchetrator.userLogout()
-
     
+    def getRecommended(self):
+        return self.searchService.getRecommended()
+    
+    def getSearchResults(self, text):
+        words = text.split(" ")
+        return self.searchService.getSearchResults(words)    
