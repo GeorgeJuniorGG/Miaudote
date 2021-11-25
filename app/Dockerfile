@@ -1,4 +1,5 @@
 FROM ubuntu:20.04
+LABEL version="1.0.0" description="Ambiente de build do Miaudote" maintainer="Cl3T0<jhonatancleto@gmail.com>"
 
 ENV USER="miaudote"
 ENV HOME_DIR="/home/${USER}"
