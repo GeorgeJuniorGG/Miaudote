@@ -22,17 +22,17 @@ source.include_exts = py,png,jpg,kv,atlas,ttf
 source.exclude_exts = spec, lock, md, txt, toml, yaml, Dockerfile
 
 # (list) List of directory to exclude (let empty to not exclude anything)
-#source.exclude_dirs = tests, bin
+source.exclude_dirs = tests, bin, __pycache__, .pytest_cache
 
 # (list) List of exclusions using pattern matching
 #source.exclude_patterns = license,images/*/*.jpg
 
 # (str) Application versioning (method 1)
-version = 0.1
+version = 0.5
 
 # (list) Application requirements
 # comma separated e.g. requirements = sqlite3,kivy
-requirements = python3,kivy==2.0.0,Kivy-Garden,kivymd==0.104.2,certifi, cffi, charset-normalizer, cryptography, Deprecated, docutils, future, gax-google-logging-v2, gax-google-pubsub-v1, gcloud, google-gax, googleapis-common-protos, grpc-google-logging-v2, grpc-google-pubsub-v1, grpcio, httplib2, idna, jwcrypto, monotonic, oauth2client, Pillow, ply, protobuf, pyasn1, pyasn1-modules, pycparser, pycryptodome, Pygments, pyparsing, Pyrebase4, python-jwt, requests, requests-toolbelt, rsa, six, urllib3, wrapt
+requirements = python3,kivy==2.0.0,Kivy-Garden, https://github.com/kivymd/KivyMD/archive/master.zip,certifi, cffi, charset-normalizer, cryptography, Deprecated, docutils, future, gax-google-logging-v2, gax-google-pubsub-v1, gcloud, google-gax, googleapis-common-protos, grpc-google-logging-v2, grpc-google-pubsub-v1, grpcio, httplib2, idna, jwcrypto, monotonic, oauth2client, Pillow, ply, protobuf, pyasn1, pyasn1-modules, pycparser, pycryptodome, Pygments, pyparsing, Pyrebase4, firebase-admin, pydantic, email-validator, python-jwt, requests, requests-toolbelt, rsa, six, urllib3, wrapt
 
 # (str) Custom source folders for requirements
 # Sets custom source for any requirements with recipes
