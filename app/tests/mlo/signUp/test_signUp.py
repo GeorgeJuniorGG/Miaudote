@@ -14,8 +14,8 @@ def testInvalidName():
         'name':'@123',
         'cpf':10916877784,
         'email':'carlos1@gmail.com',
-        'password1':'asd123',
-        'password2':'asd123',
+        'password1':'asd123ASD',
+        'password2':'asd123ASD',
         'minimumAge': True,
         'check':True
     }
@@ -27,8 +27,8 @@ def testCPFWith10Digits():
         'name':'Carlos de Souza',
         'cpf':1091687778,
         'email':'carlos2@gmail.com',
-        'password1':'asd123',
-        'password2':'asd123',
+        'password1':'asd123ASD',
+        'password2':'asd123ASD',
         'minimumAge': True,
         'check':True
     }
@@ -40,8 +40,8 @@ def testInvalidEmail():
         'name':'Carlos de Souza',
         'cpf':10916877784,
         'email':'carlosgmail.com',
-        'password1':'asd123',
-        'password2':'asd123',
+        'password1':'asd123ASD',
+        'password2':'asd123ASD',
         'minimumAge': True,
         'check':True
     }
@@ -54,7 +54,7 @@ def testInvalidPassword():
         'cpf':10916877784,
         'email':'carlos3@gmail.com',
         'password1':'123',
-        'password2':'asd123',
+        'password2':'asd123ASD',
         'minimumAge': True,
         'check':True
     }
@@ -66,8 +66,8 @@ def testInvalidPasswordConfirmation():
         'name':'Carlos de Souza',
         'cpf':10916877784,
         'email':'carlos4@gmail.com',
-        'password1':'asd123',
-        'password2':'123asd',
+        'password1':'asd123ASD',
+        'password2':'123asd123',
         'minimumAge': True,
         'check':True
     }
@@ -79,8 +79,8 @@ def testInvalidMinimumAge():
         'name':'Carlos de Souza',
         'cpf':10916877784,
         'email':'carlos5@gmail.com',
-        'password1':'asd123',
-        'password2':'asd123',
+        'password1':'asd123ASD',
+        'password2':'asd123ASD',
         'minimumAge': False,
         'check':True
     }
@@ -92,8 +92,8 @@ def testInvalidState():
         'name':'Carlos de Souza',
         'cpf':10916877784,
         'email':'carlos6@gmail.com',
-        'password1':'asd123',
-        'password2':'asd123',
+        'password1':'asd123ASD',
+        'password2':'asd123ASD',
         'minimumAge': True,
         'check':True
     }
@@ -114,8 +114,8 @@ def testInvalidCity():
         'name':'Carlos de Souza',
         'cpf':10916877784,
         'email':'carlos7@gmail.com',
-        'password1':'asd123',
-        'password2':'asd123',
+        'password1':'asd123ASD',
+        'password2':'asd123ASD',
         'minimumAge': True,
         'check':True
     }
@@ -136,8 +136,8 @@ def testCEPWith7digits():
         'name':'Carlos de Souza',
         'cpf':10916877784,
         'email':'carlos8@gmail.com',
-        'password1':'asd123',
-        'password2':'asd123',
+        'password1':'asd123ASD',
+        'password2':'asd123ASD',
         'minimumAge': True,
         'check':True
     }
@@ -158,8 +158,8 @@ def testInvalidNeighborhood():
         'name':'Carlos de Souza',
         'cpf':10916877784,
         'email':'carlos9@gmail.com',
-        'password1':'asd123',
-        'password2':'asd123',
+        'password1':'asd123ASD',
+        'password2':'asd123ASD',
         'minimumAge': True,
         'check':True
     }
@@ -180,8 +180,8 @@ def testInvalidAddress():
         'name':'Carlos de Souza',
         'cpf':10916877784,
         'email':'carlos10@gmail.com',
-        'password1':'asd123',
-        'password2':'asd123',
+        'password1':'asd123ASD',
+        'password2':'asd123ASD',
         'minimumAge': True,
         'check':True
     }
@@ -202,8 +202,8 @@ def testInvalidNumber():
         'name':'Carlos de Souza',
         'cpf':10916877784,
         'email':'carlos11@gmail.com',
-        'password1':'asd123',
-        'password2':'asd123',
+        'password1':'asd123ASD',
+        'password2':'asd123ASD',
         'minimumAge': True,
         'check':True
     }
@@ -224,8 +224,8 @@ def testAllCorrect():
         'name':'Carlos de Souza',
         'cpf':10916877784,
         'email':'carlos12@gmail.com',
-        'password1':'asd123',
-        'password2':'asd123',
+        'password1':'asd123ASD',
+        'password2':'asd123ASD',
         'minimumAge': True,
         'check':True
     }
@@ -259,8 +259,8 @@ def testCEPWith9digits():
         'name':'Carlos de Souza',
         'cpf':10916877784,
         'email':'carlos14@gmail.com',
-        'password1':'asd123',
-        'password2':'asd123',
+        'password1':'asd123ASD',
+        'password2':'asd123ASD',
         'minimumAge': True,
         'check':True
     }
