@@ -36,6 +36,8 @@ class RecommendedPets():
 
                     if(len(characteristicsFilters) == 0 and pet["pid"] not in results):
                         results.append(pet["pid"])     
+        if (len(results) == 0):
+            results = [pet["pid"] for pet in self.pets]
 
         return results
 
