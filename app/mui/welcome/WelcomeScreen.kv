@@ -21,19 +21,18 @@
         text: "Login"
         md_bg_color: get_color_from_hex(cor.azulClaro())
         font_size: "20sp"
-        size_hint: (0.8, 0.07)
+        size_hint: 0.6, 0.06
         pos_hint: {'center_x': 0.5, 'center_y': 0.55}
         on_release:
             root.controller.welcomeToLogin()
             
-
     MDFillRoundFlatButton:
         id: _welcomeSignupButton
         text: "Cadastrar-se"
         font_size: "20sp"
         md_bg_color: get_color_from_hex(cor.azulClaro())
-        size_hint: (0.8, 0.07)
-        pos_hint: {'center_x': 0.5, 'center_y': 0.45}
+        size_hint: 0.6, 0.06
+        pos_hint: {'center_x': 0.5, 'center_y': 0.465}
         on_press:
             root.controller.welcomeToSignUp()
 

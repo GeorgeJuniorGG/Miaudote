@@ -7,13 +7,13 @@
     MDProgressBar:
         value: 50
         color: get_color_from_hex(cor.azulEscuro())
-        pos_hint:{'center_x':0.5, 'center_y': 0.92}
+        pos_hint: {'center_x': 0.5, 'center_y': 0.92}
 
     MDIconButton:
         id: _SignupTwoBArrowButton
         icon: "arrow-left"
         user_font_size: '35sp'
-        pos_hint:{'center_x':0.08, 'center_y': 0.96}
+        pos_hint: {'center_x': 0.08, 'center_y': 0.96}
         theme_text_color: "Custom"
         text_color: get_color_from_hex(cor.azulClaro())
         on_release:
@@ -31,55 +31,73 @@
         id: state
         hint_text: "Estado"
         size_hint: 0.8, 0.1
-        color_mode: "custom"
+        text_color_normal: get_color_from_hex(cor.azulEscuro())
+        text_color_focus: get_color_from_hex(cor.azulEscuro())
+        hint_text_color_normal: get_color_from_hex(cor.azulEscuro())
+        hint_text_color_focus: get_color_from_hex(cor.azulEscuro())
         line_color_normal: get_color_from_hex(cor.azulEscuro())
         line_color_focus: get_color_from_hex(cor.azulEscuro())
-        pos_hint: {'center_x': 0.5, 'center_y': 0.71}
+        pos_hint: {'center_x': 0.5, 'center_y': 0.8}
 
     MDTextField:
         id: city
         hint_text: "Cidade"
         size_hint: 0.8, 0.1
-        color_mode: "custom"
+        text_color_normal: get_color_from_hex(cor.azulEscuro())
+        text_color_focus: get_color_from_hex(cor.azulEscuro())
+        hint_text_color_normal: get_color_from_hex(cor.azulEscuro())
+        hint_text_color_focus: get_color_from_hex(cor.azulEscuro())
         line_color_normal: get_color_from_hex(cor.azulEscuro())
         line_color_focus: get_color_from_hex(cor.azulEscuro())
-        pos_hint: {'center_x': 0.5, 'center_y': 0.62}
+        pos_hint: {'center_x': 0.5, 'center_y': 0.71}
 
     MDTextField:
         id: CEP
         hint_text: "CEP (Somente números)"
         size_hint: 0.8, 0.1
-        color_mode: "custom"
+        text_color_normal: get_color_from_hex(cor.azulEscuro())
+        text_color_focus: get_color_from_hex(cor.azulEscuro())
+        hint_text_color_normal: get_color_from_hex(cor.azulEscuro())
+        hint_text_color_focus: get_color_from_hex(cor.azulEscuro())
         line_color_normal: get_color_from_hex(cor.azulEscuro())
         line_color_focus: get_color_from_hex(cor.azulEscuro())
-        pos_hint: {'center_x': 0.5, 'center_y': 0.53}
+        pos_hint: {'center_x': 0.5, 'center_y': 0.62}
 
     MDTextField:
         id: neighborhood
         hint_text: "Bairro"
         size_hint: 0.8, 0.1
-        color_mode: "custom"
+        text_color_normal: get_color_from_hex(cor.azulEscuro())
+        text_color_focus: get_color_from_hex(cor.azulEscuro())
+        hint_text_color_normal: get_color_from_hex(cor.azulEscuro())
+        hint_text_color_focus: get_color_from_hex(cor.azulEscuro())
         line_color_normal: get_color_from_hex(cor.azulEscuro())
         line_color_focus: get_color_from_hex(cor.azulEscuro())
-        pos_hint: {'center_x': 0.5, 'center_y': 0.44}
+        pos_hint: {'center_x': 0.5, 'center_y': 0.53}
 
     MDTextField:
         id: address
         hint_text: "Endereço"
         size_hint: 0.8, 0.1
-        color_mode: "custom"
+        text_color_normal: get_color_from_hex(cor.azulEscuro())
+        text_color_focus: get_color_from_hex(cor.azulEscuro())
+        hint_text_color_normal: get_color_from_hex(cor.azulEscuro())
+        hint_text_color_focus: get_color_from_hex(cor.azulEscuro())
         line_color_normal: get_color_from_hex(cor.azulEscuro())
         line_color_focus: get_color_from_hex(cor.azulEscuro())
-        pos_hint: {'center_x': 0.5, 'center_y': 0.35}
+        pos_hint: {'center_x': 0.5, 'center_y': 0.44}
 
     MDTextField:
         id: number
         hint_text: "Número"
         size_hint: 0.8, 0.1
-        color_mode: "custom"
+        text_color_normal: get_color_from_hex(cor.azulEscuro())
+        text_color_focus: get_color_from_hex(cor.azulEscuro())
+        hint_text_color_normal: get_color_from_hex(cor.azulEscuro())
+        hint_text_color_focus: get_color_from_hex(cor.azulEscuro())
         line_color_normal: get_color_from_hex(cor.azulEscuro())
         line_color_focus: get_color_from_hex(cor.azulEscuro())
-        pos_hint: {'center_x': 0.5, 'center_y': 0.26}
+        pos_hint: {'center_x': 0.5, 'center_y': 0.35}
     
     MDBoxLayout:
         width: self.minimum_width
@@ -88,7 +106,7 @@
 
         MDCheckbox:
             id: _ToSCheck
-            pos_hint: {'center_y': 0.20}
+            pos_hint: {'center_y': 0.27}
             size_hint: None, None
             size: "48dp", "48dp"
             color: get_color_from_hex(cor.azulEscuro())
@@ -99,7 +117,7 @@
             text: "Li e aceito os Termos de Uso"
             width: '20px'
             font_size: '17sp'
-            pos_hint: {'center_y': 0.20}
+            pos_hint: {'center_y': 0.27}
             theme_text_color: 'Custom'
             text_color: get_color_from_hex(cor.azulEscuro())
             adaptive_size: True
@@ -107,7 +125,7 @@
         MDIconButton:
             icon: "information-outline"
             user_font_size: '20sp'
-            pos_hint:{'center_y': 0.20}
+            pos_hint: {'center_y': 0.27}
             adaptive_size: True
             on_release:
                 root.show_terms_of_service_dialog()
@@ -117,7 +135,7 @@
         text: "Continuar"
         md_bg_color: get_color_from_hex(cor.azulClaro())
         font_size: "20sp"
-        size_hint: (0.4, 0.05)
-        pos_hint: {'center_x': 0.5, 'center_y': 0.15}
+        size_hint: 0.4, 0.05
+        pos_hint: {'center_x': 0.5, 'center_y': 0.17}
         on_release:
             root.controller.singUpScreen2bManager()

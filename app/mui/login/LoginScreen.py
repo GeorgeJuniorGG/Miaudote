@@ -10,7 +10,7 @@ class LoginScreen(MDScreen):
       self.controller = None
 
    def go_forward(self):
-        self.manager.go_forward_login("LoginScreen")
+      self.manager.go_forward_login("LoginScreen")
 
    def go_backward(self):
-        self.manager.go_backward_login("LoginScreen")
+      self.manager.go_backward_login("LoginScreen")

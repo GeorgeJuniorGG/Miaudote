@@ -17,7 +17,7 @@
     MDIconButton:
         icon: "arrow-left"
         user_font_size: '35sp'
-        pos_hint:{'center_x':0.08, 'center_y': 0.94}
+        pos_hint: {'center_x':0.08, 'center_y': 0.94}
         theme_text_color: "Custom"
         text_color: get_color_from_hex(cor.azulClaro())
         on_release:
@@ -35,13 +35,13 @@
     MDIconButton:
         icon: "account-circle"
         user_font_size: "65sp"
-        pos_hint: {'center_x':0.50, 'center_y': 0.82}
+        pos_hint: {'center_x': 0.50, 'center_y': 0.82}
         canvas.before:
             Color:
                 rgba: get_color_from_hex(cor.bege()+'80')
             Ellipse:
                 size: 62, 62
-                pos: self.x+12.5, self.y+12.5
+                pos: self.x + 12.5, self.y + 12.5
 
     MDTextField:
         hint_text: "Nome"
@@ -49,7 +49,7 @@
         size_hint: 0.8, 0.1
         color_mode: "custom"
         line_color_normal: get_color_from_hex(cor.azulEscuro())
-        pos_hint: {'center_x': 0.5, 'center_y': 0.72}
+        pos_hint: {'center_x': 0.5, 'center_y': 0.70}
         disabled: 'true'
     
     MDTextField:
@@ -58,7 +58,7 @@
         size_hint: 0.8, 0.1
         color_mode: "custom"
         line_color_normal: get_color_from_hex(cor.azulEscuro())
-        pos_hint: {'center_x': 0.5, 'center_y': 0.64}
+        pos_hint: {'center_x': 0.5, 'center_y': 0.62}
         disabled: 'true'
     
     MDTextField:
@@ -67,7 +67,7 @@
         size_hint: 0.8, 0.1
         color_mode: "custom"
         line_color_normal: get_color_from_hex(cor.azulEscuro())
-        pos_hint: {'center_x': 0.5, 'center_y': 0.56}
+        pos_hint: {'center_x': 0.5, 'center_y': 0.54}
         disabled: 'true'
     
     MDTextField:
@@ -76,7 +76,7 @@
         size_hint: 0.8, 0.1
         color_mode: "custom"
         line_color_normal: get_color_from_hex(cor.azulEscuro())
-        pos_hint: {'center_x': 0.5, 'center_y': 0.48}
+        pos_hint: {'center_x': 0.5, 'center_y': 0.46}
         disabled: 'true'
     
     MDTextField:
@@ -85,7 +85,7 @@
         size_hint: 0.8, 0.1
         color_mode: "custom"
         line_color_normal: get_color_from_hex(cor.azulEscuro())
-        pos_hint: {'center_x': 0.5, 'center_y': 0.40}
+        pos_hint: {'center_x': 0.5, 'center_y': 0.38}
         disabled: 'true'
     
     MDTextField:
@@ -94,7 +94,7 @@
         size_hint: 0.8, 0.1
         color_mode: "custom"
         line_color_normal: get_color_from_hex(cor.azulEscuro())
-        pos_hint: {'center_x': 0.5, 'center_y': 0.32}
+        pos_hint: {'center_x': 0.5, 'center_y': 0.3}
         disabled: 'true'
     
     MDTextField:
@@ -103,57 +103,26 @@
         size_hint: 0.8, 0.1
         color_mode: "custom"
         line_color_normal: get_color_from_hex(cor.azulEscuro())
-        pos_hint: {'center_x': 0.5, 'center_y': 0.24}
+        pos_hint: {'center_x': 0.5, 'center_y': 0.22}
         disabled: 'true'
     
     MDFillRoundFlatButton:
         text: "Aceitar"
-        md_bg_color: get_color_from_hex(cor.azulClaro())
         font_size: "20sp"
-        size_hint: (0.4, 0.05)
-        pos_hint: {'center_x': 0.25, 'center_y': 0.16}
+        text_color: get_color_from_hex(cor.azulEscuro())
+        line_width: 1.5
+        line_color: get_color_from_hex(cor.azulEscuro())
+        md_bg_color: get_color_from_hex(cor.branco())
+        pos_hint: {'center_x': 0.25, 'center_y': 0.12}
+        size_hint: 0.35, 0.05
     
-    MDRoundFlatButton:
+    MDFillRoundFlatButton:
         text: "Rejeitar"
         font_size: "20sp"
         theme_text_color: "Custom"
-        text_color: get_color_from_hex(cor.azulEscuro())
-        line_color: get_color_from_hex(cor.azulClaro())
-        pos_hint: {"center_x": 0.75, "center_y": 0.16}
-        size_hint: (0.4, 0.05)
-    
-    MDBoxLayout:
-        size_hint: 1, None
-        height: self.minimum_height
-        y: - self.height
-        orientation: 'vertical'
-
-        MDBottomNavigation:
-            panel_color: get_color_from_hex(cor.azulClaro())
-            text_color_active: get_color_from_hex(cor.cinzaClaro())
-            text_color_normal: get_color_from_hex(cor.azulCinza())
-
-            canvas.after:
-                Color:
-                    rgba: get_color_from_hex(cor.branco())
-                Line:
-                    points: self.x+dp(123), 65, self.x+dp(123), 0
-                    width: 0.3
-
-                Line:
-                    points: self.x+dp(2*123 + 7), 65, self.x+dp(2*123 + 7), 0
-                    width: 0.3
-
-            MDBottomNavigationItem:
-                text: 'Menu'
-                icon: 'menu'
-
-
-            MDBottomNavigationItem:
-                text: 'Início'
-                icon: 'home'
-
-
-            MDBottomNavigationItem:
-                text: 'Perfil'
-                icon: 'account-circle'
+        text_color: get_color_from_hex(cor.vermelho())
+        line_width: 1.5
+        line_color: get_color_from_hex(cor.azulEscuro())
+        md_bg_color: get_color_from_hex(cor.branco())
+        pos_hint: {"center_x": 0.75, "center_y": 0.12}
+        size_hint: 0.35, 0.05
