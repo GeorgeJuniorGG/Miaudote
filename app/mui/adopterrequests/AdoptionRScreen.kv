@@ -23,7 +23,7 @@
             text_color: get_color_from_hex(cor.azulClaro())
             on_release:
                 
-        
+
         MDLabel:
             text: "Miaudote"
             font_name: "Spirax-Regular.ttf"
@@ -34,7 +34,6 @@
             font_size: "25sp"
     
     MDFloatLayout:
-
         MDIcon:
             icon: 'check-outline'
             font_size: 50
@@ -61,40 +60,5 @@
             line_color: get_color_from_hex(cor.azulClaro())
             pos_hint: {"center_x": 0.5, "center_y": 0.35}
             size_hint: 0.7, 0.07
-            on_press:         
-        
-    MDBoxLayout:
-        size_hint: 1, None
-        height: self.minimum_height
-        y: - self.height
-        orientation: 'vertical'
-
-        MDBottomNavigation:
-            panel_color: get_color_from_hex(cor.azulClaro())
-            text_color_active: get_color_from_hex(cor.cinzaClaro())
-            text_color_normal: get_color_from_hex(cor.azulCinza())
-
-            canvas.after:
-                Color:
-                    rgba: get_color_from_hex(cor.branco())
-                Line:
-                    points: self.x+dp(123), 65, self.x+dp(123), 0
-                    width: 0.3
-
-                Line:
-                    points: self.x+dp(2*123 + 7), 65, self.x+dp(2*123 + 7), 0
-                    width: 0.3
-
-            MDBottomNavigationItem:
-                text: 'Menu'
-                icon: 'menu'
-
-
-            MDBottomNavigationItem:
-                text: 'Início'
-                icon: 'home'
-
-
-            MDBottomNavigationItem:
-                text: 'Perfil'
-                icon: 'account-circle'
+            on_press:   
+                

@@ -1,22 +1,26 @@
 #:kivy 2.0
 #:import get_color_from_hex kivy.utils.get_color_from_hex
 #:import NoTransition kivy.uix.screenmanager.NoTransition
+#:import Color mui.ColorTheme.Color
+#:set cor Color()
 
 <MiaudoteLogo>:
     pos_hint: {'top': 1} 
     size_hint: 1, None
     height: '60dp'
-    md_bg_color: get_color_from_hex("#80A6AE")
+    md_bg_color: get_color_from_hex(cor.azulCinzaClaro())
 
     MDSeparator:
         pos_hint: {'top': 1}
         height: '15dp'
-        color: get_color_from_hex("#80A6AE")
+        color: get_color_from_hex(cor.azulCinzaClaro())
+
     MDFloatLayout:
         pos_hint: {'top': .78}
         size_hint: 1, None
         height: '30dp'
-        md_bg_color: get_color_from_hex("#FFFFFF")
+        md_bg_color: get_color_from_hex(cor.branco())
+
         MDLabel:
             text: 'Miaudote'
             font_name: "Spirax-Regular"
@@ -27,10 +31,12 @@
             valign: 'middle'
             font_size: "25sp"
             bold: True
+
     MDSeparator:
         pos_hint: {'top': .271}
         height: "15dp"
-        color: get_color_from_hex("#80A6AE")
+        color: get_color_from_hex(cor.azulCinzaClaro())
+
 
 <NavBarItem>:
     MDIcon:
@@ -40,7 +46,7 @@
         pos_hint: {'center_x': 0.5, 'center_y': 0.7}
         font_size: '25dp'
         theme_text_color: "Custom"
-        text_color: get_color_from_hex('#FFFFFF')
+        text_color: get_color_from_hex(cor.branco())
 
     MDLabel:
         id: label
@@ -49,14 +55,14 @@
         font_size: '14sp'
         pos_hint: {'center_y': 0.3, 'center_x': 0.5}
         theme_text_color: "Custom"
-        text_color: get_color_from_hex('#FFFFFF')        
+        text_color: get_color_from_hex(cor.branco())        
 
 
 <MiaudoteNavBar>:
     id: navbar
     size_hint: 1, .1
     elevation: 15
-    md_bg_color: get_color_from_hex("#97B9C0")
+    md_bg_color: get_color_from_hex(cor.azulClaro())
     buttonContainer: container
 
     MDGridLayout:
@@ -75,7 +81,7 @@
         MDSeparator:
             orientation: 'vertical'
             width: '2dp'
-            color: get_color_from_hex("#ffffff")
+            color: get_color_from_hex(cor.branco())
 
         NavBarItem:
             id: home_icon
@@ -88,7 +94,7 @@
         MDSeparator:
             orientation: 'vertical'
             width: '2dp'
-            color: get_color_from_hex("#ffffff")
+            color: get_color_from_hex(cor.branco())
 
         NavBarItem:
             id: profile_icon
@@ -106,7 +112,7 @@
     profileScreen: profile
 
     MDFloatLayout:
-        md_bg_color: get_color_from_hex("#80A6AE11")
+        md_bg_color: get_color_from_hex(cor.azulCinzaClaro()+'11')
 
         MiaudoteLogo:
 
@@ -134,7 +140,3 @@
         MiaudoteNavBar:
             id: nav_bar
             tabManager: root_manager
-            
-
-
-        

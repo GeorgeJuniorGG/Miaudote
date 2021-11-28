@@ -7,13 +7,13 @@
     MDProgressBar:
         value: 75
         color: get_color_from_hex(cor.azulEscuro())
-        pos_hint:{'center_x':0.5, 'center_y': 0.92}
+        pos_hint:{'center_x': 0.5, 'center_y': 0.92}
 
     MDIconButton:
         id: _SignupFourArrowButton
         icon: "arrow-left"
         user_font_size: '35sp'
-        pos_hint:{'center_x':0.08, 'center_y': 0.96}
+        pos_hint:{'center_x': 0.08, 'center_y': 0.96}
         theme_text_color: "Custom"
         text_color: get_color_from_hex(cor.azulClaro())
         on_release:
@@ -31,22 +31,29 @@
         id: _firstField
         hint_text: "Tipo de Residência"
         size_hint: 0.8, 0.1
-        color_mode: "custom"
+        text_color_normal: get_color_from_hex(cor.azulEscuro())
+        text_color_focus: get_color_from_hex(cor.azulEscuro())
+        hint_text_color_normal: get_color_from_hex(cor.azulEscuro())
+        hint_text_color_focus: get_color_from_hex(cor.azulEscuro())
         line_color_normal: get_color_from_hex(cor.azulEscuro())
         line_color_focus: get_color_from_hex(cor.azulEscuro())
-        pos_hint: {'center_x': 0.5, 'center_y': 0.67}
-        on_focus: if self.focus: root.menu1.open()
-
+        pos_hint: {'center_x': 0.5, 'center_y': 0.72}
+        on_focus:
+            if self.focus: root.menu1.open()
 
     MDTextField:
         id: _secondField
         hint_text: "Espaço Disponível"
         size_hint: 0.8, 0.1
-        color_mode: "custom"
+        text_color_normal: get_color_from_hex(cor.azulEscuro())
+        text_color_focus: get_color_from_hex(cor.azulEscuro())
+        hint_text_color_normal: get_color_from_hex(cor.azulEscuro())
+        hint_text_color_focus: get_color_from_hex(cor.azulEscuro())
         line_color_normal: get_color_from_hex(cor.azulEscuro())
         line_color_focus: get_color_from_hex(cor.azulEscuro())
-        pos_hint: {'center_x': 0.5, 'center_y': 0.55}
-        on_focus: if self.focus: root.menu2.open()
+        pos_hint: {'center_x': 0.5, 'center_y': 0.6}
+        on_focus:
+            if self.focus: root.menu2.open()
 
     MDBoxLayout:
         width: self.minimum_width
@@ -55,7 +62,7 @@
 
         MDCheckbox:
             id: ambiente
-            pos_hint: {'center_y': 0.45}
+            pos_hint: {'center_y': 0.5}
             size_hint: None, None
             size: "48dp", "48dp"
             color: get_color_from_hex(cor.azulEscuro())
@@ -66,7 +73,7 @@
             text: "Possui Ambiente Aberto (Quintal)"
             width: '20px'
             font_size: '17sp'
-            pos_hint: {'center_y': 0.45}
+            pos_hint: {'center_y': 0.5}
             theme_text_color: 'Custom'
             text_color: get_color_from_hex(cor.azulEscuro())
             adaptive_size: True
@@ -77,8 +84,8 @@
         spacing: '0.5dp'
 
         MDCheckbox:
-            id:rotas
-            pos_hint: {'center_y': 0.39}
+            id: rotas
+            pos_hint: {'center_y': 0.44}
             size_hint: None, None
             size: "48dp", "48dp"
             color: get_color_from_hex(cor.azulEscuro())
@@ -86,10 +93,10 @@
             adaptive_size: False
 
         MDLabel:
-            text: "Possui Rotas de Fuga para o Animal"
+            text: "Possui Rotas de Fuga p/ Animal"
             width: '20px'
             font_size: '17sp'
-            pos_hint: {'center_y': 0.39}
+            pos_hint: {'center_y': 0.44}
             theme_text_color: 'Custom'
             text_color: get_color_from_hex(cor.azulEscuro())
             adaptive_size: True
@@ -97,7 +104,7 @@
         MDIconButton:
             icon: "information-outline"
             user_font_size: '18sp'
-            pos_hint:{'center_y': 0.39}
+            pos_hint: {'center_y': 0.44}
             adaptive_size: True
             on_release:
                 root.show_escape_routes_dialog()
@@ -109,7 +116,7 @@
 
         MDCheckbox:
             id:criancas
-            pos_hint: {'center_y': 0.33}
+            pos_hint: {'center_y': 0.38}
             size_hint: None, None
             size: "48dp", "48dp"
             color: get_color_from_hex(cor.azulEscuro())
@@ -120,7 +127,7 @@
             text: "Crianças frequentam o ambiente"
             width: '20px'
             font_size: '17sp'
-            pos_hint: {'center_y': 0.33}
+            pos_hint: {'center_y': 0.38}
             theme_text_color: 'Custom'
             text_color: get_color_from_hex(cor.azulEscuro())
             adaptive_size: True
@@ -132,7 +139,7 @@
 
         MDCheckbox:
             id: _ToSCheck
-            pos_hint: {'center_y': 0.27}
+            pos_hint: {'center_y': 0.32}
             size_hint: None, None
             size: "48dp", "48dp"
             color: get_color_from_hex(cor.azulEscuro())
@@ -143,7 +150,7 @@
             text: "Li e aceito os Termos de Uso"
             width: '20px'
             font_size: '17sp'
-            pos_hint: {'center_y': 0.27}
+            pos_hint: {'center_y': 0.32}
             theme_text_color: 'Custom'
             text_color: get_color_from_hex(cor.azulEscuro())
             adaptive_size: True
@@ -151,7 +158,7 @@
         MDIconButton:
             icon: "information-outline"
             user_font_size: '18sp'
-            pos_hint:{'center_y': 0.27}
+            pos_hint: {'center_y': 0.32}
             adaptive_size: True
             on_release:
                 root.show_terms_of_service_dialog()
@@ -162,6 +169,6 @@
         md_bg_color: get_color_from_hex(cor.azulClaro())
         font_size: "20sp"
         size_hint: (0.4, 0.05)
-        pos_hint: {'center_x': 0.5, 'center_y': 0.15}
+        pos_hint: {'center_x': 0.5, 'center_y': 0.2}
         on_release:
             root.controller.singUpScreen4Manager()

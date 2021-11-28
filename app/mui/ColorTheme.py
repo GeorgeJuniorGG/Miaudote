@@ -1,4 +1,7 @@
 class Color:
+    def azulCinzaClaro(self):
+        return '#80A6AE'
+
     def azulCinza(self):
         return '#1E606F'
 
@@ -43,3 +46,6 @@ class Color:
 
     def vermelhoEscuro(self):
         return '#8B3A27'
+
+    def violeta(self):
+        return '#5D5FEF'

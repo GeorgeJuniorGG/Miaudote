@@ -12,7 +12,7 @@ class PetRScreen(MDScreen):
 
         fav = 1
 
-        if(fav == 0):
+        if(fav == 1):
             self.petFav = "heart-outline"
         else:
             self.petFav = "heart-remove-outline"
@@ -26,7 +26,9 @@ class PetRScreen(MDScreen):
         else:
             self.msgRequest = "O protetor de " + self.petName + " ainda não visualizou a sua solicitação."
 
-    def favourite(self):
+    def change_favorite_state(self):
+        self.petFav = "heart-remove-outline" if self.petFav == "heart-outline" else "heart-outline"
+
         print("FAVORITO " + str(self.petFav))
 
     def alert(self):

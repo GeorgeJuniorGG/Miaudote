@@ -1,9 +1,5 @@
-from logging import root
 from kivymd.uix.screen import MDScreen
-from kivymd.uix.floatlayout import MDFloatLayout
-from kivy.clock import Clock
 
-from mui.ColorTheme import Color
 from .components.PetItem import PetItem
 from .components.Separator import Separator
 
@@ -29,8 +25,6 @@ class HomeScreen(MDScreen):
         # Clock.schedule_once(lambda x: self.insert_items(items))
     
     def insert_items(self, items:list):
-        cor = Color()
-
         for i in range(len(items)):
             petItem = PetItem(items[i])
             self.ids.container.add_widget(petItem)

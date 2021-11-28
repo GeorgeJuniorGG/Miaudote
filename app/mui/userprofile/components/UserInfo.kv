@@ -1,5 +1,7 @@
 #:kivy 2.0
 #:import get_color_from_hex kivy.utils.get_color_from_hex
+#:import Color mui.ColorTheme.Color
+#:set cor Color()
 
 <UserInfo>:
     #md_bg_color: get_color_from_hex(cor.azulEscuro())
@@ -15,7 +17,7 @@
         MDLabel:
             text: root.fieldName
             theme_text_color: 'Custom'
-            text_color: get_color_from_hex('#8C5042')
+            text_color: get_color_from_hex(cor.vermelho())
             pos_hint: {'x': 0.01}
             bold: True
             halign: 'left'
@@ -25,8 +27,8 @@
 
             pos_hint: {'x': 0.01}
             theme_text_color: 'Custom'
-            text_color: get_color_from_hex('#366873')
+            text_color: get_color_from_hex(cor.azulEscuro())
 
         MDSeparator:
-            color: get_color_from_hex('#97B9C0')
+            color: get_color_from_hex(cor.azulClaro())
             height: 2

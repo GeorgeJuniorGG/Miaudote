@@ -42,7 +42,7 @@
     MDFloatLayout:
         id: pet_bar
         orientation: "vertical"
-            
+
         MDLabel:
             id: pet_name
             text: str(root.petName)
@@ -58,7 +58,8 @@
             theme_text_color: "Custom"
             text_color: get_color_from_hex(cor.vermelho())
             on_press:
-                root.favourite()
+                self.icon = "heart-remove-outline" if self.icon == "heart-outline" else "heart-outline"
+                root.change_favorite_state()
 
         MDIconButton:
             icon: "alert-outline"
@@ -67,6 +68,7 @@
             text_color: get_color_from_hex(cor.vermelho())
             on_press:
                 root.alert()
+                
     MDCarousel:
         size_hint: 1, 0.25
         direction: "right"
@@ -143,62 +145,43 @@
         MDFillRoundFlatButton:
             id: pet_adopt
             text: "Adotar"
-            md_bg_color: get_color_from_hex(cor.azulClaro())
-            pos_hint: {"center_x": 0.5, "center_y": 0.75}
+            font_size: "18sp"
+            theme_text_color: "Custom"
+            text_color: get_color_from_hex(cor.azulEscuro())
+            line_width: 1.5
+            line_color: get_color_from_hex(cor.azulEscuro())
+            md_bg_color: get_color_from_hex(cor.branco())
+            size_hint: 0.3, 0.09
+            pos_hint: {"center_x": 0.5, "center_y": 0.73}
             on_press:
-                root.adopt_popup()
+                root.adopt_dialog()
     
-    ScrollView:
-        size_hint: 1, 0.35
+    MDFloatLayout:
+        size_hint: 1, 0.33
+
+        canvas.before:
+            Color:
+                rgba: get_color_from_hex(cor.vermelho())
+            Line:
+                points: self.x + 20, self.top, self.right - 20, self.top - 0.1
+                width: 1.015
+
+        MDLabel:
+            text: "Descrição:"
+            theme_text_color: "Custom"
+            text_color: get_color_from_hex(cor.vermelho())
+            halign: "left"
+            pos_hint: {"center_y": 0.9}
+            padding_x: 20
 
         MDFloatLayout:
-            size_hint: 1, 0.5
-
-            MDLabel:
-                text: "Descrição:"
-                theme_text_color: "Custom"
-                text_color: get_color_from_hex(cor.vermelho())
-                halign: "left"
-                padding_x: 10
-                pos_hint: {"center_y": 1}
-
+            size_hint: 1, 0.55
+        
             MDLabel:
                 id: pet_dscp
                 text: str(root.petDscp)
                 text_color: get_color_from_hex(cor.azulEscuro())
+                #md_bg_color: get_color_from_hex(cor.laranja())
                 halign: "justify"
-                padding_x: 10
-
-    MDBoxLayout:
-        size_hint: 1, None
-        height: self.minimum_height
-        y: - self.height
-        orientation: "vertical"
-
-        MDBottomNavigation:
-            panel_color: get_color_from_hex(cor.azulClaro())
-            text_color_active: get_color_from_hex(cor.cinzaClaro())
-            text_color_normal: get_color_from_hex(cor.azulCinza())
-
-            canvas.after:
-                Color:
-                    rgba: get_color_from_hex(cor.branco())
-                Line:
-                    points: self.x + dp(123), 65, self.x + dp(123), 0
-                    width: 0.3
-
-                Line:
-                    points: self.x + dp(2*123 + 7), 65, self.x + dp(2*123 + 7), 0
-                    width: 0.3
-
-            MDBottomNavigationItem:
-                text: "Menu"
-                icon: "menu"
-
-            MDBottomNavigationItem:
-                text: "Início"
-                icon: "home"
-
-            MDBottomNavigationItem:
-                text: "Perfil"
-                icon: "account-circle"
+                pos_hint: {"center_y": 1}
+                padding_x: 20
