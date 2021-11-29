@@ -1,9 +1,11 @@
 # Manager
 from mem.login.LoginManager import LoginManager
 from mem.signUp.signUpManager import SignUpManager
+from mem.user.FavoriteManager import FavoriteManager
 from mem.welcome.WelcomeManager import WelcomeManager
 from mem.root.RootManager import RootManager
-
+from mem.user.ARManager import ARManager
+from mem.user.PRManager import PRManager
 # Service
 from mlo.auth.dataModel import DataModel
 from mlo.auth.firebaseAuth import FireBaseAuthService
@@ -129,5 +131,31 @@ recipes = {
         'class': RootManager,
         'deps': (services['user'], services['pet'], services['search']),
         'pArgs': ('orchestrator',)  
-    }
+    },
+
+    screens['favorites']: {
+        'class': FavoriteManager,
+        'deps': (services['user'], services['pet']),
+        'pArgs': None
+    },
+
+    screens['adoRequests']: {
+        'class': ARManager,
+        'deps': (services['user'], services['pet']),
+        'pArgs': None
+    },
+
+    screens['addPet']: {
+        'class': FavoriteManager,
+        'deps': (services['user'], services['pet']),
+        'pArgs': None
+    },
+
+    screens['recRequests']: {
+        'class': PRManager,
+        'deps': (services['user'], services['pet']),
+        'pArgs': None
+    },
+
+
 }

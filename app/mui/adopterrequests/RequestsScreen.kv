@@ -4,29 +4,8 @@
 #:set cor Color()
 
 <RequestsScreen>:
-    canvas:
-        Color:
-            rgba: get_color_from_hex(cor.azulClaro())
-        Line:
-            points: self.x, 0.9 * self.top, self.right, 0.9 * self.top 
-            width: 10
-        Line:
-            points: self.x, self.top - 10, self.right, self.top - 10
-            width: 10
-        Color:
-            rgba: get_color_from_hex(cor.vermelho())
-        Line:
-            points: self.x, 0.8*self.top, self.right, 0.8*self.top
-            width: 1
-            
-    MDLabel:
-        text: "Miaudote"
-        font_name: "Spirax-Regular"
-        theme_text_color: "Custom"
-        text_color: get_color_from_hex(cor.vermelho())
-        pos_hint: {'center_y': 0.94}
-        halign: "center"
-        font_size: "25sp"
+    MiauLogo:
+        screen: root
 
     MDLabel:
         text: "Solicitações Pendentes"
@@ -34,14 +13,26 @@
         text_color: get_color_from_hex(cor.vermelho())
         halign: "center"
         font_size: "25sp"
-        pos_hint: {"center_x": 0.5, "center_y": 0.84}
+        size_hint: 1, None
+        height: 40
+        pos_hint: {"center_x": 0.5, "top": 0.91}
+
+    MDSeparator:
+        height: "1dp"
+        color: get_color_from_hex(cor.vermelho())
+        pos_hint: {"center_x": 0.5, "top": 0.85} 
 
     MDBoxLayout:
-        size_hint: 1, 0.80
+        size_hint: 1, 1
+        pos_hint: {"center_x": 0.5, "top": 0.83}
         height: self.minimum_height
         orientation: "vertical"
 
         ScrollView:
+            size_hint: 1, 1
             MDList:
                 id: container
-                padding: 5
+                padding: '20dp'
+
+        Widget:
+            size_hint: 1, 0.2

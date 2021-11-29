@@ -10,7 +10,6 @@ from kivy.properties import (
 )
 
 from mui.ColorTheme import Color
-from mui.userprofile.ProfileScreen import ProfileScreen
 
 class MiaudoteLogo(MDFloatLayout):
     ...

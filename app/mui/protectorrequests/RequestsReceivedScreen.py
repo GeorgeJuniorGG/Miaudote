@@ -11,6 +11,7 @@ class RequestsReceivedScreen(MDScreen, MDFloatLayout):
     def __init__(self, **kw):
         super().__init__(**kw)
         self.cor = Color()
+        self.controller = None
         Clock.schedule_once(self.on_start)
     
     def on_start(self, interval):

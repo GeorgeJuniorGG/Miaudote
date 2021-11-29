@@ -1,10 +1,14 @@
-from kivy.uix.screenmanager import ScreenManager
+from kivy.uix.screenmanager import FadeTransition, RiseInTransition, ScreenManager, SlideTransition
 from kivy.properties import ObjectProperty
 from mem.screenmanager.screens import screens
 
 class MainScreenManager(ScreenManager):
 
     orchestrator = ObjectProperty()
+    __TRANSITIONS = {'FadeTransition': FadeTransition, 
+                     'SlideTransition': SlideTransition,
+                     'RiseInTransition': RiseInTransition
+                    }
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -24,4 +28,8 @@ class MainScreenManager(ScreenManager):
 
     def goBackward(self, direction:str):
         self.transition.direction = direction
-        self.__previous, self.current = self.current, self.__previous  
+        self.__previous, self.current = self.current, self.__previous
+
+    def changeTransition(self, tName:str):
+        if tName in self.__TRANSITIONS.keys():
+            self.transition = self.__TRANSITIONS[tName]()
