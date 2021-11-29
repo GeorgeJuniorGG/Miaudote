@@ -2,7 +2,7 @@ from kivymd.uix.screen import MDScreen
 from kivymd.uix.gridlayout import MDGridLayout
 from .components.MenuItem import MenuItem
 from kivy.properties import ObjectProperty
-from mui.userprofile.FavoritesScreen import FavoritesScreen
+from mem.screenmanager.screens import screens
 
 class MiaudoteMenuScreen(MDScreen):
     # Menu
@@ -17,6 +17,20 @@ class MiaudoteMenuScreen(MDScreen):
     favorites = ObjectProperty(MenuItem)
 
     controller = None
+
+    # Facilita a mudança de telas no menu (Melhorar se possível)
+    __screens = {}
     
-    def open_favorites(self, app):
-        app.change_screen(FavoritesScreen(name='Favorites'))
+    def bindScreens(self):
+        self.__screens = {
+        screens['favorites']: self.favorites,
+        screens['adoRequests']: self.adoptRequests,
+        screens['addPet']: self.addPet,
+        screens['recRequests']: self.receivedRequests
+    }
+
+    # Chamado quando há uma mudança de tela
+    def callScreen(self, item:MenuItem):
+        for screenName in self.__screens.keys():
+            if self.__screens[screenName] == item:
+                return self.controller.callChangeScreen(screenName)

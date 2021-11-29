@@ -11,6 +11,8 @@ class Orchestrator:
 
     def __init__(self, manager:MainScreenManager) -> None:
         self.manager = manager
+        self.mTransition = 'SlideTransition'
+        self.manager.changeTransition(self.mTransition)
         self.manager.orchestrator = self
         self.__components = dict()
         self.userID = self.__openUserFile()
@@ -45,7 +47,8 @@ class Orchestrator:
     def dict(self):
         return {
             'userID': self.userID,
-            'orchestrator': self
+            'orchestrator': self,
+            'mTransition': self.mTransition,
         }
 
     # Adiciona uma referência de um componente ao orchestrator
@@ -160,4 +163,11 @@ class Orchestrator:
         self.manager.clear_widgets()
         self.__welcomeFlow()
         self.manager.changeScreen('left', screens['welcome'])
+
+    def callChangeScreen(self, screenName:str):
+        if self.mTransition != 'FadeTransition':
+            self.mTransition = 'FadeTransition'
+            self.manager.changeTransition(self.mTransition)
+
+        self.manager.changeScreen('left', screenName)
     

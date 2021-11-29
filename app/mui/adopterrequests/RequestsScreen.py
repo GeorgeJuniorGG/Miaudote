@@ -14,7 +14,7 @@ from mui.ColorTheme import Color
 class RequestsScreen(MDScreen, MDFloatLayout):
     def __init__(self, **kw):
         super().__init__(**kw)
-
+        self.controller = None
         self.cor = Color()
 
         # Apenas para ilustrar
