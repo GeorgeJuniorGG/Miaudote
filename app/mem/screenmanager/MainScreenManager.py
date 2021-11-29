@@ -1,4 +1,4 @@
-from kivy.uix.screenmanager import FadeTransition, ScreenManager, SlideTransition
+from kivy.uix.screenmanager import FadeTransition, RiseInTransition, ScreenManager, SlideTransition
 from kivy.properties import ObjectProperty
 from mem.screenmanager.screens import screens
 
@@ -6,7 +6,8 @@ class MainScreenManager(ScreenManager):
 
     orchestrator = ObjectProperty()
     __TRANSITIONS = {'FadeTransition': FadeTransition, 
-                     'SlideTransition': SlideTransition
+                     'SlideTransition': SlideTransition,
+                     'RiseInTransition': RiseInTransition
                     }
 
     def __init__(self, **kwargs):

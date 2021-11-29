@@ -165,9 +165,9 @@ class Orchestrator:
         self.manager.changeScreen('left', screens['welcome'])
 
     def callChangeScreen(self, screenName:str):
-        if self.mTransition != 'FadeTransition':
-            self.mTransition = 'FadeTransition'
-            self.manager.changeTransition(self.mTransition)
+        # if self.mTransition != 'RiseInTransition':
+        #     self.mTransition = 'RiseInTransition'
+        #     self.manager.changeTransition(self.mTransition)
 
         self.manager.changeScreen('left', screenName)
     
