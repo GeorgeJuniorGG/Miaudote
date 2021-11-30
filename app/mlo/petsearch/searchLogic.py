@@ -149,8 +149,15 @@ class SearchLogic:
     def getAliases(self):
         aliases = []
         for word in self.words:
-            if word[-1] == "a" and word != "fêmea" and word != "femea":
+            if word == "cao" or word == "cão" or word == "cadela":
+                aliases.append("cachorro")
+            if word == "medio":
+                aliases.append("médio")
+            elif word[-1] == "a" and word != "fêmea" and word != "femea":
                 aliases.append(word[:-1] + "o")
             elif word[-1] == "o" and word != "macho":
                 aliases.append(word[:-1] + "a")
+            elif word[-1] == "s":
+                aliases.append(word[:-1])
+            
         return aliases

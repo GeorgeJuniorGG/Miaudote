@@ -13,9 +13,9 @@ class RecommendedPets():
         animalFilters = self.getAnimalFilters()
 
         for pet in self.pets:
-            if(pet["size"] in sizeFilters):
+            if(pet["size"].lower() in sizeFilters):
 
-                if(pet["type"] in animalFilters and pet["pid"] not in results):
+                if(pet["type"].lower() in animalFilters and pet["pid"] not in results):
                     if(pet["Activities"] in characteristicsFilters and pet["pid"] not in results):
                         results.append(pet["pid"])
                     if(pet["Age"] in characteristicsFilters and pet["pid"] not in results):
@@ -26,7 +26,7 @@ class RecommendedPets():
                     if(len(characteristicsFilters) == 0 and pet["pid"] not in results):
                         results.append(pet["pid"])
 
-                if(pet["type"] != "cachorro" and pet["type"] != "gato" and "outro" in animalFilters and pet["pid"] not in results):
+                if(pet["type"].lower() != "cachorro" and pet["type"].lower() != "gato" and "outro" in animalFilters and pet["pid"] not in results):
                     if(pet["Activities"] in characteristicsFilters and pet["pid"] not in results):
                         results.append(pet["pid"])
                     if(pet["Age"] in characteristicsFilters and pet["pid"] not in results):
@@ -35,7 +35,8 @@ class RecommendedPets():
                         results.append(pet["pid"])
 
                     if(len(characteristicsFilters) == 0 and pet["pid"] not in results):
-                        results.append(pet["pid"])     
+                        results.append(pet["pid"])
+                        
         if (len(results) == 0):
             results = [pet["pid"] for pet in self.pets]
 
