@@ -50,3 +50,6 @@ class RootManager:
     
     def callChangeScreen(self, screenName:str):
         self.orchetrator.callChangeScreen(screenName)
+
+    def openPetProfile(self, petID:str):
+        self.orchetrator.openPetProfile(petID)

@@ -18,7 +18,7 @@ class HomeScreen(MDScreen):
     
     def insert_items(self, items:list):
         for i in range(len(items)):
-            petItem = PetItem(items[i])
+            petItem = PetItem(self.controller, items[i])
             self.ids.container.add_widget(petItem)
             self.ids.container.add_widget(Separator())
             self.ids.container.ids[f'item{i}'] = petItem
@@ -30,6 +30,7 @@ class HomeScreen(MDScreen):
         petItemData = list()
         for pet in pets:
             pData = {
+                'petID': pet['pid'],
                 'imageSource': pet['images'][0],
                 'name': pet['name'],
                 'details': pet['details'][:65] + '...',
@@ -56,6 +57,7 @@ class HomeScreen(MDScreen):
 
         for pet in newItems:
             pData = {
+                'petID': pet['pid'],
                 'imageSource': pet['images'][0],
                 'name': pet['name'],
                 'details': pet['details'][:65] + '...',
