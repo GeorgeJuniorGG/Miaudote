@@ -15,6 +15,7 @@ from mlo.petrecommendation.RecommendedPets import RecommendedPets
 from mlo.petsearch.resultsPrioritization import ResultsPrioritization
 from mlo.petsearch.searchLogic import SearchLogic
 from mlo.petsearch.searchService import SearchService
+from mlo.user.FavoritesService import FavoritesService
 
 # Database
 from mlo.storage.firebaseDB import FirebaseDB
@@ -32,7 +33,8 @@ services = {
     'recom': 'RecommendedPets',
     'prior': 'ResultsPrioritization',
     'sLogic': 'SearchLogic',
-    'search': 'SearchService'   
+    'search': 'SearchService',
+    'favorites': 'FavoritesService' 
 }
 
 databases = {
@@ -91,6 +93,12 @@ recipes = {
         'pArgs': None
     },
 
+    services['favorites'] : {
+        'class': FavoritesService,
+        'deps': (services['user'], services['pet']),
+        'pArgs': None
+    },
+
     databases['pet'] : {
         'class': FPetDB,
         'deps': None,
@@ -135,7 +143,7 @@ recipes = {
 
     screens['favorites']: {
         'class': FavoriteManager,
-        'deps': (services['user'], services['pet']),
+        'deps': (services['user'], services['pet'], services['favorites']),
         'pArgs': None
     },
 

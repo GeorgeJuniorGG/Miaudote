@@ -28,6 +28,8 @@ class PetItem2(RectangularRippleBehavior, ButtonBehavior, MDFloatLayout):
     petName = StringProperty()
     # adicionar descrição do Pet
     petDescription = StringProperty()
+    # adicionar o ID do pet
+    petID = StringProperty()
 
     # FloatLayout com o conteudo textual sobre o Pet
     petContent = ObjectProperty(MDFloatLayout)
@@ -48,6 +50,7 @@ class PetItem2(RectangularRippleBehavior, ButtonBehavior, MDFloatLayout):
         self.petImageSource = data['imageSource']
         self.petName = data['petName']
         self.petDescription = data['petDecription']
+        self.petID = data['pid']
         labels = data['petChars']
         Clock.schedule_once(lambda x: self.insertLabels(labels))
 

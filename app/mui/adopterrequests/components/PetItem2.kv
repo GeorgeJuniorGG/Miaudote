@@ -64,9 +64,10 @@
             theme_text_color: "Custom"
             text_color: get_color_from_hex(cor.azulEscuro())
             on_press:
-                pos = root.parent.children.index(root)                  # Posicao do PetItem2 na lista de filhos da list
-                root.parent.remove_widget(root.parent.children[pos-1])  # Remove o separator associado ao PetItem2
-                root.parent.remove_widget(root.parent.children[pos-1])  # Remove o PetItem2, que agora esta uma posicao a menos
+                root.parent.parent.parent.parent.remove_item_dialog(root.petID)
+                #pos = root.parent.children.index(root)                  # Posicao do PetItem2 na lista de filhos da list
+                #root.parent.remove_widget(root.parent.children[pos-1])  # Remove o separator associado ao PetItem2
+                #root.parent.remove_widget(root.parent.children[pos-1])  # Remove o PetItem2, que agora esta uma posicao a menos
 
         MDBoxLayout:
             id: pet_chars
