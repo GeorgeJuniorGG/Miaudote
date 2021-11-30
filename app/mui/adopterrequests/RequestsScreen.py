@@ -5,6 +5,7 @@ from kivymd.uix.button import MDFillRoundFlatButton
 from kivymd.uix.dialog import MDDialog
 
 from kivy.clock import Clock
+from functools import partial
 from kivy.utils import get_color_from_hex
 
 from mui.adopterrequests.components.PetItem2 import PetItem2
@@ -22,6 +23,7 @@ class RequestsScreen(MDScreen, MDFloatLayout):
         item = {
                  'imageSource': 'mrbubbles.png',
                  'petName': 'Mr. Bubbles',
+                 'pid': 'pid',
                  'petDecription': "Bubbles vivia em um lar em Jardins, São Paulo, até que seus donos tiveram que sair do país e resoveram não levá-lo...",
                  'petChars': ['Branco', 'Macho', 'Campinas']
                }
@@ -40,11 +42,11 @@ class RequestsScreen(MDScreen, MDFloatLayout):
             self.ids.container.add_widget(Separator())
             self.ids.container.ids[f'item{i}'] = petItem
 
-    def remove_request_dialog(self):
+    def remove_item_dialog(self, petID:str):
         sim_btn = MDFillRoundFlatButton(text="SIM", theme_text_color="Custom",
                                         text_color=get_color_from_hex(self.cor.azulEscuro()),
                                         md_bg_color=get_color_from_hex(self.cor.branco()),
-                                        on_release=self.go_forward)
+                                        on_release=partial(self.go_forward, petID))
 
         nao_btn = MDFillRoundFlatButton(text="NÃO", theme_text_color="Custom",
                                         text_color=get_color_from_hex(self.cor.vermelho()),
@@ -62,6 +64,6 @@ class RequestsScreen(MDScreen, MDFloatLayout):
     def close_dialog(self, obj):
         self.dialog.dismiss()
 
-    def go_forward(self, obj):
+    def go_forward(self, petID:str, obj):
         self.dialog.dismiss()
         pass
