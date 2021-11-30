@@ -39,9 +39,10 @@ class PetItem(RectangularRippleBehavior, ButtonBehavior, MDFloatLayout):
     # FloatLayout com a Imagem do pet
     petImage = ObjectProperty(MDFloatLayout)
 
-    def __init__(self, data:dict, **kwargs):
+    def __init__(self, controller, data:dict, **kwargs):
         super().__init__(**kwargs)
-
+        self.controller = controller
+        self.petID = data['petID']
         self.petImageSource = data['imageSource']
         self.petName = data['name']
         self.petDescription = data['details']
@@ -55,3 +56,7 @@ class PetItem(RectangularRippleBehavior, ButtonBehavior, MDFloatLayout):
             petChar = PetLabel(labels[i])
             self.petCharsBox.ids[f'label{i}'] = petChar
             self.petCharsBox.add_widget(petChar)
+
+    # Abrir a tela de Perfil do Pet
+    def openPetProfile(self):
+        self.controller.openPetProfile(self.petID)

@@ -8,17 +8,26 @@ from kivy.utils import get_color_from_hex
 from mui.ColorTheme import Color
 
 class PetProfileScreen(MDScreen):
-    def __init__(self, **kw):
+    def __init__(self, petData:dict, **kw):
         super().__init__(**kw)
 
         self.cor = Color()
 
-        self.petName = "nome"
-        self.petSex = "sexo"
-        self.petAge = "0"
-        self.petAddr = "Campinas/SP"
-        self.petDscp = "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-        self.petImages = ['https://firebasestorage.googleapis.com/v0/b/miaudote-b4e55.appspot.com/o/petImages%2F4prTZhzu71iQaGpCo1bE%2Fgarfield1.jpeg?alt=media&token=c4c4c354-5200-43fe-a8da-5811c8e79f07','https://firebasestorage.googleapis.com/v0/b/miaudote-b4e55.appspot.com/o/petImages%2F4prTZhzu71iQaGpCo1bE%2Fgarfield2.jpg?alt=media&token=000bfeb7-64ab-49b4-8c51-e0ffc6ab9d57','https://firebasestorage.googleapis.com/v0/b/miaudote-b4e55.appspot.com/o/petImages%2F4prTZhzu71iQaGpCo1bE%2Fgarfield3.jpg?alt=media&token=661aa04f-266f-4af9-bc7c-d6348c222ff5']
+        # self.petName = "nome"
+        # self.petSex = "sexo"
+        # self.petAge = "0"
+        # self.petAddr = "Campinas/SP"
+        # self.petDscp = "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+        # self.petImages = ['https://firebasestorage.googleapis.com/v0/b/miaudote-b4e55.appspot.com/o/petImages%2F4prTZhzu71iQaGpCo1bE%2Fgarfield1.jpeg?alt=media&token=c4c4c354-5200-43fe-a8da-5811c8e79f07','https://firebasestorage.googleapis.com/v0/b/miaudote-b4e55.appspot.com/o/petImages%2F4prTZhzu71iQaGpCo1bE%2Fgarfield2.jpg?alt=media&token=000bfeb7-64ab-49b4-8c51-e0ffc6ab9d57','https://firebasestorage.googleapis.com/v0/b/miaudote-b4e55.appspot.com/o/petImages%2F4prTZhzu71iQaGpCo1bE%2Fgarfield3.jpg?alt=media&token=661aa04f-266f-4af9-bc7c-d6348c222ff5']
+
+        self.controller = None
+
+        self.petName = petData['name']
+        self.petSex = petData['sex']
+        self.petAge = petData['Age']
+        self.petAddr = petData['localization']
+        self.petDscp = petData['details']
+        self.petImages = petData['images']
 
         fav = 1
         self.addPetImagens()
