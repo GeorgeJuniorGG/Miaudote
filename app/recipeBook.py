@@ -6,6 +6,8 @@ from mem.welcome.WelcomeManager import WelcomeManager
 from mem.root.RootManager import RootManager
 from mem.user.ARManager import ARManager
 from mem.user.PRManager import PRManager
+from mem.pet.PetProfileManager import PetProfileManager
+
 # Service
 from mlo.auth.dataModel import DataModel
 from mlo.auth.firebaseAuth import FireBaseAuthService
@@ -48,61 +50,71 @@ recipes = {
     services['dataModel'] : {
         'class': DataModel,
         'deps': None,
-        'pArgs': None
+        'pArgs': None,
+        'unique': True
     },
 
     services['auth'] : {
         'class': FireBaseAuthService,
         'deps': None,
-        'pArgs': None
+        'pArgs': None,
+        'unique': True
     },
 
     services['pet'] : {
         'class': PetService,
         'deps': (databases['pet'],),
-        'pArgs': None
+        'pArgs': None,
+        'unique': True
     },
 
     services['user'] : {
         'class': UserService,
         'deps': (databases['user'],),
-        'pArgs': None
+        'pArgs': None,
+        'unique': True
     },
 
     services['recom'] : {
         'class': RecommendedPets,
         'deps': (services['user'], services['pet']),
-        'pArgs': None
+        'pArgs': None,
+        'unique': True
     },
 
     services['prior'] : {
         'class': ResultsPrioritization,
         'deps': (services['pet'], services['user'],),
-        'pArgs': None
+        'pArgs': None,
+        'unique': True
     },
 
     services['sLogic'] : {
         'class': SearchLogic,
         'deps': (services['pet'], services['recom']),
-        'pArgs': None
+        'pArgs': None,
+        'unique': True
     },
 
     services['search'] : {
         'class': SearchService,
         'deps': (services['prior'], services['sLogic'], services['recom']),
-        'pArgs': None
+        'pArgs': None,
+        'unique': True
     },
 
     services['favorites'] : {
         'class': FavoritesService,
         'deps': (services['user'], services['pet']),
-        'pArgs': None
+        'pArgs': None,
+        'unique': True
     },
 
     databases['pet'] : {
         'class': FPetDB,
         'deps': None,
-        'pArgs': None
+        'pArgs': None,
+        'unique': True
     },
 
     databases['user'] : {
@@ -114,25 +126,29 @@ recipes = {
     databases['storage'] : {
         'class': FirebaseDB,
         'deps': None,
-        'pArgs': None
+        'pArgs': None,
+        'unique': True
     }, 
 
     screens['welcome'] : {
         'class': WelcomeManager,
         'deps': None,
-        'pArgs': None
+        'pArgs': None,
+        'unique': True
     },
 
     screens['login'] : {
         'class': LoginManager,
         'deps': (services['auth'],),
-        'pArgs': None
+        'pArgs': None,
+        'unique': True
     },
 
     screens['signUp'] : {
         'class': SignUpManager,
         'deps': (services['auth'], services['dataModel'], databases['storage']),
-        'pArgs': None
+        'pArgs': None,
+        'unique': True
     },
     
     screens['root'] : {
@@ -144,25 +160,36 @@ recipes = {
     screens['favorites']: {
         'class': FavoriteManager,
         'deps': (services['user'], services['pet'], services['favorites']),
-        'pArgs': None
+        'pArgs': None,
+        'unique': True
     },
 
     screens['adoRequests']: {
         'class': ARManager,
         'deps': (services['user'], services['pet']),
-        'pArgs': None
+        'pArgs': None,
+        'unique': True
     },
 
     screens['addPet']: {
         'class': FavoriteManager,
         'deps': (services['user'], services['pet']),
-        'pArgs': None
+        'pArgs': None,
+        'unique': True
     },
 
     screens['recRequests']: {
         'class': PRManager,
         'deps': (services['user'], services['pet']),
-        'pArgs': None
+        'pArgs': None,
+        'unique': True
+    },
+
+    screens['petProfile']: {
+        'class': PetProfileManager,
+        'deps': (services['user'], services['pet']),
+        'pArgs': ('petID',),
+        'unique': False
     },
 
 

@@ -90,7 +90,7 @@ class Orchestrator:
         if cDeps != None:
             for dep in cDeps:
                 cDep = self.__checkDep(dep)
-                if cDep == None:
+                if cDep == None or (not component['unique']):
                     cDep = self.__buildComponent(recipes[dep], outArgs)
                     self.__addComponent(dep, cDep)
                 deps.append(cDep)
@@ -171,3 +171,13 @@ class Orchestrator:
 
         self.manager.changeScreen('left', screenName)
     
+    # Abrir a tela de perfil do pet
+    def openPetProfile(self, petID:str):
+        cName = screens['petProfile']
+        if cName+petID in self.manager.screen_names:
+            self.manager.changeScreen('left', cName+petID)
+        else:
+            outArgs = {'petID': petID}
+            screen = self.startScreen(cName, outArgs=outArgs)
+            self.manager.add_widget(screen)
+            self.manager.changeScreen('left', screen.name)

@@ -9,6 +9,7 @@ screens = {
     'adoStatus': 'AdoptRequestsScreen',
     'addPet': 'PetSignUpScreen',
     'recRequests': 'RequestsReceivedScreen',
+    'petProfile': 'PetProfileScreen'
 
 }
 
