@@ -12,3 +12,4 @@ class PetProfileManager:
         self.petID = petID
         self.petData = self.petService.getPetData(petID)
         self.screen = PetProfileScreen(self.petData, name=screens['petProfile']+petID)
+        self.screen.controller = self
