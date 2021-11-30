@@ -32,3 +32,14 @@ class FavoritesService:
 
         #if(isinstance(self.userServ.getUserData(), AdopterModel)):
         return self.userServ.getUserData()["favorites"]
+    
+    def getFavoriteStatus(self, petID):
+        uData = self.userServ.getUserData()
+
+        pet = self.pets.getPetData(petID)
+
+        for fav in uData["favorites"]:
+            if(fav['pid'] == pet['pid']):
+                return True
+        
+        return False

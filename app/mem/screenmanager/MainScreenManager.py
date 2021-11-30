@@ -9,15 +9,22 @@ class MainScreenManager(ScreenManager):
                      'SlideTransition': SlideTransition,
                      'RiseInTransition': RiseInTransition
                     }
+    __refreshingScreens = {"PetProfileScreen": None, "FavoriteScreen": None}
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.__previous = screens['welcome']
 
     def changeScreen(self, direction:str, screenName:str):
-        if not self.has_screen(screenName):
+        if not self.has_screen(screenName) or screenName in self.__refreshingScreens.keys():
             screen = self.orchestrator.startScreen(screenName)
             if screen != None:
+                if screenName in self.__refreshingScreens:
+                    if (self.__refreshingScreens[screenName] != None):
+                        self.remove_widget(self.__refreshingScreens[screenName])
+
+                    self.__refreshingScreens[screenName] = screen
+
                 self.add_widget(screen)
 
         self.transition.direction = direction

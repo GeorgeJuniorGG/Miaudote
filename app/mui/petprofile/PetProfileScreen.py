@@ -28,18 +28,29 @@ class PetProfileScreen(MDScreen):
         self.petAddr = petData['localization']
         self.petDscp = petData['details']
         self.petImages = petData['images']
+        self.petID = petData['pid']
 
-        fav = 1
+        fav = 0
         self.addPetImagens()
         if(fav == 0):
             self.petFav = "heart-outline"
         else:
             self.petFav = "heart-remove-outline"
+    
+    def start_favorite_state(self, status):
+        if status == False:
+            self.petFav = "heart-outline"
+        else:
+            self.petFav = "heart-remove-outline"
 
     def change_favorite_state(self):
-        self.petFav = "heart-remove-outline" if self.petFav == "heart-outline" else "heart-outline"
+        if self.petFav == "heart-outline":
+            self.petFav = "heart-remove-outline"
+            self.controller.addFavorite(self.petID)
 
-        print("FAVORITO " + str(self.petFav))
+        else:
+            self.petFav= "heart-outline"
+            self.controller.removeFavorite(self.petID)
 
     def alert(self):
         print("DENÚNCIA!")

@@ -175,9 +175,9 @@ class Orchestrator:
     def openPetProfile(self, petID:str):
         cName = screens['petProfile']
         if cName+petID in self.manager.screen_names:
-            self.manager.changeScreen('left', cName+petID)
-        else:
-            outArgs = {'petID': petID}
-            screen = self.startScreen(cName, outArgs=outArgs)
-            self.manager.add_widget(screen)
-            self.manager.changeScreen('left', screen.name)
+            self.manager.remove_widget(self.manager.get_screen(cName+petID))
+        
+        outArgs = {'petID': petID}
+        screen = self.startScreen(cName, outArgs=outArgs)
+        self.manager.add_widget(screen)
+        self.manager.changeScreen('left', screen.name)

@@ -187,7 +187,7 @@ recipes = {
 
     screens['petProfile']: {
         'class': PetProfileManager,
-        'deps': (services['user'], services['pet']),
+        'deps': (services['user'], services['pet'], services['favorites']),
         'pArgs': ('petID',),
         'unique': False
     },

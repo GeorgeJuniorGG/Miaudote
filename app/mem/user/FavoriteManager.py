@@ -19,6 +19,3 @@ class FavoriteManager:
 
     def getFavorites(self):
         return self.favService.getFavorites()
-    
-    def addFavorite(self, petID:str):
-        self.favService.addPet(petID)
