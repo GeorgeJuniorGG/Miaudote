@@ -6,40 +6,49 @@ class FavoritesService:
     def __init__(self, userServ: UserService, petServ: PetService):
         self.userServ = userServ
         self.pets = petServ
+        self.userType = userServ.getUserType()
 
     def addPet(self, petID):
-        uData = self.userServ.getUserData()
+        if(self.userType == "adopter"):
+            uData = self.userServ.getUserData()
 
-        pet = self.pets.getPetData(petID)
+            pet = self.pets.getPetData(petID)
 
-        uData["favorites"].append(pet)
+            uData["favorites"].append(pet)
 
-        self.userServ.updateUserData(uData)
+            self.userServ.updateUserData(uData)
     
     def removePet(self, petID):
-        uData = self.userServ.getUserData()
+        if(self.userType == "adopter"):
+            uData = self.userServ.getUserData()
 
-        pet = self.pets.getPetData(petID)
+            pet = self.pets.getPetData(petID)
 
-        for fav in uData['favorites']:
-            if(fav['pid'] == pet['pid']):
-                uData['favorites'].remove(fav)
-                break
+            for fav in uData['favorites']:
+                if(fav['pid'] == pet['pid']):
+                    uData['favorites'].remove(fav)
+                    break
 
-        self.userServ.updateUserData(uData)
+            self.userServ.updateUserData(uData)
     
     def getFavorites(self):
-
-        #if(isinstance(self.userServ.getUserData(), AdopterModel)):
-        return self.userServ.getUserData()["favorites"]
+        if(self.userType == "adopter"):
+            return self.userServ.getUserData()["favorites"]
+        
+        else:
+            return []
     
     def getFavoriteStatus(self, petID):
-        uData = self.userServ.getUserData()
+        if(self.userType == "adopter"):
+            uData = self.userServ.getUserData()
 
-        pet = self.pets.getPetData(petID)
+            pet = self.pets.getPetData(petID)
 
-        for fav in uData["favorites"]:
-            if(fav['pid'] == pet['pid']):
-                return True
+            for fav in uData["favorites"]:
+                if(fav['pid'] == pet['pid']):
+                    return True
+            
+            return False
         
-        return False
+        else:
+            return False

@@ -83,3 +83,6 @@ class FUserDB(UserDB):
     # obter os dados de outro usuário
     def getAnotherUserData(self, anUID):
         return self.__getUser(anUID)
+    
+    def isProtector(self) -> bool:
+        return self.__isProtector

@@ -5,39 +5,45 @@ class RecommendedPets():
     def __init__(self, user: UserService, pets: PetService):
         self.user = user.getUserData()
         self.pets = pets.getAllPets()
+        self.userType = user.getUserType()
 
     def getRecommended(self):
         results = []
-        characteristicsFilters = self.getCharacteristicsFilters()
-        sizeFilters = self.getSizeFilters()
-        animalFilters = self.getAnimalFilters()
 
-        for pet in self.pets:
-            if(pet["size"].lower() in sizeFilters):
+        if self.userType == "adopter":
+            characteristicsFilters = self.getCharacteristicsFilters()
+            sizeFilters = self.getSizeFilters()
+            animalFilters = self.getAnimalFilters()
 
-                if(pet["type"].lower() in animalFilters and pet["pid"] not in results):
-                    if(pet["Activities"] in characteristicsFilters and pet["pid"] not in results):
-                        results.append(pet["pid"])
-                    if(pet["Age"] in characteristicsFilters and pet["pid"] not in results):
-                        results.append(pet["pid"])
-                    if(pet["Personality"] in characteristicsFilters and pet["pid"] not in results):
-                        results.append(pet["pid"])
+            for pet in self.pets:
+                if(pet["size"].lower() in sizeFilters):
 
-                    if(len(characteristicsFilters) == 0 and pet["pid"] not in results):
-                        results.append(pet["pid"])
+                    if(pet["type"].lower() in animalFilters and pet["pid"] not in results):
+                        if(pet["Activities"] in characteristicsFilters and pet["pid"] not in results):
+                            results.append(pet["pid"])
+                        if(pet["Age"] in characteristicsFilters and pet["pid"] not in results):
+                            results.append(pet["pid"])
+                        if(pet["Personality"] in characteristicsFilters and pet["pid"] not in results):
+                            results.append(pet["pid"])
 
-                if(pet["type"].lower() != "cachorro" and pet["type"].lower() != "gato" and "outro" in animalFilters and pet["pid"] not in results):
-                    if(pet["Activities"] in characteristicsFilters and pet["pid"] not in results):
-                        results.append(pet["pid"])
-                    if(pet["Age"] in characteristicsFilters and pet["pid"] not in results):
-                        results.append(pet["pid"])
-                    if(pet["Personality"] in characteristicsFilters and pet["pid"] not in results):
-                        results.append(pet["pid"])
+                        if(len(characteristicsFilters) == 0 and pet["pid"] not in results):
+                            results.append(pet["pid"])
 
-                    if(len(characteristicsFilters) == 0 and pet["pid"] not in results):
-                        results.append(pet["pid"])
-                        
-        if (len(results) == 0):
+                    if(pet["type"].lower() != "cachorro" and pet["type"].lower() != "gato" and "outro" in animalFilters and pet["pid"] not in results):
+                        if(pet["Activities"] in characteristicsFilters and pet["pid"] not in results):
+                            results.append(pet["pid"])
+                        if(pet["Age"] in characteristicsFilters and pet["pid"] not in results):
+                            results.append(pet["pid"])
+                        if(pet["Personality"] in characteristicsFilters and pet["pid"] not in results):
+                            results.append(pet["pid"])
+
+                        if(len(characteristicsFilters) == 0 and pet["pid"] not in results):
+                            results.append(pet["pid"])
+                            
+            if (len(results) == 0):
+                results = [pet["pid"] for pet in self.pets]
+        
+        else:
             results = [pet["pid"] for pet in self.pets]
 
         return results
