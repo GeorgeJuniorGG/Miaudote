@@ -183,7 +183,7 @@ recipes = {
         'deps': (databases['pet'],services['petDataModel'],services['user']),
         'pArgs': None,
         'unique': True
-    }
+    },
 
     screens['favorites']: {
         'class': FavoriteManager,
