@@ -5,7 +5,7 @@ class MainScreenManager(ScreenManager):
     usualLoginFlow = ["WelcomeScreen", "LoginScreen"]
     usualProtectorSignUpFlow = ["WelcomeScreen", "SignUpScreen", "SignUpScreen2b", "LoginScreen"]
     usualSignUpFlow = ["WelcomeScreen", "SignUpScreen", "SignUpScreen2a", "SignUpScreen3", "SignUpScreen4", "LoginScreen"]
-    usualPetSignUpFlow = ["PetSignUpScreen", "PetSignUpScreen2"]
+    usualPetSignUpFlow = ["PetSignUpScreen", "PetSignUpScreen2", "PetSignUpScreen3"]
 
     # def __init__(self, **kwargs):
     #     super().__init__(**kwargs)

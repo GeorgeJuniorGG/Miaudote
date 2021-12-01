@@ -55,3 +55,6 @@ class UserService:
     # Obter dados de outro usuário
     def getAnotherUserData(self, anUID:str):
         return self.__db.getAnotherUserData(anUID)
+
+    def addPetId(self, petId):
+        self.__db.addPetId(petId)

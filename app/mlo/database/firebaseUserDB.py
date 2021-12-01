@@ -83,3 +83,10 @@ class FUserDB(UserDB):
     # obter os dados de outro usuário
     def getAnotherUserData(self, anUID):
         return self.__getUser(anUID)
+
+    # Atualiza pets do usuário
+    def addPetId(self, petId: str) -> None:
+        userData = self.getUserData().dict()
+        self.__db.collection(self.__PROTECTOR_COLLECTION)\
+                                    .document(self.__userID)\
+                                    .update({'pets': userData['pets']+[petId]})

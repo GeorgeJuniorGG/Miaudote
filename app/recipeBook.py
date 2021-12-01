@@ -3,9 +3,11 @@ from mem.login.LoginManager import LoginManager
 from mem.signUp.signUpManager import SignUpManager
 from mem.welcome.WelcomeManager import WelcomeManager
 from mem.root.RootManager import RootManager
+from mem.petSignUp.petSignUpManager import PetSignUpManager
 
 # Service
 from mlo.auth.dataModel import DataModel
+from mlo.pets.PetDataModel import PetDataModel
 from mlo.auth.firebaseAuth import FireBaseAuthService
 from mlo.user.UserService import UserService
 from mlo.pets.PetService import PetService
@@ -24,6 +26,7 @@ from mem.screenmanager.screens import screens
 
 services = {
     'dataModel': 'DataModel',
+    'petDataModel': 'PetDataModel',
     'auth': 'FirebaseAuth',
     'user': 'UserService',
     'pet': 'PetService',
@@ -43,6 +46,12 @@ recipes = {
 
     services['dataModel'] : {
         'class': DataModel,
+        'deps': None,
+        'pArgs': None
+    },
+
+    services['petDataModel'] : {
+        'class': PetDataModel,
         'deps': None,
         'pArgs': None
     },
@@ -129,5 +138,11 @@ recipes = {
         'class': RootManager,
         'deps': (services['user'], services['pet'], services['search']),
         'pArgs': ('orchestrator',)  
+    },
+
+    screens['petSignUp'] : {
+        'class': PetSignUpManager,
+        'deps': (databases['pet'],services['petDataModel'],services['user']),
+        'pArgs': None
     }
 }

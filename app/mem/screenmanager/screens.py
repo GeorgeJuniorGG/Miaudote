@@ -3,7 +3,8 @@ screens = {
     'login': 'LoginScreen',
     'signUp': 'SignUpScreen',
     'root': 'RootScreen',
-    'home': 'HomeScreen'
+    'home': 'HomeScreen',
+    'petSignUp' : 'PetSignUpScreen', 
 }
 
 usualProtectorSignUpFlow = [ 'WelcomeScreen',
@@ -19,3 +20,11 @@ usualSignUpFlow = [ 'WelcomeScreen',
                     'SignUpScreen4',
                     'LoginScreen'
                   ]
+
+usualPetSignUpFlow = ['RootScreen', 
+                      'PetSignUpScreen',
+                      'PetSignUpScreen2',
+                      'PetSignUpScreen3',
+                      'PetSignUpScreen4',
+                      'RootScreen'
+                    ]

@@ -16,5 +16,5 @@ class AdopterModel(UserModel):
     preferences: Preferences.UserPreferences
 
 class ProtectorModel(UserModel):
-    pets: List[PetModel] = Field(default_factory=list)
+    pets: List[str] = Field(default_factory=list)
 

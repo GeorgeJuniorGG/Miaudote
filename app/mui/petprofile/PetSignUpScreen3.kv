@@ -3,15 +3,12 @@
 #:import Color mui.ColorTheme.Color
 #:set cor Color()
 
-<PetSignUpScreen>:
-    MDFloatLayout:
+<PetSignUpScreen3>:
+    MDProgressBar:
+        value: 50
+        color: get_color_from_hex(cor.azulEscuro())
         pos_hint:{'center_x':0.5, 'center_y': 0.92}
-        size_hint: 1, 0.005
-        MDProgressBar:
-            value: 0
-            color: get_color_from_hex(cor.azulEscuro())
-            pos_hint:{'center_x':0.5, 'center_y': 0.5}
-    
+
     MDIconButton:
         id: _SignupArrowButton
         icon: "arrow-left"
@@ -23,7 +20,7 @@
             root.go_backward()
 
     MDLabel:
-        text: "Informações do Animal"
+        text: "Personalidade do Animal"
         theme_text_color: "Custom"
         text_color: get_color_from_hex(cor.vermelho())
         pos_hint: {'center_y': 0.96}
@@ -31,58 +28,60 @@
         font_size: "20sp"
 
     MDTextField:
-        id: name
-        hint_text: "Nome do Animal"
+        id: details
+        hint_text: "Escreva uma descrição sobre o animal"
+        multiline: True
         size_hint: 0.8, 0.1
         color_mode: "custom"
         line_color_normal: get_color_from_hex(cor.azulEscuro())
         line_color_focus: get_color_from_hex(cor.azulEscuro())
-        pos_hint: {'center_x': 0.5, 'center_y': 0.70}
+        pos_hint: {'center_x': 0.5, 'center_y': 0.75}
+    
+    MDLabel:
+        text: "Selecione Características do Animal"
+        theme_text_color: "Custom"
+        text_color: get_color_from_hex(cor.vermelho())
+        pos_hint: {'center_y': 0.60}
+        halign: "center"
+        font_size: "20sp"
     
     MDTextField:
-        id: type
-        hint_text: "Espécie do Animal"
-        size_hint: 0.8, 0.1
+        id: _firstField
+        hint_text: "Característica 1 (Personalidade)"
         color_mode: "custom"
+        size_hint: 0.8, 0.1
         line_color_normal: get_color_from_hex(cor.azulEscuro())
         line_color_focus: get_color_from_hex(cor.azulEscuro())
-        pos_hint: {'center_x': 0.5, 'center_y': 0.61}
-
-
-    MDTextField:
-        id: color
-        hint_text: "Cor"
-        size_hint: 0.8, 0.1
-        color_mode: "custom"
-        line_color_normal: get_color_from_hex(cor.azulEscuro())
-        line_color_focus: get_color_from_hex(cor.azulEscuro())
-        pos_hint: {'center_x': 0.5, 'center_y': 0.52}
-
-    MDTextField:
-        id: sex
-        hint_text: "Sexo"
-        size_hint: 0.8, 0.1
-        color_mode: "custom"
-        line_color_normal: get_color_from_hex(cor.azulEscuro())
-        line_color_focus: get_color_from_hex(cor.azulEscuro())
-        pos_hint: {'center_x': 0.5, 'center_y': 0.43}
+        pos_hint: {'center_x': 0.5, 'center_y': 0.50}
         on_focus: if self.focus: root.menu1.open()
-    
+            
+
     MDTextField:
-        id: size
-        hint_text: "Porte do Animal"
+        id: _secondField
+        hint_text: "Característica 2 (Atividades)"
         size_hint: 0.8, 0.1
         color_mode: "custom"
         line_color_normal: get_color_from_hex(cor.azulEscuro())
         line_color_focus: get_color_from_hex(cor.azulEscuro())
-        pos_hint: {'center_x': 0.5, 'center_y': 0.34}
+        pos_hint: {'center_x': 0.5, 'center_y': 0.40}
         on_focus: if self.focus: root.menu2.open()
+            
+
+    MDTextField:
+        id: _thirdField
+        hint_text: "Característica 3 (Idade)"
+        size_hint: 0.8, 0.1
+        color_mode: "custom"
+        line_color_normal: get_color_from_hex(cor.azulEscuro())
+        line_color_focus: get_color_from_hex(cor.azulEscuro())
+        pos_hint: {'center_x': 0.5, 'center_y': 0.30}
+        on_focus: if self.focus: root.menu3.open()
 
     MDFillRoundFlatButton:
-        text: "Continuar"
+        text: "Finalizar"
         md_bg_color: get_color_from_hex(cor.azulClaro())
         font_size: "20sp"
         size_hint: (0.4, 0.05)
-        pos_hint: {'center_x': 0.5, 'center_y': 0.07}
+        pos_hint: {'center_x': 0.5, 'center_y': 0.15}
         on_release:
-            root.controller.petSignUpScreenManager()
+            root.controller.petSignUpScreen3Manager()
