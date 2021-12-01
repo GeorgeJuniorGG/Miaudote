@@ -1,10 +1,12 @@
 #:kivy 2.0
 #:import get_color_from_hex kivy.utils.get_color_from_hex
+#:import Color mui.ColorTheme.Color
+#:set cor Color()
 
 <PetLabel2>:
     canvas.before:
         Color:
-            rgba: get_color_from_hex("#97B9C0")
+            rgba: get_color_from_hex(cor.azulClaro())
     
         RoundedRectangle:
             size: self.size[0], self.size[1]
@@ -16,10 +18,9 @@
     bold: True
     adaptive_height: True
     theme_text_color: "Custom"
-    text_color: get_color_from_hex("#ffffff")
+    text_color: get_color_from_hex(cor.branco())
 
 <PetItem2>:
-
     size_hint: 1, None
     height: 120
     petCharsBox: pet_chars
@@ -53,20 +54,20 @@
             size_hint: None, None
             size: 100, 50
             theme_text_color: "Custom"
-            text_color: get_color_from_hex("#8C5042")
+            text_color: get_color_from_hex(cor.vermelho())
             bold: True
             
-
         MDIconButton:
             id: remove_button
             pos_hint: {'x': 0.8, 'center_y': 0.5}
             icon: 'close-circle-outline'
             theme_text_color: "Custom"
-            text_color: get_color_from_hex("#366873")
+            text_color: get_color_from_hex(cor.azulEscuro())
             on_press:
-                pos = root.parent.children.index(root)                  # Posicao do PetItem2 na lista de filhos da list
-                root.parent.remove_widget(root.parent.children[pos-1])  # Remove o separator associado ao PetItem2
-                root.parent.remove_widget(root.parent.children[pos-1])  # Remove o PetItem2, que agora esta uma posicao a menos
+                root.parent.parent.parent.parent.remove_item_dialog(root.petID)
+                #pos = root.parent.children.index(root)                  # Posicao do PetItem2 na lista de filhos da list
+                #root.parent.remove_widget(root.parent.children[pos-1])  # Remove o separator associado ao PetItem2
+                #root.parent.remove_widget(root.parent.children[pos-1])  # Remove o PetItem2, que agora esta uma posicao a menos
 
         MDBoxLayout:
             id: pet_chars
@@ -82,7 +83,7 @@
             font_size: '11sp'
             pos_hint: {'x': 0.42, 'center_y': 0.4}
             theme_text_color: "Custom"
-            text_color: get_color_from_hex("#366873")
+            text_color: get_color_from_hex(cor.azulEscuro())
             bold: True
             size_hint: None, None
             size: 100, 100

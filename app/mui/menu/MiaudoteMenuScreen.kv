@@ -1,5 +1,7 @@
 #:kivy 2.0
 #:import get_color_from_hex kivy.utils.get_color_from_hex
+#:import Color mui.ColorTheme.Color
+#:set cor Color()
 
 <MiaudoteMenuScreen>:
     menu: menu
@@ -7,17 +9,20 @@
     addPet: add_pet
     receivedRequests: received_requests
     favorites: favorites
+    on_kv_post: self.bindScreens()
+
     MDGridLayout:
         id: menu
         cols: 1
         spacing: '15dp'
         padding: '5dp','20dp'
-        md_bg_color: get_color_from_hex('#80A6AEF2')
+        md_bg_color: get_color_from_hex(cor.azulCinzaClaro()+'F2')
 
         MenuItem:
             id: adopt_requests
             text: 'Solicitações de Adoção'
-            on_press: print(self.text)
+            on_press: root.callScreen(self)
+
         MenuItem:
             id: add_pet
             text: 'Incluir Pet para Adoção'
@@ -25,10 +30,12 @@
         MenuItem:
             id: received_requests
             text: 'Pedidos de Adoção Recebidos'
-            on_press: print(self.text)
+            on_press: root.callScreen(self)
+
         MenuItem:
             id: favorites
             text: 'Favoritos'
-            on_press: root.open_favorites(app)
+            on_press: root.callScreen(self)
+
         Widget:
             size_hint: 1, 0.4

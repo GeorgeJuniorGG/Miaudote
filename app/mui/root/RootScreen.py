@@ -9,17 +9,20 @@ from kivy.properties import (
     ObjectProperty
 )
 
+from mui.ColorTheme import Color
+
 class MiaudoteLogo(MDFloatLayout):
     ...
 
 class MiaudoteNavBar(FakeRectangularElevationBehavior, MDFloatLayout):
+    cor = Color()
     tabManager = ObjectProperty(ScreenManager)
     buttonContainer = ObjectProperty(MDGridLayout)
 
     def home(self):
         homeItem = self.ids.home_icon
-        homeItem.ids.icon.text_color = '#5D5FEF'
-        homeItem.ids.label.text_color = '#5D5FEF'       
+        homeItem.ids.icon.text_color = self.cor.violeta()
+        homeItem.ids.label.text_color = self.cor.violeta()
 
     def changeTab(self, tabName:str, transition):
         self.tabManager.transition = SlideTransition()
@@ -34,11 +37,11 @@ class MiaudoteNavBar(FakeRectangularElevationBehavior, MDFloatLayout):
             item = self.ids[itemName]
             if item != self.buttonContainer:
                 if item != selItem:
-                    item.ids.label.text_color = '#FFFFFF'
-                    item.ids.icon.text_color = '#FFFFFF'
+                    item.ids.label.text_color = self.cor.branco()
+                    item.ids.icon.text_color = self.cor.branco()
         
-        selItem.ids.icon.text_color = '#5D5FEF'
-        selItem.ids.label.text_color = '#5D5FEF'
+        selItem.ids.icon.text_color = self.cor.violeta()
+        selItem.ids.label.text_color = self.cor.violeta()
 
 class NavBarItem(ButtonBehavior, MDFloatLayout):
     icon = StringProperty()

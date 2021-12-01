@@ -64,7 +64,7 @@ class FUserDB(UserDB):
         return result
 
     def getUserData(self) -> UserModel:
-        return self.__user
+        return self.__getUser(self.__userID)
 
     # TODO test
     def updateUserData(self, userData: UserModel) -> bool:
@@ -90,3 +90,6 @@ class FUserDB(UserDB):
         self.__db.collection(self.__PROTECTOR_COLLECTION)\
                                     .document(self.__userID)\
                                     .update({'pets': userData['pets']+[petId]})
+    
+    def isProtector(self) -> bool:
+        return self.__isProtector

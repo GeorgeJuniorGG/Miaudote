@@ -22,3 +22,7 @@ class UserDB(ABC):
     @abstractmethod
     def addPetId(self, petId: str) -> None:
         pass
+    
+    @abstractmethod
+    def isProtector(self) -> bool:
+        pass

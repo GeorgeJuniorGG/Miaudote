@@ -1,0 +1,47 @@
+#:kivy 2.0
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+#:import Color mui.ColorTheme.Color
+#:set cor Color()
+
+<MiauLogo>:
+    pos_hint: {'top': 1} 
+    size_hint: 1, None
+    height: '60dp'
+    md_bg_color: get_color_from_hex(cor.azulCinzaClaro())
+
+    MDSeparator:
+        pos_hint: {'top': 1}
+        height: '15dp'
+        color: get_color_from_hex(cor.azulCinzaClaro())
+
+    MDFloatLayout:
+        pos_hint: {'top': .78}
+        size_hint: 1, None
+        height: '30dp'
+        md_bg_color: get_color_from_hex(cor.branco())
+
+        MDLabel:
+            text: 'Miaudote'
+            font_name: 'Spirax-Regular'
+            theme_text_color: 'Custom'
+            text_color: [0.549, 0.313, 0.258, 1]
+            pos_hint: {'center_y': 0.5}
+            halign: 'center'
+            valign: 'middle'
+            font_size: '25sp'
+            bold: True
+
+    MDIconButton:
+        id: _LoginArrowButton
+        icon: "arrow-left"
+        user_font_size: '35sp'
+        pos_hint: {'center_y': 0.55, 'center_x': 0.08}
+        theme_text_color: 'Custom'
+        text_color: get_color_from_hex(cor.azulCinzaEscuro())
+        on_release:
+            root.goBack()
+
+    MDSeparator:
+        pos_hint: {'top': .271}
+        height: '15dp'
+        color: get_color_from_hex(cor.azulCinzaClaro())

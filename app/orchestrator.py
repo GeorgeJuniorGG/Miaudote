@@ -11,6 +11,8 @@ class Orchestrator:
 
     def __init__(self, manager:MainScreenManager) -> None:
         self.manager = manager
+        self.mTransition = 'SlideTransition'
+        self.manager.changeTransition(self.mTransition)
         self.manager.orchestrator = self
         self.__components = dict()
         self.userID = self.__openUserFile()
@@ -45,7 +47,8 @@ class Orchestrator:
     def dict(self):
         return {
             'userID': self.userID,
-            'orchestrator': self
+            'orchestrator': self,
+            'mTransition': self.mTransition,
         }
 
     # Adiciona uma referência de um componente ao orchestrator
@@ -87,7 +90,7 @@ class Orchestrator:
         if cDeps != None:
             for dep in cDeps:
                 cDep = self.__checkDep(dep)
-                if cDep == None:
+                if cDep == None or (not component['unique']):
                     cDep = self.__buildComponent(recipes[dep], outArgs)
                     self.__addComponent(dep, cDep)
                 deps.append(cDep)
@@ -166,4 +169,21 @@ class Orchestrator:
         self.manager.clear_widgets()
         self.__welcomeFlow()
         self.manager.changeScreen('left', screens['welcome'])
+
+    def callChangeScreen(self, screenName:str):
+        # if self.mTransition != 'RiseInTransition':
+        #     self.mTransition = 'RiseInTransition'
+        #     self.manager.changeTransition(self.mTransition)
+
+        self.manager.changeScreen('left', screenName)
     
+    # Abrir a tela de perfil do pet
+    def openPetProfile(self, petID:str):
+        cName = screens['petProfile']
+        if cName+petID in self.manager.screen_names:
+            self.manager.remove_widget(self.manager.get_screen(cName+petID))
+        
+        outArgs = {'petID': petID}
+        screen = self.startScreen(cName, outArgs=outArgs)
+        self.manager.add_widget(screen)
+        self.manager.changeScreen('left', screen.name)

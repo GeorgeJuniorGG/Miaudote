@@ -21,7 +21,6 @@
     text_color: get_color_from_hex(cor.branco())
 
 <PetItem>:
-
     size_hint: 1, None
     height: 120
     petCharsBox: pet_chars
@@ -29,6 +28,9 @@
     petNLabel: pet_name
     petDLabel: pet_descr
     petContent: pet_content
+    
+    # Abrir o perfil do pet
+    on_release: self.openPetProfile()
 
     MDFloatLayout:
         id: pet_image

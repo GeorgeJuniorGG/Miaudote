@@ -5,6 +5,12 @@ screens = {
     'root': 'RootScreen',
     'home': 'HomeScreen',
     'petSignUp' : 'PetSignUpScreen', 
+    'favorites': 'FavoriteScreen',
+    'adoRequests': 'RequestsScreen',
+    'adoStatus': 'AdoptRequestsScreen',
+    'addPet': 'PetSignUpScreen',
+    'recRequests': 'RequestsReceivedScreen',
+    'petProfile': 'PetProfileScreen',
 }
 
 usualProtectorSignUpFlow = [ 'WelcomeScreen',

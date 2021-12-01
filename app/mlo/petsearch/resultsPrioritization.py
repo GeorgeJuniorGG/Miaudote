@@ -9,17 +9,32 @@ class ResultsPrioritization:
     def __init__(self, petService: PetService, userService: UserService):        
         self.pets = petService.getAllPets()
         self.user = userService.getUserData()
+        self.userType = userService.getUserType()
     
     def getResults(self, searchResults: List):
         self.searchResults = searchResults
 
-        results = [[], [], []]  # Primeiro: resultados finais, Segundo: localizacoes, Terceiro: data de insercao
+        if self.userType == "adopter":
+            results = [[], [], []]  # Primeiro: resultados finais, Segundo: localizacoes, Terceiro: data de insercao
 
-        self.getLocationPriority(results)
-        self.getOldestPriority(results)
-        self.getNonRequestedPriority(results)
+            self.getLocationPriority(results)
+            self.getOldestPriority(results)
+            self.getNonRequestedPriority(results)
+            
+            return results[0]
         
-        return results[0]
+        else:
+            return self.getProtectorResults(searchResults)
+
+    def getProtectorResults(self, searchResults: List):
+        results = []
+
+        for result in searchResults:
+            for pet in self.pets:
+                if pet["pid"] == result:
+                    results.append(pet)
+        
+        return results
 
     def getLocationPriority(self, results: List):
         locations = {}
