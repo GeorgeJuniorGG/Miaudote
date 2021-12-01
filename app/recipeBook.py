@@ -199,13 +199,6 @@ recipes = {
         'unique': True
     },
 
-    screens['addPet']: {
-        'class': FavoriteManager,
-        'deps': (services['user'], services['pet']),
-        'pArgs': None,
-        'unique': True
-    },
-
     screens['recRequests']: {
         'class': PRManager,
         'deps': (services['user'], services['pet']),

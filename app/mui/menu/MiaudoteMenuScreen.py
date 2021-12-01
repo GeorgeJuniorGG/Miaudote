@@ -25,7 +25,7 @@ class MiaudoteMenuScreen(MDScreen):
         self.__screens = {
         screens['favorites']: self.favorites,
         screens['adoRequests']: self.adoptRequests,
-        screens['addPet']: self.addPet,
+        screens['petSignUp']: self.addPet,
         screens['recRequests']: self.receivedRequests
     }
 

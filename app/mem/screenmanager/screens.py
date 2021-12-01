@@ -8,7 +8,6 @@ screens = {
     'favorites': 'FavoriteScreen',
     'adoRequests': 'RequestsScreen',
     'adoStatus': 'AdoptRequestsScreen',
-    'addPet': 'PetSignUpScreen',
     'recRequests': 'RequestsReceivedScreen',
     'petProfile': 'PetProfileScreen',
 }
