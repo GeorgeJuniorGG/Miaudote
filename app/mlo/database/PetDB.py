@@ -19,3 +19,11 @@ class PetDB(ABC):
     @abstractmethod
     def getAllPets(self) -> List[PetModel]:
         pass
+
+    @abstractmethod
+    def addPet(self, petData:PetModel)->None:
+        pass
+
+    @abstractmethod
+    def addPetImages(self, petID, images) -> bool:
+        pass

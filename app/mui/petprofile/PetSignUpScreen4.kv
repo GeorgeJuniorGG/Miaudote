@@ -1,0 +1,61 @@
+#:kivy 2.0
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+#:import Color mui.ColorTheme.Color
+#:set cor Color()
+
+<PetSignUpScreen4>:
+    MDProgressBar:
+        value: 75
+        color: get_color_from_hex(cor.azulEscuro())
+        pos_hint:{'center_x':0.5, 'center_y': 0.92}
+
+    MDIconButton:
+        id: _SignupArrowButton
+        icon: "arrow-left"
+        user_font_size: '35sp'
+        pos_hint:{'center_x':0.08, 'center_y': 0.96}
+        theme_text_color: "Custom"
+        text_color: get_color_from_hex(cor.azulClaro())
+        on_release:
+            root.go_backward()
+
+    MDLabel:
+        text: "Adicione Fotos do Pet"
+        theme_text_color: "Custom"
+        text_color: get_color_from_hex(cor.vermelho())
+        pos_hint: {'center_y': 0.96}
+        halign: "center"
+        font_size: "20sp"
+
+    MDFillRoundFlatButton:
+        text: "Adicionar"
+        md_bg_color: get_color_from_hex(cor.azulClaro())
+        font_size: "20sp"
+        size_hint: (0.4, 0.05)
+        pos_hint: {"center_x": .5, "center_y": .85}
+        on_release: root.fileManagerOpen()
+        
+    BoxLayout:
+        pos_hint: {"center_x": .5, "center_y": .3}
+        ScrollView:
+            size: self.size
+            size_hint: (1, 1)
+            MDGridLayout:
+                id: container
+                # md_bg_color: get_color_from_hex(cor.vermelhoEscuro())
+                size_hint: (1, 0.65)
+                height: self.minimum_height
+                width: self.minimum_width
+                cols: 2
+                spacing: "20dp"
+                padding: "20dp"
+                    
+
+    MDFillRoundFlatButton:
+        text: "Finalizar"
+        md_bg_color: get_color_from_hex(cor.azulClaro())
+        font_size: "20sp"
+        size_hint: (0.4, 0.05)
+        pos_hint: {'center_x': 0.5, 'center_y': 0.1}
+        on_release:
+            root.controller.petSignUpScreen4Manager()

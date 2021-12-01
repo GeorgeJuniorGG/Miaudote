@@ -1,15 +1,17 @@
 from .PetDB import PetDB
-from config.firebase import getFirebaseFirestore
+from config.firebase import (getFirebaseFirestore, getFirebase)
 from mlo.pets.PetModel import PetModel
 from typing import List
 
 class FPetDB(PetDB):
 
     __PET_COLLECTION = u'pets'
+    __PET_IMAGES = u'petImages/'
 
     def __init__(self):
         self.__db = getFirebaseFirestore()
         self.__c_ref = self.__db.collection(self.__PET_COLLECTION)
+        self.__sdb = getFirebase().storage()
 
     def getPetData(self, petID: str):
         pet_doc = self.__c_ref.document(petID).get()
@@ -45,3 +47,19 @@ class FPetDB(PetDB):
             pets.append(PetModel(**pet_dict))
 
         return pets
+
+    def addPet(self, petData:PetModel)-> str:
+        docRef = self.__c_ref.add(petData.dict())[-1]
+        self.__c_ref.document(docRef.id).update({'pid': docRef.id})
+        return docRef.id
+    
+    def addPetImages(self, petID, images) -> bool:
+        urlImages = []
+        try:       
+            for image in images:
+                currentImage = self.__sdb.child(self.__PET_IMAGES+petID+'/'+image.split('/')[-1]).put(image)
+                urlImages.append(self.__sdb.child(currentImage['name']).get_url(None))
+            self.__c_ref.document(petID).update({'images': urlImages})
+            return True
+        except:
+            return False

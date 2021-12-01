@@ -46,8 +46,11 @@ class RootManager:
     
     def getSearchResults(self, text):
         words = text.split(" ")
-        return self.searchService.getSearchResults(words)
-    
+        return self.searchService.getSearchResults(words)  
+
+    def addPets(self):
+        self.orchetrator.petSignUp() 
+  
     def callChangeScreen(self, screenName:str):
         self.orchetrator.callChangeScreen(screenName)
 

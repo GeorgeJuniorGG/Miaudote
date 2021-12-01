@@ -4,12 +4,14 @@ from mem.signUp.signUpManager import SignUpManager
 from mem.user.FavoriteManager import FavoriteManager
 from mem.welcome.WelcomeManager import WelcomeManager
 from mem.root.RootManager import RootManager
+from mem.petSignUp.petSignUpManager import PetSignUpManager
 from mem.user.ARManager import ARManager
 from mem.user.PRManager import PRManager
 from mem.pet.PetProfileManager import PetProfileManager
 
 # Service
 from mlo.auth.dataModel import DataModel
+from mlo.pets.PetDataModel import PetDataModel
 from mlo.auth.firebaseAuth import FireBaseAuthService
 from mlo.user.AdopterRequestsService import AdopterRequestsService
 from mlo.user.UserService import UserService
@@ -30,6 +32,7 @@ from mem.screenmanager.screens import screens
 
 services = {
     'dataModel': 'DataModel',
+    'petDataModel': 'PetDataModel',
     'auth': 'FirebaseAuth',
     'user': 'UserService',
     'pet': 'PetService',
@@ -51,6 +54,13 @@ recipes = {
 
     services['dataModel'] : {
         'class': DataModel,
+        'deps': None,
+        'pArgs': None,
+        'unique': True
+    },
+
+    services['petDataModel'] : {
+        'class': PetDataModel,
         'deps': None,
         'pArgs': None,
         'unique': True
@@ -129,7 +139,8 @@ recipes = {
     databases['user'] : {
         'class': FUserDB,
         'deps': None,
-        'pArgs': ('userID',)
+        'pArgs': ('userID',),
+        'unique': True
     },
 
     databases['storage'] : {
@@ -163,8 +174,16 @@ recipes = {
     screens['root'] : {
         'class': RootManager,
         'deps': (services['user'], services['pet'], services['search']),
-        'pArgs': ('orchestrator',)  
+        'pArgs': ('orchestrator',),
+        'unique': True
     },
+
+    screens['petSignUp'] : {
+        'class': PetSignUpManager,
+        'deps': (databases['pet'],services['petDataModel'],services['user']),
+        'pArgs': None,
+        'unique': True
+    }
 
     screens['favorites']: {
         'class': FavoriteManager,
@@ -200,6 +219,5 @@ recipes = {
         'pArgs': ('petID',),
         'unique': False
     },
-
 
 }

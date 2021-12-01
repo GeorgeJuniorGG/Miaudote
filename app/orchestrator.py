@@ -127,6 +127,12 @@ class Orchestrator:
         rootManager = self.buildComponent(screens['root'])
         self.manager.add_widget(rootManager.screen)
 
+    def petSignUp(self):
+        petSignUpManager = self.buildComponent(screens['petSignUp'])
+        petSignUpManager.manager = self.manager
+        petSignUpManager.addScreens()
+        self.manager.switch_to(petSignUpManager.petSignUpScreen)
+
     # Armazena as informações de login do Usuário
     # Permite que o usuário não precise logar novamente
     def __registerLogin(self, userID:str):
