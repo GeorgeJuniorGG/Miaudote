@@ -64,7 +64,7 @@ class FUserDB(UserDB):
         return result
 
     def getUserData(self) -> UserModel:
-        return self.__user
+        return self.__getUser(self.__userID)
 
     # TODO test
     def updateUserData(self, userData: UserModel) -> bool:
