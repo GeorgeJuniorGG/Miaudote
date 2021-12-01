@@ -11,6 +11,7 @@ from mem.pet.PetProfileManager import PetProfileManager
 # Service
 from mlo.auth.dataModel import DataModel
 from mlo.auth.firebaseAuth import FireBaseAuthService
+from mlo.user.AdopterRequestsService import AdopterRequestsService
 from mlo.user.UserService import UserService
 from mlo.pets.PetService import PetService
 from mlo.petrecommendation.RecommendedPets import RecommendedPets
@@ -36,7 +37,8 @@ services = {
     'prior': 'ResultsPrioritization',
     'sLogic': 'SearchLogic',
     'search': 'SearchService',
-    'favorites': 'FavoritesService' 
+    'favorites': 'FavoritesService',
+    'adoReqs': 'AdopterRequestsService'
 }
 
 databases = {
@@ -110,6 +112,13 @@ recipes = {
         'unique': True
     },
 
+    services['adoReqs'] : {
+        'class': AdopterRequestsService,
+        'deps': (services['user'], services['pet']),
+        'pArgs': None,
+        'unique': True
+    },
+
     databases['pet'] : {
         'class': FPetDB,
         'deps': None,
@@ -166,7 +175,7 @@ recipes = {
 
     screens['adoRequests']: {
         'class': ARManager,
-        'deps': (services['user'], services['pet']),
+        'deps': (services['user'], services['pet'], services['adoReqs']),
         'pArgs': None,
         'unique': True
     },
@@ -187,7 +196,7 @@ recipes = {
 
     screens['petProfile']: {
         'class': PetProfileManager,
-        'deps': (services['user'], services['pet'], services['favorites']),
+        'deps': (services['user'], services['pet'], services['favorites'], services['adoReqs']),
         'pArgs': ('petID',),
         'unique': False
     },

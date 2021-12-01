@@ -9,7 +9,7 @@ class MainScreenManager(ScreenManager):
                      'SlideTransition': SlideTransition,
                      'RiseInTransition': RiseInTransition
                     }
-    __refreshingScreens = {"PetProfileScreen": None, "FavoriteScreen": None}
+    __refreshingScreens = {"RequestsScreen": None, "FavoriteScreen": None}
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)

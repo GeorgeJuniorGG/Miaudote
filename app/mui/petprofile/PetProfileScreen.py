@@ -79,7 +79,7 @@ class PetProfileScreen(MDScreen):
 
     def go_forward(self, obj):
         self.dialog.dismiss()
-        pass
+        self.controller.addRequest(self.petID)
 
     def go_backwards(self):
         pass

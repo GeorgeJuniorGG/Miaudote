@@ -18,3 +18,7 @@ class UserDB(ABC):
     @abstractmethod
     def getAnotherUserData(self, anUID):
         pass
+
+    @abstractmethod
+    def isProtector(self) -> bool:
+        pass

@@ -21,5 +21,5 @@ class PetService:
         return pet.dict()
 
     # Atualiza os dados de um pet no banco
-    def updatePetData(self, petID:str) -> bool:
-        pass
+    def updatePetData(self, petID:str, pData:dict) -> bool:
+        return self.__db.updatePetData(petID, pData)

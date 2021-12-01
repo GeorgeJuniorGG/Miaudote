@@ -1,3 +1,4 @@
+from mlo.user.AdopterRequestsService import AdopterRequestsService
 from mlo.user.FavoritesService import FavoritesService
 from mui.petprofile.PetProfileScreen import PetProfileScreen
 from mlo.pets.PetService import PetService
@@ -7,10 +8,11 @@ from mem.screenmanager.screens import screens
 
 class PetProfileManager:
 
-    def __init__(self, userService:UserService, petService:PetService, favService:FavoritesService, petID:str) -> None:
+    def __init__(self, userService:UserService, petService:PetService, favService:FavoritesService, adoReqService: AdopterRequestsService, petID:str) -> None:
         self.userService = userService
         self.petService = petService
         self.favService = favService
+        self.adoReqService = adoReqService
         self.petID = petID
         self.petData = self.petService.getPetData(petID)
         self.screen = PetProfileScreen(self.petData, name=screens['petProfile']+petID)
@@ -25,3 +27,6 @@ class PetProfileManager:
 
     def getFavoriteStatus(self, petID:str):
         return self.favService.getFavoriteStatus(petID)
+    
+    def addRequest(self, petID:str):
+        self.adoReqService.addRequest(petID)

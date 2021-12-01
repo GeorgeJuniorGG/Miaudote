@@ -56,3 +56,13 @@ class UserService:
     # Obter dados de outro usuário
     def getAnotherUserData(self, anUID:str):
         return self.__db.getAnotherUserData(anUID)
+    
+    # Obter o tipo de usuario
+    def getUserType(self) -> str:
+        protector = self.__db.isProtector()
+
+        if(protector):
+            return "protector"
+        
+        else:
+            return "adopter"
