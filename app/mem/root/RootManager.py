@@ -7,6 +7,9 @@ from mem.filechooser.FMClient import FMClient
 from mlo.user.UserService import UserService
 from mlo.pets.PetService import PetService
 
+from kivy.clock import Clock
+from functools import partial
+
 class RootManager(FMClient):
 
     petService: PetService
@@ -66,13 +69,23 @@ class RootManager(FMClient):
     def registreFM(self, FM):
         self.__FM = FM
 
+    # Recebe a nova imagem do usuário do File Chooser
     def receiveFile(self, file: str, path:str):
         self.__CP = path
-        print(file)
         if file != None:
-            self.profileScreen.changeUserImage(file)
-        self.orchetrator.callGoBackward()
+            oldImage = self.profileScreen.changeUserImage(file)
+            self.orchetrator.callGoBackward()
+            Clock.schedule_once(partial(self.updateImage, file, oldImage), 0.01)
 
+    # Atualiza a imagem do usuário no banco            
+    def updateImage(self, file, oldImage, *largs):
+        update_status = self.userService.updateUserImage(file)
+        if not update_status:
+            print('Ocorreu um erro ao tentar trocar a imagem!')
+            print('Tente novamente mais tarde!')
+            self.profileScreen.changeUserImage(oldImage)
+
+    # Abrir o File Chooser
     def callFileManager(self):
         self.__FM.openFileChooser()
 

@@ -53,6 +53,10 @@ class UserService:
         except ValidationError as e:
             return False
 
+    # Salvar a nova imagem do usuário no banco
+    def updateUserImage(self, imagePath:str) -> bool:
+        return self.__db.updateUserImage(imagePath)
+
     # Obter dados de outro usuário
     def getAnotherUserData(self, anUID:str):
         return self.__db.getAnotherUserData(anUID)

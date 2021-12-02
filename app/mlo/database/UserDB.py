@@ -26,3 +26,7 @@ class UserDB(ABC):
     @abstractmethod
     def isProtector(self) -> bool:
         pass
+
+    @abstractmethod
+    def updateUserImage(self, imagePath:str) -> bool:
+        pass
