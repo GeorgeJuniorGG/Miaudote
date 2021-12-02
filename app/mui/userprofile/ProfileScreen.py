@@ -14,3 +14,6 @@ class ProfileScreen(MDScreen):
                 item.source = userData['user_image']
             elif itemName in userData.keys():
                 item.fieldValue = userData[itemName]
+
+    def changeUserImage(self, imagePath):
+        self.ids['user_image'].source = imagePath

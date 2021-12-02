@@ -187,3 +187,18 @@ class Orchestrator:
         screen = self.startScreen(cName, outArgs=outArgs)
         self.manager.add_widget(screen)
         self.manager.changeScreen('left', screen.name)
+
+    # Abrir o FileChooserScreen
+    def openFileManager(self, fClient):
+        cName = screens['fileChooser']
+        if cName in self.manager.screen_names:
+            self.manager.remove_widget(self.manager.get_screen(cName))
+
+        outArgs = {'client': fClient}
+        controller = self.buildComponent(cName, outArgs=outArgs)
+        self.__addComponent(cName, controller)
+        self.manager.add_widget(controller.screen)
+        self.manager.changeScreen('left', cName)
+
+    def callGoBackward(self):
+        self.manager.goBackward('right')

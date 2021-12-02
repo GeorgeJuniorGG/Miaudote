@@ -4,7 +4,7 @@ from abc import ABC, abstractmethod
 class FMClient(ABC):
 
     @abstractmethod
-    def receiveFile(self, file:str):
+    def receiveFile(self, file:str, path:str):
         pass
 
     @abstractmethod
@@ -13,4 +13,8 @@ class FMClient(ABC):
 
     @abstractmethod
     def callFileManager(self):
+        pass
+
+    @abstractmethod
+    def getCurrentPath(self) -> str:
         pass

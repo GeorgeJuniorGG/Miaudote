@@ -35,13 +35,13 @@
                     radius: 50, 50
 
                 MDIconButton:
-                    icon: 'pencil-outline'
+                    icon: 'image-edit-outline'
                     user_font_size: "20sp"
                     theme_text_color: 'Custom'
                     text_color: get_color_from_hex(cor.vermelho())
                     pos_hint: {'right': 1.12, 'top': 0.45}
                     md_bg_color: get_color_from_hex(cor.azulClaro()+'EA')
-                    on_press: print('Trocar Imagem de Perfil')
+                    on_press: root.controller.openFileManager()
 
             MDIconButton:
                 icon: "exit-to-app"

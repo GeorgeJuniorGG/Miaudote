@@ -2,11 +2,12 @@ from mlo.petsearch.searchService import SearchService
 from mui.root.RootScreen import RootScreen
 
 from mem.screenmanager.screens import screens
+from mem.filechooser.FMClient import FMClient
 
 from mlo.user.UserService import UserService
 from mlo.pets.PetService import PetService
 
-class RootManager:
+class RootManager(FMClient):
 
     petService: PetService
     profileScreen = None
@@ -23,6 +24,8 @@ class RootManager:
         self.setController()
         self.profileScreen.getUserData()
         self.homeScreen.addViewPets()
+        self.__FM = None
+        self.__CP = "/"
     
     def setController(self):
         self.profileScreen = self.screen.profileScreen
@@ -56,3 +59,22 @@ class RootManager:
 
     def openPetProfile(self, petID:str):
         self.orchetrator.openPetProfile(petID)
+
+    def openFileManager(self):
+        self.orchetrator.openFileManager(self)
+
+    def registreFM(self, FM):
+        self.__FM = FM
+
+    def receiveFile(self, file: str, path:str):
+        self.__CP = path
+        print(file)
+        if file != None:
+            self.profileScreen.changeUserImage(file)
+        self.orchetrator.callGoBackward()
+
+    def callFileManager(self):
+        self.__FM.openFileChooser()
+
+    def getCurrentPath(self) -> str:
+        return self.__CP

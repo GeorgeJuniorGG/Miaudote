@@ -7,7 +7,7 @@ class FileManager:
         self.client = client
         self.client.registreFM(self)
         self.screen = None
-        self.currentDir = '/'
+        self.currentDir = self.client.getCurrentPath()
         self.manager = None
         self.openFileChooser()
         self.__openScreen()
@@ -18,12 +18,11 @@ class FileManager:
     def openFileChooser(self):
         if self.screen != None:
             self.manager = self.screen.manager
-            self.manager.remove_widget(self.screen)
             self.screen = None
 
         self.screen = FileChooserScreen(name=screens['fileChooser'])
         self.screen.controller = self
-        
+
         if self.manager != None:
             self.manager.add_widget(self.screen)
             self.__openScreen()
@@ -31,14 +30,9 @@ class FileManager:
     def exitScreen(self):
         if self.screen != None:
             self.manager = self.screen.manager
-            self.manager.remove_widget(self.screen)
             self.screen = None
 
-        if self.manager != None:
-            self.screen = FileChooserScreen(name=screens['fileChooser'])
-            self.screen.controller = self
-            self.manager.add_widget(self.screen)
-            self.__openScreen()
+        self.sendFilePath(None)
 
     def sendFilePath(self, filePath:str):
-        self.client.receiveFile(filePath)
+        self.client.receiveFile(filePath, self.currentDir)
