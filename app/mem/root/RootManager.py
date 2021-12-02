@@ -74,7 +74,7 @@ class RootManager(FMClient):
         if file != None:
             oldImage = self.profileScreen.changeUserImage(file)
             self.orchetrator.callGoBackward()
-            Clock.schedule_once(partial(self.updateImage, file, oldImage), 0.01)
+            Clock.schedule_once(partial(self.updateImage, file, oldImage), 0.5)
 
     # Atualiza a imagem do usuário no banco            
     def updateImage(self, file, oldImage, *largs):
