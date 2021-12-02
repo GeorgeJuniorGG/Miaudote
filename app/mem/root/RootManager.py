@@ -17,7 +17,9 @@ class RootManager(FMClient):
     menuScreen = None
     homeScreen = None
 
-    def __init__(self, uService: UserService, petService:PetService, searchService: SearchService, orchestrator) -> None:
+    def __init__(self, uService: UserService, petService:PetService,
+                 searchService: SearchService, orchestrator) -> None:
+
         self.userService = uService
         self.petService = petService
         self.searchService = searchService
@@ -54,9 +56,6 @@ class RootManager(FMClient):
         words = text.split(" ")
         return self.searchService.getSearchResults(words)  
 
-    def addPets(self):
-        self.orchetrator.petSignUp() 
-  
     def callChangeScreen(self, screenName:str):
         self.orchetrator.callChangeScreen(screenName)
 

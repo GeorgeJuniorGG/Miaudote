@@ -5,9 +5,10 @@ from mui.petprofile.PetSignUpScreen2 import PetSignUpScreen2
 from mui.petprofile.PetSignUpScreen3 import PetSignUpScreen3
 from mui.petprofile.PetSignUpScreen4 import PetSignUpScreen4
 
-
+from mem.filechooser.FMClient import FMClient
 from mem.screenmanager.screens import (screens, 
                                        usualPetSignUpFlow as upsf)
+
 from mlo.pets.PetModel import PetModel
 
 from mlo.database.PetDB import PetDB
@@ -15,7 +16,8 @@ from mlo.pets.PetDataModelService import PetDataModelService
 from mlo.user.UserService import UserService
 from typing import Type
 
-class PetSignUpManager:
+class PetSignUpManager(FMClient):
+
     petStoregeService = Type[PetDB]
     petDataModelService = Type[PetDataModelService]
     userService = Type[UserService]
@@ -38,6 +40,10 @@ class PetSignUpManager:
         self.petSignUpScreen3.controller = self
         self.petSignUpScreen4=PetSignUpScreen4(name=f"{screens['petSignUp']}4")
         self.petSignUpScreen4.controller = self
+
+        # File Manager
+        self.__FM = None
+        self.__CP = "/"
 
     def addScreens(self):
         self.manager.add_widget(self.petSignUpScreen)
@@ -114,3 +120,25 @@ class PetSignUpManager:
             self.changeScreen(upsf, self.petSignUpScreen4.name)
         else:
             print("Houve um erro ao adicionar as imagens")    
+
+    # File Manager
+    def registreFM(self, FM):
+        self.__FM = FM
+
+    def callFileManager(self):
+        if not self.manager.has_screen(screens['fileChooser']):
+            self.manager.orchestrator.openFileManager(self)
+        
+        else:
+            self.__FM.openFileChooser()
+
+    def getCurrentPath(self) -> str:
+        return self.__CP
+
+    def receiveFile(self, file: str, path: str):
+        self.__CP = path
+        if file != None:
+            self.petSignUpScreen4.addPetImage(file)
+            orchestrator = self.manager.orchestrator
+            orchestrator.callGoBackward(self.petSignUpScreen4.name)
+            
