@@ -8,6 +8,7 @@ from mem.petSignUp.petSignUpManager import PetSignUpManager
 from mem.user.ARManager import ARManager
 from mem.user.PRManager import PRManager
 from mem.pet.PetProfileManager import PetProfileManager
+from mem.filechooser.FileManager import FileManager
 
 # Service
 from mlo.auth.dataModel import DataModel
@@ -185,32 +186,39 @@ recipes = {
         'unique': True
     },
 
-    screens['favorites']: {
+    screens['favorites'] : {
         'class': FavoriteManager,
         'deps': (services['user'], services['pet'], services['favorites']),
         'pArgs': None,
         'unique': True
     },
 
-    screens['adoRequests']: {
+    screens['adoRequests'] : {
         'class': ARManager,
         'deps': (services['user'], services['pet'], services['adoReqs']),
         'pArgs': None,
         'unique': True
     },
 
-    screens['recRequests']: {
+    screens['recRequests'] : {
         'class': PRManager,
         'deps': (services['user'], services['pet']),
         'pArgs': None,
         'unique': True
     },
 
-    screens['petProfile']: {
+    screens['petProfile'] : {
         'class': PetProfileManager,
         'deps': (services['user'], services['pet'], services['favorites'], services['adoReqs']),
         'pArgs': ('petID',),
         'unique': False
     },
+
+    screens['fileChooser'] : {
+        'class': FileManager,
+        'deps': None,
+        'pArgs': ('client',),
+        'unique': True        
+    }
 
 }

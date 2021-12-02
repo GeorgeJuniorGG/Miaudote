@@ -4,7 +4,7 @@ from kivymd.toast import toast
 from kivy.properties import ObjectProperty
 
 class FileChooserScreen(MDScreen):
-    image = ObjectProperty()
+    #image = ObjectProperty()
 
     def __init__(self, **kw):
         super().__init__(**kw)
@@ -14,26 +14,28 @@ class FileChooserScreen(MDScreen):
             select_path=self.selectPath,
             preview=True,            
         )
-        self.fileManager.ext.append('.pdf')
+        self.controller = None
 
     def fileManagerOpen(self):
-        self.fileManager.show('/')  # output manager to the screen
-        self.manager_open = True
-
-    def getImage(self, path):
-        self.exitManager()
-        self.image.source = path
+        self.fileManager.show(self.controller.currentDir)  # output manager to the screen
+        self.chooserOpen = True
 
 
     def selectPath(self, path):
+        self.controller.currentDir = self.fileManager.current_path
         for type in self.imgTypes:
             if type in path:
-                return self.getImage(path)
+                self.exitManager(sel=True)
+                self.controller.sendFilePath(path)
+                return
 
         toast("Arquivo não suportado")
 
 
-    def exitManager(self, *args):
+    def exitManager(self, *args, sel=False):
         '''Called when the user reaches the root of the directory tree.'''
-        self.manager_open = False
+        self.chooserOpen = False
         self.fileManager.close()
+        
+        if not sel:
+            self.controller.exitScreen()
