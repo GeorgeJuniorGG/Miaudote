@@ -7,7 +7,7 @@ from mlo.database.firebaseUserDB import FUserDB
 class FakeRecommendedPets(RecommendedPets):
 
     def __init__(self):
-        user = UserService(FUserDB("yrTvyZUTHnchSKRZdPap1GmFPru2"))
+        user = UserService(FUserDB("cu9qlGfvZdcmUX0roB8QkcpUZsz2"))
         pets = PetService(FPetDB())
         super().__init__(user, pets)
 
