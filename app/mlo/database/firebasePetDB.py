@@ -55,7 +55,7 @@ class FPetDB(PetDB):
     
     def addPetImages(self, petID, images) -> bool:
         urlImages = []
-        try:       
+        try:
             for image in images:
                 currentImage = self.__sdb.child(self.__PET_IMAGES+petID+'/'+image.split('/')[-1]).put(image)
                 urlImages.append(self.__sdb.child(currentImage['name']).get_url(None))

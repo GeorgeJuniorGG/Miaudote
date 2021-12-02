@@ -73,5 +73,6 @@ class PetSignUpScreen(MDFloatLayout, MDScreen):
     def go_backward(self):
         # self.manager.go_backward_pet_signup("PetSignUpScreen")
         self.controller.backward(self.name)
+    
     def go_forward(self):
         self.manager.go_forward_pet_signup("PetSignUpScreen")

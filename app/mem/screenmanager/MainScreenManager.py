@@ -28,7 +28,7 @@ class MainScreenManager(ScreenManager):
                 self.add_widget(screen)
 
         self.transition.direction = direction
-        if not screens['signUp'] in screenName:
+        if not 'SignUp' in screenName:
             self.__previous = self.current
 
         self.current = screenName

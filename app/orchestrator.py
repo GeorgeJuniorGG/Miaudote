@@ -107,12 +107,14 @@ class Orchestrator:
     # Inicializa os componentes necessário para criar uma tela do app
     def startScreen(self, screenName, outArgs:dict={}):
         controller = self.buildComponent(screenName, outArgs)
-        # O signUpManager Possui 4 telas,
-        # por isso optei por fazer a adição de tela dele diferente
-        if screenName == screens['signUp']:
+
+        # Os Managers de SignUp Possuem mais 1 tela,
+        # por isso optei por fazer a adição de tela deles diferente
+        if screenName in (screens['signUp'], screens['petSignUp']):
             controller.manager = self.manager
             controller.addScreens()
             return None
+
         # retorna a tela para ser adicionada ao ScreenManager
         return controller.screen
 
@@ -126,12 +128,6 @@ class Orchestrator:
     def __rootFlow(self):
         rootManager = self.buildComponent(screens['root'])
         self.manager.add_widget(rootManager.screen)
-
-    def petSignUp(self):
-        petSignUpManager = self.buildComponent(screens['petSignUp'])
-        petSignUpManager.manager = self.manager
-        petSignUpManager.addScreens()
-        self.manager.switch_to(petSignUpManager.petSignUpScreen)
 
     # Armazena as informações de login do Usuário
     # Permite que o usuário não precise logar novamente
@@ -187,3 +183,20 @@ class Orchestrator:
         screen = self.startScreen(cName, outArgs=outArgs)
         self.manager.add_widget(screen)
         self.manager.changeScreen('left', screen.name)
+
+    # Abrir o FileChooserScreen
+    def openFileManager(self, fClient):
+        cName = screens['fileChooser']
+        if cName in self.manager.screen_names:
+            self.manager.remove_widget(self.manager.get_screen(cName))
+
+        outArgs = {'client': fClient}
+        controller = self.buildComponent(cName, outArgs=outArgs)
+        self.__addComponent(cName, controller)
+        self.manager.add_widget(controller.screen)
+        self.manager.changeScreen('left', cName)
+
+    def callGoBackward(self, screen:str=''):
+        if screen != '':
+            self.manager.changeScreen('right', screen)
+        self.manager.goBackward('right')
