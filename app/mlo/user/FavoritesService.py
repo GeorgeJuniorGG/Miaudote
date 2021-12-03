@@ -12,9 +12,7 @@ class FavoritesService:
         if(self.userType == "adopter"):
             uData = self.userServ.getUserData()
 
-            pet = self.pets.getPetData(petID)
-
-            uData["favorites"].append(pet)
+            uData["favorites"].append(petID)
 
             self.userServ.updateUserData(uData)
     
@@ -22,31 +20,25 @@ class FavoritesService:
         if(self.userType == "adopter"):
             uData = self.userServ.getUserData()
 
-            pet = self.pets.getPetData(petID)
-
-            for fav in uData['favorites']:
-                if(fav['pid'] == pet['pid']):
-                    uData['favorites'].remove(fav)
-                    break
+            uData['favorites'].remove(petID)
 
             self.userServ.updateUserData(uData)
     
     def getFavorites(self):
+        favorites = []
+
         if(self.userType == "adopter"):
-            return self.userServ.getUserData()["favorites"]
+            for fav in self.userServ.getUserData()["favorites"]:
+                favorites.append(self.pets.getPetData(fav))
         
-        else:
-            return []
+        return favorites
     
     def getFavoriteStatus(self, petID):
         if(self.userType == "adopter"):
             uData = self.userServ.getUserData()
 
-            pet = self.pets.getPetData(petID)
-
-            for fav in uData["favorites"]:
-                if(fav['pid'] == pet['pid']):
-                    return True
+            if petID in uData["favorites"]:
+                return True
             
             return False
         
