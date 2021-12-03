@@ -18,3 +18,15 @@ class UserDB(ABC):
     @abstractmethod
     def getAnotherUserData(self, anUID):
         pass
+
+    @abstractmethod
+    def addPetId(self, petId: str) -> None:
+        pass
+    
+    @abstractmethod
+    def isProtector(self) -> bool:
+        pass
+
+    @abstractmethod
+    def updateUserImage(self, imagePath:str) -> bool:
+        pass

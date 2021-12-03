@@ -1,11 +1,12 @@
 #:kivy 2.0
+#:import get_color_from_hex kivy.utils.get_color_from_hex
 #:import Color mui.ColorTheme.Color
 #:set cor Color()
 
 <PetSignUpScreen2>:
     MDProgressBar:
-        value: 50
-        color: cor.detalheEscuro()
+        value: 25
+        color: get_color_from_hex(cor.azulEscuro())
         pos_hint:{'center_x':0.5, 'center_y': 0.92}
 
     MDIconButton:
@@ -14,74 +15,51 @@
         user_font_size: '35sp'
         pos_hint:{'center_x':0.08, 'center_y': 0.96}
         theme_text_color: "Custom"
-        text_color: cor.detalheClaro()
+        text_color: get_color_from_hex(cor.azulClaro())
         on_release:
             root.go_backward()
 
     MDLabel:
-        text: "Personalidade do Animal"
+        text: "Informações do Animal"
         theme_text_color: "Custom"
-        text_color: cor.rgbVermelho()
+        text_color: get_color_from_hex(cor.vermelho())
         pos_hint: {'center_y': 0.96}
         halign: "center"
         font_size: "20sp"
-
-    MDTextField:
-        id: details
-        hint_text: "Escreva uma descrição sobre o animal"
-        multiline: True
-        size_hint: 0.8, 0.1
-        color_mode: "custom"
-        line_color_normal: cor.linhaTFN()
-        line_color_focus: cor.linhaTFF()
-        pos_hint: {'center_x': 0.5, 'center_y': 0.75}
-    
-    MDLabel:
-        text: "Selecione Características do Animal"
-        theme_text_color: "Custom"
-        text_color: cor.rgbVermelho()
-        pos_hint: {'center_y': 0.60}
-        halign: "center"
-        font_size: "20sp"
     
     MDTextField:
-        id: _firstField
-        hint_text: "Característica 1"
-        color_mode: "custom"
+        id: ambient
+        hint_text: "Ambiente Adequado para o Animal"
         size_hint: 0.8, 0.1
-        line_color_normal: cor.linhaTFN()
-        line_color_focus: cor.linhaTFF()
-        pos_hint: {'center_x': 0.5, 'center_y': 0.50}
+        color_mode: "custom"
+        line_color_normal: get_color_from_hex(cor.azulEscuro())
+        line_color_focus: get_color_from_hex(cor.azulEscuro())
+        pos_hint: {'center_x': 0.5, 'center_y': 0.65}
         on_focus: if self.focus: root.menu1.open()
-            
 
     MDTextField:
-        id: _secondField
-        hint_text: "Característica 2"
+        id: origin
+        hint_text: "Origem do Animal"
         size_hint: 0.8, 0.1
         color_mode: "custom"
-        line_color_normal: cor.linhaTFN()
-        line_color_focus: cor.linhaTFF()
-        pos_hint: {'center_x': 0.5, 'center_y': 0.40}
-        on_focus: if self.focus: root.menu2.open()
-            
-
+        line_color_normal: get_color_from_hex(cor.azulEscuro())
+        line_color_focus: get_color_from_hex(cor.azulEscuro())
+        pos_hint: {'center_x': 0.5, 'center_y': 0.56}
+    
     MDTextField:
-        id: _thirdField
-        hint_text: "Característica 3"
+        id: health
+        hint_text: "Condição de Saúde do Animal"
         size_hint: 0.8, 0.1
         color_mode: "custom"
-        line_color_normal: cor.linhaTFN()
-        line_color_focus: cor.linhaTFF()
-        pos_hint: {'center_x': 0.5, 'center_y': 0.30}
-        on_focus: if self.focus: root.menu3.open()
+        line_color_normal: get_color_from_hex(cor.azulEscuro())
+        line_color_focus: get_color_from_hex(cor.azulEscuro())
+        pos_hint: {'center_x': 0.5, 'center_y': 0.47}
 
     MDFillRoundFlatButton:
-        text: "Finalizar"
-        md_bg_color: cor.fundoB()
+        text: "Continuar"
+        md_bg_color: get_color_from_hex(cor.azulClaro())
         font_size: "20sp"
         size_hint: (0.4, 0.05)
-        pos_hint: {'center_x': 0.5, 'center_y': 0.15}
+        pos_hint: {'center_x': 0.5, 'center_y': 0.07}
         on_release:
-            root.go_forward()
-
+            root.controller.petSignUpScreen2Manager()

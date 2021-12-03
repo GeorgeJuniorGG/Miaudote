@@ -1,16 +1,18 @@
-from typing import List, final
+from typing import List
 from mlo.petrecommendation.RecommendedPets import RecommendedPets
-from tests.mlo.petsearch.fakePetsDB import FakePetsDB
+from mlo.pets.PetService import PetService
 
 class SearchLogic:
 
-    def __init__(self, words: List, recommendations: RecommendedPets):
-        self.words = words
+    def __init__(self, petService:PetService, recommendations: RecommendedPets):
         self.recommendations = recommendations
-        mock = FakePetsDB()
-        self.dictPets = mock.getPets()
+        self.__petService = petService
+        self.dictPets = self.__petService.getAllPets()
     
-    def getResults(self):
+    def getResults(self, words: List):
+
+        self.words = words
+
         for i in range(len(self.words)):
             self.words[i] = self.words[i].lower()
 
@@ -80,21 +82,20 @@ class SearchLogic:
         types = []
         genders = []
 
-        docs = self.dictPets.stream()
+        docs = self.dictPets
         for doc in docs:
-            pet = doc.to_dict()
 
-            if(pet['type'] not in types):
-                types.append(pet["type"])
+            if(doc['type'] not in types):
+                types.append(doc["type"])
 
-            if(pet["color"] not in colors):
-                colors.append(pet["color"])
+            if(doc["color"] not in colors):
+                colors.append(doc["color"])
 
-            if(pet["size"] not in sizes):
-                sizes.append(pet['size'])
+            if(doc["size"] not in sizes):
+                sizes.append(doc['size'])
             
-            if(pet['sex'] not in genders):
-                genders.append(pet['sex']) 
+            if(doc['sex'] not in genders):
+                genders.append(doc['sex']) 
         
         availableFilters = [colors, sizes, types, genders]
         return availableFilters
@@ -109,21 +110,20 @@ class SearchLogic:
 
         filters = self.getUserFilters()
 
-        docs = self.dictPets.stream()
+        docs = self.dictPets
         for doc in docs:
-            pet = doc.to_dict()
             for colorFilter in filters[0]:
-                if(colorFilter in pet["color"] and doc.id not in searchColorResults):
-                    searchColorResults.append(doc.id)
+                if(colorFilter in doc["color"] and doc["pid"] not in searchColorResults):
+                    searchColorResults.append(doc["pid"])
             for sizeFilter in filters[1]:
-                if (sizeFilter in pet["size"] and doc.id not in searchSizeResults):
-                    searchSizeResults.append(doc.id)
+                if (sizeFilter in doc["size"] and doc["pid"] not in searchSizeResults):
+                    searchSizeResults.append(doc["pid"])
             for typeFilter in filters[2]:
-                if (typeFilter in pet["type"] and doc.id not in searchTypeResults):
-                    searchTypeResults.append(doc.id)
+                if (typeFilter in doc["type"] and doc["pid"] not in searchTypeResults):
+                    searchTypeResults.append(doc["pid"])
             for genderFilter in filters[3]:
-                if (genderFilter in pet["sex"] and doc.id not in searchGenderResults):
-                    searchGenderResults.append(doc.id)
+                if (genderFilter in doc["sex"] and doc["pid"] not in searchGenderResults):
+                    searchGenderResults.append(doc["pid"])
         
         if(searchColorResults != []):
             searchResults.append(searchColorResults)
@@ -149,8 +149,15 @@ class SearchLogic:
     def getAliases(self):
         aliases = []
         for word in self.words:
-            if word[-1] == "a" and word != "fêmea" and word != "femea":
+            if word == "cao" or word == "cão" or word == "cadela":
+                aliases.append("cachorro")
+            if word == "medio":
+                aliases.append("médio")
+            elif word[-1] == "a" and word != "fêmea" and word != "femea":
                 aliases.append(word[:-1] + "o")
             elif word[-1] == "o" and word != "macho":
                 aliases.append(word[:-1] + "a")
+            elif word[-1] == "s":
+                aliases.append(word[:-1])
+            
         return aliases

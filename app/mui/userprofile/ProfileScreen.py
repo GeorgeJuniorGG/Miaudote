@@ -7,10 +7,15 @@ class ProfileScreen(MDScreen):
     # Adicionar as Informações do Usuário na tela de perfil
     def getUserData(self):
         userData = self.controller.getUserData()
-        userData['user_image'] = 'keanu_reeves.jpg'
+        #userData['userImage'] = 'keanu_reeves.jpg'
         for itemName in self.ids:
             item = self.ids[itemName]
-            if itemName == 'user_image':
-                item.source = userData['user_image']
+            if itemName == 'userImage':
+                item.source = userData['userImage']
             elif itemName in userData.keys():
                 item.fieldValue = userData[itemName]
+
+    def changeUserImage(self, imagePath):
+        oldImage = self.ids['userImage'].source
+        self.ids['userImage'].source = imagePath
+        return oldImage

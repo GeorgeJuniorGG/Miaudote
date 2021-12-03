@@ -1,4 +1,5 @@
 #:kivy 2.0
+#:import get_color_from_hex kivy.utils.get_color_from_hex
 #:import Color mui.ColorTheme.Color
 #:set cor Color()
 
@@ -10,58 +11,70 @@
             user_font_size: '35sp'
             pos_hint: {"center_y": 0.95}
             theme_text_color: "Custom"
-            text_color: cor.detalheClaro()
+            text_color: get_color_from_hex(cor.azulClaro())
             on_release:
                 root.controller.goBackward()        
 
         MDLabel:
             text: "Login"
             theme_text_color: "Custom"
-            text_color: cor.rgbVermelho()
+            text_color: get_color_from_hex(cor.vermelho())
             pos_hint: {'center_y': 0.8}
             halign: "center"
             font_size: "25sp"
 
-        MDTextFieldRound:
+        MDTextField:
             id: email
             hint_text: "E-mail"
+            mode: "fill"
+            radius: 20, 20, 20, 20
             multiline: False
-            line_color: cor.textoTF()
-            hint_text_color: cor.textoTF()
-            normal_color: cor.fundoTF()
-            color_active: cor.fundoTF()
+            active_line: False
+            line_color_focus: get_color_from_hex(cor.azulEscuro())
+            text_color_normal: get_color_from_hex(cor.azulEscuro())
+            text_color_focus: get_color_from_hex(cor.azulEscuro())
+            hint_text_color_normal: get_color_from_hex(cor.azulEscuro())
+            hint_text_color_focus: get_color_from_hex(cor.azulEscuro())
+            fill_color_normal: get_color_from_hex(cor.branco())
+            fill_color_focus: get_color_from_hex(cor.branco())
             pos_hint: {"center_x": 0.5, "center_y": 0.6}
-            size_hint: 0.65, 0.045
+            size_hint: 0.8, 0.075
 
-        MDTextFieldRound:
+        MDTextField:
             id: password
             hint_text: "Senha"
             password: True
+            mode: "fill"
+            radius: 20, 20, 20, 20
             multiline: False
-            line_color: cor.textoTF()
-            hint_text_color: cor.textoTF()
-            normal_color: cor.fundoTF()
-            color_active: cor.fundoTF()
-            pos_hint: {"center_x": 0.5, "center_y": 0.53}
-            size_hint: 0.65, 0.045
+            active_line: False
+            line_color_focus: get_color_from_hex(cor.azulEscuro())
+            text_color_normal: get_color_from_hex(cor.azulEscuro())
+            text_color_focus: get_color_from_hex(cor.azulEscuro())
+            hint_text_color_normal: get_color_from_hex(cor.azulEscuro())
+            hint_text_color_focus: get_color_from_hex(cor.azulEscuro())
+            fill_color_normal: get_color_from_hex(cor.branco())
+            fill_color_focus: get_color_from_hex(cor.branco())
+            pos_hint: {"center_x": 0.5, "center_y": 0.5}
+            size_hint: 0.8, 0.075
 
-        MDFillRoundFlatButton:
-            text: "Esqueceu a senha?"
-            font_size: 10
+        MDIconButton:
+            icon: "eye-off"
+            pos_hint: {"center_x": 0.83, "center_y": 0.5}
             theme_text_color: "Custom"
-            text_color: cor.textoTF()
-            md_bg_color: cor.textoB()
-            pos_hint: {"center_x": 0.3, "center_y": 0.48}
-            size_hint: 0.3, 0.04
+            text_color: get_color_from_hex(cor.azulEscuro())
+            on_release:
+                self.icon = "eye" if self.icon == "eye-off" else "eye-off"
+                password.password = False if password.password is True else True
 
         MDFillRoundFlatButton:
             id: _LoginLoginButton
-            text: "Logar"
-            font_size: 15
-            elevation: 8
+            text: "Entrar"
+            font_size: "20sp"
             theme_text_color: "Custom"
-            text_color: cor.textoB()
-            md_bg_color: cor.fundoB()
+            text_color: get_color_from_hex(cor.branco())
+            md_bg_color: get_color_from_hex(cor.azulClaro())
             pos_hint: {"center_x": 0.5, "center_y": 0.35}
-            size_hint: 0.35, 0.04
-            on_press: root.controller.login(email.text, password.text)
+            size_hint: 0.35, 0.05
+            on_press:
+                root.controller.login(email.text, password.text)

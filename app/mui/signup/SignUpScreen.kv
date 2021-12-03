@@ -1,30 +1,32 @@
 #:kivy 2.0
+#:import get_color_from_hex kivy.utils.get_color_from_hex
 #:import Color mui.ColorTheme.Color
 #:set cor Color()
 
 <SignUpScreen>:
     MDFloatLayout:
-        pos_hint:{'center_x':0.5, 'center_y': 0.92}
+        pos_hint: {'center_x': 0.5, 'center_y': 0.92}
         size_hint: 1, 0.005
+
         MDProgressBar:
             value: 0
-            color: cor.detalheEscuro()
-            pos_hint:{'center_x':0.5, 'center_y': 0.5}
+            color: get_color_from_hex(cor.azulEscuro())
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
 
     MDIconButton:
         id: _SignupArrowButton
         icon: "arrow-left"
         user_font_size: '35sp'
-        pos_hint:{'center_x':0.08, 'center_y': 0.96}
+        pos_hint: {'center_x':0.08, 'center_y': 0.96}
         theme_text_color: "Custom"
-        text_color: cor.detalheClaro()
+        text_color: get_color_from_hex(cor.azulClaro())
         on_release:
             root.go_backward()
 
     MDLabel:
         text: "Informações Pessoais"
         theme_text_color: "Custom"
-        text_color: cor.rgbVermelho()
+        text_color: get_color_from_hex(cor.vermelho())
         pos_hint: {'center_y': 0.96}
         halign: "center"
         font_size: "20sp"
@@ -33,27 +35,36 @@
         id: name
         hint_text: "Nome e Sobrenome"
         size_hint: 0.8, 0.1
-        color_mode: "custom"
-        line_color_normal: cor.linhaTFN()
-        line_color_focus: cor.linhaTFF()
+        text_color_normal: get_color_from_hex(cor.azulEscuro())
+        text_color_focus: get_color_from_hex(cor.azulEscuro())
+        hint_text_color_normal: get_color_from_hex(cor.azulEscuro())
+        hint_text_color_focus: get_color_from_hex(cor.azulEscuro())
+        line_color_normal: get_color_from_hex(cor.azulEscuro())
+        line_color_focus: get_color_from_hex(cor.azulEscuro())
         pos_hint: {'center_x': 0.5, 'center_y': 0.80}
 
     MDTextField:
         id: cpf
         hint_text: "CPF (Somente números)"
         size_hint: 0.8, 0.1
-        color_mode: "custom"
-        line_color_normal: cor.linhaTFN()
-        line_color_focus: cor.linhaTFF()
+        text_color_normal: get_color_from_hex(cor.azulEscuro())
+        text_color_focus: get_color_from_hex(cor.azulEscuro())
+        hint_text_color_normal: get_color_from_hex(cor.azulEscuro())
+        hint_text_color_focus: get_color_from_hex(cor.azulEscuro())
+        line_color_normal: get_color_from_hex(cor.azulEscuro())
+        line_color_focus: get_color_from_hex(cor.azulEscuro())
         pos_hint: {'center_x': 0.5, 'center_y': 0.71}
 
     MDTextField:
         id: email
         hint_text: "Email"
         size_hint: 0.8, 0.1
-        color_mode: "custom"
-        line_color_normal: cor.linhaTFN()
-        line_color_focus: cor.linhaTFF()
+        text_color_normal: get_color_from_hex(cor.azulEscuro())
+        text_color_focus: get_color_from_hex(cor.azulEscuro())
+        hint_text_color_normal: get_color_from_hex(cor.azulEscuro())
+        hint_text_color_focus: get_color_from_hex(cor.azulEscuro())
+        line_color_normal: get_color_from_hex(cor.azulEscuro())
+        line_color_focus: get_color_from_hex(cor.azulEscuro())
         pos_hint: {'center_x': 0.5, 'center_y': 0.62}
 
     MDTextField:
@@ -61,20 +72,44 @@
         hint_text: "Senha"
         password: True
         size_hint: 0.8, 0.1
-        color_mode: "custom"
-        line_color_normal: cor.linhaTFN()
-        line_color_focus: cor.linhaTFF()
+        text_color_normal: get_color_from_hex(cor.azulEscuro())
+        text_color_focus: get_color_from_hex(cor.azulEscuro())
+        hint_text_color_normal: get_color_from_hex(cor.azulEscuro())
+        hint_text_color_focus: get_color_from_hex(cor.azulEscuro())
+        line_color_normal: get_color_from_hex(cor.azulEscuro())
+        line_color_focus: get_color_from_hex(cor.azulEscuro())
         pos_hint: {'center_x': 0.5, 'center_y': 0.53}
+    
+    MDIconButton:
+        icon: "eye-off"
+        pos_hint: {"center_x": 0.85, "center_y": 0.53}
+        theme_text_color: "Custom"
+        text_color: get_color_from_hex(cor.azulEscuro())
+        on_release:
+            self.icon = "eye" if self.icon == "eye-off" else "eye-off"
+            password1.password = False if password1.password is True else True
 
     MDTextField:
         id: password2
         hint_text: "Confirme sua Senha"
         password: True
         size_hint: 0.8, 0.1
-        color_mode: "custom"
-        line_color_normal: cor.linhaTFN()
-        line_color_focus: cor.linhaTFF()
+        text_color_normal: get_color_from_hex(cor.azulEscuro())
+        text_color_focus: get_color_from_hex(cor.azulEscuro())
+        hint_text_color_normal: get_color_from_hex(cor.azulEscuro())
+        hint_text_color_focus: get_color_from_hex(cor.azulEscuro())
+        line_color_normal: get_color_from_hex(cor.azulEscuro())
+        line_color_focus: get_color_from_hex(cor.azulEscuro())
         pos_hint: {'center_x': 0.5, 'center_y': 0.44}
+    
+    MDIconButton:
+        icon: "eye-off"
+        pos_hint: {"center_x": 0.85, "center_y": 0.44}
+        theme_text_color: "Custom"
+        text_color: get_color_from_hex(cor.azulEscuro())
+        on_release:
+            self.icon = "eye" if self.icon == "eye-off" else "eye-off"
+            password2.password = False if password2.password is True else True
 
     MDBoxLayout:
         width: self.minimum_width
@@ -86,8 +121,8 @@
             pos_hint: {'center_y': 0.35}
             size_hint: None, None
             size: "48dp", "48dp"
-            color: cor.detalheEscuro()
-            selected_color: cor.detalheEscuro()
+            color: get_color_from_hex(cor.azulEscuro())
+            selected_color: get_color_from_hex(cor.azulEscuro())
             adaptive_size: False
 
         MDLabel:
@@ -96,7 +131,7 @@
             font_size: '17sp'
             pos_hint: {'center_y': 0.35}
             theme_text_color: 'Custom'
-            text_color: cor.textoL()
+            text_color: get_color_from_hex(cor.azulEscuro())
             adaptive_size: True
 
     MDBoxLayout:
@@ -109,8 +144,8 @@
             pos_hint: {'center_y': 0.28}
             size_hint: None, None
             size: "48dp", "48dp"
-            color: cor.detalheEscuro()
-            selected_color: cor.detalheEscuro()
+            color: get_color_from_hex(cor.azulEscuro())
+            selected_color: get_color_from_hex(cor.azulEscuro())
             adaptive_size: False
 
         MDLabel:
@@ -119,13 +154,13 @@
             font_size: '17sp'
             pos_hint: {'center_y': 0.28}
             theme_text_color: 'Custom'
-            text_color: cor.textoL()
+            text_color: get_color_from_hex(cor.azulEscuro())
             adaptive_size: True
 
         MDIconButton:
             icon: "information-outline"
             user_font_size: '20sp'
-            pos_hint:{'center_y': 0.28}
+            pos_hint: {'center_y': 0.28}
             adaptive_size: True
             on_release:
                 root.show_protectors_dialog()
@@ -133,10 +168,9 @@
     MDFillRoundFlatButton:
         id: _SignupForwardButton
         text: "Continuar"
-        md_bg_color: cor.fundoB()
+        md_bg_color: get_color_from_hex(cor.azulClaro())
         font_size: "20sp"
-        size_hint: (0.4, 0.05)
-        pos_hint: {'center_x': 0.5, 'center_y': 0.15}
+        size_hint: 0.4, 0.05
+        pos_hint: {'center_x': 0.5, 'center_y': 0.18}
         on_release:
             root.controller.singUpScreenManager()
-

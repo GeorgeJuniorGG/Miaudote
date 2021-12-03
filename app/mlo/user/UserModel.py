@@ -9,6 +9,7 @@ class UserModel(BaseModel):
     cpf: str
     email:str
     address: Address.Address
+    userImage:str = Field(default="user_image.jpg")
     
 class AdopterModel(UserModel):
     favorites: List[PetModel] = Field(default_factory=list)
@@ -16,5 +17,5 @@ class AdopterModel(UserModel):
     preferences: Preferences.UserPreferences
 
 class ProtectorModel(UserModel):
-    pets: List[PetModel] = Field(default_factory=list)
+    pets: List[str] = Field(default_factory=list)
 

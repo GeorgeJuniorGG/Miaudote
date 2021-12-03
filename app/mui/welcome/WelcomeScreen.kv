@@ -1,11 +1,12 @@
 #:kivy 2.0
+#:import get_color_from_hex kivy.utils.get_color_from_hex
 #:import Color mui.ColorTheme.Color
 #:set cor Color()
 
 <WelcomeScreen>:
     canvas:
         Color:
-            rgba: cor.rgaVermelho()
+            rgba: get_color_from_hex(cor.vermelho())
         Line:
             points: self.x + 20, 70, self.right - 20, 70
             width: 1
@@ -18,21 +19,20 @@
     MDFillRoundFlatButton:
         id: _welcomeLoginButton
         text: "Login"
-        md_bg_color: cor.fundoB()
+        md_bg_color: get_color_from_hex(cor.azulClaro())
         font_size: "20sp"
-        size_hint: (0.8, 0.07)
+        size_hint: 0.6, 0.06
         pos_hint: {'center_x': 0.5, 'center_y': 0.55}
         on_release:
             root.controller.welcomeToLogin()
             
-
     MDFillRoundFlatButton:
         id: _welcomeSignupButton
         text: "Cadastrar-se"
         font_size: "20sp"
-        md_bg_color: cor.fundoB()
-        size_hint: (0.8, 0.07)
-        pos_hint: {'center_x': 0.5, 'center_y': 0.45}
+        md_bg_color: get_color_from_hex(cor.azulClaro())
+        size_hint: 0.6, 0.06
+        pos_hint: {'center_x': 0.5, 'center_y': 0.465}
         on_press:
             root.controller.welcomeToSignUp()
 
@@ -40,7 +40,7 @@
         text: "Miaudote"
         font_name: "Spirax-Regular"
         theme_text_color: "Custom"
-        text_color: cor.rgbVermelho()
+        text_color: get_color_from_hex(cor.vermelho())
         pos_hint: {'center_y': 0.15}
         halign: "center"
         font_size: "25sp"

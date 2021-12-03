@@ -23,6 +23,6 @@ firebaseConfig = {
     'appId': "1:894885887773:web:0ef3e74c5a7a5ab5142bf4",
     'measurementId': "G-RLCE5G7GZH"
 }
+firebase = pyrebase.initialize_app(firebaseConfig)
 def getFirebase():
-    firebase = pyrebase.initialize_app(firebaseConfig)
     return firebase

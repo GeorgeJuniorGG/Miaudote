@@ -3,7 +3,14 @@ screens = {
     'login': 'LoginScreen',
     'signUp': 'SignUpScreen',
     'root': 'RootScreen',
-    'home': 'HomeScreen'
+    'home': 'HomeScreen',
+    'petSignUp' : 'PetSignUpScreen', 
+    'favorites': 'FavoriteScreen',
+    'adoRequests': 'RequestsScreen',
+    'adoStatus': 'AdoptRequestsScreen',
+    'recRequests': 'RequestsReceivedScreen',
+    'petProfile': 'PetProfileScreen',
+    'fileChooser': 'FileChooserScreen'
 }
 
 usualProtectorSignUpFlow = [ 'WelcomeScreen',
@@ -19,3 +26,11 @@ usualSignUpFlow = [ 'WelcomeScreen',
                     'SignUpScreen4',
                     'LoginScreen'
                   ]
+
+usualPetSignUpFlow = ['RootScreen', 
+                      'PetSignUpScreen',
+                      'PetSignUpScreen2',
+                      'PetSignUpScreen3',
+                      'PetSignUpScreen4',
+                      'RootScreen'
+                    ]

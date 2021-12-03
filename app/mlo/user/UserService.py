@@ -36,6 +36,7 @@ class UserService:
                     userData[key][skey] = newData[key][skey]
 
             userData[key] = newData[key]
+
         
         # Determinar a classe do usuário
         clss = UserModel
@@ -46,12 +47,29 @@ class UserService:
 
         try:
             uData = clss(**userData)
-            print(uData)
+            #print(uData)
             return self.__db.updateUserData(uData)
         
         except ValidationError as e:
             return False
 
+    # Salvar a nova imagem do usuário no banco
+    def updateUserImage(self, imagePath:str) -> bool:
+        return self.__db.updateUserImage(imagePath)
+
     # Obter dados de outro usuário
     def getAnotherUserData(self, anUID:str):
         return self.__db.getAnotherUserData(anUID)
+
+    def addPetId(self, petId):
+        self.__db.addPetId(petId)
+
+    # Obter o tipo de usuario
+    def getUserType(self) -> str:
+        protector = self.__db.isProtector()
+
+        if(protector):
+            return "protector"
+        
+        else:
+            return "adopter"

@@ -1,11 +1,13 @@
 from logging import root
+from typing import List
 from kivymd.uix.screen import MDScreen
-from kivymd.uix.floatlayout import MDFloatLayout
-from kivy.clock import Clock
 
-from mui.ColorTheme import Color
 from .components.PetItem import PetItem
 from .components.Separator import Separator
+from kivy.uix.label import Label
+from mui.ColorTheme import Color
+from kivy.utils import get_color_from_hex
+from kivy.metrics import dp
 
 class HomeScreen(MDScreen):
 
@@ -13,38 +15,23 @@ class HomeScreen(MDScreen):
 
     def __init__(self, **kw):
         super().__init__(**kw)
-        # Apenas para ilustrar
-        # os itens verdadeiros seram pegos do firebase
-        # item = {
-        #          'imageSource': 'dog.jpg',
-        #          'petName': 'Willian',
-        #          'petDecription': "Willian vivia em um lar em Jardins, São Paulo, até que seus donos tiveram que sair do país e resoveram não levá-lo...",
-        #          'petChars': ['Pintado', 'Macho', 'Campinas']
-        #        }
-
-        # items = []
-        # for i in range(9):
-        #     items.append(item)
-
-        # Clock.schedule_once(lambda x: self.insert_items(items))
     
     def insert_items(self, items:list):
-        cor = Color()
-
         for i in range(len(items)):
-            petItem = PetItem(items[i])
+            petItem = PetItem(self.controller, items[i])
             self.ids.container.add_widget(petItem)
             self.ids.container.add_widget(Separator())
             self.ids.container.ids[f'item{i}'] = petItem
 
     def addViewPets(self):
-        # Pega todos os Pets no Firebase
-        pets = self.controller.getAllPets()
+        # Pega todos os Pets dos recomendados
+        pets = self.controller.getRecommended()
 
         petItemData = list()
         for pet in pets:
             pData = {
-                'imageSource': 'sem_imagem.png',
+                'petID': pet['pid'],
+                'imageSource': pet['images'][0],
                 'name': pet['name'],
                 'details': pet['details'][:65] + '...',
                 'petChars': [pet['sex'],
@@ -57,7 +44,50 @@ class HomeScreen(MDScreen):
         self.insert_items(petItemData)
 
     def search(self, search_text):
-        print("BUSCAR --> " + search_text)
+        results = self.controller.getSearchResults(search_text)
+        if (type(results) == str):
+            self.showError(results)
+        else:
+            self.updateItems(results)
+
+    def updateItems(self, newItems: List):
+        self.ids.container.clear_widgets()
+
+        petItemData = list()
+
+        for pet in newItems:
+            pData = {
+                'petID': pet['pid'],
+                'imageSource': pet['images'][0],
+                'name': pet['name'],
+                'details': pet['details'][:65] + '...',
+                'petChars': [pet['sex'],
+                             pet['size'],
+                             pet['color']]                
+            }
+
+            petItemData.append(pData)
+
+        self.insert_items(petItemData)
+    
+    def showError(self, error: str):
+        self.ids.container.clear_widgets()
+
+        cor = Color()
+
+        label = Label()
+        label.text = error
+        label.color = get_color_from_hex(cor.vermelhoEscuro())
+        label.font_size = dp(18)
+        label.bold = True
+        label.padding_x = 10
+        label.valign = "center"
+        label.halign = "center"
+        label.text_size = self.size
+        
+
+        self.ids.container.add_widget(label)
+
 
     def on_touch(self, id):
         print("ID " + id)
