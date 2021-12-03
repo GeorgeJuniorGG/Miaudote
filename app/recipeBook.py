@@ -7,8 +7,10 @@ from mem.root.RootManager import RootManager
 from mem.petSignUp.petSignUpManager import PetSignUpManager
 from mem.user.ARManager import ARManager
 from mem.user.PRManager import PRManager
+from mem.user.PRPManager import PRPManager
 from mem.pet.PetProfileManager import PetProfileManager
 from mem.filechooser.FileManager import FileManager
+
 
 # Service
 from mlo.auth.dataModel import DataModel
@@ -22,6 +24,7 @@ from mlo.petsearch.resultsPrioritization import ResultsPrioritization
 from mlo.petsearch.searchLogic import SearchLogic
 from mlo.petsearch.searchService import SearchService
 from mlo.user.FavoritesService import FavoritesService
+from mlo.adoption.AdoptionService import AdoptionService
 
 # Database
 from mlo.storage.firebaseDB import FirebaseDB
@@ -42,7 +45,8 @@ services = {
     'sLogic': 'SearchLogic',
     'search': 'SearchService',
     'favorites': 'FavoritesService',
-    'adoReqs': 'AdopterRequestsService'
+    'adoReqs': 'AdopterRequestsService',
+    'adoption': 'AdoptionService'
 }
 
 databases = {
@@ -129,6 +133,13 @@ recipes = {
         'pArgs': None,
         'unique': True
     },
+
+    services['adoption'] : {
+        'class': AdoptionService,
+        'deps': (services['user'], services['pet']),
+        'pArgs': None,
+        'unique': True
+    },    
 
     databases['pet'] : {
         'class': FPetDB,
@@ -218,7 +229,14 @@ recipes = {
         'class': FileManager,
         'deps': None,
         'pArgs': ('client',),
+        'unique': True
+    },
+
+    screens['requesterProfile'] : {
+        'class': PRPManager,
+        'deps': (services['adoption'],),
+        'pArgs': None,
         'unique': True        
-    }
+    },
 
 }

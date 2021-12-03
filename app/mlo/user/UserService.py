@@ -73,3 +73,7 @@ class UserService:
         
         else:
             return "adopter"
+
+    # Obter o ID do usuário Host
+    def getUserID(self) -> str:
+        return self.__db.getUserID()
