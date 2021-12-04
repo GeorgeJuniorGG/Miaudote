@@ -9,7 +9,6 @@
     addPet: add_pet
     receivedRequests: received_requests
     favorites: favorites
-    on_kv_post: self.bindScreens()
 
     MDGridLayout:
         id: menu
@@ -27,6 +26,7 @@
             id: add_pet
             text: 'Incluir Pet para Adoção'
             on_press: root.callScreen(self)
+
         MenuItem:
             id: received_requests
             text: 'Pedidos de Adoção Recebidos'
