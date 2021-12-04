@@ -77,3 +77,10 @@ class UserService:
     # Obter o ID do usuário Host
     def getUserID(self) -> str:
         return self.__db.getUserID()
+
+    # Inserir uma solicitação de adoção no banco de dados
+    def insertAR(self, userID:str, arID:str) -> bool:
+        return self.__db.insertAR(userID, arID)
+
+    def deleteAR(self, userID:str, arID:str) -> bool:
+        return self.__db.deleteAR(userID, arID)

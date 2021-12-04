@@ -23,3 +23,9 @@ class PetService:
     # Atualiza os dados de um pet no banco
     def updatePetData(self, petID:str, pData:dict) -> bool:
         return self.__db.updatePetData(petID, pData)
+
+    def insertAR(self, petID:str, arID:str) -> bool:
+        return self.__db.insertAR(petID, arID)
+
+    def deleteAR(self, petID:str, arID:str) -> bool:
+        return self.__db.deleteAR(petID, arID)

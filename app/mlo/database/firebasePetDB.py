@@ -52,7 +52,7 @@ class FPetDB(PetDB):
         docRef = self.__c_ref.add(petData.dict())[-1]
         self.__c_ref.document(docRef.id).update({'pid': docRef.id})
         return docRef.id
-    
+
     def addPetImages(self, petID, images) -> bool:
         urlImages = []
         try:
@@ -61,5 +61,37 @@ class FPetDB(PetDB):
                 urlImages.append(self.__sdb.child(currentImage['name']).get_url(None))
             self.__c_ref.document(petID).update({'images': urlImages})
             return True
+        except:
+            return False
+
+    # Insere as solicitações de adoção na Fila banco de dados
+    # A ordem das solicitações é de acordo com a data da solicitação
+    def insertAR(self, petID:str, arID:str) -> bool:
+
+        try:
+            petData:PetModel = self.getPetData(petID)
+            rQueue:list = petData.requestQueue
+            rQueue.append(arID)
+
+            self.__c_ref.document(petID).update({'requestQueue': rQueue})
+            return True
+
+        except:
+            return False
+
+    # Deleta a solicitação de adoção do documento do pet no Firebase
+    def deleteAR(self, petID:str, arID:str) -> bool:
+
+        try:
+            petData:PetModel = self.getPetData(petID)
+            rQueue:list = petData.requestQueue
+
+            if not arID in rQueue:
+                return False
+
+            rQueue.remove(arID)
+            self.__c_ref.document(petID).update({'requestQueue': rQueue})
+            return True
+        
         except:
             return False

@@ -14,6 +14,7 @@ from mem.filechooser.FileManager import FileManager
 
 # Service
 from mlo.auth.dataModel import DataModel
+from mlo.database.firebaseAdoptionDB import FBAdoptionDB
 from mlo.pets.PetDataModel import PetDataModel
 from mlo.auth.firebaseAuth import FireBaseAuthService
 from mlo.user.AdopterRequestsService import AdopterRequestsService
@@ -52,7 +53,8 @@ services = {
 databases = {
     'user': 'FUserDB',
     'storage': 'FirebaseDB',
-    'pet': 'FPetDB'
+    'pet': 'FPetDB',
+    'adoptation': 'FBAdoptionDB'
 }
 
 recipes = {
@@ -136,7 +138,7 @@ recipes = {
 
     services['adoption'] : {
         'class': AdoptionService,
-        'deps': (services['user'], services['pet']),
+        'deps': (databases['adoptation'], services['user'], services['pet']),
         'pArgs': None,
         'unique': True
     },    
@@ -161,6 +163,13 @@ recipes = {
         'pArgs': None,
         'unique': True
     }, 
+
+    databases['adoptation'] : {
+        'class': FBAdoptionDB,
+        'deps': None,
+        'pArgs': None,
+        'unique': True
+    },
 
     screens['welcome'] : {
         'class': WelcomeManager,
