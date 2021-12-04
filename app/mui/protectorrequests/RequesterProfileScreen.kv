@@ -74,6 +74,7 @@
         md_bg_color: get_color_from_hex(cor.branco())
         pos_hint: {'center_x': 0.25, 'center_y': 0.08}
         size_hint: 0.35, 0.05
+        on_release: root.approveRequest()
     
     MDFillRoundFlatButton:
         text: "Rejeitar"
@@ -85,3 +86,4 @@
         md_bg_color: get_color_from_hex(cor.branco())
         pos_hint: {"center_x": 0.75, "center_y": 0.08}
         size_hint: 0.35, 0.05
+        on_release: root.declineRequest()

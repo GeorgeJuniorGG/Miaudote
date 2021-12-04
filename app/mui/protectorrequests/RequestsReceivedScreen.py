@@ -88,3 +88,6 @@ class RequestsReceivedScreen(MDScreen, MDFloatLayout):
     def go_forward(self, arID:str, obj):
         self.dialog.dismiss()
         self.removeItem(arID)
+
+    def openRequest(self, arID:str):
+        self.controller.openRequest(arID)

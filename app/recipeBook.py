@@ -244,7 +244,7 @@ recipes = {
     screens['requesterProfile'] : {
         'class': PRPManager,
         'deps': (services['adoption'],),
-        'pArgs': None,
+        'pArgs': ('arID',),
         'unique': True        
     },
 

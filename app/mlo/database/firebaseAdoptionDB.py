@@ -1,3 +1,4 @@
+from datetime import datetime, timezone
 from mlo.adoption.ARModel import ARModel
 from .AdoptionDB import AdoptionDB
 from config.firebase import getFirebaseFirestore
@@ -5,6 +6,7 @@ from config.firebase import getFirebaseFirestore
 class FBAdoptionDB(AdoptionDB):
 
     __AR_COLLECTION = 'adoptionRequests'
+    __CHAT_COLLECTION = 'Chats'
 
     def __init__(self) -> None:
         self.__db = getFirebaseFirestore()
@@ -46,3 +48,36 @@ class FBAdoptionDB(AdoptionDB):
             return True
         except:
             return False
+
+    def createChat(self, petID:str, adpID:str, pttID:str) -> str:
+        """
+        Cria um canal de chat entre o Protetor e adotante
+        após uma solicitação de adoção ser aprovada
+        """
+        try:
+            chat_c_ref = self.__db.collection(self.__CHAT_COLLECTION)
+            chat_doc = chat_c_ref.add({
+                'petID': petID,
+                'adopterID': adpID,
+                'protectorID': pttID,
+                'createAt': datetime.now(timezone.utc) 
+            })[-1]
+
+            return chat_doc.id
+        
+        except:
+            return None
+
+    def includeChat(self, arID:str, chatID:str) -> bool:
+        """
+        Atualizar uma Requisição de Adoção no Firebase\n
+        incluindo o id do chat quando a requisição é aprovada
+        """
+        try:
+            self.__c_ref.document(arID).update({
+                'chatID': chatID,
+                'status': True
+            })
+            return True
+        except:
+            return False        

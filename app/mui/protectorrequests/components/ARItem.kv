@@ -44,7 +44,7 @@
     petDLabel: pet_descr
     buttonsContainer: buttons_container
     #md_bg_color: get_color_from_hex(cor.cinzaClaro())
-    on_release: print('abrir soliticação')
+    on_release: self.openRequest()
 
     MDFloatLayout:
         id: pet_image
@@ -90,12 +90,12 @@
         MDLabel:
             id: pet_descr
             text: root.petDescription
-            font_size: '14sp'
+            font_size: '12sp'
             pos_hint: {'x': 0.4, 'center_y': 0.5}
             theme_text_color: "Custom"
             text_color: get_color_from_hex(cor.azulEscuro())
             bold: True
-            size_hint: 0.5, 0.5
+            size_hint: 0.63, 0.5
             #size: 100, 100
         
         MDFloatLayout:

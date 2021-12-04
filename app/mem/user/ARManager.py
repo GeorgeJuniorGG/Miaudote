@@ -16,3 +16,6 @@ class ARManager:
 
     def getRequests(self):
         return self.adoptionService.getARData()
+
+    def openRequest(self, arID:str):
+        print(f'Abrir a requisição: {arID}')

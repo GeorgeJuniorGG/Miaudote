@@ -3,6 +3,7 @@ from mlo.adoption.AdoptionService import AdoptionService
 
 from mem.screenmanager.screens import screens
 
+
 class PRManager:
 
     def __init__(self, adpt:AdoptionService) -> None:
@@ -16,3 +17,7 @@ class PRManager:
 
     def removeRequest(self, arID:str):
         self.adoptionService.deleteAR(arID)
+
+    def openRequest(self, arID:str):
+        orchestrator = self.screen.manager.orchestrator
+        orchestrator.openARProfile(arID)

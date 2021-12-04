@@ -159,3 +159,44 @@ class AdoptionService:
 
         except:
             return None
+
+    def approveAR(self, arID:str) -> bool:
+        """
+        Aprovar a solicitação de adoção e\n
+        abrir um chat entre o protetor e adotante
+        """
+        try:
+            arData:ARModel = self.__db.getAR(arID)
+            chatID = self.__db.createChat(arData.petID, arData.adopterID, arData.protectorID)
+            if chatID == None:
+                return False
+
+            if not self.__db.includeChat(arID, chatID):
+                return False
+            
+            return True
+        except:
+            return False
+
+    def declineAR(self, arID:str) -> bool:
+        """
+        Recusar a solicitação de adoção
+        Remove a solicitação do pet e do protetor
+        e atualiza a fila de solicitações do pet
+        """
+        try:
+            arData:ARModel = self.__db.getAR(arID)
+            petData = self.petService.getPetData(arData.petID)
+            userID = self.getUserID()
+            self.petService.deleteAR(petData['pid'], arID)
+            self.userService.deleteAR(userID, arID)
+
+            petData = self.petService.getPetData(arData.petID)
+            rQueue = petData['requestQueue']
+            if len(rQueue) > 0:
+                self.userService.insertAR(userID, rQueue[0])
+            
+            self.updateARStatus(arID, False)
+            return True
+        except:
+            return False

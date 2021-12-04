@@ -28,7 +28,13 @@ class RequestsScreen(MDScreen, MDFloatLayout):
             else:
 
                 for req in requests:
-                    req['description'] = req['details'][:30] + '...'
+                    msg = f'Aguardando a resposta do protetor de {req["petName"]}.'
+                    if req['arStatus'] == True:
+                        msg = f'O protetor de {req["petName"]} aprovou sua solicitação. Agora você pode conversar com o protetor!'
+                    elif req['arStatus'] == False:
+                        msg = f'O protetor de {req["petName"]} recusou sua solicitação de adoção.'
+                        
+                    req['description'] = msg
 
                 self.insert_items(requests)
 
@@ -90,3 +96,6 @@ class RequestsScreen(MDScreen, MDFloatLayout):
     def go_forward(self, arID:str, obj):
         self.dialog.dismiss()
         self.removeItem(arID)
+
+    def openRequest(self, arID:str):
+        self.controller.openRequest(arID)

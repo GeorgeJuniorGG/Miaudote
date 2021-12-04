@@ -18,3 +18,11 @@ class AdoptionDB(ABC):
     @abstractmethod
     def updateARStatus(self, arID:str, status:bool) -> bool:
         pass
+
+    @abstractmethod
+    def createChat(self, petID:str, adpID:str, pttID:str) -> str:
+        pass
+
+    @abstractmethod
+    def includeChat(self, arID:str, chatID:str) -> bool:
+        pass

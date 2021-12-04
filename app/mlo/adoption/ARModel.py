@@ -9,4 +9,5 @@ class ARModel(BaseModel):
     adopterID:str
     protectorID:str
     status:bool = Field(default=None)
+    chatID:str = Field(default=None)
     createAt: datetime = Field(default_factory = lambda: datetime.now(timezone.utc))

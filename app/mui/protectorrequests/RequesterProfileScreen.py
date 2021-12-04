@@ -1,9 +1,15 @@
+from functools import partial
+from kivy.utils import get_color_from_hex
 from kivymd.uix.floatlayout import MDFloatLayout
 from kivymd.uix.screen import MDScreen
+from kivymd.toast import toast
+from mui.ColorTheme import Color
+from kivy.clock import Clock
 
 class RequesterProfileScreen(MDFloatLayout, MDScreen):
     
     controller = None
+    cor = Color()
 
     def insertAdopterData(self):
         data = self.controller.adopterProfileData()
@@ -34,3 +40,15 @@ class RequesterProfileScreen(MDFloatLayout, MDScreen):
                     value = 'Sim' if value else 'Não'
 
                 item.fieldValue = value
+
+    def approveRequest(self):
+        self.controller.approveRequest()
+        #Clock.schedule_once(lambda x: partial(self.manager.goBackward,'right'), 5)
+
+    def declineRequest(self):
+        self.controller.declineRequest()
+        #self.manager.goBackward('right')
+        #Clock.schedule_once(lambda x: partial(self.manager.goBackward,'right'), 5)
+
+    def showToast(self, msg:str):
+        toast(msg, get_color_from_hex(self.cor.azulCinzaClaro()+'F0'))

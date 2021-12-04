@@ -57,6 +57,7 @@ class ARItem(RectangularRippleBehavior, ButtonBehavior, MDFloatLayout):
         self.petName = data['petName']
         self.petDescription = data['description']
         self.petID = data['pid']
+        self.arID = data['arID']
 
         if data['arStatus'] == True:
             Clock.schedule_once(lambda x: self.insertButtons(ChatButton()))
@@ -80,3 +81,6 @@ class ARItem(RectangularRippleBehavior, ButtonBehavior, MDFloatLayout):
 
     def insertButtons(self, button):
         self.buttonsContainer.add_widget(button)
+
+    def openRequest(self):
+        self.screen.openRequest(self.arID)

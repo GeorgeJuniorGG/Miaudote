@@ -184,6 +184,17 @@ class Orchestrator:
         self.manager.add_widget(screen)
         self.manager.changeScreen('left', screen.name)
 
+    # Abrir a tela com informações sobre o adotante em uma AR
+    def openARProfile(self, arID:str):
+        cName = screens['requesterProfile']
+        if cName+arID in self.manager.screen_names:
+            self.manager.remove_widget(self.manager.get_screen(cName+arID))
+        
+        outArgs = {'arID': arID}
+        screen = self.startScreen(cName, outArgs=outArgs)
+        self.manager.add_widget(screen)
+        self.manager.changeScreen('left', screen.name)
+
     # Abrir o FileChooserScreen
     def openFileManager(self, fClient):
         cName = screens['fileChooser']
