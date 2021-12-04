@@ -155,6 +155,8 @@ class SearchLogic:
                 aliases.append("médio")
             if word == "passaro":
                 aliases.append("pássaro")
+            if word == "femea":
+                aliases.append("fêmea")
             elif word[-1] == "a" and word != "fêmea" and word != "femea":
                 aliases.append(word[:-1] + "o")
             elif word[-1] == "o" and word != "macho":

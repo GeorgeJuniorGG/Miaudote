@@ -9,13 +9,12 @@ class RecommendedPets():
 
     def getRecommended(self):
         results = []
+        pets = self.pets.getAllPets()
 
         if self.userType == "adopter":
             characteristicsFilters = self.getCharacteristicsFilters()
             sizeFilters = self.getSizeFilters()
             animalFilters = self.getAnimalFilters()
-
-            pets = self.pets.getAllPets()
 
             for pet in pets:
                 if(pet["size"].lower() in sizeFilters):
