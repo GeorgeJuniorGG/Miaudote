@@ -15,6 +15,8 @@ class MiaudoteMenuScreen(MDScreen):
     receivedRequests = ObjectProperty(MenuItem)
     # Item para os Pets favoritados (Adotante)
     favorites = ObjectProperty(MenuItem)
+    # Item para a lista de Pets (Protetor)
+    myPets = ObjectProperty(MenuItem)
 
     controller = None
 
@@ -26,7 +28,8 @@ class MiaudoteMenuScreen(MDScreen):
         screens['favorites']: self.favorites,
         screens['adoRequests']: self.adoptRequests,
         screens['petSignUp']: self.addPet,
-        screens['recRequests']: self.receivedRequests
+        screens['recRequests']: self.receivedRequests,
+        screens['myPets']: self.myPets
     }
 
     # Chamado quando há uma mudança de tela

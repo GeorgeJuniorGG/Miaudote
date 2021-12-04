@@ -1,0 +1,38 @@
+#:kivy 2.0
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+#:import Color mui.ColorTheme.Color
+#:set cor Color()
+
+<MyPetsScreen>:
+    MiauLogo:
+        screen: root
+
+    MDLabel:
+        text: "Meus Pets"
+        theme_text_color: "Custom"
+        text_color: get_color_from_hex(cor.vermelho())
+        halign: "center"
+        font_size: "25sp"
+        size_hint: 1, None
+        height: 40
+        pos_hint: {"center_x": 0.5, "top": 0.91}
+
+    MDSeparator:
+        height: "1dp"
+        color: get_color_from_hex(cor.vermelho())
+        pos_hint: {"center_x": 0.5, "top": 0.85} 
+
+    MDBoxLayout:
+        size_hint: 1, 1
+        pos_hint: {"center_x": 0.5, "top": 0.83}
+        height: self.minimum_height
+        orientation: "vertical"
+
+        ScrollView:
+            size_hint: 1, 1
+            MDList:
+                id: container
+                padding: '20dp'
+
+        Widget:
+            size_hint: 1, 0.2
