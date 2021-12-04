@@ -9,6 +9,7 @@ from mlo.pets.PetService import PetService
 
 from kivy.clock import Clock
 from functools import partial
+from kivymd.toast import toast
 
 class RootManager(FMClient):
 
@@ -60,7 +61,12 @@ class RootManager(FMClient):
         self.orchetrator.callChangeScreen(screenName)
 
     def openPetProfile(self, petID:str):
-        self.orchetrator.openPetProfile(petID)
+        if(self.petService.getPetData(petID) != {}):
+            self.orchetrator.openPetProfile(petID)
+        else:
+            self.homeScreen.addViewPets()
+            toast("Esse pet já foi adotado!")
+            
 
     def openFileManager(self):
         self.orchetrator.openFileManager(self)

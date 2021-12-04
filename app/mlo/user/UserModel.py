@@ -12,7 +12,7 @@ class UserModel(BaseModel):
     userImage:str = Field(default="user_image.jpg")
     
 class AdopterModel(UserModel):
-    favorites: List[PetModel] = Field(default_factory=list)
+    favorites: List[str] = Field(default_factory=list)
     homeCharacteristics: HomeCharacteristics.HomeCharacteristics
     preferences: Preferences.UserPreferences
 
