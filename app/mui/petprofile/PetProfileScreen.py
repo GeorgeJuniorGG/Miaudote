@@ -25,7 +25,7 @@ class PetProfileScreen(MDScreen):
         self.petName = petData['name']
         self.petSex = petData['sex']
         self.petAge = petData['Age']
-        self.petAddr = petData['localization']
+        self.petAddr = str(petData['city']+", "+petData['state'])
         self.petDscp = petData['details']
         self.petImages = petData['images']
         self.petID = petData['pid']
