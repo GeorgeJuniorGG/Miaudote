@@ -28,7 +28,7 @@ class RequestsScreen(MDScreen, MDFloatLayout):
             else:
 
                 for req in requests:
-                    req['description'] = req['details']
+                    req['description'] = req['details'][:30] + '...'
 
                 self.insert_items(requests)
 

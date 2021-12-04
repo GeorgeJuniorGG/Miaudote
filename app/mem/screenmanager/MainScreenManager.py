@@ -9,7 +9,11 @@ class MainScreenManager(ScreenManager):
                      'SlideTransition': SlideTransition,
                      'RiseInTransition': RiseInTransition
                     }
-    __refreshingScreens = {"RequestsScreen": None, "FavoriteScreen": None}
+    __refreshingScreens = {
+        screens['adoRequests']: None,
+        screens['recRequests']: None,
+        screens['favorites']: None,
+    }
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)

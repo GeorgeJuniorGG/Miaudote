@@ -2,8 +2,10 @@ from kivymd.uix.screen import MDScreen
 from kivymd.uix.button import MDFillRoundFlatButton
 from kivymd.uix.dialog import MDDialog
 from kivymd.utils.fitimage import FitImage
+from kivymd.toast import toast
 
 from kivy.utils import get_color_from_hex
+
 
 from mui.ColorTheme import Color
 
@@ -88,3 +90,6 @@ class PetProfileScreen(MDScreen):
         for image in self.petImages:
             currentImage = FitImage(source = image)
             self.ids.carousel.add_widget(currentImage)
+
+    def showToast(self, msg:str):
+        toast(msg, get_color_from_hex(self.cor.azulCinzaClaro()+'F0'))
