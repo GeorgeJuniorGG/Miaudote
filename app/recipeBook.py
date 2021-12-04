@@ -215,14 +215,14 @@ recipes = {
 
     screens['adoRequests'] : {
         'class': ARManager,
-        'deps': (services['user'], services['pet'], services['adoReqs']),
+        'deps': (services['adoption'],),
         'pArgs': None,
         'unique': True
     },
 
     screens['recRequests'] : {
         'class': PRManager,
-        'deps': (services['user'], services['pet']),
+        'deps': (services['adoption'],),
         'pArgs': None,
         'unique': True
     },

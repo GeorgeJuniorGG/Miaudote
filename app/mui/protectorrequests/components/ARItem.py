@@ -1,10 +1,10 @@
+from functools import partial
 from kivy.uix.behaviors import ButtonBehavior
 from kivymd.uix.behaviors import RectangularRippleBehavior
 from kivymd.uix.floatlayout import MDFloatLayout
-from kivymd.uix.boxlayout import MDBoxLayout
+from kivymd.uix.gridlayout import MDGridLayout
 from kivymd.uix.label import MDLabel
-from mui.protectorrequests.components.ARItem import RemoveButton, ChatButton
-
+from kivymd.uix.button import MDIconButton
 from kivy.properties import (
     StringProperty,
     ObjectProperty
@@ -13,7 +13,7 @@ from kivy.properties import (
 from kivy.clock import Clock
 
 
-class PetLabel2(MDLabel):
+class ARLabel(MDLabel):
     def __init__(self, charName, **kwargs):
         super().__init__(**kwargs)
         self.text = charName
@@ -21,8 +21,13 @@ class PetLabel2(MDLabel):
         self.halign = 'center'
         self.pos_hint = {'center_y': 0.5}
 
+class ChatButton(MDIconButton):
+    pass
 
-class PetItem2(RectangularRippleBehavior, ButtonBehavior, MDFloatLayout):
+class RemoveButton(MDIconButton):
+    pass
+
+class ARItem(RectangularRippleBehavior, ButtonBehavior, MDFloatLayout):
     # indicar o local da imagem
     petImageSource = StringProperty()
     # adicionar o nome do Pet
@@ -35,7 +40,7 @@ class PetItem2(RectangularRippleBehavior, ButtonBehavior, MDFloatLayout):
     # FloatLayout com o conteudo textual sobre o Pet
     petContent = ObjectProperty(MDFloatLayout)
     # BoxLayout com os Chips das Características do Pet
-    petCharsBox = ObjectProperty(MDBoxLayout)
+    petCharsBox = ObjectProperty(MDGridLayout)
     # Label com a Descrição do Pet
     petDLabel = ObjectProperty(MDLabel)
     # Label com o Nome do Pet
@@ -43,21 +48,23 @@ class PetItem2(RectangularRippleBehavior, ButtonBehavior, MDFloatLayout):
     # FloatLayout com a Imagem do pet
     petImage = ObjectProperty(MDFloatLayout)
     # MDIconButton para exclusão do item
-    buttonsContainer = ObjectProperty()
+    buttonsContainer = ObjectProperty(MDFloatLayout)
 
     def __init__(self, data:dict, screen, **kwargs):
         super().__init__(**kwargs)
-
         self.screen = screen
         self.petImageSource = data['imageSource']
         self.petName = data['petName']
-        self.petDescription = data['petDecription']
+        self.petDescription = data['description']
         self.petID = data['pid']
+
         if data['arStatus'] == True:
             Clock.schedule_once(lambda x: self.insertButtons(ChatButton()))
 
-        Clock.schedule_once( lambda x: self.insertButtons(
-                RemoveButton(on_release=self.screen.remove_item_dialog))
+        Clock.schedule_once(lambda x: self.insertButtons(
+            RemoveButton(
+                on_release=partial(self.screen.remove_item_dialog, data['arID'])
+            ))
         )
 
         labels = data['petChars']
@@ -67,6 +74,9 @@ class PetItem2(RectangularRippleBehavior, ButtonBehavior, MDFloatLayout):
     def insertLabels(self, labels):
         
         for i in range(len(labels)):
-            petChar = PetLabel2(labels[i])
+            petChar = ARLabel(labels[i])
             self.petCharsBox.ids[f'label{i}'] = petChar
             self.petCharsBox.add_widget(petChar)
+
+    def insertButtons(self, button):
+        self.buttonsContainer.add_widget(button)

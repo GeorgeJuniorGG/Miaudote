@@ -1,4 +1,3 @@
-from logging import root
 from kivymd.uix.screen import MDScreen
 from kivymd.uix.floatlayout import MDFloatLayout
 from kivymd.uix.button import MDFillRoundFlatButton
@@ -7,7 +6,7 @@ from kivymd.uix.dialog import MDDialog
 from functools import partial
 from kivy.utils import get_color_from_hex
 
-from mui.adopterrequests.components.PetItem2 import PetItem2
+from mui.protectorrequests.components.ARItem import ARItem
 from mui.home.components.Separator import Separator
 from mui.ColorTheme import Color
 from kivy.uix.label import Label
@@ -25,31 +24,20 @@ class RequestsScreen(MDScreen, MDFloatLayout):
         try:
             if(len(requests) == 0):
                 self.showMessage()
-            
+    
             else:
-                reqItemData = list()
 
                 for req in requests:
-                    reqData = {
-                        'imageSource': req['images'][0],
-                        'petName': req['name'],
-                        'petDecription': req['details'][:65] + '...',
-                        'pid': req['pid'],
-                        'petChars': [req['sex'],
-                                    req['size'],
-                                    req['color']]                
-                    }
+                    req['description'] = req['details']
 
-                    reqItemData.append(reqData)
-                    
-                self.insert_items(reqItemData)
+                self.insert_items(requests)
 
         except:
             self.showMessage()
     
     def insert_items(self, items:list):
         for i in range(len(items)):
-            petItem = PetItem2(items[i])
+            petItem = ARItem(items[i], self)
             self.ids.container.add_widget(petItem)
             self.ids.container.add_widget(Separator())
             self.ids.container.ids[f'item{i}'] = petItem
@@ -69,19 +57,19 @@ class RequestsScreen(MDScreen, MDFloatLayout):
         
         self.ids.container.add_widget(label)
 
-    def removeItem(self, petID:str):
-        self.controller.removeRequest(petID)
+    def removeItem(self, arID:str):
+        self.controller.removeRequest(arID)
         self.updateItems()
     
     def updateItems(self):
         self.ids.container.clear_widgets()
         self.addViewRequests()
 
-    def remove_item_dialog(self, petID:str):
+    def remove_item_dialog(self, arID:str, obj):
         sim_btn = MDFillRoundFlatButton(text="SIM", theme_text_color="Custom",
                                         text_color=get_color_from_hex(self.cor.azulEscuro()),
                                         md_bg_color=get_color_from_hex(self.cor.branco()),
-                                        on_release=partial(self.go_forward, petID))
+                                        on_release=partial(self.go_forward, arID))
 
         nao_btn = MDFillRoundFlatButton(text="NÃO", theme_text_color="Custom",
                                         text_color=get_color_from_hex(self.cor.vermelho()),
@@ -99,6 +87,6 @@ class RequestsScreen(MDScreen, MDFloatLayout):
     def close_dialog(self, obj):
         self.dialog.dismiss()
 
-    def go_forward(self, petID:str, obj):
+    def go_forward(self, arID:str, obj):
         self.dialog.dismiss()
-        self.removeItem(petID)
+        self.removeItem(arID)

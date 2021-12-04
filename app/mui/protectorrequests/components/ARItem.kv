@@ -3,7 +3,7 @@
 #:import Color mui.ColorTheme.Color
 #:set cor Color()
 
-<PetLabel2>:
+<ARLabel>:
     canvas.before:
         Color:
             rgba: get_color_from_hex(cor.azulClaro())
@@ -13,33 +13,38 @@
             pos: self.pos
             radius: 5,5
     
-    size_hint: 0.3, 1
+    #size_hint: 1, 1
     pos_hint: {'center_y': 0.5}
     bold: True
     adaptive_height: True
     theme_text_color: "Custom"
     text_color: get_color_from_hex(cor.branco())
 
-<PetItem2>:
+<ChatButton>:
+    icon: 'message-outline'
+    theme_text_color: "Custom"
+    text_color: get_color_from_hex(cor.vermelho())
+    user_font_size: "25dp"
+    pos_hint: {'right': 0.75, 'center_y': 0.45}
+
+<RemoveButton>:
+    icon: 'close'
+    theme_text_color: "Custom"
+    text_color: get_color_from_hex(cor.vermelho())
+    user_font_size: "25dp"
+    pos_hint: {'right': 1, 'center_y': 0.45}
+
+<ARItem>:
     size_hint: 1, None
-    height: 120
+    height: 130
     petCharsBox: pet_chars
     petImage: pet_image
     petContent: pet_content
     petNLabel: pet_name
     petDLabel: pet_descr
     buttonsContainer: buttons_container
-
-    MDFloatLayout:
-        id: pet_image
-        pos_hint: {'x': 0,'center_y': 0.5}
-        size_hint: None, None
-        size: self.parent.width*0.3, self.parent.height*0.8
-
-        FitImage:
-            source: root.petImageSource
-            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-            radius: 15, 15, 15, 15
+    #md_bg_color: get_color_from_hex(cor.cinzaClaro())
+    on_release: print('abrir soliticação')
 
     MDFloatLayout:
         id: pet_image
@@ -98,3 +103,7 @@
             pos_hint: {'center_x': 0.68, 'center_y': 0.1}
             size_hint: 0.6, 0.2
             #md_bg_color: get_color_from_hex(cor.violeta())
+            # ChatButton:
+            #     on_release: print('Abrir o Chat') 
+            # RemoveButton:
+            #     on_release: print('Recusar soliticação')

@@ -78,7 +78,7 @@ class FavoritesScreen(MDScreen, MDFloatLayout):
         self.ids.container.clear_widgets()
         self.addViewPets()
 
-    def remove_item_dialog(self, petID:str):
+    def remove_item_dialog(self, petID:str, obj):
         sim_btn = MDFillRoundFlatButton(text="SIM", theme_text_color="Custom",
                                         text_color=get_color_from_hex(self.cor.azulEscuro()),
                                         md_bg_color=get_color_from_hex(self.cor.branco()),

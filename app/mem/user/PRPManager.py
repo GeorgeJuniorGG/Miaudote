@@ -14,4 +14,5 @@ class PRPManager:
         self.screen.insertAdopterData()
 
     def adopterProfileData(self):
-        return self.aService.getUserData()
+        data = self.aService.getAdopterData('Ip4s6hBlTncg2ia6wNUY')
+        return data

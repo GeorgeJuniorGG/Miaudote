@@ -102,6 +102,37 @@ class AdoptionService:
     def getUserID(self) -> str:
         return self.userService.getUserID()
 
+    def getARData(self):
+
+        try:
+            userData = self.userService.getUserData()
+            arUserList = userData['adoptationRequests']
+
+            arList = list()
+
+            for arID in arUserList:
+                request: ARModel = self.__db.getAR(arID)
+                petData = self.petService.getPetData(request.petID)
+                arData = {
+                    'arID': arID,
+                    'arStatus': request.status,
+                    'imageSource': petData['images'][0],
+                    'petName': petData['name'],
+                    'pid': petData['pid'],
+                    'description': f'{petData["name"]} recebeu uma solicitação de adoção!',
+                    'details': petData['details'],
+                    'petChars': [petData['sex'],
+                                petData['size'],
+                                petData['color']]                 
+                }
+
+                arList.append(arData)
+
+            return arList
+
+        except:
+            return None
+
     def getAdopterData(self, arID:str) -> dict:
 
         try:
