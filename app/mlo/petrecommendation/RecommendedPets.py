@@ -4,7 +4,7 @@ from mlo.user.UserService import UserService
 class RecommendedPets():
     def __init__(self, user: UserService, pets: PetService):
         self.user = user.getUserData()
-        self.pets = pets.getAllPets()
+        self.pets = pets
         self.userType = user.getUserType()
 
     def getRecommended(self):
@@ -15,7 +15,9 @@ class RecommendedPets():
             sizeFilters = self.getSizeFilters()
             animalFilters = self.getAnimalFilters()
 
-            for pet in self.pets:
+            pets = self.pets.getAllPets()
+
+            for pet in pets:
                 if(pet["size"].lower() in sizeFilters):
 
                     if(pet["type"].lower() in animalFilters and pet["pid"] not in results):
@@ -41,10 +43,10 @@ class RecommendedPets():
                             results.append(pet["pid"])
                             
             if (len(results) == 0):
-                results = [pet["pid"] for pet in self.pets]
+                results = [pet["pid"] for pet in pets]
         
         else:
-            results = [pet["pid"] for pet in self.pets]
+            results = [pet["pid"] for pet in pets]
 
         return results
 
