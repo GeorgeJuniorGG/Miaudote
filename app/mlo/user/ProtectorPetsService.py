@@ -12,8 +12,9 @@ class ProtectorPetsService:
 
         if petID in uData["pets"]:
             pet = self.petServ.getPetData(petID)
-            pet["requestStatus"] = True
-            self.petServ.updatePetData(petID, pet)
+            if(pet != {}):
+                pet["requestStatus"] = True
+                self.petServ.updatePetData(petID, pet)
 
     
     def petWasAdopted(self, petID:str):
@@ -21,8 +22,9 @@ class ProtectorPetsService:
 
         if petID in uData["pets"]:
             pet = self.petServ.getPetData(petID)
-            pet["requestStatus"] = True
-            self.petServ.updatePetData(petID, pet)
+            if (pet!= {}):
+                pet["requestStatus"] = True
+                self.petServ.updatePetData(petID, pet)
 
     def getProtectorPets(self):
         protectorPets = []
