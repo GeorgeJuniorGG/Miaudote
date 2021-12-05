@@ -6,7 +6,7 @@ from kivymd.uix.dialog import MDDialog
 from functools import partial
 from kivy.utils import get_color_from_hex
 
-from mui.adopterrequests.components.PetItem2 import PetItem2
+from mui.userprofile.components.PetItem2 import PetItem2
 from mui.home.components.Separator import Separator
 from mui.ColorTheme import Color
 from kivy.uix.label import Label
@@ -23,34 +23,30 @@ class FavoritesScreen(MDScreen, MDFloatLayout):
         # Pega todos os Pets dos favoritos do usuario
         pets = self.controller.getFavorites()
 
-        try:
-            if(len(pets) == 0):
-                self.showMessage()
-            
-            else:
-                petItemData = list()
-
-                for pet in pets:
-                    pData = {
-                        'imageSource': pet['images'][0],
-                        'petName': pet['name'],
-                        'petDecription': pet['details'][:65] + '...',
-                        'pid': pet['pid'],
-                        'petChars': [pet['sex'],
-                                    pet['size'],
-                                    pet['color']]                
-                    }
-
-                    petItemData.append(pData)
-                    
-                self.insert_items(petItemData)
-        
-        except:
+        if(len(pets) == 0):
             self.showMessage()
+            
+        else:
+            petItemData = list()
+
+            for pet in pets:
+                pData = {
+                    'imageSource': pet['images'][0],
+                    'petName': pet['name'],
+                        'petDecription': pet['details'][:65] + '...',
+                    'pid': pet['pid'],
+                    'petChars': [pet['sex'],
+                                pet['size'],
+                                pet['color']]                
+                }
+
+                petItemData.append(pData)
+                    
+            self.insert_items(petItemData)
     
     def insert_items(self, items:list):
         for i in range(len(items)):
-            petItem = PetItem2(items[i])
+            petItem = PetItem2(items[i], self)
             self.ids.container.add_widget(petItem)
             self.ids.container.add_widget(Separator())
             self.ids.container.ids[f'item{i}'] = petItem

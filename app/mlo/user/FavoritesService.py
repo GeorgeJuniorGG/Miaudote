@@ -20,7 +20,6 @@ class FavoritesService:
     def removePet(self, petID):
         if(self.userType == "adopter"):
             uData = self.userServ.getUserData()
-
             if (petID in uData["favorites"]):
                 uData['favorites'].remove(petID)
 

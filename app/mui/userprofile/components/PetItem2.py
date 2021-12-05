@@ -3,6 +3,7 @@ from kivymd.uix.behaviors import RectangularRippleBehavior
 from kivymd.uix.floatlayout import MDFloatLayout
 from kivymd.uix.boxlayout import MDBoxLayout
 from kivymd.uix.label import MDLabel
+from functools import partial
 from mui.protectorrequests.components.ARItem import RemoveButton, ChatButton
 
 from kivy.properties import (
@@ -53,11 +54,11 @@ class PetItem2(RectangularRippleBehavior, ButtonBehavior, MDFloatLayout):
         self.petName = data['petName']
         self.petDescription = data['petDecription']
         self.petID = data['pid']
-        if data['arStatus'] == True:
-            Clock.schedule_once(lambda x: self.insertButtons(ChatButton()))
+        #if data['arStatus'] == True:
+        #    Clock.schedule_once(lambda x: self.insertButtons(ChatButton()))
 
         Clock.schedule_once( lambda x: self.insertButtons(
-                RemoveButton(on_release=self.screen.remove_item_dialog))
+                RemoveButton(on_release=partial(self.screen.remove_item_dialog, data['pid'])))
         )
 
         labels = data['petChars']
@@ -70,3 +71,6 @@ class PetItem2(RectangularRippleBehavior, ButtonBehavior, MDFloatLayout):
             petChar = PetLabel2(labels[i])
             self.petCharsBox.ids[f'label{i}'] = petChar
             self.petCharsBox.add_widget(petChar)
+
+    def insertButtons(self, button):
+        self.buttonsContainer.add_widget(button)
