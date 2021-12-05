@@ -3,7 +3,9 @@ from kivymd.uix.behaviors import RectangularRippleBehavior
 from kivymd.uix.floatlayout import MDFloatLayout
 from kivymd.uix.boxlayout import MDBoxLayout
 from kivymd.uix.label import MDLabel
-from kivymd.uix.button import MDIconButton
+from functools import partial
+from mui.protectorrequests.components.ARItem import RemoveButton, AdoptedButton
+
 from kivy.properties import (
     StringProperty,
     ObjectProperty
@@ -41,19 +43,27 @@ class MyPetsItem(RectangularRippleBehavior, ButtonBehavior, MDFloatLayout):
     petNLabel = ObjectProperty(MDLabel)
     # FloatLayout com a Imagem do pet
     petImage = ObjectProperty(MDFloatLayout)
-    # MDIconButton para exclusão do item
-    removeButton = ObjectProperty()
-    # MDFlatRoundButton para marcar pet como adotado
-    adoptedButton = ObjectProperty()
+    # MDIconButton para exclusão do item e MDFlatRoundButton para marcar pet como adotado
+    buttonsContainer = ObjectProperty()
 
-    def __init__(self, data:dict, **kwargs):
+    def __init__(self, data:dict, screen, **kwargs):
         super().__init__(**kwargs)
 
+        self.screen = screen
         self.petImageSource = data['imageSource']
         self.petName = data['petName']
         self.petDescription = data['petDecription']
         self.petID = data['pid']
         labels = data['petChars']
+
+        Clock.schedule_once( lambda x: self.insertButtons(
+                RemoveButton(on_release=partial(self.screen.remove_item_dialog, data['pid'])))
+        )
+
+        Clock.schedule_once( lambda x: self.insertButtons(
+                AdoptedButton(on_release=partial(self.screen.adopted_item_dialog, data['pid'])))
+        )
+
         Clock.schedule_once(lambda x: self.insertLabels(labels))
 
     # inserir os chips com as caracteristicas dos animais
@@ -63,3 +73,6 @@ class MyPetsItem(RectangularRippleBehavior, ButtonBehavior, MDFloatLayout):
             petChar = MyPetsLabel(labels[i])
             self.petCharsBox.ids[f'label{i}'] = petChar
             self.petCharsBox.add_widget(petChar)
+
+    def insertButtons(self, button):
+        self.buttonsContainer.add_widget(button)

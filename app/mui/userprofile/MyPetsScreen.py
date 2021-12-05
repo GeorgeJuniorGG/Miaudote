@@ -51,7 +51,7 @@ class MyPetsScreen(MDScreen, MDFloatLayout):
     
     def insert_items(self, items:list):
         for i in range(len(items)):
-            petItem = MyPetsItem(items[i])
+            petItem = MyPetsItem(items[i], self)
             self.ids.container.add_widget(petItem)
             self.ids.container.add_widget(Separator())
             self.ids.container.ids[f'item{i}'] = petItem
@@ -83,7 +83,7 @@ class MyPetsScreen(MDScreen, MDFloatLayout):
         self.ids.container.clear_widgets()
         self.addViewPets()
 
-    def remove_item_dialog(self, petID:str):
+    def remove_item_dialog(self, petID:str, obj):
         sim_btn = MDFillRoundFlatButton(text="SIM", theme_text_color="Custom",
                                         text_color=get_color_from_hex(self.cor.azulEscuro()),
                                         md_bg_color=get_color_from_hex(self.cor.branco()),
@@ -102,7 +102,7 @@ class MyPetsScreen(MDScreen, MDFloatLayout):
                                buttons=[sim_btn, nao_btn])
         self.dialog.open()
     
-    def adopted_item_dialog(self, petID:str):
+    def adopted_item_dialog(self, petID:str, obj):
         sim_btn = MDFillRoundFlatButton(text="SIM", theme_text_color="Custom",
                                         text_color=get_color_from_hex(self.cor.azulEscuro()),
                                         md_bg_color=get_color_from_hex(self.cor.branco()),
