@@ -233,7 +233,7 @@ recipes = {
 
     screens['myPets'] : {
         'class': ProtectorPetsManager,
-        'deps': (services['user'], services['pet'], services['myPets']),
+        'deps': (services['myPets'],),
         'pArgs': None,
         'unique': True        
     }

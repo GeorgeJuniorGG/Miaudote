@@ -6,9 +6,7 @@ from mem.screenmanager.screens import screens
 
 class ProtectorPetsManager:
 
-    def __init__(self, userService:UserService, petService:PetService, myPetsService:ProtectorPetsService) -> None:
-        self.userService = userService
-        self.petService = petService
+    def __init__(self, myPetsService:ProtectorPetsService) -> None:
         self.myPetsService = myPetsService
         self.screen = MyPetsScreen(name=screens['myPets'])
         self.screen.controller = self
