@@ -4,7 +4,7 @@ from kivymd.uix.floatlayout import MDFloatLayout
 from kivymd.uix.boxlayout import MDBoxLayout
 from kivymd.uix.label import MDLabel
 from functools import partial
-from mui.protectorrequests.components.ARItem import RemoveButton, ChatButton
+from mui.protectorrequests.components.ARItem import RemoveButton
 
 from kivy.properties import (
     StringProperty,

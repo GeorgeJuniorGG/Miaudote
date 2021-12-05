@@ -30,6 +30,7 @@ class MiaudoteMenuScreen(MDScreen):
     }
         self.ids.menu.remove_widget(self.ids.received_requests)   
         self.ids.menu.remove_widget(self.ids.add_pet)
+        self.ids.menu.remove_widget(self.ids.my_pets)
     
     def bindProtectorScreens(self):
         self.__screens = {

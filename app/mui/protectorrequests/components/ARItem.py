@@ -24,6 +24,9 @@ class ARLabel(MDLabel):
 class ChatButton(MDIconButton):
     pass
 
+class AdoptedButton(MDIconButton):
+    pass
+
 class RemoveButton(MDIconButton):
     pass
 
