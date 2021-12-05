@@ -33,5 +33,8 @@ class PetProfileManager:
     
     def addRequest(self, petID:str):
         if not self.adoService.createAR(petID):
-            self.screen.showToast('Não foi possível realizar a solicitação de adoção!')
+            return self.screen.showToast('Não foi possível realizar a solicitação de adoção!')
+        
+        orchestrator = self.screen.manager.orchestrator
+        orchestrator.callChangeScreen(screens['PARScreen'])
         

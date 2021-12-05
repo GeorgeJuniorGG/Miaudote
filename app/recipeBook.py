@@ -12,6 +12,8 @@ from mem.pet.PetProfileManager import PetProfileManager
 from mem.filechooser.FileManager import FileManager
 from mem.chat.ChatManager import ChatManager
 from mem.user.ProtectorPetsManager import ProtectorPetsManager
+from mem.pet.PetRProfileManager import PetRProfileManager
+from mem.pet.PARManager import PARManager
 
 # Service
 from mlo.auth.dataModel import DataModel
@@ -288,6 +290,19 @@ recipes = {
         'deps': (services['myPets'],),
         'pArgs': None,
         'unique': True        
-    }
+    },
 
+    screens['petRP'] : {
+        'class': PetRProfileManager,
+        'deps': (services['adoption'],),
+        'pArgs': ('arID',),
+        'unique': True        
+    },    
+
+    screens['PARScreen'] : {
+        'class': PARManager,
+        'deps': None,
+        'pArgs': None,
+        'unique': True        
+    }, 
 }

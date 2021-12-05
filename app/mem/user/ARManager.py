@@ -18,7 +18,8 @@ class ARManager:
         return self.adoptionService.getARData()
 
     def openRequest(self, arID:str):
-        print(f'Abrir a requisição: {arID}')
+        orchestrator = self.screen.manager.orchestrator
+        orchestrator.openPetRProfile(arID)
 
     def openChat(self, arID:str):
         chatData = self.adoptionService.getChatData(arID)

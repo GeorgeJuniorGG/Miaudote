@@ -136,6 +136,21 @@ class AdoptionService:
         except:
             return None
 
+    def getPetData(self, arID:str) -> dict:
+
+        try:
+            arData:ARModel = self.__db.getAR(arID)
+            if arData == None:
+                return None
+
+            # Dados do Pet
+            data = self.petService.getPetData(arData.petID)
+            data['arStatus'] = arData.status
+            return data
+
+        except:
+            return None
+
     def getAdopterData(self, arID:str) -> dict:
 
         try:

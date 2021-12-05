@@ -13,6 +13,7 @@ class MainScreenManager(ScreenManager):
         screens['adoRequests']: None,
         screens['recRequests']: None,
         screens['favorites']: None,
+        screens['recRequests']: None
     }
 
     def __init__(self, **kwargs):
@@ -32,13 +33,26 @@ class MainScreenManager(ScreenManager):
                 self.add_widget(screen)
 
         self.transition.direction = direction
-        if not 'SignUp' in screenName:
+
+        if not 'SignUp' in screenName or not screens['petProfile'] in screenName:
             self.__previous = self.current
 
         self.current = screenName
 
     def goBackward(self, direction:str):
         self.transition.direction = direction
+
+        if self.__previous in self.__refreshingScreens.keys():
+            self.remove_widget(self.__refreshingScreens[self.__previous])
+            screen = self.orchestrator.startScreen(self.__previous)
+            self.add_widget(screen)
+            self.__refreshingScreens[self.__previous] = screen
+            self.__previous = screen.name
+
+        if screens['chat'] in self.current or screens['PARScreen'] in self.current:
+            self.current = self.__previous
+            self.__previous = screens['root']
+            return
         self.__previous, self.current = self.current, self.__previous
 
     def goHome(self):
