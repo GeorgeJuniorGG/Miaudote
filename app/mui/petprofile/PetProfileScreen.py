@@ -17,11 +17,10 @@ class PetProfileScreen(MDScreen):
         self.petName = petData['name']
         self.petSex = petData['sex']
         self.petAge = petData['Age']
-        self.petAddr = petData['localization']
+        self.petAddr = str(petData['city']+", "+petData['state'])
         self.petDscp = petData['details']
         self.petImages = petData['images']
         self.petID = petData['pid']
-
         self.addPetImages()
     
     def addPetImages(self):
@@ -71,3 +70,10 @@ class PetProfileScreen(MDScreen):
     def go_forward(self, obj):
         self.dialog.dismiss()
         self.controller.addRequest(self.petID)
+
+    def go_backwards(self):
+        pass
+    
+    def screenToProtector(self):
+        self.ids.pet_bar.remove_widget(self.ids.pet_fav)   
+        self.ids.body.remove_widget(self.ids.pet_adopt)
