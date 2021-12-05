@@ -15,6 +15,8 @@ class MiaudoteMenuScreen(MDScreen):
     receivedRequests = ObjectProperty(MenuItem)
     # Item para os Pets favoritados (Adotante)
     favorites = ObjectProperty(MenuItem)
+    # Item para a lista de Pets (Protetor)
+    myPets = ObjectProperty(MenuItem)
 
     controller = None
 
@@ -32,7 +34,8 @@ class MiaudoteMenuScreen(MDScreen):
     def bindProtectorScreens(self):
         self.__screens = {
         screens['petSignUp']: self.addPet,
-        screens['recRequests']: self.receivedRequests
+        screens['recRequests']: self.receivedRequests,
+        screens['myPets']: self.myPets
     }
         self.ids.menu.remove_widget(self.ids.adopt_requests)   
         self.ids.menu.remove_widget(self.ids.favorites)

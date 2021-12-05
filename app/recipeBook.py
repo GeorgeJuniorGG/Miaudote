@@ -9,6 +9,7 @@ from mem.user.ARManager import ARManager
 from mem.user.PRManager import PRManager
 from mem.pet.PetProfileManager import PetProfileManager
 from mem.filechooser.FileManager import FileManager
+from mem.user.ProtectorPetsManager import ProtectorPetsManager
 
 # Service
 from mlo.auth.dataModel import DataModel
@@ -22,6 +23,7 @@ from mlo.petsearch.resultsPrioritization import ResultsPrioritization
 from mlo.petsearch.searchLogic import SearchLogic
 from mlo.petsearch.searchService import SearchService
 from mlo.user.FavoritesService import FavoritesService
+from mlo.user.ProtectorPetsService import ProtectorPetsService
 
 # Database
 from mlo.storage.firebaseDB import FirebaseDB
@@ -42,7 +44,8 @@ services = {
     'sLogic': 'SearchLogic',
     'search': 'SearchService',
     'favorites': 'FavoritesService',
-    'adoReqs': 'AdopterRequestsService'
+    'adoReqs': 'AdopterRequestsService',
+    'myPets': 'ProtectorPetsService'
 }
 
 databases = {
@@ -125,6 +128,13 @@ recipes = {
 
     services['adoReqs'] : {
         'class': AdopterRequestsService,
+        'deps': (services['user'], services['pet']),
+        'pArgs': None,
+        'unique': True
+    },
+
+    services['myPets'] : {
+        'class': ProtectorPetsService,
         'deps': (services['user'], services['pet']),
         'pArgs': None,
         'unique': True
@@ -218,6 +228,13 @@ recipes = {
         'class': FileManager,
         'deps': None,
         'pArgs': ('client',),
+        'unique': True        
+    },
+
+    screens['myPets'] : {
+        'class': ProtectorPetsManager,
+        'deps': (services['myPets'],),
+        'pArgs': None,
         'unique': True        
     }
 
