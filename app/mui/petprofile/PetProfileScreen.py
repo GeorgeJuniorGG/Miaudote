@@ -25,13 +25,13 @@ class PetProfileScreen(MDScreen):
         self.petName = petData['name']
         self.petSex = petData['sex']
         self.petAge = petData['Age']
-        self.petAddr = petData['localization']
+        self.petAddr = str(petData['city']+", "+petData['state'])
         self.petDscp = petData['details']
         self.petImages = petData['images']
         self.petID = petData['pid']
+        self.addPetImagens()
 
         fav = 0
-        self.addPetImagens()
         if(fav == 0):
             self.petFav = "heart-outline"
         else:
@@ -88,3 +88,7 @@ class PetProfileScreen(MDScreen):
         for image in self.petImages:
             currentImage = FitImage(source = image)
             self.ids.carousel.add_widget(currentImage)
+    
+    def screenToProtector(self):
+        self.ids.pet_bar.remove_widget(self.ids.pet_fav)   
+        self.ids.body.remove_widget(self.ids.pet_adopt)

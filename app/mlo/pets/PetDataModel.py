@@ -32,6 +32,7 @@ class PetDataModel(PetDataModelService):
         allData =  {**self.petDataScreen1.dict(),**self.petDataScreen2.dict(),**self.petDataScreen3.dict()}
         allData['localization'] = userData['address']['CEP']
         allData['city'] = userData['address']['city']
+        allData['state'] = userData['address']['state']
         allData['protectorId'] = userData['uid']
         try:
             completeModel = PetModel(**allData)

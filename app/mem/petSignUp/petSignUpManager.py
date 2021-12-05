@@ -75,7 +75,6 @@ class PetSignUpManager(FMClient):
         }
         dataPetScreen1 = self.petDataModelService.createPetModelScreen1(**petScreen1Data)
         if(dataPetScreen1==True):
-        # if True:
             self.changeScreen(upsf, self.petSignUpScreen.name)
         else:
             print(dataPetScreen1)
@@ -88,7 +87,6 @@ class PetSignUpManager(FMClient):
         }
         dataPetScreen2 = self.petDataModelService.createPetModelScreen2(**petScreen2Data)
         if(dataPetScreen2==True):
-        # if True:
             self.changeScreen(upsf, self.petSignUpScreen2.name)
         else:
             print(dataPetScreen2)
@@ -110,8 +108,7 @@ class PetSignUpManager(FMClient):
             else:
                 print(completeData)
         else:
-            print(dataPetScreen3)  
-            # self.changeScreen(upsf, self.petSignUpScreen3.name)
+            print(dataPetScreen3)
                
 
     def petSignUpScreen4Manager(self):
