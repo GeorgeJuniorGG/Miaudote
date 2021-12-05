@@ -19,3 +19,8 @@ class ARManager:
 
     def openRequest(self, arID:str):
         print(f'Abrir a requisição: {arID}')
+
+    def openChat(self, arID:str):
+        chatData = self.adoptionService.getChatData(arID)
+        orchestrator = self.screen.manager.orchestrator
+        orchestrator.openChat(chatData)

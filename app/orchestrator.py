@@ -195,6 +195,16 @@ class Orchestrator:
         self.manager.add_widget(screen)
         self.manager.changeScreen('left', screen.name)
 
+    # Abrir a tela de Chat
+    def openChat(self, chatData:dict):
+        cName = screens['chat']
+        if cName+chatData['chatID'] in self.manager.screen_names:
+            self.manager.remove_widget(self.manager.get_screen(cName+chatData['chatID']))
+        
+        screen = self.startScreen(cName, outArgs=chatData)
+        self.manager.add_widget(screen)
+        self.manager.changeScreen('left', screen.name)
+
     # Abrir o FileChooserScreen
     def openFileManager(self, fClient):
         cName = screens['fileChooser']

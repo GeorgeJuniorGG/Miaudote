@@ -12,7 +12,7 @@ class AdoptionDB(ABC):
         pass
     
     @abstractmethod
-    def deleteAR(self, arID:str) -> bool:
+    def deleteAR(self, arID:str, chatID:str) -> bool:
         pass
 
     @abstractmethod

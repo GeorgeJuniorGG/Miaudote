@@ -10,7 +10,7 @@ from mem.user.PRManager import PRManager
 from mem.user.PRPManager import PRPManager
 from mem.pet.PetProfileManager import PetProfileManager
 from mem.filechooser.FileManager import FileManager
-
+from mem.chat.ChatManager import ChatManager
 
 # Service
 from mlo.auth.dataModel import DataModel
@@ -26,11 +26,13 @@ from mlo.petsearch.searchLogic import SearchLogic
 from mlo.petsearch.searchService import SearchService
 from mlo.user.FavoritesService import FavoritesService
 from mlo.adoption.AdoptionService import AdoptionService
+from mlo.chat.ChatService import ChatService
 
 # Database
 from mlo.storage.firebaseDB import FirebaseDB
 from mlo.database.firebaseUserDB import FUserDB
 from mlo.database.firebasePetDB import FPetDB
+from mlo.database.firebaseChatDB import FChatDB
 
 # Screen Names
 from mem.screenmanager.screens import screens
@@ -47,14 +49,16 @@ services = {
     'search': 'SearchService',
     'favorites': 'FavoritesService',
     'adoReqs': 'AdopterRequestsService',
-    'adoption': 'AdoptionService'
+    'adoption': 'AdoptionService',
+    'chat': 'ChatService'
 }
 
 databases = {
     'user': 'FUserDB',
     'storage': 'FirebaseDB',
     'pet': 'FPetDB',
-    'adoptation': 'FBAdoptionDB'
+    'adoptation': 'FBAdoptionDB',
+    'chat': 'FChatDB'
 }
 
 recipes = {
@@ -141,7 +145,14 @@ recipes = {
         'deps': (databases['adoptation'], services['user'], services['pet']),
         'pArgs': None,
         'unique': True
-    },    
+    },
+
+    services['chat'] : {
+        'class': ChatService,
+        'deps': (databases['chat'],),
+        'pArgs': None,
+        'unique': True
+    },  
 
     databases['pet'] : {
         'class': FPetDB,
@@ -166,6 +177,13 @@ recipes = {
 
     databases['adoptation'] : {
         'class': FBAdoptionDB,
+        'deps': None,
+        'pArgs': None,
+        'unique': True
+    },
+
+    databases['chat'] : {
+        'class': FChatDB,
         'deps': None,
         'pArgs': None,
         'unique': True
@@ -245,6 +263,13 @@ recipes = {
         'class': PRPManager,
         'deps': (services['adoption'],),
         'pArgs': ('arID',),
+        'unique': True        
+    },
+
+    screens['chat'] : {
+        'class': ChatManager,
+        'deps': (services['chat'],),
+        'pArgs': ('chatID','userID','anUserName', 'anUserImg'),
         'unique': True        
     },
 

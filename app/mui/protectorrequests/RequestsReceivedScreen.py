@@ -91,3 +91,6 @@ class RequestsReceivedScreen(MDScreen, MDFloatLayout):
 
     def openRequest(self, arID:str):
         self.controller.openRequest(arID)
+
+    def openChat(self, arID:str, obj):
+        self.controller.openChat(arID)

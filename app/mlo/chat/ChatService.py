@@ -7,16 +7,17 @@ class ChatService:
     __chatdb: ChatDB
     __client = None
 
-    def __init__(self, db:ChatDB, chatID:str, userID:str):
+    def __init__(self, db:ChatDB):
         self.__chatdb = db
         self.__chatdb.setClient(self)
-        self.__chatID = chatID
-        self.__userID = userID
-        self.__chatdb.startListener(self.__chatID, self.__userID)
-
-
+        self.__chatID = None
+        self.__userID = None
+        
     def setClient(self, client):
         self.__client = client
+        self.__userID = client.userID
+        self.__chatID = client.chatID
+        self.__chatdb.startListener(self.__chatID, self.__userID)
 
     def sendMessage(self, mData:dict) -> None:
         

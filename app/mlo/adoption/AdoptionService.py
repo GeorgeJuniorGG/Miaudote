@@ -86,7 +86,7 @@ class AdoptionService:
             self.petService.deleteAR(arData.petID, arID)
             self.userService.deleteAR(arData.adopterID, arID)
             self.userService.deleteAR(arData.protectorID, arID)
-            return self.__db.deleteAR(arID)
+            return self.__db.deleteAR(arID, arData.chatID)
         except:
             return False
 
@@ -160,10 +160,46 @@ class AdoptionService:
         except:
             return None
 
+    def getChatData(self, arID:str) -> dict:
+        """
+        Retorna dados necessários para criar a tela de chat
+        entre o protetor e adotante
+        """
+        try:
+            arData:ARModel = self.__db.getAR(arID)
+            if arData == None:
+                return None
+
+            # Dados do outro usuário
+            raw = None
+            userID = self.userService.getUserID()
+            if userID == arData.protectorID:
+                raw = self.userService.getAnotherUserData(arData.adopterID)
+            
+            else:
+                raw = self.userService.getAnotherUserData(arData.protectorID)
+            
+            if raw == None:
+                return None
+
+            raw = raw.dict()
+
+            data = {
+                'chatID': arData.chatID,
+                'userID': userID,
+                'anUserImg': raw['userImage'],
+                'anUserName': raw['name'],
+            }
+
+            return data
+
+        except:
+            return None        
+
     def approveAR(self, arID:str) -> bool:
         """
         Aprovar a solicitação de adoção e\n
-        abrir um chat entre o protetor e adotante
+        iniciar um chat entre o protetor e adotante
         """
         try:
             arData:ARModel = self.__db.getAR(arID)

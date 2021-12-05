@@ -16,8 +16,13 @@ class PRManager:
         return self.adoptionService.getARData()
 
     def removeRequest(self, arID:str):
-        self.adoptionService.deleteAR(arID)
+        self.adoptionService.declineAR(arID)
 
     def openRequest(self, arID:str):
         orchestrator = self.screen.manager.orchestrator
         orchestrator.openARProfile(arID)
+
+    def openChat(self, arID:str):
+        chatData = self.adoptionService.getChatData(arID)
+        orchestrator = self.screen.manager.orchestrator
+        orchestrator.openChat(chatData)

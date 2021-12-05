@@ -60,7 +60,9 @@ class ARItem(RectangularRippleBehavior, ButtonBehavior, MDFloatLayout):
         self.arID = data['arID']
 
         if data['arStatus'] == True:
-            Clock.schedule_once(lambda x: self.insertButtons(ChatButton()))
+            Clock.schedule_once(lambda x: self.insertButtons(ChatButton(
+                on_release=partial(self.screen.openChat, data['arID'])
+            )))
 
         Clock.schedule_once(lambda x: self.insertButtons(
             RemoveButton(

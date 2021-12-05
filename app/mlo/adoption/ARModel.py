@@ -1,6 +1,5 @@
 from pydantic import BaseModel, Field
 from datetime import datetime, timezone
-from typing import Union
 
 # Modelo para solicitações de adoção
 class ARModel(BaseModel):

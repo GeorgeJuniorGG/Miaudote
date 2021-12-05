@@ -41,6 +41,11 @@ class MainScreenManager(ScreenManager):
         self.transition.direction = direction
         self.__previous, self.current = self.current, self.__previous
 
+    def goHome(self):
+        self.transition.direction = 'right'
+        self.previous = screens['root']
+        self.current = self.previous
+
     def changeTransition(self, tName:str):
         if tName in self.__TRANSITIONS.keys():
             self.transition = self.__TRANSITIONS[tName]()
