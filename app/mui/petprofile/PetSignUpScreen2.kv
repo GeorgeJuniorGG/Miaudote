@@ -7,13 +7,13 @@
     MDProgressBar:
         value: 25
         color: get_color_from_hex(cor.azulEscuro())
-        pos_hint:{'center_x':0.5, 'center_y': 0.92}
+        pos_hint: {'center_x': 0.5, 'center_y': 0.92}
 
     MDIconButton:
         id: _SignupArrowButton
         icon: "arrow-left"
         user_font_size: '35sp'
-        pos_hint:{'center_x':0.08, 'center_y': 0.96}
+        pos_hint: {'center_x': 0.08, 'center_y': 0.96}
         theme_text_color: "Custom"
         text_color: get_color_from_hex(cor.azulClaro())
         on_release:
@@ -29,9 +29,12 @@
     
     MDTextField:
         id: ambient
-        hint_text: "Ambiente Adequado para o Animal"
+        hint_text: "Ambiente adequado"
         size_hint: 0.8, 0.1
-        color_mode: "custom"
+        text_color_normal: get_color_from_hex(cor.azulEscuro())
+        text_color_focus: get_color_from_hex(cor.azulEscuro())
+        hint_text_color_normal: get_color_from_hex(cor.azulEscuro())
+        hint_text_color_focus: get_color_from_hex(cor.azulEscuro())
         line_color_normal: get_color_from_hex(cor.azulEscuro())
         line_color_focus: get_color_from_hex(cor.azulEscuro())
         pos_hint: {'center_x': 0.5, 'center_y': 0.65}
@@ -39,18 +42,24 @@
 
     MDTextField:
         id: origin
-        hint_text: "Origem do Animal"
+        hint_text: "Origem"
         size_hint: 0.8, 0.1
-        color_mode: "custom"
+        text_color_normal: get_color_from_hex(cor.azulEscuro())
+        text_color_focus: get_color_from_hex(cor.azulEscuro())
+        hint_text_color_normal: get_color_from_hex(cor.azulEscuro())
+        hint_text_color_focus: get_color_from_hex(cor.azulEscuro())
         line_color_normal: get_color_from_hex(cor.azulEscuro())
         line_color_focus: get_color_from_hex(cor.azulEscuro())
         pos_hint: {'center_x': 0.5, 'center_y': 0.56}
     
     MDTextField:
         id: health
-        hint_text: "Condição de Saúde do Animal"
+        hint_text: "Condição de saúde"
         size_hint: 0.8, 0.1
-        color_mode: "custom"
+        text_color_normal: get_color_from_hex(cor.azulEscuro())
+        text_color_focus: get_color_from_hex(cor.azulEscuro())
+        hint_text_color_normal: get_color_from_hex(cor.azulEscuro())
+        hint_text_color_focus: get_color_from_hex(cor.azulEscuro())
         line_color_normal: get_color_from_hex(cor.azulEscuro())
         line_color_focus: get_color_from_hex(cor.azulEscuro())
         pos_hint: {'center_x': 0.5, 'center_y': 0.47}
@@ -59,7 +68,7 @@
         text: "Continuar"
         md_bg_color: get_color_from_hex(cor.azulClaro())
         font_size: "20sp"
-        size_hint: (0.4, 0.05)
-        pos_hint: {'center_x': 0.5, 'center_y': 0.07}
+        size_hint: 0.4, 0.05
+        pos_hint: {'center_x': 0.5, 'center_y': 0.2}
         on_release:
             root.controller.petSignUpScreen2Manager()
