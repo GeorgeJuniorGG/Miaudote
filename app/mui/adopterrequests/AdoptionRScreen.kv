@@ -4,6 +4,8 @@
 #:set cor Color()
 
 <AdoptionRScreen>:
+    md_bg_color: get_color_from_hex(cor.azulCinzaClaro()+'11')
+
     MDFloatLayout:
         canvas:
             Color:
@@ -35,30 +37,29 @@
     
     MDFloatLayout:
         MDIcon:
-            icon: 'check-outline'
-            font_size: 50
+            icon: 'check-decagram'
+            font_size: 75
             #size: "50dp", "100dp"
             #size_hint: None, None
-            pos_hint: {'x': 0.45, 'center_y': 0.6}
+            pos_hint: {'center_x': 0.5, 'center_y': 0.65}
             theme_text_color: "Custom"
             text_color: get_color_from_hex(cor.azulClaro())
 
         MDLabel:
             text: "Sua solicitação foi enviada ao Protetor!"
-            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-            font_size: "18sp"
+            pos_hint: {'center_x': 0.5, 'center_y': 0.50}
+            font_size: "20sp"
             halign: "center"
             theme_text_color: "Custom"
             text_color: get_color_from_hex(cor.azulEscuro())
 
-        MDRoundFlatButton:
-            text: "[b]Acompanhar Solicitação[/b]"
-            font_size: "18sp"
-            elevation: 12
+        MDFillRoundFlatButton:
+            text: "Acompanhar Solicitação"
+            font_size: "20sp"
             theme_text_color: "Custom"
-            text_color: get_color_from_hex(cor.azulEscuro())
-            line_color: get_color_from_hex(cor.azulClaro())
-            pos_hint: {"center_x": 0.5, "center_y": 0.35}
+            text_color: get_color_from_hex(cor.branco())
+            md_bg_color: get_color_from_hex(cor.azulClaro())
+            pos_hint: {"center_x": 0.5, "center_y": 0.3}
             size_hint: 0.7, 0.07
             on_press:   
                 

@@ -13,7 +13,7 @@ class UserModel(BaseModel):
     adoptationRequests:List[str] = Field(default_factory=list)
 
 class AdopterModel(UserModel):
-    favorites: List[PetModel] = Field(default_factory=list)
+    favorites: List[str] = Field(default_factory=list)
     homeCharacteristics: HomeCharacteristics.HomeCharacteristics
     preferences: Preferences.UserPreferences
 

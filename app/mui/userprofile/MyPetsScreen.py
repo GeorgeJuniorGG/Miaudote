@@ -6,14 +6,15 @@ from kivymd.uix.dialog import MDDialog
 from functools import partial
 from kivy.utils import get_color_from_hex
 
-from mui.adopterrequests.components.PetItem2 import PetItem2
 from mui.home.components.Separator import Separator
 from mui.ColorTheme import Color
 from kivy.uix.label import Label
 from kivy.utils import get_color_from_hex
 from kivy.metrics import dp
 
-class FavoritesScreen(MDScreen, MDFloatLayout):
+from mui.userprofile.components.MyPetsItem import MyPetsItem
+
+class MyPetsScreen(MDScreen, MDFloatLayout):
     def __init__(self, **kw):
         super().__init__(**kw)
         self.controller = None
@@ -21,7 +22,7 @@ class FavoritesScreen(MDScreen, MDFloatLayout):
     
     def addViewPets(self):
         # Pega todos os Pets dos favoritos do usuario
-        pets = self.controller.getFavorites()
+        pets = self.controller.getProtectorPets()
 
         try:
             if(len(pets) == 0):
@@ -50,7 +51,7 @@ class FavoritesScreen(MDScreen, MDFloatLayout):
     
     def insert_items(self, items:list):
         for i in range(len(items)):
-            petItem = PetItem2(items[i])
+            petItem = MyPetsItem(items[i])
             self.ids.container.add_widget(petItem)
             self.ids.container.add_widget(Separator())
             self.ids.container.ids[f'item{i}'] = petItem
@@ -59,7 +60,7 @@ class FavoritesScreen(MDScreen, MDFloatLayout):
         self.ids.container.clear_widgets()
 
         label = Label()
-        label.text = "Você não possui nenhum favorito"
+        label.text = "Você não cadastrou nenhum pet"
         label.color = get_color_from_hex(self.cor.vermelhoEscuro())
         label.font_size = dp(18)
         label.bold = True
@@ -71,27 +72,50 @@ class FavoritesScreen(MDScreen, MDFloatLayout):
         self.ids.container.add_widget(label)
     
     def removeItem(self, petID:str):
-        self.controller.removeFavorite(petID)
+        self.controller.removePet(petID)
+        self.updateItems()
+
+    def adoptItem(self, petID:str):
+        self.controller.petWasAdopted(petID)
         self.updateItems()
     
     def updateItems(self):
         self.ids.container.clear_widgets()
         self.addViewPets()
 
-    def remove_item_dialog(self, petID:str, obj):
+    def remove_item_dialog(self, petID:str):
         sim_btn = MDFillRoundFlatButton(text="SIM", theme_text_color="Custom",
-                                        text_color=get_color_from_hex(self.cor.branco()),
-                                        md_bg_color=get_color_from_hex(self.cor.azulEscuro()),
+                                        text_color=get_color_from_hex(self.cor.azulEscuro()),
+                                        md_bg_color=get_color_from_hex(self.cor.branco()),
                                         on_release=partial(self.go_forward, petID))
 
         nao_btn = MDFillRoundFlatButton(text="NÃO", theme_text_color="Custom",
-                                        text_color=get_color_from_hex(self.cor.branco()),
-                                        md_bg_color=get_color_from_hex(self.cor.vermelho()),
+                                        text_color=get_color_from_hex(self.cor.vermelho()),
+                                        md_bg_color=get_color_from_hex(self.cor.branco()),
                                         on_release=self.close_dialog)
 
-        msg = "Você tem certeza que deseja remover o animal dos seus favoritos?"
+        msg = "Você tem certeza que deseja excluir o animal do sistema?"
 
-        self.dialog = MDDialog(text="[color=#ffffff]" + str(msg) + "[/color]",
+        self.dialog = MDDialog(text="[color=get_color_from_hex(self.cor.branco())]" + str(msg) + "[/color]",
+                               md_bg_color=get_color_from_hex(self.cor.azulClaro()),
+                               size_hint=(0.7, 1), radius=[20,20,20,20],
+                               buttons=[sim_btn, nao_btn])
+        self.dialog.open()
+    
+    def adopted_item_dialog(self, petID:str):
+        sim_btn = MDFillRoundFlatButton(text="SIM", theme_text_color="Custom",
+                                        text_color=get_color_from_hex(self.cor.azulEscuro()),
+                                        md_bg_color=get_color_from_hex(self.cor.branco()),
+                                        on_release=partial(self.go_forward_adopted, petID))
+
+        nao_btn = MDFillRoundFlatButton(text="NÃO", theme_text_color="Custom",
+                                        text_color=get_color_from_hex(self.cor.vermelho()),
+                                        md_bg_color=get_color_from_hex(self.cor.branco()),
+                                        on_release=self.close_dialog)
+
+        msg = "Você tem certeza que o animal já foi adotado?"
+
+        self.dialog = MDDialog(text="[color=get_color_from_hex(self.cor.branco())]" + str(msg) + "[/color]",
                                md_bg_color=get_color_from_hex(self.cor.azulClaro()),
                                size_hint=(0.7, 1), radius=[20,20,20,20],
                                buttons=[sim_btn, nao_btn])
@@ -103,3 +127,7 @@ class FavoritesScreen(MDScreen, MDFloatLayout):
     def go_forward(self, petID:str, obj):
         self.dialog.dismiss()
         self.removeItem(petID)
+    
+    def go_forward_adopted(self, petID:str, obj):
+        self.dialog.dismiss()
+        self.adoptItem(petID)

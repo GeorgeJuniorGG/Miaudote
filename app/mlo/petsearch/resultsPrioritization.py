@@ -7,7 +7,7 @@ from mlo.user.UserService import UserService
 
 class ResultsPrioritization:
     def __init__(self, petService: PetService, userService: UserService):        
-        self.pets = petService.getAllPets()
+        self.pets = petService
         self.user = userService.getUserData()
         self.userType = userService.getUserType()
     
@@ -29,8 +29,10 @@ class ResultsPrioritization:
     def getProtectorResults(self, searchResults: List):
         results = []
 
+        pets = self.pets.getAllPets()
+
         for result in searchResults:
-            for pet in self.pets:
+            for pet in pets:
                 if pet["pid"] == result:
                     results.append(pet)
         
@@ -38,9 +40,10 @@ class ResultsPrioritization:
 
     def getLocationPriority(self, results: List):
         locations = {}
+        pets = self.pets.getAllPets()
 
         for result in self.searchResults:
-            for pet in self.pets:
+            for pet in pets:
                 if pet["pid"] == result:
                     results[1].append(int(pet["localization"]))
                     
@@ -55,7 +58,7 @@ class ResultsPrioritization:
             results[1][i] = int(str(results[1][i])[:-1])
 
         for location in results[1]:
-            for pet in self.pets:
+            for pet in pets:
                 if(pet["pid"] in self.searchResults):
                     if int(pet["localization"]) == location and pet not in results[0]:
                         results[0].append(pet)

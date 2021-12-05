@@ -3,14 +3,12 @@
 #:import Color mui.ColorTheme.Color
 #:set cor Color()
 
-<RequestsReceivedScreen>:
-    md_bg_color: get_color_from_hex(cor.azulCinzaClaro()+'11')
-    
+<MyPetsScreen>:
     MiauLogo:
         screen: root
 
     MDLabel:
-        text: "Solicitações Recebidas"
+        text: "Meus Pets"
         theme_text_color: "Custom"
         text_color: get_color_from_hex(cor.vermelho())
         halign: "center"
@@ -19,11 +17,10 @@
         height: 40
         pos_hint: {"center_x": 0.5, "top": 0.91}
 
-    Separator:
+    MDSeparator:
         height: "1dp"
         color: get_color_from_hex(cor.vermelho())
-        pos_hint: {"center_x": 0.5, "top": 0.85}
-        size_hint_x: 0.95
+        pos_hint: {"center_x": 0.5, "top": 0.85} 
 
     MDBoxLayout:
         size_hint: 1, 1
@@ -32,10 +29,10 @@
         orientation: "vertical"
 
         ScrollView:
+            size_hint: 1, 1
             MDList:
                 id: container
                 padding: '20dp'
-                spacing: '5dp'
 
         Widget:
             size_hint: 1, 0.2

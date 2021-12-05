@@ -9,6 +9,7 @@
     addPet: add_pet
     receivedRequests: received_requests
     favorites: favorites
+    myPets: my_pets
     on_kv_post: self.bindScreens()
 
     MDGridLayout:
@@ -25,8 +26,9 @@
 
         MenuItem:
             id: add_pet
-            text: 'Incluir Pet para Adoção'
+            text: 'Incluir Animal para Adoção'
             on_press: root.callScreen(self)
+
         MenuItem:
             id: received_requests
             text: 'Pedidos de Adoção Recebidos'
@@ -35,6 +37,11 @@
         MenuItem:
             id: favorites
             text: 'Favoritos'
+            on_press: root.callScreen(self)
+        
+        MenuItem:
+            id: my_pets
+            text: 'Meus Pets'
             on_press: root.callScreen(self)
 
         Widget:

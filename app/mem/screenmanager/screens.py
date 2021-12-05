@@ -12,7 +12,8 @@ screens = {
     'petProfile': 'PetProfileScreen',
     'fileChooser': 'FileChooserScreen',
     'requesterProfile': 'RPScreen',
-    'chat': 'ChatScreen'
+    'chat': 'ChatScreen',
+    'myPets': 'MyPetsScreen'
 }
 
 usualProtectorSignUpFlow = [ 'WelcomeScreen',

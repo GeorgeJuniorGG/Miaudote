@@ -24,6 +24,8 @@ class HomeScreen(MDScreen):
             self.ids.container.ids[f'item{i}'] = petItem
 
     def addViewPets(self):
+        self.ids.container.clear_widgets()
+        
         # Pega todos os Pets dos recomendados
         pets = self.controller.getRecommended()
 

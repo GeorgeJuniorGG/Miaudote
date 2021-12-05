@@ -11,6 +11,7 @@ from mem.user.PRPManager import PRPManager
 from mem.pet.PetProfileManager import PetProfileManager
 from mem.filechooser.FileManager import FileManager
 from mem.chat.ChatManager import ChatManager
+from mem.user.ProtectorPetsManager import ProtectorPetsManager
 
 # Service
 from mlo.auth.dataModel import DataModel
@@ -27,6 +28,7 @@ from mlo.petsearch.searchService import SearchService
 from mlo.user.FavoritesService import FavoritesService
 from mlo.adoption.AdoptionService import AdoptionService
 from mlo.chat.ChatService import ChatService
+from mlo.user.ProtectorPetsService import ProtectorPetsService
 
 # Database
 from mlo.storage.firebaseDB import FirebaseDB
@@ -51,6 +53,7 @@ services = {
     'adoReqs': 'AdopterRequestsService',
     'adoption': 'AdoptionService',
     'chat': 'ChatService'
+    'myPets': 'ProtectorPetsService'
 }
 
 databases = {
@@ -143,6 +146,13 @@ recipes = {
     services['adoption'] : {
         'class': AdoptionService,
         'deps': (databases['adoptation'], services['user'], services['pet']),
+        'pArgs': None,
+        'unique': True    
+    },
+
+    services['myPets'] : {
+        'class': ProtectorPetsService,
+        'deps': (services['user'], services['pet']),
         'pArgs': None,
         'unique': True
     },
@@ -272,5 +282,12 @@ recipes = {
         'pArgs': ('chatID','userID','anUserName', 'anUserImg'),
         'unique': True        
     },
+
+    screens['myPets'] : {
+        'class': ProtectorPetsManager,
+        'deps': (services['myPets'],),
+        'pArgs': None,
+        'unique': True        
+    }
 
 }
