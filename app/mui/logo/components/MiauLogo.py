@@ -11,4 +11,13 @@ class MiauLogo(MDFloatLayout):
         if screens['requesterProfile'] in self.screen.name:
             return manager.goBackward('right')
         
+        if screens['petRP'] in self.screen.name:
+            return manager.changeScreen('right', screens['adoRequests'])
+
+        if screens['petProfile'] in self.screen.name:
+            return manager.goBackward('right')
+
+        if screens['PARScreen'] in self.screen.name:
+            return manager.goBackward('right')
+
         return manager.goHome()

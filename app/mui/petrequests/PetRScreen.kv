@@ -12,33 +12,8 @@
 
     md_bg_color: get_color_from_hex(cor.azulCinzaClaro()+'11')
 
-    canvas:
-        Color:
-            rgba: get_color_from_hex(cor.azulClaro())
-        Line:
-            points: self.x, 0.9 * self.top, self.right, 0.9 * self.top
-            width: 10
-        Line:
-            points: self.x, self.top - 10, self.right, self.top - 10
-            width: 10
-
-    MDIconButton:
-        icon: "arrow-left"
-        user_font_size: "35sp"
-        pos_hint:{"center_x": 0.08, "center_y": 0.94}
-        theme_text_color: "Custom"
-        text_color: get_color_from_hex(cor.azulClaro())
-        on_release:
-            root.go_backward()
-
-    MDLabel:
-        text: "Miaudote"
-        font_name: "Spirax-Regular"
-        theme_text_color: "Custom"
-        text_color: get_color_from_hex(cor.vermelho())
-        pos_hint: {"center_y": 0.94}
-        halign: "center"
-        font_size: "25sp"
+    MiauLogo:
+        screen: root    
 
     MDFloatLayout:
         id: pet_bar
@@ -51,22 +26,16 @@
             theme_text_color: "Custom"
             text_color: get_color_from_hex(cor.vermelho())
             halign: "center"
-            pos_hint: {"center_y": 0.85}
+            pos_hint: {"center_y": 0.88}
 
     MDCarousel:
         id: carousel
-        size_hint: 1, 0.25
+        size_hint: 1, 0.33
         direction: "right"
         pos_hint: {"center_x": 0.5, "center_y": 0.68}
             
-        FitImage:
-            source: "sorriso.png"
-            
-        FitImage:
-            source: "mrbubbles.png"
-        
     MDFloatLayout:
-        size_hint: 1, 0.53
+        size_hint: 1, 0.52
 
         MDLabel:
             text: "Resumo sobre " + str(root.petName)
@@ -74,7 +43,7 @@
             theme_text_color: "Custom"
             text_color: get_color_from_hex(cor.vermelho())
             halign: "center"
-            pos_hint: {"center_y": 1}
+            pos_hint: {"center_y": 0.95}
 
         MDLabel:
             text: "Sexo: "
@@ -168,4 +137,4 @@
             size_hint: 0.6, 0.15
             pos_hint: {"center_x": 0.5, "center_y": 0.3}
             on_press:
-                root.cancel_request()
+                root.cancel_dialog()

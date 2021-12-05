@@ -1,3 +1,4 @@
+from kivymd import toast
 from kivymd.uix.screen import MDScreen
 from kivymd.uix.floatlayout import MDFloatLayout
 from kivymd.uix.button import MDFillRoundFlatButton
@@ -99,3 +100,9 @@ class FavoritesScreen(MDScreen, MDFloatLayout):
     def go_forward(self, petID:str, obj):
         self.dialog.dismiss()
         self.removeItem(petID)
+
+    def openPetProfile(self, petID:str):
+        self.controller.openPetProfile(petID)
+
+    def showToast(self, msg:str):
+        toast(msg, get_color_from_hex(self.cor.azulCinzaClaro()+'F0'))

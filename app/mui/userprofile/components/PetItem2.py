@@ -74,3 +74,6 @@ class PetItem2(RectangularRippleBehavior, ButtonBehavior, MDFloatLayout):
 
     def insertButtons(self, button):
         self.buttonsContainer.add_widget(button)
+
+    def openPetProfile(self):
+        self.screen.openPetProfile(self.petID)
