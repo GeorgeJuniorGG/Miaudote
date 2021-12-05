@@ -1,7 +1,6 @@
 from pydantic import BaseModel, Field
 from typing import List
 from mlo.auth import Address, HomeCharacteristics, Preferences
-from mlo.pets.PetModel import PetModel
 
 class UserModel(BaseModel):
     uid: str

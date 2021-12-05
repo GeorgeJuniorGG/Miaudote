@@ -102,6 +102,9 @@ class AdoptionService:
     def getUserID(self) -> str:
         return self.userService.getUserID()
 
+    def getUserType(self) -> str:
+        return self.userService.getUserType()
+
     def getARData(self):
 
         try:

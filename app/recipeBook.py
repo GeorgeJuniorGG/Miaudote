@@ -52,7 +52,7 @@ services = {
     'favorites': 'FavoritesService',
     'adoReqs': 'AdopterRequestsService',
     'adoption': 'AdoptionService',
-    'chat': 'ChatService'
+    'chat': 'ChatService',
     'myPets': 'ProtectorPetsService'
 }
 

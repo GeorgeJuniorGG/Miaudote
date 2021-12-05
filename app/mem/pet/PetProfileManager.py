@@ -19,7 +19,7 @@ class PetProfileManager:
         self.screen.controller = self
         self.screen.start_favorite_state(self.getFavoriteStatus(petID))
 
-        if(self.userService.getUserType()=='protector'):
+        if(self.adoService.getUserType()=='protector'):
             self.screen.screenToProtector()
 
     def addFavorite(self, petID:str):
