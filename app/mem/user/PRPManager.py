@@ -21,7 +21,7 @@ class PRPManager:
     def approveRequest(self):
         if self.aService.approveAR(self.arID):
             msg1 = 'Solicitação de adoção aprovada!'
-            msg2 = 'converse com o adotante utilizando o chat para concluir a adoção!'
+            msg2 = 'Converse com o adotante pelo chat para concluir a adoção!'
             self.screen.showToast(msg1)
             self.screen.showToast(msg2)
 

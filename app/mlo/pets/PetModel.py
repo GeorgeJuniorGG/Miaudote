@@ -63,6 +63,6 @@ class PetModelScreen3(BaseModel):
     
     @validator('details')
     def character_limit(cls, v):
-        if len(str(v)) > 300:
+        if len(str(v)) > 250:
             raise ValueError('Limite de 300 caracteres atingido')
         return v

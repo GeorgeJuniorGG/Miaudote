@@ -4,19 +4,20 @@
 #:set cor Color()
 
 <RequesterProfileScreen>:
+    md_bg_color: get_color_from_hex(cor.azulCinzaClaro()+'11')
 
     MiauLogo:
         screen: root
 
     MDFloatLayout:
-        #md_bg_color: get_color_from_hex('#ececec')
         size_hint: None, None
         height: 80
         width: 80
         pos_hint: {'top': 0.89, 'center_x':0.50}
+
         canvas.before:
             Color: 
-                rgba: get_color_from_hex(cor.vermelho()+'80')  
+                rgba: get_color_from_hex(cor.vermelho())  
             RoundedRectangle:
                 size: dp(90), dp(90)
                 pos: self.x - dp(5), self.y - dp(5)
@@ -43,9 +44,8 @@
 
         UserInfo:
             id: availableSpace
-            fieldName: 'Espaço Disponível'
+            fieldName: 'Espaço disponível'
 
-        
         UserInfo:
             id: availableTime
             fieldName: 'Tempo disponível para o Animal'
@@ -72,7 +72,8 @@
         md_bg_color: get_color_from_hex(cor.azulClaro())
         pos_hint: {'center_x': 0.3, 'center_y': 0.08}
         size_hint: 0.35, 0.05
-        on_release: root.approveRequest()
+        on_release:
+            root.approveRequest()
   
     MDFillRoundFlatButton:
         text: "Rejeitar"
@@ -82,4 +83,5 @@
         md_bg_color: get_color_from_hex(cor.vermelho())
         pos_hint: {"center_x": 0.7, "center_y": 0.08}
         size_hint: 0.35, 0.05
-        on_release: root.declineRequest()
+        on_release:
+            root.declineRequest()
