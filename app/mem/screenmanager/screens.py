@@ -11,6 +11,8 @@ screens = {
     'recRequests': 'RequestsReceivedScreen',
     'petProfile': 'PetProfileScreen',
     'fileChooser': 'FileChooserScreen',
+    'requesterProfile': 'RPScreen',
+    'chat': 'ChatScreen',
     'myPets': 'MyPetsScreen'
 }
 

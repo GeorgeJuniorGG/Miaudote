@@ -7,12 +7,15 @@ from mem.root.RootManager import RootManager
 from mem.petSignUp.petSignUpManager import PetSignUpManager
 from mem.user.ARManager import ARManager
 from mem.user.PRManager import PRManager
+from mem.user.PRPManager import PRPManager
 from mem.pet.PetProfileManager import PetProfileManager
 from mem.filechooser.FileManager import FileManager
+from mem.chat.ChatManager import ChatManager
 from mem.user.ProtectorPetsManager import ProtectorPetsManager
 
 # Service
 from mlo.auth.dataModel import DataModel
+from mlo.database.firebaseAdoptionDB import FBAdoptionDB
 from mlo.pets.PetDataModel import PetDataModel
 from mlo.auth.firebaseAuth import FireBaseAuthService
 from mlo.user.AdopterRequestsService import AdopterRequestsService
@@ -23,12 +26,15 @@ from mlo.petsearch.resultsPrioritization import ResultsPrioritization
 from mlo.petsearch.searchLogic import SearchLogic
 from mlo.petsearch.searchService import SearchService
 from mlo.user.FavoritesService import FavoritesService
+from mlo.adoption.AdoptionService import AdoptionService
+from mlo.chat.ChatService import ChatService
 from mlo.user.ProtectorPetsService import ProtectorPetsService
 
 # Database
 from mlo.storage.firebaseDB import FirebaseDB
 from mlo.database.firebaseUserDB import FUserDB
 from mlo.database.firebasePetDB import FPetDB
+from mlo.database.firebaseChatDB import FChatDB
 
 # Screen Names
 from mem.screenmanager.screens import screens
@@ -45,13 +51,17 @@ services = {
     'search': 'SearchService',
     'favorites': 'FavoritesService',
     'adoReqs': 'AdopterRequestsService',
+    'adoption': 'AdoptionService',
+    'chat': 'ChatService'
     'myPets': 'ProtectorPetsService'
 }
 
 databases = {
     'user': 'FUserDB',
     'storage': 'FirebaseDB',
-    'pet': 'FPetDB'
+    'pet': 'FPetDB',
+    'adoptation': 'FBAdoptionDB',
+    'chat': 'FChatDB'
 }
 
 recipes = {
@@ -133,12 +143,26 @@ recipes = {
         'unique': True
     },
 
+    services['adoption'] : {
+        'class': AdoptionService,
+        'deps': (databases['adoptation'], services['user'], services['pet']),
+        'pArgs': None,
+        'unique': True    
+    },
+
     services['myPets'] : {
         'class': ProtectorPetsService,
         'deps': (services['user'], services['pet']),
         'pArgs': None,
         'unique': True
     },
+
+    services['chat'] : {
+        'class': ChatService,
+        'deps': (databases['chat'],),
+        'pArgs': None,
+        'unique': True
+    },  
 
     databases['pet'] : {
         'class': FPetDB,
@@ -160,6 +184,20 @@ recipes = {
         'pArgs': None,
         'unique': True
     }, 
+
+    databases['adoptation'] : {
+        'class': FBAdoptionDB,
+        'deps': None,
+        'pArgs': None,
+        'unique': True
+    },
+
+    databases['chat'] : {
+        'class': FChatDB,
+        'deps': None,
+        'pArgs': None,
+        'unique': True
+    },
 
     screens['welcome'] : {
         'class': WelcomeManager,
@@ -205,21 +243,21 @@ recipes = {
 
     screens['adoRequests'] : {
         'class': ARManager,
-        'deps': (services['user'], services['pet'], services['adoReqs']),
+        'deps': (services['adoption'],),
         'pArgs': None,
         'unique': True
     },
 
     screens['recRequests'] : {
         'class': PRManager,
-        'deps': (services['user'], services['pet']),
+        'deps': (services['adoption'],),
         'pArgs': None,
         'unique': True
     },
 
     screens['petProfile'] : {
         'class': PetProfileManager,
-        'deps': (services['user'], services['pet'], services['favorites'], services['adoReqs']),
+        'deps': (services['pet'], services['favorites'], services['adoption']),
         'pArgs': ('petID',),
         'unique': False
     },
@@ -228,6 +266,20 @@ recipes = {
         'class': FileManager,
         'deps': None,
         'pArgs': ('client',),
+        'unique': True
+    },
+
+    screens['requesterProfile'] : {
+        'class': PRPManager,
+        'deps': (services['adoption'],),
+        'pArgs': ('arID',),
+        'unique': True        
+    },
+
+    screens['chat'] : {
+        'class': ChatManager,
+        'deps': (services['chat'],),
+        'pArgs': ('chatID','userID','anUserName', 'anUserImg'),
         'unique': True        
     },
 

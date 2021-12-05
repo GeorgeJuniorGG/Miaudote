@@ -2,6 +2,7 @@ from kivymd.uix.screen import MDScreen
 from kivymd.uix.button import MDFillRoundFlatButton
 from kivymd.uix.dialog import MDDialog
 from kivymd.uix.fitimage import FitImage
+from kivymd.toast import toast
 
 from kivy.utils import get_color_from_hex
 
@@ -73,7 +74,10 @@ class PetProfileScreen(MDScreen):
 
     def go_backwards(self):
         pass
-    
+
+    def showToast(self, msg:str):
+        toast(msg, get_color_from_hex(self.cor.azulCinzaClaro()+'F0'))
+
     def screenToProtector(self):
         self.ids.pet_bar.remove_widget(self.ids.pet_fav)   
         self.ids.body.remove_widget(self.ids.pet_adopt)

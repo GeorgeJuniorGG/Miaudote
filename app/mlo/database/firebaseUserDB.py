@@ -1,5 +1,5 @@
 from .UserDB import UserDB
-from config.firebase import getFirebaseFirestore, getFirebase
+from config.firebase import getFirebaseFirestore, getFirebase, firestore
 from mlo.user.UserModel import AdopterModel, ProtectorModel, UserModel
 
 class FUserDB(UserDB):
@@ -108,6 +108,44 @@ class FUserDB(UserDB):
             imgStorege = self.__sdb.child(storagePath).put(imagePath)
             imgUrl = self.__sdb.child(imgStorege['name']).get_url(None)
             c_ref.document(self.__userID).update({'userImage': imgUrl})
+            return True
+        
+        except:
+            return False
+
+    # Inserir solicitação de adoção ao documento de um usuário
+    def insertAR(self, userID:str, arID:str):
+        try:
+            c_ref = self.__c_p_ref
+            if userID == self.__userID and not self.isProtector():
+                c_ref = self.__c_a_ref
+
+            c_ref.document(userID).update({
+                    'adoptationRequests': firestore.ArrayUnion([arID])
+            })
+
+            return True
+
+        except:
+            return False
+
+    # Deletar solicitação de adoção no documento de um usuário
+    def deleteAR(self, userID:str, arID:str) -> bool:
+
+        try:
+            userData:UserModel = self.__getUser(userID)
+            c_ref = self.__c_p_ref
+
+            if isinstance(userData, AdopterModel):
+                c_ref = self.__c_a_ref
+
+            rQueue = userData.adoptationRequests
+
+            if arID not in rQueue:
+                return False
+
+            rQueue.remove(arID)
+            c_ref.document(userID).update({'adoptationRequests': rQueue})
             return True
         
         except:

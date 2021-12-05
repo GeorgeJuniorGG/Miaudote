@@ -9,7 +9,11 @@ class MainScreenManager(ScreenManager):
                      'SlideTransition': SlideTransition,
                      'RiseInTransition': RiseInTransition
                     }
-    __refreshingScreens = {"RequestsScreen": None, "FavoriteScreen": None}
+    __refreshingScreens = {
+        screens['adoRequests']: None,
+        screens['recRequests']: None,
+        screens['favorites']: None,
+    }
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -36,6 +40,11 @@ class MainScreenManager(ScreenManager):
     def goBackward(self, direction:str):
         self.transition.direction = direction
         self.__previous, self.current = self.current, self.__previous
+
+    def goHome(self):
+        self.transition.direction = 'right'
+        self.previous = screens['root']
+        self.current = self.previous
 
     def changeTransition(self, tName:str):
         if tName in self.__TRANSITIONS.keys():

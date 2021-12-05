@@ -10,7 +10,8 @@ class UserModel(BaseModel):
     email:str
     address: Address.Address
     userImage:str = Field(default="user_image.jpg")
-    
+    adoptationRequests:List[str] = Field(default_factory=list)
+
 class AdopterModel(UserModel):
     favorites: List[str] = Field(default_factory=list)
     homeCharacteristics: HomeCharacteristics.HomeCharacteristics
