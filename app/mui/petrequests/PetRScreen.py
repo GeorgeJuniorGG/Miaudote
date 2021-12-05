@@ -10,13 +10,6 @@ class PetRScreen(MDScreen):
         self.petAddr = "Campinas/SP"
         self.petDscp = "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
 
-        fav = 1
-
-        if(fav == 1):
-            self.petFav = "heart-outline"
-        else:
-            self.petFav = "heart-remove-outline"
-
         request = 1
 
         if(request == 0):
@@ -25,14 +18,6 @@ class PetRScreen(MDScreen):
             self.msgRequest = "O protetor de " + self.petName + " aprovou sua solicitação. Agora você pode conversar com o protetor!"
         else:
             self.msgRequest = "O protetor de " + self.petName + " ainda não visualizou a sua solicitação."
-
-    def change_favorite_state(self):
-        self.petFav = "heart-remove-outline" if self.petFav == "heart-outline" else "heart-outline"
-
-        print("FAVORITO " + str(self.petFav))
-
-    def alert(self):
-        print("DENÚNCIA!")
 
     def open_chat(self):
         print("CHAT")

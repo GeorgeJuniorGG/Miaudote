@@ -16,6 +16,7 @@ class PetModel(BaseModel):
     size: str
     color: str
     city: str = Field(default="")
+    state: str = Field(default="")
     images: List[str] = ['https://firebasestorage.googleapis.com/v0/b/miaudote-b4e55.appspot.com/o/petImages%2Fdefault%2Fsem_imagem.png?alt=media&token=4a70b76b-1405-4e8d-a16d-8ce56d12b308']
     requestStatus: bool = Field(default=False)
     requestQueue: List[str] = Field(default_factory=list)
@@ -62,6 +63,6 @@ class PetModelScreen3(BaseModel):
     
     @validator('details')
     def character_limit(cls, v):
-        if len(str(v))>200:
-            raise ValueError('Limite de 200 caracteres atingido')
+        if len(str(v)) > 300:
+            raise ValueError('Limite de 300 caracteres atingido')
         return v

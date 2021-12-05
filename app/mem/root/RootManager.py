@@ -32,6 +32,11 @@ class RootManager(FMClient):
         self.homeScreen.addViewPets()
         self.__FM = None
         self.__CP = "/"
+
+        if(self.userService.getUserType()=='protector'):
+            self.menuScreen.bindProtectorScreens()
+        else:
+            self.menuScreen.bindAdopterScreens()
     
     def setController(self):
         self.profileScreen = self.screen.profileScreen

@@ -4,12 +4,13 @@
 #:set cor Color()
 
 <PetRScreen>:
-    petFav: pet_fav
     petName: pet_name
     petSex: pet_sex
     petAge: pet_age
     petAddr: pet_addr
     msgRequest: msg_request
+
+    md_bg_color: get_color_from_hex(cor.azulCinzaClaro()+'11')
 
     canvas:
         Color:
@@ -46,30 +47,14 @@
         MDLabel:
             id: pet_name
             text: str(root.petName)
+            font_size: "20sp"
             theme_text_color: "Custom"
             text_color: get_color_from_hex(cor.vermelho())
             halign: "center"
             pos_hint: {"center_y": 0.85}
-            
-        MDIconButton:
-            id: pet_fav
-            icon: str(root.petFav)
-            pos_hint: {"center_x": 0.9, "center_y": 0.85}
-            theme_text_color: "Custom"
-            text_color: get_color_from_hex(cor.vermelho())
-            on_press:
-                self.icon = "heart-remove-outline" if self.icon == "heart-outline" else "heart-outline"
-                root.change_favorite_state()
-
-        MDIconButton:
-            icon: "alert-outline"
-            pos_hint: {"center_x": 0.1, "center_y": 0.85}
-            theme_text_color: "Custom"
-            text_color: get_color_from_hex(cor.vermelho())
-            on_press:
-                root.alert()
 
     MDCarousel:
+        id: carousel
         size_hint: 1, 0.25
         direction: "right"
         pos_hint: {"center_x": 0.5, "center_y": 0.68}
@@ -92,25 +77,11 @@
             pos_hint: {"center_y": 1}
 
         MDLabel:
-            text: "Nome: "
-            theme_text_color: "Custom"
-            text_color: get_color_from_hex(cor.vermelho())
-            halign: "left"
-            pos_hint: {"center_x": 0.6, "center_y": 0.9}
-
-        MDLabel:
-            id: pet_name
-            text: str(root.petName)
-            theme_text_color: "Custom"
-            text_color: get_color_from_hex(cor.azulEscuro())
-            pos_hint: {"center_x": 0.85, "center_y": 0.9}
-
-        MDLabel:
             text: "Sexo: "
             theme_text_color: "Custom"
             text_color: get_color_from_hex(cor.vermelho())
             halign: "left"
-            pos_hint: {"center_x": 0.6, "center_y": 0.85}
+            pos_hint: {"center_x": 0.6, "center_y": 0.9}
         
         MDLabel:
             id: pet_sex
@@ -118,14 +89,14 @@
             theme_text_color: "Custom"
             text_color: get_color_from_hex(cor.azulEscuro())
             halign: "left"
-            pos_hint: {"center_x": 0.85, "center_y": 0.85}
+            pos_hint: {"center_x": 0.85, "center_y": 0.9}
 
         MDLabel:
             text: "Idade: "
             theme_text_color: "Custom"
             text_color: get_color_from_hex(cor.vermelho())
             halign: "left"
-            pos_hint: {"center_x": 0.6, "center_y": 0.8}
+            pos_hint: {"center_x": 0.6, "center_y": 0.85}
         
         MDLabel:
             id: pet_age
@@ -133,14 +104,14 @@
             theme_text_color: "Custom"
             text_color: get_color_from_hex(cor.azulEscuro())
             halign: "left"
-            pos_hint: {"center_x": 0.85, "center_y": 0.8}
+            pos_hint: {"center_x": 0.85, "center_y": 0.85}
 
         MDLabel:
             text: "Localização: "
             theme_text_color: "Custom"
             text_color: get_color_from_hex(cor.vermelho())
             halign: "left"
-            pos_hint: {"center_x": 0.6, "center_y": 0.75}
+            pos_hint: {"center_x": 0.6, "center_y": 0.8}
 
         MDLabel:
             id: pet_addr
@@ -148,10 +119,10 @@
             theme_text_color: "Custom"
             text_color: get_color_from_hex(cor.azulEscuro())
             halign: "left"
-            pos_hint: {"center_x": 0.85, "center_y": 0.75}
+            pos_hint: {"center_x": 0.85, "center_y": 0.8}
     
     MDFloatLayout:
-        size_hint: 1, 0.36
+        size_hint: 1, 0.39
 
         canvas.before:
             Color:
@@ -181,10 +152,8 @@
             text: "Abrir o Chat"
             font_size: "20sp"
             theme_text_color: "Custom"
-            text_color: get_color_from_hex(cor.azulEscuro())
-            line_width: 1.5
-            line_color: get_color_from_hex(cor.azulEscuro())
-            md_bg_color: get_color_from_hex(cor.branco())
+            text_color: get_color_from_hex(cor.branco())
+            md_bg_color: get_color_from_hex(cor.azulClaro())
             size_hint: 0.6, 0.15
             pos_hint: {"center_x": 0.5, "center_y": 0.5}
             on_press:
@@ -194,10 +163,8 @@
             text: "Cancelar a Solicitação"
             font_size: "20sp"
             theme_text_color: "Custom"
-            text_color: get_color_from_hex(cor.vermelho())
-            line_width: 1.5
-            line_color: get_color_from_hex(cor.azulEscuro())
-            md_bg_color: get_color_from_hex(cor.branco())
+            text_color: get_color_from_hex(cor.branco())
+            md_bg_color: get_color_from_hex(cor.vermelho())
             size_hint: 0.6, 0.15
             pos_hint: {"center_x": 0.5, "center_y": 0.3}
             on_press:

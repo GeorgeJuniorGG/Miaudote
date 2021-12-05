@@ -11,6 +11,8 @@
     petAddr: pet_addr
     petDscp: pet_dscp
 
+    md_bg_color: get_color_from_hex(cor.azulCinzaClaro()+'11')
+
     MiauLogo:
         screen: root
 
@@ -21,15 +23,16 @@
         MDLabel:
             id: pet_name
             text: str(root.petName)
+            font_size: "20sp"
             theme_text_color: "Custom"
             text_color: get_color_from_hex(cor.vermelho())
             halign: "center"
-            pos_hint: {"center_y": 0.85}
+            pos_hint: {"center_y": 0.88}
             
         MDIconButton:
             id: pet_fav
             icon: str(root.petFav)
-            pos_hint: {"center_x": 0.9, "center_y": 0.85}
+            pos_hint: {"center_x": 0.9, "center_y": 0.88}
             theme_text_color: "Custom"
             text_color: get_color_from_hex(cor.vermelho())
             on_press:
@@ -38,7 +41,7 @@
 
         MDIconButton:
             icon: "alert-outline"
-            pos_hint: {"center_x": 0.1, "center_y": 0.85}
+            pos_hint: {"center_x": 0.1, "center_y": 0.88}
             theme_text_color: "Custom"
             text_color: get_color_from_hex(cor.vermelho())
             on_press:
@@ -46,26 +49,13 @@
                 
     MDCarousel:
         id: carousel
-        size_hint: 1, 0.25
+        size_hint: 1, 0.33
         direction: "right"
         pos_hint: {"center_x": 0.5, "center_y": 0.68}
         
     MDFloatLayout:
+        id: body
         size_hint: 1, 0.52
-
-        MDLabel:
-            text: "Nome: "
-            theme_text_color: "Custom"
-            text_color: get_color_from_hex(cor.vermelho())
-            halign: "left"
-            pos_hint: {"center_x": 0.6, "center_y": 1}
-
-        MDLabel:
-            id: pet_name
-            text: str(root.petName)
-            theme_text_color: "Custom"
-            text_color: get_color_from_hex(cor.azulEscuro())
-            pos_hint: {"center_x": 0.85, "center_y": 1}
 
         MDLabel:
             text: "Sexo: "
@@ -91,7 +81,7 @@
         
         MDLabel:
             id: pet_age
-            text: str(root.petAge)
+            text: str(root.petAge).lower()
             theme_text_color: "Custom"
             text_color: get_color_from_hex(cor.azulEscuro())
             halign: "left"
@@ -117,10 +107,8 @@
             text: "Adotar"
             font_size: "18sp"
             theme_text_color: "Custom"
-            text_color: get_color_from_hex(cor.azulEscuro())
-            line_width: 1.5
-            line_color: get_color_from_hex(cor.azulEscuro())
-            md_bg_color: get_color_from_hex(cor.branco())
+            text_color: get_color_from_hex(cor.branco())
+            md_bg_color: get_color_from_hex(cor.azulClaro())
             size_hint: 0.3, 0.09
             pos_hint: {"center_x": 0.5, "center_y": 0.73}
             on_press:
@@ -150,6 +138,7 @@
             MDLabel:
                 id: pet_dscp
                 text: str(root.petDscp)
+                theme_text_color: "Custom"
                 text_color: get_color_from_hex(cor.azulEscuro())
                 #md_bg_color: get_color_from_hex(cor.laranja())
                 halign: "justify"

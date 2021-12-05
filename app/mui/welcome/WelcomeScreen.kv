@@ -4,6 +4,8 @@
 #:set cor Color()
 
 <WelcomeScreen>:
+    md_bg_color: get_color_from_hex(cor.azulCinzaClaro()+'11')
+    
     canvas:
         Color:
             rgba: get_color_from_hex(cor.vermelho())
@@ -28,7 +30,7 @@
             
     MDFillRoundFlatButton:
         id: _welcomeSignupButton
-        text: "Cadastrar-se"
+        text: "Cadastre-se"
         font_size: "20sp"
         md_bg_color: get_color_from_hex(cor.azulClaro())
         size_hint: 0.6, 0.06

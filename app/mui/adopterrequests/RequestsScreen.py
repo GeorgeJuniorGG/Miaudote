@@ -1,17 +1,17 @@
-from logging import root
 from kivymd.uix.screen import MDScreen
 from kivymd.uix.floatlayout import MDFloatLayout
 from kivymd.uix.button import MDFillRoundFlatButton
 from kivymd.uix.dialog import MDDialog
 
-from functools import partial
+from kivy.uix.label import Label
+from kivy.metrics import dp
 from kivy.utils import get_color_from_hex
+
+from functools import partial
 
 from mui.adopterrequests.components.PetItem2 import PetItem2
 from mui.home.components.Separator import Separator
 from mui.ColorTheme import Color
-from kivy.uix.label import Label
-from kivy.metrics import dp
 
 class RequestsScreen(MDScreen, MDFloatLayout):
     def __init__(self, **kw):
@@ -79,18 +79,18 @@ class RequestsScreen(MDScreen, MDFloatLayout):
 
     def remove_item_dialog(self, petID:str):
         sim_btn = MDFillRoundFlatButton(text="SIM", theme_text_color="Custom",
-                                        text_color=get_color_from_hex(self.cor.azulEscuro()),
-                                        md_bg_color=get_color_from_hex(self.cor.branco()),
+                                        text_color=get_color_from_hex(self.cor.branco()),
+                                        md_bg_color=get_color_from_hex(self.cor.azulEscuro()),
                                         on_release=partial(self.go_forward, petID))
 
         nao_btn = MDFillRoundFlatButton(text="NÃO", theme_text_color="Custom",
-                                        text_color=get_color_from_hex(self.cor.vermelho()),
-                                        md_bg_color=get_color_from_hex(self.cor.branco()),
+                                        text_color=get_color_from_hex(self.cor.branco()),
+                                        md_bg_color=get_color_from_hex(self.cor.vermelho()),
                                         on_release=self.close_dialog)
 
         msg = "Você tem certeza que deseja remover essa solicitação?"
 
-        self.dialog = MDDialog(text="[color=get_color_from_hex(self.cor.branco())]" + str(msg) + "[/color]",
+        self.dialog = MDDialog(text="[color=#ffffff]" + str(msg) + "[/color]",
                                md_bg_color=get_color_from_hex(self.cor.azulClaro()),
                                size_hint=(0.7, 1), radius=[20,20,20,20],
                                buttons=[sim_btn, nao_btn])
