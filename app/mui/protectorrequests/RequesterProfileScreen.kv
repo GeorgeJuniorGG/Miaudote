@@ -4,6 +4,8 @@
 #:set cor Color()
 
 <RequesterProfileScreen>:
+    md_bg_color: get_color_from_hex(cor.azulCinzaClaro()+'11')
+
     canvas:
         Color:
             rgba: get_color_from_hex(cor.azulClaro())
@@ -38,7 +40,7 @@
         pos_hint: {'center_x': 0.50, 'center_y': 0.82}
         canvas.before:
             Color:
-                rgba: get_color_from_hex(cor.bege()+'80')
+                rgba: get_color_from_hex(cor.vermelho())
             Ellipse:
                 size: 62, 62
                 pos: self.x + 12.5, self.y + 12.5
@@ -53,7 +55,7 @@
         disabled: 'true'
     
     MDTextField:
-        hint_text: "Localização do Usuário"
+        hint_text: "Localização"
         text: "Cidade, Estado do Usuário"
         size_hint: 0.8, 0.1
         color_mode: "custom"
@@ -71,7 +73,7 @@
         disabled: 'true'
     
     MDTextField:
-        hint_text: "Tempo Disponível para o Pet"
+        hint_text: "Tempo disponível para o Animal"
         text: "Tempo Disponível do Usuário"
         size_hint: 0.8, 0.1
         color_mode: "custom"
@@ -80,7 +82,7 @@
         disabled: 'true'
     
     MDTextField:
-        hint_text: "Possui outro animal?"
+        hint_text: "Possui outro Animal?"
         text: "Sim ou Não"
         size_hint: 0.8, 0.1
         color_mode: "custom"
@@ -89,7 +91,7 @@
         disabled: 'true'
     
     MDTextField:
-        hint_text: "Possui Rotas de Fuga?"
+        hint_text: "Possui rotas de fuga?"
         text: "Sim ou Não"
         size_hint: 0.8, 0.1
         color_mode: "custom"
@@ -98,7 +100,7 @@
         disabled: 'true'
     
     MDTextField:
-        hint_text: "Crianças Frequentam o Ambiente?"
+        hint_text: "Crianças frequentam o ambiente?"
         text: "Sim ou Não"
         size_hint: 0.8, 0.1
         color_mode: "custom"
@@ -109,20 +111,16 @@
     MDFillRoundFlatButton:
         text: "Aceitar"
         font_size: "20sp"
-        text_color: get_color_from_hex(cor.azulEscuro())
-        line_width: 1.5
-        line_color: get_color_from_hex(cor.azulEscuro())
-        md_bg_color: get_color_from_hex(cor.branco())
-        pos_hint: {'center_x': 0.25, 'center_y': 0.12}
+        text_color: get_color_from_hex(cor.branco())
+        md_bg_color: get_color_from_hex(cor.azulClaro())
+        pos_hint: {'center_x': 0.3, 'center_y': 0.12}
         size_hint: 0.35, 0.05
     
     MDFillRoundFlatButton:
         text: "Rejeitar"
         font_size: "20sp"
         theme_text_color: "Custom"
-        text_color: get_color_from_hex(cor.vermelho())
-        line_width: 1.5
-        line_color: get_color_from_hex(cor.azulEscuro())
-        md_bg_color: get_color_from_hex(cor.branco())
-        pos_hint: {"center_x": 0.75, "center_y": 0.12}
+        text_color: get_color_from_hex(cor.branco())
+        md_bg_color: get_color_from_hex(cor.vermelho())
+        pos_hint: {"center_x": 0.7, "center_y": 0.12}
         size_hint: 0.35, 0.05

@@ -21,8 +21,8 @@ class MiaudoteNavBar(FakeRectangularElevationBehavior, MDFloatLayout):
 
     def home(self):
         homeItem = self.ids.home_icon
-        homeItem.ids.icon.text_color = self.cor.violeta()
-        homeItem.ids.label.text_color = self.cor.violeta()
+        homeItem.ids.icon.text_color = self.cor.azulEscuro()
+        homeItem.ids.label.text_color = self.cor.azulEscuro()
 
     def changeTab(self, tabName:str, transition):
         self.tabManager.transition = SlideTransition()
@@ -40,8 +40,8 @@ class MiaudoteNavBar(FakeRectangularElevationBehavior, MDFloatLayout):
                     item.ids.label.text_color = self.cor.branco()
                     item.ids.icon.text_color = self.cor.branco()
         
-        selItem.ids.icon.text_color = self.cor.violeta()
-        selItem.ids.label.text_color = self.cor.violeta()
+        selItem.ids.icon.text_color = self.cor.azulEscuro()
+        selItem.ids.label.text_color = self.cor.azulEscuro()
 
 class NavBarItem(ButtonBehavior, MDFloatLayout):
     icon = StringProperty()
