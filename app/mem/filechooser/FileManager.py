@@ -28,7 +28,6 @@ class FileManager:
             self.__openScreen()
 
     def exitScreen(self):
-        print('Passou aqui')
         if self.screen != None:
             self.manager = self.screen.manager
             self.screen = None
