@@ -38,9 +38,10 @@ class CustomApp( MDApp):
                 #  'mui/petprofile/PetSignUpScreen4.kv',
                 # 'mui/protectorrequests/RequesterProfileScreen.kv',
                 # 'mui/userprofile/components/UserInfo.kv',
-                'mui/logo/components/Logo.kv',
-                'mui/protectorrequests/RequestsReceivedScreen.kv',
-                'mui/protectorrequests/components/ARItem.kv'
+                # 'mui/logo/components/Logo.kv',
+                # 'mui/protectorrequests/RequestsReceivedScreen.kv',
+                # 'mui/protectorrequests/components/ARItem.kv'
+               'mui/welcome/WelcomeScreen.kv'
 
                ]
     DEBUG = True
@@ -59,7 +60,7 @@ class CustomApp( MDApp):
     def build_app(self):
         manager = MainScreenManager()
         orchestrator = Orchestrator(manager)
-        controller = orchestrator.buildComponent(screens['recRequests'])
+        controller = orchestrator.buildComponent(screens['welcome'])
         #controller.manager = manager
         #controller.addScreens()
         screen = controller.screen
