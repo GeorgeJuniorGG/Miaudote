@@ -11,7 +11,8 @@ class PetRProfileManager:
         self.arID = arID
         self.screen = PetRScreen(self.petData, name=screens['petRP']+arID)
         self.screen.controller = self
-            
+        self.screen.hideChatButton()
+
     def cancelRequest(self):
         if not self.adoService.deleteAR(self.arID):
             self.screen.showToast('Ocorreu um erro ao tentar cancelar a solicitação')

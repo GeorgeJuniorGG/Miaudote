@@ -9,7 +9,6 @@
     petAge: pet_age
     petAddr: pet_addr
     msgRequest: msg_request
-
     md_bg_color: get_color_from_hex(cor.azulCinzaClaro()+'11')
 
     MiauLogo:
@@ -91,6 +90,7 @@
             pos_hint: {"center_x": 0.85, "center_y": 0.8}
     
     MDFloatLayout:
+        id: requestLayout
         size_hint: 1, 0.39
 
         canvas.before:
@@ -118,6 +118,7 @@
             padding_x: 20
         
         MDFillRoundFlatButton:
+            id: chatButton
             text: "Abrir o Chat"
             font_size: "20sp"
             theme_text_color: "Custom"
@@ -129,6 +130,7 @@
                 root.open_chat()
 
         MDFillRoundFlatButton:
+            id: cancel_button
             text: "Cancelar a Solicitação"
             font_size: "20sp"
             theme_text_color: "Custom"

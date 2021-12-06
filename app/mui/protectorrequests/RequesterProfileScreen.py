@@ -10,9 +10,11 @@ class RequesterProfileScreen(MDFloatLayout, MDScreen):
     
     controller = None
     cor = Color()
+    arStatus = None
 
     def insertAdopterData(self):
         data = self.controller.adopterProfileData()
+        self.arStatus = data['arStatus']
         for itemName in self.ids:
             item = self.ids[itemName]
             if itemName == 'adopterImage':
@@ -52,3 +54,8 @@ class RequesterProfileScreen(MDFloatLayout, MDScreen):
 
     def showToast(self, msg:str):
         toast(msg, get_color_from_hex(self.cor.azulCinzaClaro()+'F0'))
+
+    def hideButtons(self):
+        if self.arStatus != None:
+            self.remove_widget(self.ids.acceptButton)
+            self.remove_widget(self.ids.rejectButton)

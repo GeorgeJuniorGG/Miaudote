@@ -9,12 +9,13 @@ from kivy.utils import get_color_from_hex
 from mui.ColorTheme import Color
 
 class PetRScreen(MDScreen):
+
     def __init__(self, petData:dict, **kw):
         super().__init__(**kw)
 
         self.cor = Color()
         self.controller = None
-
+        self.arStatus = petData['arStatus']
         self.petName = petData['name']
         self.petSex = petData['sex']
         self.petAge = petData['Age']
@@ -24,14 +25,6 @@ class PetRScreen(MDScreen):
         self.petID = petData['pid']
         self.addPetImages()
 
-        request = petData['arStatus']
-
-        if(request == False):
-            self.msgRequest = "O protetor de " + self.petName + " não aprovou sua solicitação."
-        elif(request == True):
-            self.msgRequest = "O protetor de " + self.petName + " aprovou sua solicitação. Agora você pode conversar com o protetor!"
-        else:
-            self.msgRequest = "O protetor de " + self.petName + " ainda não avaliou a sua solicitação."
 
     def addPetImages(self):
         for image in self.petImages:
@@ -75,3 +68,18 @@ class PetRScreen(MDScreen):
 
     def go_backwards(self):
         pass
+
+    def hideChatButton(self):
+
+        request = self.arStatus
+        self.ids.requestLayout.remove_widget(self.ids.chatButton)
+
+        if(request == False):
+            self.msgRequest = "O protetor de " + self.petName + " não aprovou sua solicitação."
+        elif(request == True):
+            self.ids.requestLayout.add_widget(self.ids.chatButton)
+            self.msgRequest = "O protetor de " + self.petName + " aprovou sua solicitação. Agora você pode conversar com o protetor!"
+        else:
+            self.msgRequest = "O protetor de " + self.petName + " ainda não avaliou a sua solicitação."
+
+        
