@@ -94,11 +94,10 @@ class SignUpManager:
                     #self.signUpScreen.go_forwardA()
                     self.changeScreen(usf, self.signUpScreen.name)
             else:
-                print(signUp)
+                self.signUpScreen.showToast(signUp)
         else:
-            print(userData)
+            self.signUpScreen.showToast(userData)
 
-        
     def singUpScreen2aManager(self):
         addressData = (
             self.signUpScreen2a.ids.state.text,
@@ -114,9 +113,9 @@ class SignUpManager:
                 #self.signUpScreen2a.go_forward()
                 self.changeScreen(usf, self.signUpScreen2a.name)
             else:
-                print('Erro ao armazenar dados')
+                self.signUpScreen2a.showToast('Erro ao armazenar dados')
         else:
-            print(userAddress)
+            self.signUpScreen2a.showToast(userAddress)
 
     def singUpScreen2bManager(self):
         addressData = (
@@ -136,9 +135,9 @@ class SignUpManager:
                 else:
                     self.signUpScreen2b.show_terms_of_service_dialog()
             else:
-                print('Erro ao armazenar dados')
+                self.signUpScreen2b.showToast('Erro ao armazenar dados')
         else:
-            print(userAddress)
+            self.signUpScreen2b.showToast(userAddress)
 
     def singUpScreen3Manager(self):
         prefData = (
@@ -156,9 +155,9 @@ class SignUpManager:
                 #self.signUpScreen3.go_forward()
                 self.changeScreen(usf, self.signUpScreen3.name)
             else:
-                print('Erro ao armazenar dados')
+                self.signUpScreen3.showToast('Erro ao armazenar dados')
         else:
-            print(userPreferences)
+            self.signUpScreen3.showToast(userPreferences)
 
     def singUpScreen4Manager(self):
         homeData = (
@@ -177,6 +176,6 @@ class SignUpManager:
                 else:
                     self.signUpScreen4.show_terms_of_service_dialog()
             else:
-                print('Erro ao armazenar dados')
+                self.signUpScreen4.showToast('Erro ao armazenar dados')
         else:
-            print(userHomeCharacteristics)    
+            self.signUpScreen4.showToast(userHomeCharacteristics)

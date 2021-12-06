@@ -42,14 +42,14 @@
             theme_text_color: "Custom"
             text_color: get_color_from_hex(cor.vermelho())
             halign: "center"
-            pos_hint: {"center_y": 0.95}
+            pos_hint: {"center_y": 0.93}
 
         MDLabel:
             text: "Sexo: "
             theme_text_color: "Custom"
             text_color: get_color_from_hex(cor.vermelho())
             halign: "left"
-            pos_hint: {"center_x": 0.6, "center_y": 0.9}
+            pos_hint: {"center_x": 0.65, "center_y": 0.85}
         
         MDLabel:
             id: pet_sex
@@ -57,29 +57,29 @@
             theme_text_color: "Custom"
             text_color: get_color_from_hex(cor.azulEscuro())
             halign: "left"
-            pos_hint: {"center_x": 0.85, "center_y": 0.9}
+            pos_hint: {"center_x": 0.9, "center_y": 0.85}
 
         MDLabel:
             text: "Idade: "
             theme_text_color: "Custom"
             text_color: get_color_from_hex(cor.vermelho())
             halign: "left"
-            pos_hint: {"center_x": 0.6, "center_y": 0.85}
+            pos_hint: {"center_x": 0.65, "center_y": 0.8}
         
         MDLabel:
             id: pet_age
-            text: str(root.petAge)
+            text: str(root.petAge).lower()
             theme_text_color: "Custom"
             text_color: get_color_from_hex(cor.azulEscuro())
             halign: "left"
-            pos_hint: {"center_x": 0.85, "center_y": 0.85}
+            pos_hint: {"center_x": 0.9, "center_y": 0.8}
 
         MDLabel:
             text: "Localização: "
             theme_text_color: "Custom"
             text_color: get_color_from_hex(cor.vermelho())
             halign: "left"
-            pos_hint: {"center_x": 0.6, "center_y": 0.8}
+            pos_hint: {"center_x": 0.65, "center_y": 0.75}
 
         MDLabel:
             id: pet_addr
@@ -87,11 +87,11 @@
             theme_text_color: "Custom"
             text_color: get_color_from_hex(cor.azulEscuro())
             halign: "left"
-            pos_hint: {"center_x": 0.85, "center_y": 0.8}
+            pos_hint: {"center_x": 0.9, "center_y": 0.75}
     
     MDFloatLayout:
         id: requestLayout
-        size_hint: 1, 0.39
+        size_hint: 1, 0.36
 
         canvas.before:
             Color:

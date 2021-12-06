@@ -85,18 +85,18 @@ class MyPetsScreen(MDScreen, MDFloatLayout):
 
     def remove_item_dialog(self, petID:str, obj):
         sim_btn = MDFillRoundFlatButton(text="SIM", theme_text_color="Custom",
-                                        text_color=get_color_from_hex(self.cor.azulEscuro()),
-                                        md_bg_color=get_color_from_hex(self.cor.branco()),
+                                        text_color=get_color_from_hex(self.cor.branco()),
+                                        md_bg_color=get_color_from_hex(self.cor.azulEscuro()),
                                         on_release=partial(self.go_forward, petID))
 
         nao_btn = MDFillRoundFlatButton(text="NÃO", theme_text_color="Custom",
-                                        text_color=get_color_from_hex(self.cor.vermelho()),
-                                        md_bg_color=get_color_from_hex(self.cor.branco()),
+                                        text_color=get_color_from_hex(self.cor.branco()),
+                                        md_bg_color=get_color_from_hex(self.cor.vermelho()),
                                         on_release=self.close_dialog)
 
-        msg = "Você tem certeza que deseja excluir o animal do sistema?"
+        msg = "Você tem certeza de que deseja excluir o animal do sistema?"
 
-        self.dialog = MDDialog(text="[color=get_color_from_hex(self.cor.branco())]" + str(msg) + "[/color]",
+        self.dialog = MDDialog(text="[color=#ffffff]" + str(msg) + "[/color]",
                                md_bg_color=get_color_from_hex(self.cor.azulClaro()),
                                size_hint=(0.7, 1), radius=[20,20,20,20],
                                buttons=[sim_btn, nao_btn])
@@ -104,18 +104,18 @@ class MyPetsScreen(MDScreen, MDFloatLayout):
     
     def adopted_item_dialog(self, petID:str, obj):
         sim_btn = MDFillRoundFlatButton(text="SIM", theme_text_color="Custom",
-                                        text_color=get_color_from_hex(self.cor.azulEscuro()),
-                                        md_bg_color=get_color_from_hex(self.cor.branco()),
+                                        text_color=get_color_from_hex(self.cor.branco()),
+                                        md_bg_color=get_color_from_hex(self.cor.azulEscuro()),
                                         on_release=partial(self.go_forward_adopted, petID))
 
         nao_btn = MDFillRoundFlatButton(text="NÃO", theme_text_color="Custom",
-                                        text_color=get_color_from_hex(self.cor.vermelho()),
-                                        md_bg_color=get_color_from_hex(self.cor.branco()),
+                                        text_color=get_color_from_hex(self.cor.branco()),
+                                        md_bg_color=get_color_from_hex(self.cor.vermelho()),
                                         on_release=self.close_dialog)
 
-        msg = "Você tem certeza que o animal já foi adotado?"
+        msg = "Você tem certeza de que o animal já foi adotado?"
 
-        self.dialog = MDDialog(text="[color=get_color_from_hex(self.cor.branco())]" + str(msg) + "[/color]",
+        self.dialog = MDDialog(text="[color=#ffffff]" + str(msg) + "[/color]",
                                md_bg_color=get_color_from_hex(self.cor.azulClaro()),
                                size_hint=(0.7, 1), radius=[20,20,20,20],
                                buttons=[sim_btn, nao_btn])

@@ -42,7 +42,7 @@ class PetRScreen(MDScreen):
                                         md_bg_color=get_color_from_hex(self.cor.vermelho()),
                                         on_release=self.close_dialog)
 
-        msg = "Você tem certeza que deseja cancelar a solicitação de adoção?"
+        msg = "Você tem certeza de que deseja cancelar a solicitação de adoção?"
 
         self.dialog = MDDialog(text="[color=#ffffff]" + str(msg) + "[/color]",
                                md_bg_color=get_color_from_hex(self.cor.azulClaro()),

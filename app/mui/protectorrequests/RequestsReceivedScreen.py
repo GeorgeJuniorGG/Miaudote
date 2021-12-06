@@ -65,18 +65,18 @@ class RequestsReceivedScreen(MDScreen, MDFloatLayout):
 
     def remove_item_dialog(self, arID:str, obj):
         sim_btn = MDFillRoundFlatButton(text="SIM", theme_text_color="Custom",
-                                        text_color=get_color_from_hex(self.cor.azulEscuro()),
-                                        md_bg_color=get_color_from_hex(self.cor.branco()),
+                                        text_color=get_color_from_hex(self.cor.branco()),
+                                        md_bg_color=get_color_from_hex(self.cor.azulEscuro()),
                                         on_release=partial(self.go_forward, arID))
 
         nao_btn = MDFillRoundFlatButton(text="NÃO", theme_text_color="Custom",
-                                        text_color=get_color_from_hex(self.cor.vermelho()),
-                                        md_bg_color=get_color_from_hex(self.cor.branco()),
+                                        text_color=get_color_from_hex(self.cor.branco()),
+                                        md_bg_color=get_color_from_hex(self.cor.vermelho()),
                                         on_release=self.close_dialog)
 
-        msg = "Você tem certeza que deseja recusar a solicitação de adoção?"
+        msg = "Você tem certeza de que deseja recusar a solicitação de adoção?"
 
-        self.dialog = MDDialog(text="[color=get_color_from_hex(self.cor.branco())]" + str(msg) + "[/color]",
+        self.dialog = MDDialog(text="[color=#ffffff]" + str(msg) + "[/color]",
                                md_bg_color=get_color_from_hex(self.cor.azulClaro()),
                                size_hint=(0.7, 1), radius=[20,20,20,20],
                                buttons=[sim_btn, nao_btn])

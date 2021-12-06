@@ -21,8 +21,8 @@ class PRPManager:
 
     def approveRequest(self):
         if self.aService.approveAR(self.arID):
-            msg1 = 'converse com o adotante utilizando o chat para concluir a adoção!'
-            self.screen.showToast(msg1)
+            msg = 'Converse com o adotante pelo chat para concluir a adoção!'
+            self.screen.showToast(msg)
             return self.screen.manager.goBackward('right')
 
     def declineRequest(self):

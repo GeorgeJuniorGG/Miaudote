@@ -4,9 +4,6 @@
 #:set cor Color()
 
 <ProfileScreen>:
-    # on_kv_post:
-    #     self.getUserData()
-    
     md_bg_color: get_color_from_hex(cor.azulCinzaClaro()+'11')
     
     MDFloatLayout:
@@ -41,7 +38,8 @@
                     text_color: get_color_from_hex(cor.vermelho())
                     pos_hint: {'right': 1.12, 'top': 0.45}
                     md_bg_color: get_color_from_hex(cor.azulClaro()+'EA')
-                    on_press: root.controller.openFileManager()
+                    on_press:
+                        root.controller.openFileManager()
 
             MDIconButton:
                 icon: "exit-to-app"
@@ -49,7 +47,8 @@
                 theme_text_color: 'Custom'
                 text_color: get_color_from_hex(cor.vermelho())
                 pos_hint: {'center_x': 0.88, 'center_y': 0.5}
-                on_press: root.controller.logout()
+                on_press:
+                    root.logout_dialog()
 
         MDGridLayout:
             pos_hint: {'top': 0.8}

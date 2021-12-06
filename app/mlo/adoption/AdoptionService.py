@@ -176,7 +176,7 @@ class AdoptionService:
                 'name': raw['name'],
                 'adopterImage': raw['userImage'],
                 'city': raw['address']['city'],
-                'state': raw['address']['city'],
+                'state': raw['address']['state'],
                 'homeCharacteristics': raw['homeCharacteristics'],
                 'availableTime': raw['preferences']['availableTime'],
                 'haveAnimal': raw['preferences']['haveAnimal'],

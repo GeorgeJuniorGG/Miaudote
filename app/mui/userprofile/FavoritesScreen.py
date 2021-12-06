@@ -86,7 +86,7 @@ class FavoritesScreen(MDScreen, MDFloatLayout):
                                         md_bg_color=get_color_from_hex(self.cor.vermelho()),
                                         on_release=self.close_dialog)
 
-        msg = "Você tem certeza que deseja remover o animal dos seus favoritos?"
+        msg = "Você tem certeza de que deseja remover o animal dos seus favoritos?"
 
         self.dialog = MDDialog(text="[color=#ffffff]" + str(msg) + "[/color]",
                                md_bg_color=get_color_from_hex(self.cor.azulClaro()),
