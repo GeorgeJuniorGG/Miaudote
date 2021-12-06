@@ -21,7 +21,7 @@ resource_add_path(IMG_DIR)
 
 Window.size = (375,667)
 
-class MainApp(MDApp):
+class MiaudoteApp(MDApp):
 
     # [hotfix] problema na atualização do kivymd
     def load_all_kv_files(self, path_to_directory):
@@ -78,4 +78,4 @@ class MainApp(MDApp):
         orquestrator.appFlow()
         return manager
 
-MainApp().run()
+MiaudoteApp().run()
