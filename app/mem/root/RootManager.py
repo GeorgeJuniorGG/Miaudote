@@ -87,6 +87,9 @@ class RootManager(FMClient):
             self.orchetrator.callGoBackward()
             Clock.schedule_once(partial(self.updateImage, file, oldImage), 0.5)
 
+        elif file == None:
+            self.orchetrator.callGoBackward()
+
     # Atualiza a imagem do usuário no banco            
     def updateImage(self, file, oldImage, *largs):
         update_status = self.userService.updateUserImage(file)

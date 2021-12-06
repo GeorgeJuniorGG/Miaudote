@@ -86,6 +86,12 @@ class AdoptionService:
             self.petService.deleteAR(arData.petID, arID)
             self.userService.deleteAR(arData.adopterID, arID)
             self.userService.deleteAR(arData.protectorID, arID)
+
+            petData = self.petService.getPetData(arData.petID)
+            rQueue = petData['requestQueue']
+            if len(rQueue) > 0:
+                self.userService.insertAR(arData.protectorID, rQueue[0])
+
             return self.__db.deleteAR(arID, arData.chatID)
         except:
             return False
