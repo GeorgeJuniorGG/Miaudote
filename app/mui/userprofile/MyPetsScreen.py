@@ -87,7 +87,7 @@ class MyPetsScreen(MDScreen, MDFloatLayout):
         sim_btn = MDFillRoundFlatButton(text="SIM", theme_text_color="Custom",
                                         text_color=get_color_from_hex(self.cor.branco()),
                                         md_bg_color=get_color_from_hex(self.cor.azulEscuro()),
-                                        on_release=self.go_forward)
+                                        on_release=partial(self.go_forward, petID))
 
         nao_btn = MDFillRoundFlatButton(text="NÃO", theme_text_color="Custom",
                                         text_color=get_color_from_hex(self.cor.branco()),
@@ -106,7 +106,7 @@ class MyPetsScreen(MDScreen, MDFloatLayout):
         sim_btn = MDFillRoundFlatButton(text="SIM", theme_text_color="Custom",
                                         text_color=get_color_from_hex(self.cor.branco()),
                                         md_bg_color=get_color_from_hex(self.cor.azulEscuro()),
-                                        on_release=self.go_forward)
+                                        on_release=partial(self.go_forward_adopted, petID))
 
         nao_btn = MDFillRoundFlatButton(text="NÃO", theme_text_color="Custom",
                                         text_color=get_color_from_hex(self.cor.branco()),
