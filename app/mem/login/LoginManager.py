@@ -15,19 +15,19 @@ class LoginManager:
         try: 
             userLogin = UserLoginData(email=email, password=password) 
         except ValidationError as e:
-            print(e)
+            self.screen.showToast(str(e))
 
         if(userLogin):
             result = self.service.login(userLogin)
             if result:
                 print(self.service.getUserID())
-                print("Entrando...")
+                self.screen.showToast("Entrando...")
                 orchestrator = self.screen.manager.orchestrator
                 userID = self.service.getUserID()
                 orchestrator.userLogin(userID)
                 return True
             else:
-                print("Usuário não cadastrado")
+                self.screen.showToast("Usuário não cadastrado")
                 return False
         else:
             return False

@@ -95,7 +95,7 @@ class SignUpScreen4(MDFloatLayout, MDScreen):
         if not self.escape_route_dialog:
             self.escape_route_dialog = MDDialog(
                 title="Rotas de Fuga",
-                text="Marque essa opção se o espaço reservado para o seu futuro pet possui brechas que facilitem a sua fuga.\n(Melhorar texto)",
+                text="Marque essa opção se a sua casa possui brechas de possibilitem a fuga de um pet, por exemplo janelas sem tela e muro baixo.",
             )
         self.escape_route_dialog.open()
     
