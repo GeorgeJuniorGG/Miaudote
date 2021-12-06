@@ -94,7 +94,7 @@ class MyPetsScreen(MDScreen, MDFloatLayout):
                                         md_bg_color=get_color_from_hex(self.cor.vermelho()),
                                         on_release=self.close_dialog)
 
-        msg = "Você tem certeza que deseja excluir o animal do sistema?"
+        msg = "Você tem certeza de que deseja excluir o animal do sistema?"
 
         self.dialog = MDDialog(text="[color=#ffffff]" + str(msg) + "[/color]",
                                md_bg_color=get_color_from_hex(self.cor.azulClaro()),
@@ -113,7 +113,7 @@ class MyPetsScreen(MDScreen, MDFloatLayout):
                                         md_bg_color=get_color_from_hex(self.cor.vermelho()),
                                         on_release=self.close_dialog)
 
-        msg = "Você tem certeza que o animal já foi adotado?"
+        msg = "Você tem certeza de que o animal já foi adotado?"
 
         self.dialog = MDDialog(text="[color=#ffffff]" + str(msg) + "[/color]",
                                md_bg_color=get_color_from_hex(self.cor.azulClaro()),

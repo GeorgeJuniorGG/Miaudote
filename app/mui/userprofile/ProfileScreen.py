@@ -37,7 +37,7 @@ class ProfileScreen(MDScreen):
                                         md_bg_color=get_color_from_hex(self.cor.vermelho()),
                                         on_release=self.close_dialog)
 
-        msg = "Você tem certeza que deseja deslogar?"
+        msg = "Você tem certeza de que deseja deslogar?"
 
         self.dialog = MDDialog(text="[color=#ffffff]" + str(msg) + "[/color]",
                                md_bg_color=get_color_from_hex(self.cor.azulClaro()),

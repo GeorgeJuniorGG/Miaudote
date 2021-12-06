@@ -85,7 +85,7 @@ class RequestsScreen(MDScreen, MDFloatLayout):
                                         md_bg_color=get_color_from_hex(self.cor.vermelho()),
                                         on_release=self.close_dialog)
 
-        msg = "Você tem certeza que deseja remover essa solicitação?"
+        msg = "Você tem certeza de que deseja remover essa solicitação?"
 
         self.dialog = MDDialog(text="[color=#ffffff]" + str(msg) + "[/color]",
                                md_bg_color=get_color_from_hex(self.cor.azulClaro()),

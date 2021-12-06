@@ -74,7 +74,7 @@ class RequestsReceivedScreen(MDScreen, MDFloatLayout):
                                         md_bg_color=get_color_from_hex(self.cor.vermelho()),
                                         on_release=self.close_dialog)
 
-        msg = "Você tem certeza que deseja recusar a solicitação de adoção?"
+        msg = "Você tem certeza de que deseja recusar a solicitação de adoção?"
 
         self.dialog = MDDialog(text="[color=#ffffff]" + str(msg) + "[/color]",
                                md_bg_color=get_color_from_hex(self.cor.azulClaro()),
