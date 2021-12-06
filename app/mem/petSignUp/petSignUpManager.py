@@ -123,19 +123,16 @@ class PetSignUpManager(FMClient):
         self.__FM = FM
 
     def callFileManager(self):
-        if not self.manager.has_screen(screens['fileChooser']):
-            self.manager.orchestrator.openFileManager(self)
-        
-        else:
-            self.__FM.openFileChooser()
+        self.manager.orchestrator.openFileManager(self)
 
     def getCurrentPath(self) -> str:
         return self.__CP
 
     def receiveFile(self, file: str, path: str):
         self.__CP = path
+        orchestrator = self.manager.orchestrator
+        
         if file != None:
             self.petSignUpScreen4.addPetImage(file)
-            orchestrator = self.manager.orchestrator
-            orchestrator.callGoBackward(self.petSignUpScreen4.name)
-            
+        
+        orchestrator.callGoBackward(self.petSignUpScreen4.name)
