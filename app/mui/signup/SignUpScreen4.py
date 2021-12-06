@@ -1,12 +1,18 @@
 from kivymd.uix.floatlayout import MDFloatLayout
 from kivymd.uix.screen import MDScreen
 from kivymd.uix.dialog import MDDialog
+from kivymd.uix.menu import MDDropdownMenu
+from kivymd.toast import toast
+
 from kivy.metrics import dp
 from kivy.clock import Clock
-from kivymd.uix.menu import MDDropdownMenu
+from kivy.utils import get_color_from_hex
 from kivy.properties import ObjectProperty
 
+from mui.ColorTheme import Color
+
 class SignUpScreen4(MDFloatLayout, MDScreen):
+    cor = Color()
     controller = ObjectProperty()
     escape_route_dialog = None
     ToS_dialog = None
@@ -114,3 +120,6 @@ class SignUpScreen4(MDFloatLayout, MDScreen):
     def go_backward(self):
         #self.manager.go_backward_signup("SignUpScreen4")
         self.controller.backward(self.name)
+
+    def showToast(self, msg:str):
+        toast(msg, get_color_from_hex(self.cor.azulCinzaClaro()+'F0'))

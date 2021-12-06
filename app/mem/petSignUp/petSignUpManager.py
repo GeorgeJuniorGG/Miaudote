@@ -77,7 +77,7 @@ class PetSignUpManager(FMClient):
         if(dataPetScreen1==True):
             self.changeScreen(upsf, self.petSignUpScreen.name)
         else:
-            print(dataPetScreen1)
+            self.petSignUpScreen.showToast(dataPetScreen1)
         
     def petSignUpScreen2Manager(self):
         petScreen2Data = {
@@ -89,7 +89,7 @@ class PetSignUpManager(FMClient):
         if(dataPetScreen2==True):
             self.changeScreen(upsf, self.petSignUpScreen2.name)
         else:
-            print(dataPetScreen2)
+            self.petSignUpScreen2.showToast(dataPetScreen2)
 
     def petSignUpScreen3Manager(self):
         petScreen3Data = {
@@ -106,9 +106,9 @@ class PetSignUpManager(FMClient):
                 self.userService.addPetId(self.petID)
                 self.changeScreen(upsf, self.petSignUpScreen3.name)
             else:
-                print(completeData)
+                self.petSignUpScreen3.showToast(completeData)
         else:
-            print(dataPetScreen3)
+            self.petSignUpScreen3.showToast(dataPetScreen3)
                
 
     def petSignUpScreen4Manager(self):
@@ -116,7 +116,7 @@ class PetSignUpManager(FMClient):
         if(self.petStoregeService.addPetImages(self.petID, pathImages)):
             self.changeScreen(upsf, self.petSignUpScreen4.name)
         else:
-            print("Houve um erro ao adicionar as imagens")    
+            self.petSignUpScreen4.showToast("Houve um erro ao adicionar as imagens")    
 
     # File Manager
     def registreFM(self, FM):
@@ -138,4 +138,3 @@ class PetSignUpManager(FMClient):
             self.petSignUpScreen4.addPetImage(file)
             orchestrator = self.manager.orchestrator
             orchestrator.callGoBackward(self.petSignUpScreen4.name)
-            

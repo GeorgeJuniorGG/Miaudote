@@ -12,10 +12,11 @@ class LoginManager:
     
     def login(self, email:str, password:str) -> bool:
         userLogin = False
+        
         try: 
             userLogin = UserLoginData(email=email, password=password) 
         except ValidationError as e:
-            self.screen.showToast(str(e))
+            self.screen.showToast(e.errors()[0]['msg'])
 
         if(userLogin):
             result = self.service.login(userLogin)

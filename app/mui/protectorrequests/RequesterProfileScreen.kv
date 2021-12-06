@@ -21,7 +21,7 @@
             RoundedRectangle:
                 size: dp(90), dp(90)
                 pos: self.x - dp(5), self.y - dp(5)
-                radius: 50,50
+                radius: 50, 50
 
         FitImage:
             id: adopterImage
@@ -32,7 +32,7 @@
         pos_hint: {'top': 0.78}
         cols: 1
         spacing: '20dp'
-        padding: '20dp','20dp'
+        padding: '15dp','15dp'
 
         UserInfo:
             id: name
@@ -73,7 +73,7 @@
         pos_hint: {'center_x': 0.3, 'center_y': 0.08}
         size_hint: 0.35, 0.05
         on_release:
-            root.approveRequest()
+            root.accept_dialog()
   
     MDFillRoundFlatButton:
         text: "Rejeitar"
