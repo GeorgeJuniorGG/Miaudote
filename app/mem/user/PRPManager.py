@@ -13,6 +13,7 @@ class PRPManager:
         self.screen = RequesterProfileScreen(name = sName)
         self.screen.controller = self
         self.screen.insertAdopterData()
+        self.screen.hideButtons()
 
     def adopterProfileData(self):
         data = self.aService.getAdopterData(self.arID)
@@ -20,11 +21,11 @@ class PRPManager:
 
     def approveRequest(self):
         if self.aService.approveAR(self.arID):
-            msg1 = 'Solicitação de adoção aprovada!'
-            msg2 = 'converse com o adotante utilizando o chat para concluir a adoção!'
+            msg1 = 'converse com o adotante utilizando o chat para concluir a adoção!'
             self.screen.showToast(msg1)
-            self.screen.showToast(msg2)
+            return self.screen.manager.goBackward('right')
 
     def declineRequest(self):
         if self.aService.declineAR(self.arID):
             self.screen.showToast('Solicitação de adoção recusada com sucesso!')
+            return self.screen.manager.goBackward('right')
