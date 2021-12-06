@@ -19,7 +19,22 @@ class ProfileScreen(MDScreen):
             if itemName == 'userImage':
                 item.source = userData['userImage']
             elif itemName in userData.keys():
-                item.fieldValue = userData[itemName]
+                if(itemName == 'cpf'):
+                    item.fieldValue = self.maskCpf(userData['cpf'])
+                else:
+                    item.fieldValue = userData[itemName]
+
+    def maskCpf(self, cpf:str) -> str:
+        masked_cpf = "***."        
+
+        for i in range(3, 9):
+            masked_cpf += cpf[i]
+            
+            if i == 5: masked_cpf += "."
+        
+        masked_cpf += "-**"
+
+        return masked_cpf
 
     def changeUserImage(self, imagePath):
         oldImage = self.ids['userImage'].source
