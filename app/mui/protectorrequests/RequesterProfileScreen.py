@@ -12,9 +12,11 @@ class RequesterProfileScreen(MDFloatLayout, MDScreen):
     
     controller = None
     cor = Color()
+    arStatus = None
 
     def insertAdopterData(self):
         data = self.controller.adopterProfileData()
+        self.arStatus = data['arStatus']
         for itemName in self.ids:
             item = self.ids[itemName]
             if itemName == 'adopterImage':
@@ -103,3 +105,9 @@ class RequesterProfileScreen(MDFloatLayout, MDScreen):
     def go_forward_decline(self, obj):
         self.dialog.dismiss()
         self.declineRequest()
+
+    def hideButtons(self):
+        if self.arStatus != None:
+            self.remove_widget(self.ids.acceptButton)
+            self.remove_widget(self.ids.rejectButton)
+

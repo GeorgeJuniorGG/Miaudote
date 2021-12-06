@@ -10,6 +10,7 @@
         screen: root
 
     MDFloatLayout:
+        id: container
         size_hint: None, None
         height: 80
         width: 80
@@ -66,6 +67,7 @@
             size_hint: 1, 0.85
 
     MDFillRoundFlatButton:
+        id: acceptButton
         text: "Aceitar"
         font_size: "20sp"
         text_color: get_color_from_hex(cor.branco())
@@ -76,6 +78,7 @@
             root.accept_dialog()
   
     MDFillRoundFlatButton:
+        id: rejectButton
         text: "Rejeitar"
         font_size: "20sp"
         theme_text_color: "Custom"

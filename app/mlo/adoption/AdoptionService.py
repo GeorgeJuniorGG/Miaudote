@@ -86,6 +86,12 @@ class AdoptionService:
             self.petService.deleteAR(arData.petID, arID)
             self.userService.deleteAR(arData.adopterID, arID)
             self.userService.deleteAR(arData.protectorID, arID)
+
+            petData = self.petService.getPetData(arData.petID)
+            rQueue = petData['requestQueue']
+            if len(rQueue) > 0:
+                self.userService.insertAR(arData.protectorID, rQueue[0])
+
             return self.__db.deleteAR(arID, arData.chatID)
         except:
             return False
@@ -116,6 +122,10 @@ class AdoptionService:
             for arID in arUserList:
                 request: ARModel = self.__db.getAR(arID)
                 petData = self.petService.getPetData(request.petID)
+
+                if petData == {}:
+                    continue
+
                 arData = {
                     'arID': arID,
                     'arStatus': request.status,
@@ -170,7 +180,8 @@ class AdoptionService:
                 'homeCharacteristics': raw['homeCharacteristics'],
                 'availableTime': raw['preferences']['availableTime'],
                 'haveAnimal': raw['preferences']['haveAnimal'],
-                'adoptationRequests': raw['adoptationRequests']
+                'adoptationRequests': raw['adoptationRequests'],
+                'arStatus': arData.status
             }
 
             return data

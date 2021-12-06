@@ -13,6 +13,7 @@ class PRPManager:
         self.screen = RequesterProfileScreen(name = sName)
         self.screen.controller = self
         self.screen.insertAdopterData()
+        self.screen.hideButtons()
 
     def adopterProfileData(self):
         data = self.aService.getAdopterData(self.arID)
@@ -26,4 +27,5 @@ class PRPManager:
 
     def declineRequest(self):
         if self.aService.declineAR(self.arID):
+            self.screen.showToast('Solicitação de adoção recusada com sucesso!')
             return self.screen.manager.goBackward('right')

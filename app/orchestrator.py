@@ -231,5 +231,6 @@ class Orchestrator:
 
     def callGoBackward(self, screen:str=''):
         if screen != '':
-            self.manager.changeScreen('right', screen)
-        self.manager.goBackward('right')
+            return self.manager.changeScreen('right', screen)
+        
+        return self.manager.goBackward('right')
