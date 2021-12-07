@@ -13,7 +13,8 @@ class MainScreenManager(ScreenManager):
         screens['adoRequests']: None,
         screens['recRequests']: None,
         screens['favorites']: None,
-        screens['recRequests']: None
+        screens['recRequests']: None,
+        screens['myPets']: None
     }
 
     def __init__(self, **kwargs):
@@ -57,8 +58,14 @@ class MainScreenManager(ScreenManager):
 
     def goHome(self):
         self.transition.direction = 'right'
-        self.previous = screens['root']
-        self.current = self.previous
+        self.__previous = screens['root']
+        self.current = self.__previous
+
+    def goWelcome(self):
+        self.transition.direction = 'right'
+        self.__previous = screens['welcome']
+        self.current = self.__previous
+
 
     def changeTransition(self, tName:str):
         if tName in self.__TRANSITIONS.keys():

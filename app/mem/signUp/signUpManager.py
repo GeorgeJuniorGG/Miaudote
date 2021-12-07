@@ -52,6 +52,13 @@ class SignUpManager:
         self.manager.add_widget(self.signUpScreen3)
         self.manager.add_widget(self.signUpScreen4)
 
+    def clearScreens(self):
+        self.manager.remove_widget(self.signUpScreen)
+        self.manager.remove_widget(self.signUpScreen2a)
+        self.manager.remove_widget(self.signUpScreen2b)
+        self.manager.remove_widget(self.signUpScreen3)
+        self.manager.remove_widget(self.signUpScreen4)
+
     def changeScreen(self, flow:list, sName:str, dir:int=1):
         direction = 'left'
         if dir == -1:
@@ -132,6 +139,7 @@ class SignUpManager:
                 if(self.signUpScreen2b.ids._ToSCheck.active):
                     #self.signUpScreen2b.go_forward()
                     self.changeScreen(upf, self.signUpScreen2b.name)
+                    self.clearScreens()
                 else:
                     self.signUpScreen2b.show_terms_of_service_dialog()
             else:
@@ -173,6 +181,7 @@ class SignUpManager:
                 if(self.signUpScreen4.ids._ToSCheck.active):
                     #self.signUpScreen4.go_forward()
                     self.changeScreen(usf, self.signUpScreen4.name)
+                    self.clearScreens()
                 else:
                     self.signUpScreen4.show_terms_of_service_dialog()
             else:

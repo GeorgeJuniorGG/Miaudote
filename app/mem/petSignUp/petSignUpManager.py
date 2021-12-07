@@ -59,6 +59,10 @@ class PetSignUpManager(FMClient):
 
         index = flow.index(sName)
         nextScreen = flow[index+dir]
+        
+        if dir == -1 and sName == self.petSignUpScreen.name:
+            self.clearScreen()
+        
         self.manager.changeScreen(direction, nextScreen)
 
     def backward(self, sName):
@@ -115,8 +119,15 @@ class PetSignUpManager(FMClient):
         pathImages = self.petSignUpScreen4.files
         if(self.petStoregeService.addPetImages(self.petID, pathImages)):
             self.changeScreen(upsf, self.petSignUpScreen4.name)
+            self.clearScreen()
         else:
             self.petSignUpScreen4.showToast("Houve um erro ao adicionar as imagens")    
+
+    def clearScreen(self):
+        self.manager.remove_widget(self.petSignUpScreen)
+        self.manager.remove_widget(self.petSignUpScreen2)
+        self.manager.remove_widget(self.petSignUpScreen3)
+        self.manager.remove_widget(self.petSignUpScreen4)
 
     # File Manager
     def registreFM(self, FM):

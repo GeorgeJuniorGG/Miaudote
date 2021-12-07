@@ -34,4 +34,4 @@ class LoginManager:
             return False
 
     def goBackward(self):
-        self.screen.manager.goBackward('right')
+        self.screen.manager.goWelcome()

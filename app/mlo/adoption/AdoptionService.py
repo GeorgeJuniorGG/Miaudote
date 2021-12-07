@@ -121,6 +121,10 @@ class AdoptionService:
 
             for arID in arUserList:
                 request: ARModel = self.__db.getAR(arID)
+
+                if request == None:
+                    continue
+
                 petData = self.petService.getPetData(request.petID)
 
                 if petData == {}:
