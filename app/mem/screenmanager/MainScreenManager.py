@@ -13,7 +13,8 @@ class MainScreenManager(ScreenManager):
         screens['adoRequests']: None,
         screens['recRequests']: None,
         screens['favorites']: None,
-        screens['recRequests']: None
+        screens['recRequests']: None,
+        screens['myPets']: None
     }
 
     def __init__(self, **kwargs):
