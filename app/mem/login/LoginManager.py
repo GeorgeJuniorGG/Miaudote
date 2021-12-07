@@ -12,25 +12,26 @@ class LoginManager:
     
     def login(self, email:str, password:str) -> bool:
         userLogin = False
+        
         try: 
             userLogin = UserLoginData(email=email, password=password) 
         except ValidationError as e:
-            print(e)
+            self.screen.showToast(e.errors()[0]['msg'])
 
         if(userLogin):
             result = self.service.login(userLogin)
             if result:
                 print(self.service.getUserID())
-                print("Entrando...")
+                self.screen.showToast("Entrando...")
                 orchestrator = self.screen.manager.orchestrator
                 userID = self.service.getUserID()
                 orchestrator.userLogin(userID)
                 return True
             else:
-                print("Usuário não cadastrado")
+                self.screen.showToast("Usuário não cadastrado")
                 return False
         else:
             return False
 
     def goBackward(self):
-        self.screen.manager.goBackward('right')
+        self.screen.manager.goWelcome()

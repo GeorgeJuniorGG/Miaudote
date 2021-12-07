@@ -3,7 +3,9 @@ from kivymd.uix.behaviors import RectangularRippleBehavior
 from kivymd.uix.floatlayout import MDFloatLayout
 from kivymd.uix.boxlayout import MDBoxLayout
 from kivymd.uix.label import MDLabel
-from kivymd.uix.button import MDIconButton
+from functools import partial
+from mui.protectorrequests.components.ARItem import RemoveButton, AdoptedButton
+
 from kivy.properties import (
     StringProperty,
     ObjectProperty
@@ -12,7 +14,7 @@ from kivy.properties import (
 from kivy.clock import Clock
 
 
-class PetLabel2(MDLabel):
+class MyPetsLabel(MDLabel):
     def __init__(self, charName, **kwargs):
         super().__init__(**kwargs)
         self.text = charName
@@ -21,7 +23,7 @@ class PetLabel2(MDLabel):
         self.pos_hint = {'center_y': 0.5}
 
 
-class PetItem2(RectangularRippleBehavior, ButtonBehavior, MDFloatLayout):
+class MyPetsItem(RectangularRippleBehavior, ButtonBehavior, MDFloatLayout):
     # indicar o local da imagem
     petImageSource = StringProperty()
     # adicionar o nome do Pet
@@ -41,23 +43,36 @@ class PetItem2(RectangularRippleBehavior, ButtonBehavior, MDFloatLayout):
     petNLabel = ObjectProperty(MDLabel)
     # FloatLayout com a Imagem do pet
     petImage = ObjectProperty(MDFloatLayout)
-    # MDIconButton para exclusão do item
-    removeButton = ObjectProperty()
+    # MDIconButton para exclusão do item e MDFlatRoundButton para marcar pet como adotado
+    buttonsContainer = ObjectProperty()
 
-    def __init__(self, data:dict, **kwargs):
+    def __init__(self, data:dict, screen, **kwargs):
         super().__init__(**kwargs)
 
+        self.screen = screen
         self.petImageSource = data['imageSource']
         self.petName = data['petName']
         self.petDescription = data['petDecription']
         self.petID = data['pid']
         labels = data['petChars']
+
+        Clock.schedule_once( lambda x: self.insertButtons(
+                RemoveButton(on_release=partial(self.screen.remove_item_dialog, data['pid'])))
+        )
+
+        Clock.schedule_once( lambda x: self.insertButtons(
+                AdoptedButton(on_release=partial(self.screen.adopted_item_dialog, data['pid'])))
+        )
+
         Clock.schedule_once(lambda x: self.insertLabels(labels))
 
     # inserir os chips com as caracteristicas dos animais
     def insertLabels(self, labels):
         
         for i in range(3):
-            petChar = PetLabel2(labels[i])
+            petChar = MyPetsLabel(labels[i])
             self.petCharsBox.ids[f'label{i}'] = petChar
             self.petCharsBox.add_widget(petChar)
+
+    def insertButtons(self, button):
+        self.buttonsContainer.add_widget(button)

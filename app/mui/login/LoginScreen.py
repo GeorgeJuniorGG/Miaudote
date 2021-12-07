@@ -1,8 +1,13 @@
 from kivymd.uix.screen import MDScreen
+from kivymd.toast import toast
+
+from kivy.utils import get_color_from_hex
 from kivy.properties import ObjectProperty
 
-class LoginScreen(MDScreen):
+from mui.ColorTheme import Color
 
+class LoginScreen(MDScreen):
+   cor = Color()
    controller = ObjectProperty()
 
    def __init__(self, **kw):
@@ -14,3 +19,6 @@ class LoginScreen(MDScreen):
 
    def go_backward(self):
       self.manager.go_backward_login("LoginScreen")
+
+   def showToast(self, msg:str):
+        toast(msg, get_color_from_hex(self.cor.azulCinzaClaro()+'F0'))

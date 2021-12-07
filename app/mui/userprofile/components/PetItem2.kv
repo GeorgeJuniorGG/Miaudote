@@ -28,7 +28,8 @@
     petContent: pet_content
     petNLabel: pet_name
     petDLabel: pet_descr
-    removeButton: remove_button
+    buttonsContainer: buttons_container
+    on_release: self.openPetProfile()
 
     MDFloatLayout:
         id: pet_image
@@ -42,49 +43,59 @@
             radius: 15, 15, 15, 15
 
     MDFloatLayout:
-        id: pet_content
-        pos_hint: {'x': 0.32,'top': 1}
+        id: pet_image
+        pos_hint: {'x': 0.01,'center_y': 0.5}
         size_hint: None, None
-        size: self.parent.width - pet_image.width, self.parent.height
+        size: self.parent.width*0.3, self.parent.height*0.8
 
+        FitImage:
+            source: root.petImageSource
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            radius: 15, 15, 15, 15
+
+    MDFloatLayout:
+        id: pet_content
+        pos_hint: {'x': 0.333,'top': 1}
+        size_hint: None, None
+        size: self.parent.width - self.parent.width/3, self.parent.height
+        #md_bg_color: get_color_from_hex(cor.violeta())
+        
         MDLabel:
             id: pet_name
             text: root.petName
             pos_hint: {'x': 0, 'center_y': 0.82}
-            size_hint: None, None
-            size: 100, 50
+            size_hint: 0.6, 0.4
+            #halign: 'center'
+            #size: 100, 50
             theme_text_color: "Custom"
             text_color: get_color_from_hex(cor.vermelho())
+            font_size: '22sp'
             bold: True
-            
-        MDIconButton:
-            id: remove_button
-            pos_hint: {'x': 0.8, 'center_y': 0.5}
-            icon: 'close-circle-outline'
-            theme_text_color: "Custom"
-            text_color: get_color_from_hex(cor.azulEscuro())
-            on_press:
-                root.parent.parent.parent.parent.remove_item_dialog(root.petID)
-                #pos = root.parent.children.index(root)                  # Posicao do PetItem2 na lista de filhos da list
-                #root.parent.remove_widget(root.parent.children[pos-1])  # Remove o separator associado ao PetItem2
-                #root.parent.remove_widget(root.parent.children[pos-1])  # Remove o PetItem2, que agora esta uma posicao a menos
 
-        MDBoxLayout:
+
+        MDGridLayout:
             id: pet_chars
-            spacing: 3
-            orientation: 'vertical'
-            size_hint: None, None
-            size: "300dp", self.parent.height-dp(55)
-            pos_hint: {'x': 0, 'center_y': 0.4}
+            spacing: 5
+            cols:1
+            size_hint: 0.35, 0.4
+            #size: dp(80), dp(80)
+            minimum_size: dp(80), dp(80)
+            #md_bg_color: get_color_from_hex(cor.violeta())
+            pos_hint: {'x': 0, 'center_y': 0.48}
 
         MDLabel:
             id: pet_descr
             text: root.petDescription
-            font_size: '11sp'
-            pos_hint: {'x': 0.42, 'center_y': 0.4}
+            font_size: '14sp'
+            pos_hint: {'x': 0.40, 'center_y': 0.45}
             theme_text_color: "Custom"
             text_color: get_color_from_hex(cor.azulEscuro())
             bold: True
-            size_hint: None, None
-            size: 100, 100
+            size_hint: 0.63, 0.6
+            #size: 100, 100
         
+        MDFloatLayout:
+            id: buttons_container
+            pos_hint: {'center_x': 0.68, 'center_y': 0.1}
+            size_hint: 0.6, 0.2
+            #md_bg_color: get_color_from_hex(cor.violeta())

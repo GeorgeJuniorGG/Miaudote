@@ -17,9 +17,6 @@ class Color:
     def azulMaisEscuro(self):
         return '#94AFC0'
 
-    def bege(self):
-        return '#8C5041'
-
     def branco(self):
         return '#FFFFFF'
 
@@ -46,6 +43,3 @@ class Color:
 
     def vermelhoEscuro(self):
         return '#8B3A27'
-
-    def violeta(self):
-        return '#5D5FEF'

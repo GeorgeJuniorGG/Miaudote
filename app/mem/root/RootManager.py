@@ -9,6 +9,7 @@ from mlo.pets.PetService import PetService
 
 from kivy.clock import Clock
 from functools import partial
+from kivymd.toast import toast
 
 class RootManager(FMClient):
 
@@ -31,6 +32,11 @@ class RootManager(FMClient):
         self.homeScreen.addViewPets()
         self.__FM = None
         self.__CP = "/"
+
+        if(self.userService.getUserType()=='protector'):
+            self.menuScreen.bindProtectorScreens()
+        else:
+            self.menuScreen.bindAdopterScreens()
     
     def setController(self):
         self.profileScreen = self.screen.profileScreen
@@ -60,7 +66,12 @@ class RootManager(FMClient):
         self.orchetrator.callChangeScreen(screenName)
 
     def openPetProfile(self, petID:str):
-        self.orchetrator.openPetProfile(petID)
+        if(self.petService.getPetData(petID) != {}):
+            self.orchetrator.openPetProfile(petID)
+        else:
+            self.homeScreen.addViewPets()
+            toast("Esse pet já foi adotado!")
+            
 
     def openFileManager(self):
         self.orchetrator.openFileManager(self)
@@ -75,6 +86,9 @@ class RootManager(FMClient):
             oldImage = self.profileScreen.changeUserImage(file)
             self.orchetrator.callGoBackward()
             Clock.schedule_once(partial(self.updateImage, file, oldImage), 0.5)
+
+        elif file == None:
+            self.orchetrator.callGoBackward()
 
     # Atualiza a imagem do usuário no banco            
     def updateImage(self, file, oldImage, *largs):

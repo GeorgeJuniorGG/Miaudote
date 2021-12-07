@@ -184,6 +184,39 @@ class Orchestrator:
         self.manager.add_widget(screen)
         self.manager.changeScreen('left', screen.name)
 
+    # Abrir a tela de requisição do pet
+    def openPetRProfile(self, arID:str):
+        cName = screens['petRP']
+        if cName+arID in self.manager.screen_names:
+            self.manager.remove_widget(self.manager.get_screen(cName+arID))
+        
+        outArgs = {'arID': arID}
+        screen = self.startScreen(cName, outArgs=outArgs)
+        self.manager.add_widget(screen)
+        self.manager.changeScreen('left', screen.name)
+
+
+    # Abrir a tela com informações sobre o adotante em uma AR
+    def openARProfile(self, arID:str):
+        cName = screens['requesterProfile']
+        if cName+arID in self.manager.screen_names:
+            self.manager.remove_widget(self.manager.get_screen(cName+arID))
+        
+        outArgs = {'arID': arID}
+        screen = self.startScreen(cName, outArgs=outArgs)
+        self.manager.add_widget(screen)
+        self.manager.changeScreen('left', screen.name)
+
+    # Abrir a tela de Chat
+    def openChat(self, chatData:dict):
+        cName = screens['chat']
+        if cName+chatData['chatID'] in self.manager.screen_names:
+            self.manager.remove_widget(self.manager.get_screen(cName+chatData['chatID']))
+        
+        screen = self.startScreen(cName, outArgs=chatData)
+        self.manager.add_widget(screen)
+        self.manager.changeScreen('left', screen.name)
+
     # Abrir o FileChooserScreen
     def openFileManager(self, fClient):
         cName = screens['fileChooser']
@@ -198,5 +231,6 @@ class Orchestrator:
 
     def callGoBackward(self, screen:str=''):
         if screen != '':
-            self.manager.changeScreen('right', screen)
-        self.manager.goBackward('right')
+            return self.manager.changeScreen('right', screen)
+        
+        return self.manager.goBackward('right')

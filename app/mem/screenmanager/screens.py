@@ -10,7 +10,12 @@ screens = {
     'adoStatus': 'AdoptRequestsScreen',
     'recRequests': 'RequestsReceivedScreen',
     'petProfile': 'PetProfileScreen',
-    'fileChooser': 'FileChooserScreen'
+    'fileChooser': 'FileChooserScreen',
+    'requesterProfile': 'RPScreen',
+    'chat': 'ChatScreen',
+    'myPets': 'MyPetsScreen',
+    'petRP': 'PetRScreen',
+    'PARScreen': 'AdoptionRScreen'
 }
 
 usualProtectorSignUpFlow = [ 'WelcomeScreen',

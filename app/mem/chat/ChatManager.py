@@ -1,12 +1,19 @@
 from mui.chat.ChatScreen import ChatScreen
 from mlo.chat.ChatService import ChatService
+from mem.screenmanager.screens import screens
 
 class ChatManager:
-    def __init__(self, screen:ChatScreen, service:ChatService, userID:str):
-        self.screen = screen
-        self.userID = userID
-        self.screen.controller = self
+    def __init__(self, service:ChatService, chatID:str, userID:str, anUserName:str, anUserImg:str):
         self.service = service
+        self.userID = userID
+        self.chatID = chatID
+        self.anUserName = anUserName
+        self.anUserImg = anUserImg
+        
+        self.screen = ChatScreen(name=screens['chat']+chatID)
+        self.screen.controller = self
+        self.screen.setAnotherUser(anUserName, anUserImg)
+        
         self.service.setClient(self)
         self.__initialMessages()
 

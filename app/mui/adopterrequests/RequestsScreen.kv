@@ -4,6 +4,8 @@
 #:set cor Color()
 
 <RequestsScreen>:
+    md_bg_color: get_color_from_hex(cor.azulCinzaClaro()+'11')
+
     MiauLogo:
         screen: root
 
@@ -32,7 +34,7 @@
             size_hint: 1, 1
             MDList:
                 id: container
-                padding: '20dp'
+                padding: '15dp'
 
         Widget:
             size_hint: 1, 0.2

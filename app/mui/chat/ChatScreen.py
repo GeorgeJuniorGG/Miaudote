@@ -20,6 +20,12 @@ class ChatScreen(MDScreen, MDFloatLayout):
     controller = ObjectProperty()
     text_input = ObjectProperty()
     chat_list = ObjectProperty()
+    anUserName = ObjectProperty()
+    anUserImage = ObjectProperty()
+    
+    def setAnotherUser(self, anUserName:str, anUserImg:str):
+        self.anUserName.text = anUserName
+        self.anUserImage.source = anUserImg
 
     def send(self):
         msg_content = self.text_input.text
@@ -69,3 +75,6 @@ class ChatScreen(MDScreen, MDFloatLayout):
         size, halign = self.ballonProps(len(msg))
         sent_balloon = MessageSent(text=msg, size_hint_x=size, halign=halign)
         self.chat_list.add_widget(sent_balloon)           
+
+    def goBack(self):
+        self.manager.goBackward('right')

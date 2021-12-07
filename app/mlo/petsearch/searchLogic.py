@@ -7,7 +7,6 @@ class SearchLogic:
     def __init__(self, petService:PetService, recommendations: RecommendedPets):
         self.recommendations = recommendations
         self.__petService = petService
-        self.dictPets = self.__petService.getAllPets()
     
     def getResults(self, words: List):
 
@@ -82,7 +81,8 @@ class SearchLogic:
         types = []
         genders = []
 
-        docs = self.dictPets
+        docs = self.__petService.getAllPets()
+
         for doc in docs:
 
             if(doc['type'] not in types):
@@ -110,7 +110,7 @@ class SearchLogic:
 
         filters = self.getUserFilters()
 
-        docs = self.dictPets
+        docs = self.__petService.getAllPets()
         for doc in docs:
             for colorFilter in filters[0]:
                 if(colorFilter in doc["color"] and doc["pid"] not in searchColorResults):
@@ -153,6 +153,10 @@ class SearchLogic:
                 aliases.append("cachorro")
             if word == "medio":
                 aliases.append("médio")
+            if word == "passaro":
+                aliases.append("pássaro")
+            if word == "femea":
+                aliases.append("fêmea")
             elif word[-1] == "a" and word != "fêmea" and word != "femea":
                 aliases.append(word[:-1] + "o")
             elif word[-1] == "o" and word != "macho":

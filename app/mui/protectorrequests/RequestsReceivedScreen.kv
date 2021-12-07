@@ -4,7 +4,8 @@
 #:set cor Color()
 
 <RequestsReceivedScreen>:
-
+    md_bg_color: get_color_from_hex(cor.azulCinzaClaro()+'11')
+    
     MiauLogo:
         screen: root
 
@@ -18,10 +19,11 @@
         height: 40
         pos_hint: {"center_x": 0.5, "top": 0.91}
 
-    MDSeparator:
+    Separator:
         height: "1dp"
         color: get_color_from_hex(cor.vermelho())
         pos_hint: {"center_x": 0.5, "top": 0.85}
+        size_hint_x: 0.95
 
     MDBoxLayout:
         size_hint: 1, 1
@@ -33,6 +35,7 @@
             MDList:
                 id: container
                 padding: '20dp'
+                spacing: '5dp'
 
         Widget:
             size_hint: 1, 0.2

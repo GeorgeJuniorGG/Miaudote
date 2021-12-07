@@ -5,7 +5,7 @@
 
 <UserInfo>:
     #md_bg_color: get_color_from_hex(cor.azulEscuro())
-    size_hint: 1, 0.15
+    size_hint: 1, 0.18
 
     MDBoxLayout:
         orientation: 'vertical'
@@ -18,14 +18,14 @@
             text: root.fieldName
             theme_text_color: 'Custom'
             text_color: get_color_from_hex(cor.vermelho())
-            pos_hint: {'x': 0.01}
+            pos_hint: {'x': 0.001}
             bold: True
             halign: 'left'
 
         MDLabel:
             text: root.fieldValue
 
-            pos_hint: {'x': 0.01}
+            pos_hint: {'x': 0.001}
             theme_text_color: 'Custom'
             text_color: get_color_from_hex(cor.azulEscuro())
 

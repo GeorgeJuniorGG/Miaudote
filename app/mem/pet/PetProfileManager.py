@@ -1,23 +1,26 @@
-from mlo.user.AdopterRequestsService import AdopterRequestsService
+from mlo.adoption.AdoptionService import AdoptionService
 from mlo.user.FavoritesService import FavoritesService
 from mui.petprofile.PetProfileScreen import PetProfileScreen
 from mlo.pets.PetService import PetService
-from mlo.user.UserService import UserService
 
 from mem.screenmanager.screens import screens
 
 class PetProfileManager:
 
-    def __init__(self, userService:UserService, petService:PetService, favService:FavoritesService, adoReqService: AdopterRequestsService, petID:str) -> None:
-        self.userService = userService
+    def __init__(self, petService:PetService, favService:FavoritesService,
+                 adoService: AdoptionService, petID:str) -> None:
+        
         self.petService = petService
         self.favService = favService
-        self.adoReqService = adoReqService
+        self.adoService = adoService
         self.petID = petID
         self.petData = self.petService.getPetData(petID)
         self.screen = PetProfileScreen(self.petData, name=screens['petProfile']+petID)
         self.screen.controller = self
         self.screen.start_favorite_state(self.getFavoriteStatus(petID))
+
+        if(self.adoService.getUserType()=='protector'):
+            self.screen.screenToProtector()
 
     def addFavorite(self, petID:str):
         self.favService.addPet(petID)
@@ -29,4 +32,9 @@ class PetProfileManager:
         return self.favService.getFavoriteStatus(petID)
     
     def addRequest(self, petID:str):
-        self.adoReqService.addRequest(petID)
+        if not self.adoService.createAR(petID):
+            return self.screen.showToast('Não foi possível realizar a solicitação de adoção!')
+        
+        orchestrator = self.screen.manager.orchestrator
+        orchestrator.callChangeScreen(screens['PARScreen'])
+        

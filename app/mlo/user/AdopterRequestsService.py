@@ -10,15 +10,16 @@ class AdopterRequestsService:
     def addRequest(self, petID:str):
         pet = self.petServ.getPetData(petID)
 
-        if (self.userID not in pet["requestQueue"]):
-            pet["requestQueue"].append(self.userID)
-
-        self.petServ.updatePetData(petID, pet)
+        if(pet != {}):
+            if (self.userID not in pet["requestQueue"]):
+                pet["requestQueue"].append(self.userID)
+                self.petServ.updatePetData(petID, pet)
 
     def removeRequest(self, petID:str):
         pet = self.petServ.getPetData(petID)
         
-        pet["requestQueue"].remove(self.userID)
+        if(pet != {}):
+            pet["requestQueue"].remove(self.userID)
 
         self.petServ.updatePetData(petID, pet)
 
@@ -29,6 +30,9 @@ class AdopterRequestsService:
 
         for pet in pets:
             if(self.userID in pet["requestQueue"]):
-                userRequests.append(pet)
+                if(pet["requestStatus"] == False):
+                    userRequests.append(pet)
+                else:
+                    self.removeRequest(pet["pid"])
 
         return userRequests

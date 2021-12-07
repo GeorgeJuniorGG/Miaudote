@@ -27,3 +27,11 @@ class PetDB(ABC):
     @abstractmethod
     def addPetImages(self, petID, images) -> bool:
         pass
+
+    @abstractmethod
+    def insertAR(self, petID:str, arID:str) -> bool:
+        pass
+    
+    @abstractmethod
+    def deleteAR(self, petID:str, arID:str) -> bool:
+        pass

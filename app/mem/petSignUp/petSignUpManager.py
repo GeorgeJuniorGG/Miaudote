@@ -59,6 +59,10 @@ class PetSignUpManager(FMClient):
 
         index = flow.index(sName)
         nextScreen = flow[index+dir]
+        
+        if dir == -1 and sName == self.petSignUpScreen.name:
+            self.clearScreen()
+        
         self.manager.changeScreen(direction, nextScreen)
 
     def backward(self, sName):
@@ -75,10 +79,9 @@ class PetSignUpManager(FMClient):
         }
         dataPetScreen1 = self.petDataModelService.createPetModelScreen1(**petScreen1Data)
         if(dataPetScreen1==True):
-        # if True:
             self.changeScreen(upsf, self.petSignUpScreen.name)
         else:
-            print(dataPetScreen1)
+            self.petSignUpScreen.showToast(dataPetScreen1)
         
     def petSignUpScreen2Manager(self):
         petScreen2Data = {
@@ -88,10 +91,9 @@ class PetSignUpManager(FMClient):
         }
         dataPetScreen2 = self.petDataModelService.createPetModelScreen2(**petScreen2Data)
         if(dataPetScreen2==True):
-        # if True:
             self.changeScreen(upsf, self.petSignUpScreen2.name)
         else:
-            print(dataPetScreen2)
+            self.petSignUpScreen2.showToast(dataPetScreen2)
 
     def petSignUpScreen3Manager(self):
         petScreen3Data = {
@@ -108,37 +110,41 @@ class PetSignUpManager(FMClient):
                 self.userService.addPetId(self.petID)
                 self.changeScreen(upsf, self.petSignUpScreen3.name)
             else:
-                print(completeData)
+                self.petSignUpScreen3.showToast(completeData)
         else:
-            print(dataPetScreen3)  
-            # self.changeScreen(upsf, self.petSignUpScreen3.name)
+            self.petSignUpScreen3.showToast(dataPetScreen3)
                
 
     def petSignUpScreen4Manager(self):
         pathImages = self.petSignUpScreen4.files
         if(self.petStoregeService.addPetImages(self.petID, pathImages)):
             self.changeScreen(upsf, self.petSignUpScreen4.name)
+            self.clearScreen()
         else:
-            print("Houve um erro ao adicionar as imagens")    
+            self.petSignUpScreen4.showToast("Houve um erro ao adicionar as imagens")    
+
+    def clearScreen(self):
+        self.manager.remove_widget(self.petSignUpScreen)
+        self.manager.remove_widget(self.petSignUpScreen2)
+        self.manager.remove_widget(self.petSignUpScreen3)
+        self.manager.remove_widget(self.petSignUpScreen4)
 
     # File Manager
     def registreFM(self, FM):
         self.__FM = FM
 
     def callFileManager(self):
-        if not self.manager.has_screen(screens['fileChooser']):
-            self.manager.orchestrator.openFileManager(self)
-        
-        else:
-            self.__FM.openFileChooser()
+        self.manager.orchestrator.openFileManager(self)
 
     def getCurrentPath(self) -> str:
         return self.__CP
 
     def receiveFile(self, file: str, path: str):
         self.__CP = path
+        orchestrator = self.manager.orchestrator
+
         if file != None:
             self.petSignUpScreen4.addPetImage(file)
-            orchestrator = self.manager.orchestrator
-            orchestrator.callGoBackward(self.petSignUpScreen4.name)
-            
+
+        orchestrator.callGoBackward(self.petSignUpScreen4.name)
+

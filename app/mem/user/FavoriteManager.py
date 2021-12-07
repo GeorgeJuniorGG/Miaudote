@@ -19,3 +19,11 @@ class FavoriteManager:
 
     def getFavorites(self):
         return self.favService.getFavorites()
+
+    def openPetProfile(self, petID:str):
+        if(self.petService.getPetData(petID) != {}):
+            orchestrator = self.screen.manager.orchestrator
+            orchestrator.openPetProfile(petID)
+        else:
+            self.screen.addViewPets()
+            self.screen.showToast("Esse pet já foi adotado!")

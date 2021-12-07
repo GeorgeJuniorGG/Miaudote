@@ -1,9 +1,15 @@
-from kivy.properties import ObjectProperty
 from kivymd.uix.floatlayout import MDFloatLayout
 from kivymd.uix.screen import MDScreen
 from kivymd.uix.dialog import MDDialog
+from kivymd.toast import toast
+
+from kivy.utils import get_color_from_hex
+from kivy.properties import ObjectProperty
+
+from mui.ColorTheme import Color
 
 class SignUpScreen(MDFloatLayout, MDScreen):
+    cor = Color()
     controller = ObjectProperty()
     dialog = None
 
@@ -24,3 +30,6 @@ class SignUpScreen(MDFloatLayout, MDScreen):
     def go_backward(self):
         #self.manager.go_backward_signup("SignUpScreen")
         self.controller.backward(self.name)
+
+    def showToast(self, msg:str):
+        toast(msg, get_color_from_hex(self.cor.azulCinzaClaro()+'F0'))

@@ -30,3 +30,11 @@ class UserDB(ABC):
     @abstractmethod
     def updateUserImage(self, imagePath:str) -> bool:
         pass
+
+    @abstractmethod
+    def insertAR(self, userID:str, arID:str) -> bool:
+        pass
+
+    @abstractmethod
+    def deleteAR(self, userID:str, arID:str) -> bool:
+        pass    
