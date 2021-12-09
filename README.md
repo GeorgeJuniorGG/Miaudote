@@ -30,4 +30,4 @@ Para o projeto do componente Adapter DB, desenvolvido para atuar como uma interf
 
 ## Vídeo Apresentando o Resultado Final do Projeto
 
-[![logo](./images/logo.png)](https://drive.google.com/file/d/1Ia4CD8FEPs7pwHJSyEp0zNjDkyBrL5y8/view?usp=sharing)
+[![Imagem](./images/logo_video.png)](https://drive.google.com/file/d/1Ia4CD8FEPs7pwHJSyEp0zNjDkyBrL5y8/view?usp=sharing)
