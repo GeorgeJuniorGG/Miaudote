@@ -27,3 +27,7 @@ Segue abaixo uma breve descrição sobre os principais componentes do sistema:
 Para o projeto do componente Adapter DB, desenvolvido para atuar como uma interface entre o aplicativo e o banco de dados, adotamos o padrão de projeto **Adapter**. Sendo que, nesta fase do projeto, o aplicativo somente faz uso do serviço de autenticação do Firebase através da biblioteca Pyrebase.
 
 > O padrão de projeto estrutural **Adapter** permite que objetos com interfaces não compatíveis sejam capazes de colaborarem entre si. Especificamente em nosso contexto, este padrão de projeto foi aplicado com o intuito de possibilitar o uso de outros bancos de dados pelo aplicativo sem que haja a necessidade de inúmeras alterações de código.
+
+## Vídeo Apresentando o Resultado Final do Projeto
+
+[![logo](./images/logo.png)](https://drive.google.com/file/d/1Ia4CD8FEPs7pwHJSyEp0zNjDkyBrL5y8/view?usp=sharing)
